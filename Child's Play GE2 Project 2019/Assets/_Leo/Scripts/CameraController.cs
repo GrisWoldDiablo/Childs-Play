@@ -33,9 +33,10 @@ public class CameraController : MonoBehaviour
 
     //Camera Target
     public Transform actorWithFocus;
+    public Transform enemyWithFocus;
 
     private Transform _playerWithFocus;
-    private Transform _enemyWithFocus;
+    
 
     //Getters
     public Vector2 GetKeyboardInput
@@ -51,8 +52,8 @@ public class CameraController : MonoBehaviour
     #region UNITY methods
     private void LateUpdate()
     {
-        //actorWithFocus = PlayerManager.instance.playerWithFocus.transform;
         CameraFollowPlayer();
+        CameraZoomAndRotationFreeModeWithKeyBoard();
     }
 
     private void Start()
@@ -62,7 +63,8 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        CameraControls();
+        CameraZoomAndRotationWhenLocked();
+        CameraZoomAndRotationFreeModeWithMouse();
     }
     #endregion
 
@@ -73,19 +75,21 @@ public class CameraController : MonoBehaviour
         _playerWithFocus = PlayerManager.instance.playerWithFocus.transform;
         if (EnemyManager.instance.enemyWithFocus != null)
         {
-            _enemyWithFocus = EnemyManager.instance.enemyWithFocus.transform;
+            enemyWithFocus = EnemyManager.instance.enemyWithFocus.transform;
         }
 
-        if(!isLocked)
+        if (!isLocked)
         {
             return;
         }
-        if(_enemyWithFocus != null)
+        if (enemyWithFocus != null)
         {
-            actorWithFocus = _enemyWithFocus;
+            Debug.Log("if");
+            actorWithFocus = enemyWithFocus;
         }
-        else if (_playerWithFocus != null)
+        else// (_playerWithFocus != null)
         {
+            Debug.Log("else");
             actorWithFocus = _playerWithFocus;
         }
 
@@ -95,14 +99,51 @@ public class CameraController : MonoBehaviour
 
     }
 
-    private void CameraControls()
+    private void CameraZoomAndRotationWhenLocked()
     {
-        if(this.isLocked)
+        if (this.isLocked)
         {
             _currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
             _currentZoom = Mathf.Clamp(_currentZoom, minZoom, maxZoom);
 
             _currentYaw += Input.GetAxis("RotateCamera") * yawSpeed * Time.deltaTime;
+
+        }
+    }
+
+    private void CameraZoomAndRotationFreeModeWithKeyBoard()
+    {
+        if (Input.GetButton("ForwardBackCameraMovement") || Input.GetButton("LateralCameraMovement"))
+        {
+            this.isLocked = false;
+            _cameraFreeMovement = new Vector3(GetKeyboardInput.x, 0, GetKeyboardInput.y);
+            _cameraFreeMovement *= _cameraTranslationSpeed * Time.deltaTime;
+            _cameraFreeMovement = Quaternion.Euler(new Vector3(0, this.transform.eulerAngles.y, 0)) * _cameraFreeMovement;
+            _cameraFreeMovement = this.transform.InverseTransformDirection(_cameraFreeMovement);
+
+            this.transform.Translate(_cameraFreeMovement);
+        }
+    }
+
+    private void CameraZoomAndRotationFreeModeWithMouse()
+    {
+        if(Input.mousePosition.y >= Screen.height - _screenBorder || Input.mousePosition.y <= _screenBorder || Input.mousePosition.x >= Screen.width - _screenBorder || Input.mousePosition.x <= _screenBorder)
+        {
+            this.isLocked = false;
+
+            Rect leftRect = new Rect(0, 0, _screenBorder, Screen.height);
+            Rect rightRect = new Rect(Screen.width - _screenBorder, 0, _screenBorder, Screen.height);
+            Rect upperRect = new Rect(0, Screen.height - _screenBorder, Screen.width, _screenBorder);
+            Rect lowerRect = new Rect(0, 0, Screen.width, _screenBorder);
+
+            _cameraFreeMovement.x = leftRect.Contains(Input.mousePosition) ? -1 : rightRect.Contains(Input.mousePosition) ? 1 : 0;
+            _cameraFreeMovement.z = upperRect.Contains(Input.mousePosition) ? 1 : lowerRect.Contains(Input.mousePosition) ? -1 : 0;
+
+            _cameraFreeMovement *= _cameraTranslationSpeed * Time.deltaTime;
+            _cameraFreeMovement = Quaternion.Euler(new Vector3(0f, this.transform.eulerAngles.y, 0f)) * _cameraFreeMovement;
+            _cameraFreeMovement = this.transform.InverseTransformDirection(_cameraFreeMovement);
+
+            this.transform.Translate(_cameraFreeMovement);
 
         }
     }

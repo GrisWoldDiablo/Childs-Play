@@ -22,6 +22,8 @@ public class PlayerManager : MonoBehaviour
     public Player playerWithFocus;
     public CameraController cameraLocker;
 
+    //private CameraController _cameraController;
+
     #region Unity API Methods
     // Start is called before the first frame update
     void Start()
@@ -61,6 +63,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (Input.GetButtonDown("SwitchPlayer"))
         {
+            ClearEnemyFocusOnListAndCamera();
+
             int index = listOfPlayers.IndexOf(playerWithFocus);
             listOfPlayers[index].hasFocus = false;
             index++;
@@ -72,6 +76,29 @@ public class PlayerManager : MonoBehaviour
             playerWithFocus = listOfPlayers[index];
             cameraLocker.isLocked = true;
         }
+    }
+
+    public void ClearEnemyFocusOnListAndCamera()
+    {
+        EnemyManager.instance.ClearEnemyFocus();
+        cameraLocker.enemyWithFocus = null;
+    }
+
+    private void ChangePlayerFocusWithMouse()
+    {
+        EnemyManager.instance.ClearEnemyFocus();
+        cameraLocker.enemyWithFocus = null;
+
+        int index = listOfPlayers.IndexOf(playerWithFocus);
+        listOfPlayers[index].hasFocus = false;
+        index++;
+        if (index >= listOfPlayers.Count)
+        {
+            index = 0;
+        }
+        listOfPlayers[index].hasFocus = true;
+        playerWithFocus = listOfPlayers[index];
+        cameraLocker.isLocked = true;
     }
     #endregion
 }

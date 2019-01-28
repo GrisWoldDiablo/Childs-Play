@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Player : PlayerBaseClass
 {
+    private CameraController _cameraController;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _cameraController = Camera.main.GetComponent<CameraController>();
     }
 
     // Update is called once per frame
@@ -17,13 +19,15 @@ public class Player : PlayerBaseClass
     }
 
     private void OnMouseOver()
-    {
-        //Debug.Log("mousing over");
+    {        
         if (Input.GetMouseButtonDown(0))
         {
-            PlayerManager.instance.ClearEnemyFocus();
+            _cameraController.isLocked = true;
+
+            PlayerManager.instance.ClearEnemyFocusOnListAndCamera();
             this.hasFocus = true;
-            PlayerManager.instance.UpdateEnemyWithFocus();
+            PlayerManager.instance.playerWithFocus = this;
+            
         }
     }
 }

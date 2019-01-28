@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Enemy : EnemyBaseClass
 {
+    private CameraController _cameraController;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _cameraController = Camera.main.GetComponent<CameraController>();
     }
 
     // Update is called once per frame
@@ -22,10 +23,11 @@ public class Enemy : EnemyBaseClass
     }
 
     private void OnMouseOver()
-    {
-        //Debug.Log("mousing over");
+    {        
         if(Input.GetMouseButtonDown(0))
         {
+            _cameraController.isLocked = true;
+
             EnemyManager.instance.ClearEnemyFocus();
             this.hasFocus = true;
             EnemyManager.instance.UpdateEnemyWithFocus();
