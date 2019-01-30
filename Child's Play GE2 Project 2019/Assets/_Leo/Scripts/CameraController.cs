@@ -53,7 +53,7 @@ public class CameraController : MonoBehaviour
     private void LateUpdate()
     {
         CameraFollowPlayer();
-        CameraZoomAndRotationFreeModeWithKeyBoard();
+        CameraZoomAndRotationFreeMode();
     }
 
     private void Start()
@@ -63,8 +63,10 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        YawCorrection();
         CameraZoomAndRotationWhenLocked();
-        CameraZoomAndRotationFreeModeWithMouse();
+        CameraMovementFreeModeWithKeyboard();
+        CameraMovementFreeModeWithMouse();
     }
     #endregion
 
@@ -83,20 +85,17 @@ public class CameraController : MonoBehaviour
             return;
         }
         if (enemyWithFocus != null)
-        {
-            Debug.Log("if");
+        {            
             actorWithFocus = enemyWithFocus;
         }
-        else// (_playerWithFocus != null)
+        else
         {
-            Debug.Log("else");
             actorWithFocus = _playerWithFocus;
         }
 
         this.transform.position = actorWithFocus.position - (cameraArm * _currentZoom);
         this.transform.LookAt(actorWithFocus.position + (Vector3.up * pitch));
         this.transform.RotateAround(actorWithFocus.position, Vector3.up, _currentYaw);
-
     }
 
     private void CameraZoomAndRotationWhenLocked()
@@ -106,12 +105,11 @@ public class CameraController : MonoBehaviour
             _currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
             _currentZoom = Mathf.Clamp(_currentZoom, minZoom, maxZoom);
 
-            _currentYaw += Input.GetAxis("RotateCamera") * yawSpeed * Time.deltaTime;
-
+            _currentYaw += Input.GetAxis("RotateCamera") * yawSpeed * Time.deltaTime;           
         }
     }
 
-    private void CameraZoomAndRotationFreeModeWithKeyBoard()
+    private void CameraMovementFreeModeWithKeyboard()
     {
         if (Input.GetButton("ForwardBackCameraMovement") || Input.GetButton("LateralCameraMovement"))
         {
@@ -125,9 +123,9 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private void CameraZoomAndRotationFreeModeWithMouse()
+    private void CameraMovementFreeModeWithMouse()
     {
-        if(Input.mousePosition.y >= Screen.height - _screenBorder || Input.mousePosition.y <= _screenBorder || Input.mousePosition.x >= Screen.width - _screenBorder || Input.mousePosition.x <= _screenBorder)
+        if (Input.mousePosition.y >= Screen.height - _screenBorder || Input.mousePosition.y <= _screenBorder || Input.mousePosition.x >= Screen.width - _screenBorder || Input.mousePosition.x <= _screenBorder)
         {
             this.isLocked = false;
 
@@ -144,8 +142,56 @@ public class CameraController : MonoBehaviour
             _cameraFreeMovement = this.transform.InverseTransformDirection(_cameraFreeMovement);
 
             this.transform.Translate(_cameraFreeMovement);
-
         }
+    }
+
+    private void CameraZoomAndRotationFreeMode()
+    {
+        if (!this.isLocked)
+        {
+            if (Input.GetButton("RotateCamera"))
+            {
+                this.transform.Rotate(Vector3.up, Input.GetAxis("RotateCamera") * 2 * yawSpeed * Time.deltaTime * .3f, Space.World);
+                _currentYaw += Input.GetAxis("RotateCamera") * yawSpeed * Time.deltaTime;                
+            }
+
+            _currentZoom += Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
+            _currentZoom = Mathf.Clamp(_currentZoom, minZoom, maxZoom);
+
+            lerpHeight = _currentZoom;
+            float difference = 0f;
+
+            if(DistanceToTheGround() != lerpHeight)
+            {
+                difference = lerpHeight - DistanceToTheGround();
+            }
+
+            this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(this.transform.position.x, lerpHeight + difference, this.transform.position.z), Time.deltaTime * 5f);
+        }
+    }    
+
+    private void YawCorrection()
+    {
+        if(_currentYaw > 360)
+        {
+            _currentYaw = 0;
+        }
+        else if(_currentYaw <= 0)
+        {
+            _currentYaw = 360;
+        }
+    }
+
+    public float DistanceToTheGround()
+    {
+        Ray ray = new Ray(this.transform.position, Vector3.down);
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit, inferiorLayerMask.value))
+        {
+            return (hit.point - this.transform.position).magnitude;
+        }
+
+        return 0f;
     }
 
     #endregion
