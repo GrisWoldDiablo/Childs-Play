@@ -19,4 +19,9 @@ public class ItemTile : MonoBehaviour
     {
         
     }
+
+    private void OnMouseOver()
+    {
+        Debug.Log(this.gameObject.name);
+    }
 }
