@@ -20,8 +20,6 @@ public class EnemyMovementMechanics : MonoBehaviour
     private float initialMovementSpeed;
     public float InitialMovementSpeed { get => initialMovementSpeed; }
 
-    //public float initialMovementSpeed { get; private set; }
-
     void Start()
     {
         currentDestination = GameObject.FindGameObjectWithTag("Spawn").GetComponent<Node>();
@@ -31,7 +29,7 @@ public class EnemyMovementMechanics : MonoBehaviour
 
     void Update()
     {
-        
+        MoveToNode();
     }
 
     public void EnemyAgentNaveMeshSetup()
@@ -59,7 +57,6 @@ public class EnemyMovementMechanics : MonoBehaviour
         //Don't do anything is the currentNode is not the same as the enteredNode.
         if (currentDestination != currentlyEnteredNode)
         {
-            Debug.Log("Don't do anything if the calling node is the same as the m_CurrentNode");
             return;
         }
         if (currentDestination == null)
@@ -87,7 +84,7 @@ public class EnemyMovementMechanics : MonoBehaviour
     /// <summary>
     /// Sets the node to navigate to
     /// </summary>
-    /// <param name="node">The node that the agent will navigate to</param>
+    /// <param name="node">The node that the enemy will navigate to</param>
     public void SetNode(Node node)
     {
         Debug.Log("We Are setting the node");
@@ -95,19 +92,18 @@ public class EnemyMovementMechanics : MonoBehaviour
     }
 
     /// <summary>
-    /// Moves the enemy to a position in the currentDestionation --> Meant to be random
+    /// Make the enemy move towards the currentDestinationNode
     /// </summary>
     public void MoveToNode()
     {
-        Vector3 nodePosition = currentDestination.transform.position; //To be changed for random point nearby.
-        nodePosition.y = currentDestination.transform.position.y;
-        currentDestination.transform.position = nodePosition;
         NavigateTo(currentDestination.transform.position);
     }
 
-    protected void NavigateTo(Vector3 nextPoint)
+    /// <summary>
+    /// Make the enemy move towards any transform passed on to it.
+    /// </summary>
+    public void NavigateTo(Vector3 nextPoint)
     {
-        //LazyLoad();
         if (_navMeshAgent.isOnNavMesh)
         {
             Debug.Log("Its time to move");
