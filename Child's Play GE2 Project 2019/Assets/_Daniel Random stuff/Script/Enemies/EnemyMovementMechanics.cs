@@ -31,30 +31,7 @@ public class EnemyMovementMechanics : MonoBehaviour
 
     void Update()
     {
-        /*
-        // If the path becomes invalid, repath the agent to the destination.
-        bool validStalePath = _navMeshAgent.isOnNavMesh && _navMeshAgent.enabled &&
-                              (!_navMeshAgent.hasPath && !_navMeshAgent.pathPending);
-
-        // Compare against squared stopping distance on agent.
-        // We intentionally do not pre-square this value so that it can be changed at runtime dynamically
-        float squareStoppingDistance = _navMeshAgent.stoppingDistance * _navMeshAgent.stoppingDistance;
-        if (validStalePath)
-        {
-            if (Vector3.SqrMagnitude(nextDestination - this.transform.position) < squareStoppingDistance && currentDestination.GetNextNode() != null)
-            {
-                Debug.Log("stalled path Validated");
-                // Proceed if we're at our destination
-                GetNextNode(currentDestination);
-
-            }
-            else
-            {
-                // Otherwise try repath
-                _navMeshAgent.SetDestination(nextDestination);
-            }   
-        }
-        */
+        
     }
 
     public void EnemyAgentNaveMeshSetup()
