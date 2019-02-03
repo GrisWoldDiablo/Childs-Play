@@ -38,7 +38,7 @@ public class EnemyManager : MonoBehaviour
 
     #region Class Methods
     /// <summary>
-    /// Populates the list of Player's Objects (Towers and Food)
+    /// Populates the list of Enemies
     /// </summary>
     public void UpdateEnemyList()
     {
@@ -75,18 +75,14 @@ public class EnemyManager : MonoBehaviour
     /// </summary>
     public void UpdateEnemyWithFocus()
     {
-        //_enemyArray = GameObject.FindObjectsOfType<Enemy>();
-
         enemyWithFocus = null;
         foreach (Enemy e in listOfEnemies)
         {
-            //listOfEnemies.Add(e);
             if (e.hasFocus)
             {
                 enemyWithFocus = e;                
             }
         }
     }
-
     #endregion
 }

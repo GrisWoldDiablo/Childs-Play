@@ -67,6 +67,10 @@ public class CameraController : MonoBehaviour
         CameraZoomAndRotationWhenLocked();
         CameraMovementFreeModeWithKeyboard();
         CameraMovementFreeModeWithMouse();
+        if (Input.GetButtonDown("CameraLockMode"))
+        {
+            CameraLockerButton();
+        }
     }
     #endregion
 
@@ -192,6 +196,11 @@ public class CameraController : MonoBehaviour
         }
 
         return 0f;
+    }
+
+    public void CameraLockerButton()
+    {        
+        this.isLocked = !this.isLocked;
     }
 
     #endregion
