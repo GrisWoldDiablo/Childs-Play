@@ -33,12 +33,7 @@ public class Player : PlayerBaseClass
             this.hasFocus = true;
             PlayerManager.instance.playerWithFocus = this;
 
-            WaitForSeconds waitForSeconds = new WaitForSeconds(1);
-
-            //if(Input.GetMouseButtonDown(0))
-            //{
-            //    _cameraController.isLocked = true;
-            //}
+            
             
         }
 
