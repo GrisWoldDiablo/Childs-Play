@@ -327,6 +327,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangeGO: {fileID: 370954401477334062}
+  itemName: Magnifying Glass
+  value: 1
 --- !u!1 &7945094993569558258
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +495,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Range
+      objectReference: {fileID: 0}
+    - target: {fileID: 370954403022743912, guid: b8310b3fa9c4cfa43b434f63f102a52e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 370954403022743892, guid: b8310b3fa9c4cfa43b434f63f102a52e,
         type: 3}
