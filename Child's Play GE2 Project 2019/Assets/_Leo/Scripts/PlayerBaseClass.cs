@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerBaseClass : MonoBehaviour
 {
+    protected enum PlayerType { Food, Tower};
+    [SerializeField] protected PlayerType myType;
     public bool isFood;
     public bool isTower;
     public int hitPoints;
