@@ -15,7 +15,6 @@ public class Node : MonoBehaviour
     /// <returns> Next node, or null if this is the final node</returns>
     public Node GetNextNode()
     {
-
         var selector = GetComponent<AbstractNodeSelector>();
         if (selector != null)
         {
@@ -27,12 +26,14 @@ public class Node : MonoBehaviour
     /// <summary>
     /// When the enemy the trigger(collider), he moves to next node.
     /// </summary>
-    public virtual void OnTriggerEnter(Collider other) //Viertual...
+    public void OnTriggerEnter(Collider other) 
     {
-        var enemy = other.gameObject.GetComponent<EnemyMovementMechanics>();
-        if (enemy != null)
-        {
-            enemy.GetNextNode(this);
-        }
+     
+            var enemy = other.gameObject.GetComponent<EnemyMovementMechanics>();
+            if (enemy != null)
+            {
+                enemy.GetNextNode(this);
+            }
+  
     }
 }

@@ -11,14 +11,34 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMovementMechanics : MonoBehaviour
 {
+
+    //Events
+    public delegate void DestinationReached();
+    public event DestinationReached OnFood;
+    public event DestinationReached OnFinalNode; 
+
+    //Game Object Components
     private NavMeshAgent _navMeshAgent;
-
-
+   
+    //Node & Position
     protected Node currentDestination;
     protected Vector3 nextDestination;
 
+    //States
+    public enum MovementStates {ClearRoad, BlockedRoad, Attacking, InFood}
+    private MovementStates myStates;
+    public MovementStates MyStates { get => myStates; protected set => myStates = value; }
+
+    /// <summary>
+    /// Returns true if the path is blocked, dictated by the NavMeshStatus property of the navMesh agent.
+    /// </summary>
+    private bool isPathBlocked { get { return _navMeshAgent.pathStatus == NavMeshPathStatus.PathPartial; } }
+
+
+    //Other
     private float initialMovementSpeed;
     public float InitialMovementSpeed { get => initialMovementSpeed; }
+  
 
     void Start()
     {
@@ -29,20 +49,38 @@ public class EnemyMovementMechanics : MonoBehaviour
 
     void Update()
     {
-        MoveToNode();
+        StatusUpdate();
+    }
+
+    private void StatusUpdate()
+    {
+        switch (MyStates)
+        {
+            case MovementStates.ClearRoad:
+                break;
+            case MovementStates.BlockedRoad:
+                break;
+            case MovementStates.Attacking:
+                break;
+            case MovementStates.InFood:
+                break;
+            default:
+                break;
+        }
     }
 
     public void EnemyAgentNaveMeshSetup()
-    {
-        
+    {  
         if (_navMeshAgent == null)
         {
             this._navMeshAgent = GetComponent<NavMeshAgent>();
-            this._navMeshAgent.speed = 3;
+            this._navMeshAgent.speed = 5;
+            //this._navMeshAgent.velocity = new Vector3 (0, 0, 0);
             this._navMeshAgent.angularSpeed = 1200;
             this._navMeshAgent.acceleration = 20;
 
             initialMovementSpeed = _navMeshAgent.speed;
+            myStates = isPathBlocked ? MovementStates.BlockedRoad : MovementStates.ClearRoad;
         }
 
         this._navMeshAgent.enabled = true;
@@ -54,7 +92,7 @@ public class EnemyMovementMechanics : MonoBehaviour
     /// </summary>
     public void GetNextNode(Node currentlyEnteredNode)
     {
-        //Don't do anything is the currentNode is not the same as the enteredNode.
+        //Don't do anything if the currentNode is not the same as the enteredNode.
         if (currentDestination != currentlyEnteredNode)
         {
             return;
@@ -71,7 +109,7 @@ public class EnemyMovementMechanics : MonoBehaviour
             Debug.LogError("Next node is NULL");
             if (_navMeshAgent.enabled)
             {
-                _navMeshAgent.isStopped = true;
+                FinalNodeReached();
             }
             return;
         }
@@ -110,6 +148,16 @@ public class EnemyMovementMechanics : MonoBehaviour
             _navMeshAgent.SetDestination(nextPoint);
         }
     }
+
+    /// <summary>
+    /// Enemy succesfully scapes with your food.
+    /// </summary>
+    internal void FinalNodeReached()
+    { 
+        _navMeshAgent.isStopped = true;
+        //OnFinalNode(); //event
+        Destroy(this.gameObject);
+    } 
 }
 
 
