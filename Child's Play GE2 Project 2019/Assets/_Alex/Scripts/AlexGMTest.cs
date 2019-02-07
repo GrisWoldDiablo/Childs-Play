@@ -130,7 +130,6 @@ public class AlexGMTest : MonoBehaviour
         item.transform.position += Vector3.up * 3.0f;
     } 
     
-
     /// <summary>
     /// Place an item on the selected tile if it is empty.
     /// </summary>
@@ -150,7 +149,7 @@ public class AlexGMTest : MonoBehaviour
         switch (selectedTile.TileType)
         {
             case TileType.Tower:
-                if (!BuyItem(itemSelectedTower.GetComponent<Item>().Price))
+                if (!BuyItem(itemSelectedTower.GetComponent<Item>().Value))
                 {
                     return;
                 }
@@ -164,7 +163,7 @@ public class AlexGMTest : MonoBehaviour
                 itemSelectedTower.SetActive(false);
                 break;
             case TileType.Barrier:
-                if (!BuyItem(itemSelectedBarrier.GetComponent<Item>().Price))
+                if (!BuyItem(itemSelectedBarrier.GetComponent<Item>().Value))
                 {
                     return;
                 }
@@ -218,7 +217,7 @@ public class AlexGMTest : MonoBehaviour
             Debug.Log("No Item on the current selected Tile.");
             return;
         }
-        SellItem(selectedTile.CurrentItem.GetComponent<Item>().Price);
+        SellItem(selectedTile.CurrentItem.GetComponent<Item>().Value);
         Destroy(selectedTile.CurrentItem);
         selectedTile.CurrentItem = null;
         TileSelection(selectedTile);
@@ -244,7 +243,10 @@ public class AlexGMTest : MonoBehaviour
     // to be placed in UI management script
     private void UpdateSelectedTileText()
     {
-        UITextSelectedTile.text = $"Selected Tile: " + (selectedTile != null ? selectedTile.name : "") +
-                                $"\nCurrent Item: " + (selectedTile.CurrentItem != null ? selectedTile.CurrentItem.name : "");
-    }
+        if (UITextSelectedTile != null)
+        {
+            UITextSelectedTile.text = $"Selected Tile: " + (selectedTile != null ? selectedTile.name : "") +
+                            $"\nCurrent Item: " + (selectedTile.CurrentItem != null ? selectedTile.CurrentItem.name : "");
+
+        }    }
 }

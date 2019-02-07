@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
     [SerializeField] private float value = 1; 
 
     public GameObject RangeGO { get => rangeGO; set => rangeGO = value; }
-    public float Price { get => value; }
+    public float Value { get => value; }
     public string ItemName { get => itemName; }
 
     // Start is called before the first frame update
