@@ -57,12 +57,16 @@ public class EnemyMovementMechanics : MonoBehaviour
         switch (MyStates)
         {
             case MovementStates.ClearRoad:
+                // normal
                 break;
-            case MovementStates.BlockedRoad:
+            //case MovementStates.BlockedRoad:
+                // 
                 break;
-            case MovementStates.Attacking:
+            case MovementStates.Attacking: 
+                // ---> ... ... ... 
                 break;
-            case MovementStates.InFood:
+           /// case MovementStates.InFood:
+
                 break;
             default:
                 break;

@@ -16,8 +16,6 @@ public class SpawnManager : MonoBehaviour
     private int _waveIndex = 0;
 
 
-
-
     // Start is called before the first frame update
     void Start()
     {

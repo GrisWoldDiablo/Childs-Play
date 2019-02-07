@@ -26,6 +26,8 @@ public class Enemy : EnemyBaseClass
         
     }
 
+    //attackmethid...
+
     private void OnMouseOver()
     {        
         if(Input.GetMouseButtonDown(0))
