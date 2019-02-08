@@ -13,7 +13,7 @@ public class AlexGMTest : MonoBehaviour
     [SerializeField] private float currentcash = 5;
     [SerializeField] private GameObject tileSelectionCursor;
     [SerializeField] private GameObject tileSelectedCursor;
-    
+
     //-//
     // To be placed in UI management script
     [SerializeField] private Text UITextSelectedTile;
@@ -128,8 +128,8 @@ public class AlexGMTest : MonoBehaviour
         item.transform.position = tile.transform.position;
         item.transform.rotation = tile.transform.rotation;
         item.transform.position += Vector3.up * 3.0f;
-    } 
-    
+    }
+
     /// <summary>
     /// Place an item on the selected tile if it is empty.
     /// </summary>
@@ -245,8 +245,16 @@ public class AlexGMTest : MonoBehaviour
     {
         if (UITextSelectedTile != null)
         {
-            UITextSelectedTile.text = $"Selected Tile: " + (selectedTile != null ? selectedTile.name : "") +
-                            $"\nCurrent Item: " + (selectedTile.CurrentItem != null ? selectedTile.CurrentItem.name : "");
 
-        }    }
+            UITextSelectedTile.text = $"Selected Tile: " + (selectedTile != null ? selectedTile.name : "");
+            if (selectedTile != null)
+            {
+                UITextSelectedTile.text += $"\nCurrent Item: " + (selectedTile.CurrentItem != null ? selectedTile.CurrentItem.name : "");
+            }
+            else
+            {
+                UITextSelectedTile.text += $"\nCurrent Item: ";
+            }
+        }
+    }
 }
