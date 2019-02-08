@@ -19,6 +19,7 @@ public class EnemyMovementMechanics : MonoBehaviour
 
     //Game Object Components
     private NavMeshAgent _navMeshAgent;
+    private Rigidbody _myRigidBody;
    
     //Node & Position
     protected Node currentDestination;
@@ -29,15 +30,11 @@ public class EnemyMovementMechanics : MonoBehaviour
     private MovementStates myStates;
     public MovementStates MyStates { get => myStates; protected set => myStates = value; }
 
-    /// <summary>
-    /// Returns true if the path is blocked, dictated by the NavMeshStatus property of the navMesh agent.
-    /// </summary>
-    private bool isPathBlocked { get { return _navMeshAgent.pathStatus == NavMeshPathStatus.PathPartial; } }
-
-
+   
     //Other
     private float initialMovementSpeed;
     public float InitialMovementSpeed { get => initialMovementSpeed; }
+   
   
 
     void Start()
@@ -49,7 +46,7 @@ public class EnemyMovementMechanics : MonoBehaviour
 
     void Update()
     {
-        StatusUpdate();
+        //StatusUpdate();
     }
 
     private void StatusUpdate()
@@ -59,7 +56,7 @@ public class EnemyMovementMechanics : MonoBehaviour
             case MovementStates.ClearRoad:
                 // normal
                 break;
-            //case MovementStates.BlockedRoad:
+            case MovementStates.BlockedRoad:
                 // 
                 break;
             case MovementStates.Attacking: 
@@ -73,22 +70,28 @@ public class EnemyMovementMechanics : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Basic setup for navmesh agent
+    /// </summary>
     public void EnemyAgentNaveMeshSetup()
     {  
         if (_navMeshAgent == null)
         {
             this._navMeshAgent = GetComponent<NavMeshAgent>();
+            this._myRigidBody = GetComponent<Rigidbody>();
+            _myRigidBody.isKinematic = true;
             this._navMeshAgent.speed = 5;
             //this._navMeshAgent.velocity = new Vector3 (0, 0, 0);
             this._navMeshAgent.angularSpeed = 1200;
             this._navMeshAgent.acceleration = 20;
+            this._navMeshAgent.radius = 0.2f;
 
             initialMovementSpeed = _navMeshAgent.speed;
-            myStates = isPathBlocked ? MovementStates.BlockedRoad : MovementStates.ClearRoad;
         }
 
         this._navMeshAgent.enabled = true;
         this._navMeshAgent.isStopped = false;
+
     }
 
     /// <summary>
@@ -99,6 +102,7 @@ public class EnemyMovementMechanics : MonoBehaviour
         //Don't do anything if the currentNode is not the same as the enteredNode.
         if (currentDestination != currentlyEnteredNode)
         {
+            Debug.LogError("Error");
             return;
         }
         if (currentDestination == null)
@@ -161,7 +165,34 @@ public class EnemyMovementMechanics : MonoBehaviour
         _navMeshAgent.isStopped = true;
         //OnFinalNode(); //event
         Destroy(this.gameObject);
-    } 
+    }
+
+    /// <summary>
+    /// Make the enemy Attack the wall
+    /// </summary>
+    public void AttackWall()
+    {
+        Debug.Log("Attacking");
+    }
+
+
+    /// <summary>
+    /// Movement behaviour when encountering a wall.
+    /// </summary>
+    public void StopAndGo()
+    {
+        if (_navMeshAgent.isStopped)
+        {
+            _navMeshAgent.isStopped = false;
+            _myRigidBody.isKinematic = false;
+                   
+        }
+        else
+        {
+            _navMeshAgent.isStopped = true;
+            _myRigidBody.isKinematic = true;
+        }
+    }
 }
 
 

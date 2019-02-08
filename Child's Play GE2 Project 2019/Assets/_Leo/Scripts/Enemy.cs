@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(EnemyController))]
+//[RequireComponent(typeof(EnemyController))]
 public class Enemy : EnemyBaseClass
 {
     private CameraController _cameraController;
 
-    NavMeshAgent navMeshAgent;
+    //NavMeshAgent navMeshAgent;
 
     // Start is called before the first frame update
     void Start()

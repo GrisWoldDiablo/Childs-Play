@@ -27,13 +27,11 @@ public class Node : MonoBehaviour
     /// When the enemy the trigger(collider), he moves to next node.
     /// </summary>
     public void OnTriggerEnter(Collider other) 
-    {
-     
+    { 
             var enemy = other.gameObject.GetComponent<EnemyMovementMechanics>();
             if (enemy != null)
             {
                 enemy.GetNextNode(this);
             }
-  
     }
 }

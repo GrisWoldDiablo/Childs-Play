@@ -26,15 +26,11 @@ public class Player : PlayerBaseClass
         {
             clickCounter++;
 
-
             _cameraController.isLocked = false;
 
             PlayerManager.instance.ClearEnemyFocusOnListAndCamera();
             this.hasFocus = true;
-            PlayerManager.instance.playerWithFocus = this;
-
-            
-            
+            PlayerManager.instance.playerWithFocus = this;  
         }
 
         if(clickCounter >= 2)
