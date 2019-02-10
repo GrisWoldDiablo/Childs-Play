@@ -19,6 +19,7 @@ public class Tower : MonoBehaviour
     private float range;// = 15f;
     private float rateOfFire;// = 1f;
     private float CountdownToNextFire = 0f;
+    private float innerRadius;
 
 
     public Tower_SO tower_SO;
@@ -35,6 +36,7 @@ public class Tower : MonoBehaviour
     {         
          range = tower_SO.range;
          rateOfFire = tower_SO.rateOfFire;
+        innerRadius = tower_SO.innerRadius;
          projectilePrefab = tower_SO.projectilePrefab;
     }
 
@@ -53,14 +55,14 @@ public class Tower : MonoBehaviour
         {
             float distanceToEnemy = Vector3.Distance(this.transform.position, enemy.transform.position);
 
-            if(distanceToEnemy < shortestDistance)
+            if(distanceToEnemy < shortestDistance && distanceToEnemy >= innerRadius)
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
             }
         }
 
-        if(nearestEnemy != null && shortestDistance <= range)
+        if(nearestEnemy != null && shortestDistance <= range && shortestDistance >= innerRadius)
         {
             towerTarget = nearestEnemy.transform;
         }
@@ -108,5 +110,7 @@ public class Tower : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(this.transform.position, range);
+        Gizmos.DrawWireSphere(this.transform.position, innerRadius);
+        
     }
 }
