@@ -98,12 +98,20 @@ public class Tower : MonoBehaviour
     private void Shoot()
     {
         GameObject projectileGameObject = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
-        Bullet bullet = projectileGameObject.GetComponent<Bullet>();
 
-        if(bullet != null)
+        Missile missile = projectileGameObject.GetComponent<Missile>();
+
+        if (missile != null)
         {
-            bullet.Seek(towerTarget);
+            missile.Seek(towerTarget);
         }
+
+        //Bullet bullet = projectileGameObject.GetComponent<Bullet>();
+
+        //if(bullet != null)
+        //{
+        //    bullet.Seek(towerTarget);
+        //}
     }
 
     private void OnDrawGizmosSelected()
