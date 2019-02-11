@@ -55,7 +55,7 @@ public class blockBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// Reduces health based on its damage value.
+    /// Reduces health based on the enemy damage value.
     /// </summary>
     private void UnderAttack(float damage)
     {
@@ -74,8 +74,11 @@ public class blockBehaviour : MonoBehaviour
       
     private void OnTriggerStay(Collider other)
     {
-        var _enemy = other.gameObject.GetComponent<EnemyMovementMechanics>();
-        UnderAttack(_enemy.AttackDamage());
+        if (other.CompareTag("Enemy"))
+        {
+            var _enemy = other.gameObject.GetComponent<EnemyMovementMechanics>();
+            UnderAttack(_enemy.AttackDamage());
+        }
     }
 
     #endregion
