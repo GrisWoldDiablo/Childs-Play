@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 6550309468823649308}
   - component: {fileID: 4464809298981473560}
   - component: {fileID: 6636203053429334347}
+  - component: {fileID: 5828326651664569777}
   m_Layer: 2
   m_Name: Lego Piece 5x1
-  m_TagString: Untagged
+  m_TagString: barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,5 +119,18 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.17, y: 1.3337348, z: 5.44}
-  m_Center: {x: -0.000000044703484, y: 0.6668674, z: 0.00000011920929}
+  m_Size: {x: 7.49, y: 1.3337348, z: 5.44}
+  m_Center: {x: 0.08, y: 0.6668674, z: 0.00000011920929}
+--- !u!65 &5828326651664569777
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920847240545005633}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.85, y: 1.3337348, z: 5}
+  m_Center: {x: -0.19, y: 0.6668674, z: 0.00000011920929}

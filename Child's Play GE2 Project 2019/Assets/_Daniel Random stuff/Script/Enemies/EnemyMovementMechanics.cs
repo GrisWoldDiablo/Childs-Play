@@ -25,15 +25,18 @@ public class EnemyMovementMechanics : MonoBehaviour
     protected Node currentDestination;
     protected Vector3 nextDestination;
 
-    //States
-    public enum MovementStates {ClearRoad, BlockedRoad, Attacking, InFood}
-    private MovementStates myStates;
-    public MovementStates MyStates { get => myStates; protected set => myStates = value; }
-
-   
     //Other
     private float initialMovementSpeed;
+    private bool attacking;
     public float InitialMovementSpeed { get => initialMovementSpeed; }
+    public bool Attacking { get => attacking; }
+
+    [SerializeField] private float damage = 1;
+
+    private float inititalStoppingDistance;
+    private float attackAvoidanceRadious = 0.5f;
+    private float attackStopingDistance = 2f;
+    [SerializeField] private float agentAvoidanceRadious = 0.8f;
    
   
 
@@ -42,32 +45,15 @@ public class EnemyMovementMechanics : MonoBehaviour
         currentDestination = GameObject.FindGameObjectWithTag("Spawn").GetComponent<Node>();
         EnemyAgentNaveMeshSetup();
         SetNode(currentDestination);
+        _myRigidBody = gameObject.GetComponent<Rigidbody>();
+        _myRigidBody.isKinematic = false;
+        attacking = false;
     }
 
     void Update()
     {
-        //StatusUpdate();
-    }
-
-    private void StatusUpdate()
-    {
-        switch (MyStates)
-        {
-            case MovementStates.ClearRoad:
-                // normal
-                break;
-            case MovementStates.BlockedRoad:
-                // 
-                break;
-            case MovementStates.Attacking: 
-                // ---> ... ... ... 
-                break;
-           /// case MovementStates.InFood:
-
-                break;
-            default:
-                break;
-        }
+        
+        
     }
 
     /// <summary>
@@ -84,14 +70,14 @@ public class EnemyMovementMechanics : MonoBehaviour
             //this._navMeshAgent.velocity = new Vector3 (0, 0, 0);
             this._navMeshAgent.angularSpeed = 1200;
             this._navMeshAgent.acceleration = 20;
-            this._navMeshAgent.radius = 0.2f;
+            this._navMeshAgent.radius = agentAvoidanceRadious; //THIS CONTROLS THE AGENT AVOIDANCE RADIUS.
 
             initialMovementSpeed = _navMeshAgent.speed;
+            inititalStoppingDistance = _navMeshAgent.stoppingDistance;
         }
-
+        
         this._navMeshAgent.enabled = true;
         this._navMeshAgent.isStopped = false;
-
     }
 
     /// <summary>
@@ -102,12 +88,12 @@ public class EnemyMovementMechanics : MonoBehaviour
         //Don't do anything if the currentNode is not the same as the enteredNode.
         if (currentDestination != currentlyEnteredNode)
         {
-            Debug.LogError("Error");
+            Debug.LogError("Error Getting Next Node");
             return;
         }
         if (currentDestination == null)
         {
-            Debug.LogError("Cannot find current node");
+            //Debug.LogError("Cannot find current node");
             return;
         }
 
@@ -152,7 +138,7 @@ public class EnemyMovementMechanics : MonoBehaviour
     {
         if (_navMeshAgent.isOnNavMesh)
         {
-            Debug.Log("Its time to move");
+            //Debug.Log("Its time to move");
             _navMeshAgent.SetDestination(nextPoint);
         }
     }
@@ -168,11 +154,11 @@ public class EnemyMovementMechanics : MonoBehaviour
     }
 
     /// <summary>
-    /// Make the enemy Attack the wall
+    /// Damage Done to any wall.
     /// </summary>
-    public void AttackWall()
+    public float AttackDamage()
     {
-        Debug.Log("Attacking");
+        return damage;
     }
 
 
@@ -183,16 +169,39 @@ public class EnemyMovementMechanics : MonoBehaviour
     {
         if (_navMeshAgent.isStopped)
         {
-            _navMeshAgent.isStopped = false;
-            _myRigidBody.isKinematic = false;
-                   
+            _navMeshAgent.isStopped = false;     
         }
         else
         {
             _navMeshAgent.isStopped = true;
-            _myRigidBody.isKinematic = true;
         }
     }
+
+    private void SetStoppingDistance(float d)
+    {
+        _navMeshAgent.stoppingDistance = d;
+    }
+    private void SetAvoidanceRadious(float s)
+    {
+        _navMeshAgent.radius = s;
+    }
+
+    public void AttackStance(Vector3 tarjet)
+    {
+        this.NavigateTo(tarjet);
+        this.SetStoppingDistance(attackStopingDistance);
+        this.SetAvoidanceRadious(attackAvoidanceRadious);
+        this.attacking = true;
+    }
+
+    public void MoveOnStance()
+    {
+        this.MoveToNode();
+        this.SetStoppingDistance(inititalStoppingDistance);
+        this.SetAvoidanceRadious(agentAvoidanceRadious);
+        this.attacking = false;
+    }
+
 }
 
 
