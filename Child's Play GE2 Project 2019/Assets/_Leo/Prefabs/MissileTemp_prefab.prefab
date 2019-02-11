@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1534259960146438718}
   - component: {fileID: 1534259960146438719}
+  - component: {fileID: 3152150852548449498}
   m_Layer: 0
   m_Name: MissileTemp_prefab
   m_TagString: Untagged
@@ -44,8 +45,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbac8c84f13b6544b9dbcdb8bf220a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 70
+  projectileSpeed: 30
   AoERadius: 2
+--- !u!65 &3152150852548449498
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534259960146438712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1534259960277922020
 GameObject:
   m_ObjectHideFlags: 0

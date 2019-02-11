@@ -10,4 +10,6 @@ public class Tower_SO : ScriptableObject
     public float rateOfFire;
     public float innerRadius;
     public GameObject projectilePrefab;
+
+    
 }

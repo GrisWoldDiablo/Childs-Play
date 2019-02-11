@@ -2,29 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : Projectile
 {
-    private Transform bulletTarget;
+    //private Transform _target;
 
-    public float bulletSpeed = 70f;
-    public GameObject impactVFX;
+    //public float projectileSpeed = 70f;
+    //public GameObject impactVFX;
 
     public void Seek(Transform target)
     {
-        bulletTarget = target;
+        _target = target;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(bulletTarget == null)
+        if(_target == null)
         {
             Destroy(this.gameObject);
             return;
         }
 
-        Vector3 direction = bulletTarget.position - this.transform.position;
-        float distanceThisFrame = bulletSpeed * Time.deltaTime;
+        Vector3 direction = _target.position - this.transform.position;
+        float distanceThisFrame = projectileSpeed * Time.deltaTime;
 
         if(direction.magnitude <= distanceThisFrame)
         {
@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
         //GameObject effectInstance = Instantiate(impactVFX, this.transform.position, this.transform.rotation);
         //Destroy(effectInstance, 2f);
 
-        Destroy(bulletTarget.gameObject);
+        Destroy(_target.gameObject);
         Destroy(this.gameObject);
     }
 }
