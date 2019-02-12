@@ -34,11 +34,9 @@ public class EnemyMovementMechanics : MonoBehaviour
     [SerializeField] private float damage = 1;
 
     private float inititalStoppingDistance;
-    private float attackAvoidanceRadious = 0.5f;
-    private float attackStopingDistance = 2f;
-    [SerializeField] private float agentAvoidanceRadious = 0.8f;
-   
-  
+    private float attackAvoidanceRadious = 0.09375f;
+    private float attackStopingDistance = 5f;
+    [SerializeField] private float agentAvoidanceRadious = 0.15f;
 
     void Start()
     {
@@ -78,6 +76,7 @@ public class EnemyMovementMechanics : MonoBehaviour
         
         this._navMeshAgent.enabled = true;
         this._navMeshAgent.isStopped = false;
+
     }
 
     /// <summary>
@@ -119,7 +118,7 @@ public class EnemyMovementMechanics : MonoBehaviour
     /// <param name="node">The node that the enemy will navigate to</param>
     public void SetNode(Node node)
     {
-        Debug.Log("We Are setting the node");
+        //Debug.Log("We Are setting the node");
         currentDestination = node;
     }
 
@@ -186,9 +185,9 @@ public class EnemyMovementMechanics : MonoBehaviour
         _navMeshAgent.radius = s;
     }
 
-    public void AttackStance(Vector3 tarjet)
+    public void AttackStance(Vector3 target)
     {
-        this.NavigateTo(tarjet);
+        this.NavigateTo(target);
         this.SetStoppingDistance(attackStopingDistance);
         this.SetAvoidanceRadious(attackAvoidanceRadious);
         this.attacking = true;

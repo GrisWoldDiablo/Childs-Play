@@ -19,11 +19,11 @@ public class Enemy : EnemyBaseClass
     // Update is called once per frame
     void Update()
     {
+        base.Update();
         if (this.hasFocus)
         {
             EnemyManager.instance.UpdateEnemyWithFocus();
         }
-        
     }
 
     //attackmethid...

@@ -177,7 +177,12 @@ public class ItemTile : MonoBehaviour
     /// </summary>
     private void OnMouseOver()
     {
-        Debug.Log(this.gameObject.name);
+        // Check if the pointer is over a UI element, if it is exit method.
+        if (IsPointerOverUI())
+        {
+            return;
+        }
+        
         if (Input.GetButton("Fire1") && tileType != TileType.Unavailable)
         {
             alexGMTestCode.TileSelection(this);
@@ -197,6 +202,12 @@ public class ItemTile : MonoBehaviour
     /// </summary>
     private void OnMouseEnter()
     {
+        // Check if the pointer is over a UI element, if it is exit method.
+        if (IsPointerOverUI())
+        {
+            return;
+        }
+
         if (tileType != TileType.Unavailable)
         {
             alexGMTestCode.ShowCursorOnTile(alexGMTestCode.TileSelectionCursor, this); 
@@ -215,4 +226,8 @@ public class ItemTile : MonoBehaviour
     }
 #endif
 
+    private bool IsPointerOverUI()
+    {
+        return UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
+    }
 }

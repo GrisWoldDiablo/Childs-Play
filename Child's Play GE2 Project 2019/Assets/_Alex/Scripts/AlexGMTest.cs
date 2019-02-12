@@ -8,11 +8,15 @@ using UnityEngine.UI;
 /// </summary>
 public class AlexGMTest : MonoBehaviour
 {
-    [SerializeField] private GameObject itemPrefabTestTower;
-    [SerializeField] private GameObject itemPrefabTestPath;
     [SerializeField] private float currentcash = 5;
     [SerializeField] private GameObject tileSelectionCursor;
     [SerializeField] private GameObject tileSelectedCursor;
+    [SerializeField] private GameObject[] listOfTower;
+    [SerializeField] private GameObject[] listOfTowerPlaceHolder;
+    [SerializeField] private GameObject[] listOfBarrier;
+    [SerializeField] private GameObject[] listOfBarrierPlaceHolder;
+    [SerializeField] private int selectedTowerIndex = 0;
+    [SerializeField] private int selectedBarrierIndex = 0;
 
     //-//
     // To be placed in UI management script
@@ -20,14 +24,12 @@ public class AlexGMTest : MonoBehaviour
     [SerializeField] private Text UITextCash;
     //-//
 
-    private GameObject itemSelectedTower;
-    private GameObject itemSelectedBarrier;
     private ItemTile selectedTile;
-
-    public GameObject ItemSelectedTower { get => itemSelectedTower; }
-    public GameObject ItemSelectedBarrier { get => itemSelectedBarrier; }
     public ItemTile SelectedTile { get => selectedTile; }
     public GameObject TileSelectionCursor { get => tileSelectionCursor; }
+
+    public int SelectedTowerIndex { get => selectedTowerIndex; set => selectedTowerIndex = value; }
+    public int SelectedBarrierIndex { get => selectedBarrierIndex; set => selectedBarrierIndex = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -55,23 +57,29 @@ public class AlexGMTest : MonoBehaviour
     {
         tileSelectedCursor.SetActive(false);
 
-        itemSelectedBarrier.SetActive(false);
-        itemSelectedTower.SetActive(false);
+        listOfBarrierPlaceHolder[selectedBarrierIndex].SetActive(false);
+        listOfTowerPlaceHolder[selectedTowerIndex].SetActive(false);
         selectedTile = null;
         UpdateSelectedTileText();
     }
 
     void ItemSelectionReset()
     {
+        for (int i = 0; i < listOfBarrierPlaceHolder.Length; i++)
+        {
+            listOfBarrierPlaceHolder[i] = Instantiate(listOfBarrierPlaceHolder[i]);
+            listOfBarrierPlaceHolder[i].SetActive(false);
+        }
+
+        for (int i = 0; i < listOfTowerPlaceHolder.Length; i++)
+        {
+            listOfTowerPlaceHolder[i] = Instantiate(listOfTowerPlaceHolder[i]);
+            listOfTowerPlaceHolder[i].SetActive(false);
+        }
+
         tileSelectionCursor.SetActive(false);
         tileSelectedCursor.SetActive(false);
-        
-        itemSelectedTower = Instantiate(itemPrefabTestTower);
-        itemSelectedTower.GetComponent<Item>().RangeGO.SetActive(true);
-        itemSelectedTower.SetActive(false);
 
-        itemSelectedBarrier = Instantiate(itemPrefabTestPath);
-        itemSelectedBarrier.SetActive(false);
     }
 
     /// <summary>
@@ -80,8 +88,8 @@ public class AlexGMTest : MonoBehaviour
     /// <param name="tile">Tile to select</param>
     public void TileSelection(ItemTile tile)
     {
-        itemSelectedBarrier.SetActive(false);
-        itemSelectedTower.SetActive(false);
+        listOfBarrierPlaceHolder[selectedBarrierIndex].SetActive(false);
+        listOfTowerPlaceHolder[selectedTowerIndex].SetActive(false);
         ShowCursorOnTile(tileSelectedCursor, tile);
         selectedTile = tile;
         UpdateSelectedTileText();
@@ -93,12 +101,10 @@ public class AlexGMTest : MonoBehaviour
         switch (tile.TileType)
         {
             case TileType.Tower:
-                itemSelectedTower.SetActive(true);
-                ShowItemOnTile(itemSelectedTower, tile);
+                ShowItemOnTile(listOfTowerPlaceHolder[selectedTowerIndex], tile);
                 break;
             case TileType.Barrier:
-                itemSelectedBarrier.SetActive(true);
-                ShowItemOnTile(itemSelectedBarrier, tile);
+                ShowItemOnTile(listOfBarrierPlaceHolder[selectedBarrierIndex], tile);
                 break;
             default:
                 break;
@@ -125,6 +131,7 @@ public class AlexGMTest : MonoBehaviour
     /// <param name="tile">Selected Tile</param>
     private void ShowItemOnTile(GameObject item, ItemTile tile)
     {
+        item.SetActive(true);
         item.transform.position = tile.transform.position;
         item.transform.rotation = tile.transform.rotation;
         item.transform.position += Vector3.up * 3.0f;
@@ -149,32 +156,18 @@ public class AlexGMTest : MonoBehaviour
         switch (selectedTile.TileType)
         {
             case TileType.Tower:
-                if (!BuyItem(itemSelectedTower.GetComponent<Item>().Value))
+                if (!BuyItem(listOfTower[selectedTowerIndex].GetComponent<Item>().Value))
                 {
                     return;
                 }
-                selectedTile.CurrentItem =
-                    Instantiate(
-                        itemSelectedTower,
-                        selectedTile.transform.position + Vector3.up * 3.0f,
-                        selectedTile.transform.rotation,
-                        selectedTile.transform
-                        );
-                itemSelectedTower.SetActive(false);
+                InstantiateItemOnTile(listOfTower[selectedTowerIndex]);
                 break;
             case TileType.Barrier:
-                if (!BuyItem(itemSelectedBarrier.GetComponent<Item>().Value))
+                if (!BuyItem(listOfBarrier[selectedBarrierIndex].GetComponent<Item>().Value))
                 {
                     return;
                 }
-                selectedTile.CurrentItem =
-                    Instantiate(
-                        itemSelectedBarrier,
-                        selectedTile.transform.position + Vector3.up * 3,
-                        selectedTile.transform.rotation,
-                        selectedTile.transform
-                        );
-                itemSelectedBarrier.SetActive(false);
+                InstantiateItemOnTile(listOfBarrier[selectedBarrierIndex]);
                 break;
             default:
                 break;
@@ -255,5 +248,18 @@ public class AlexGMTest : MonoBehaviour
                 UITextSelectedTile.text += $"\nCurrent Item: ";
             }
         }
+    }
+    
+    public void InstantiateItemOnTile(GameObject item)
+    {
+        selectedTile.CurrentItem =
+                    Instantiate(
+                        item,
+                        selectedTile.transform.position + Vector3.up * 3.0f,
+                        selectedTile.transform.rotation,
+                        selectedTile.transform
+                        );
+        listOfBarrierPlaceHolder[SelectedBarrierIndex].SetActive(false);
+        listOfTowerPlaceHolder[SelectedTowerIndex].SetActive(false);
     }
 }

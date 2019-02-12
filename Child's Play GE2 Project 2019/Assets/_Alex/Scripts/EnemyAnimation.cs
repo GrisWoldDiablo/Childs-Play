@@ -6,10 +6,17 @@ using UnityEngine;
 public class EnemyAnimation : MonoBehaviour
 {
     private Animator _animator;
+    private float animSpeedRandom = 1;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        _animator = GetComponent<Animator>();
+        _animator.SetFloat("Speed", Random.Range(0.8f, 1.2f));
     }
 
     // Update is called once per frame
