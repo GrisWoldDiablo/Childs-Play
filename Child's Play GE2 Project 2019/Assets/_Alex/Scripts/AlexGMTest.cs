@@ -65,7 +65,7 @@ public class AlexGMTest : MonoBehaviour
     {
         tileSelectionCursor.SetActive(false);
         tileSelectedCursor.SetActive(false);
-
+        
         itemSelectedTower = Instantiate(itemPrefabTestTower);
         itemSelectedTower.GetComponent<Item>().RangeGO.SetActive(true);
         itemSelectedTower.SetActive(false);
