@@ -219,7 +219,7 @@ public class AlexGMTest : MonoBehaviour
             return;
         }
         SellItem(selectedTile.CurrentItem.GetComponent<Item>().Value);
-        Destroy(selectedTile.CurrentItem);
+        Destroy(selectedTile.CurrentItem.gameObject);
         selectedTile.CurrentItem = null;
         TileSelection(selectedTile);
     }
@@ -246,7 +246,6 @@ public class AlexGMTest : MonoBehaviour
     {
         if (UITextSelectedTile != null)
         {
-
             UITextSelectedTile.text = $"Selected Tile: " + (selectedTile != null ? selectedTile.name : "");
             if (selectedTile != null)
             {
