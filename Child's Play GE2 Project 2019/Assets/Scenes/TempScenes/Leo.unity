@@ -2084,6 +2084,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5396276650996999881, guid: 4f0edeb05af702548b977210ffb7a433,
+        type: 3}
+      propertyPath: projectileSpeed
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f0edeb05af702548b977210ffb7a433, type: 3}
 --- !u!1 &1064027602
@@ -2136,6 +2141,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasFocus: 0
+  target: {fileID: 0}
+  isAttacking: 0
+  damage: 1
+  attackSpeed: 0.5
+  attackCountDown: 0
 --- !u!114 &1064027605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3785,6 +3795,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534259960146438719, guid: 60284d58343fb1e40b8d7702d85c55dd,
+        type: 3}
+      propertyPath: projectileSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534259960146438719, guid: 60284d58343fb1e40b8d7702d85c55dd,
+        type: 3}
+      propertyPath: AoERadius
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60284d58343fb1e40b8d7702d85c55dd, type: 3}
