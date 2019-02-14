@@ -4,32 +4,36 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public Transform towerTarget;
+    [SerializeField]
+    private Transform towerTarget;
 
-
-    public Transform pivot;
-    public float rotationSpeed = 10f;
-    public string enemyTag = "Enemy";
+    [SerializeField]
+    private Transform pivot;
+    [SerializeField]
+    private float rotationSpeed = 10f;
+    [SerializeField]
+    private string enemyTag = "Enemy";
 
 
     //FIRING PART
+
     private GameObject projectilePrefab;
-    public Transform projectileSpawnPoint;
+    [SerializeField]
+    private Transform projectileSpawnPoint;
 
     private float range;// = 15f;
     private float rateOfFire;// = 1f;
     private float CountdownToNextFire = 0f;
     private float innerRadius;
 
-
-    public Tower_SO tower_SO;
+    [SerializeField]
+    private Tower_SO tower_SO;
 
     private void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
 
         SO_Reference();
-
     }
 
     void SO_Reference()
@@ -39,9 +43,6 @@ public class Tower : MonoBehaviour
         innerRadius = tower_SO.innerRadius;
          projectilePrefab = tower_SO.projectilePrefab;
     }
-
-
-
 
     void UpdateTarget()
     {
@@ -99,26 +100,23 @@ public class Tower : MonoBehaviour
     {
         GameObject projectileGameObject = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
 
-        Missile missile = projectileGameObject.GetComponent<Missile>();
+        Projectile projectile = projectileGameObject.GetComponent<Projectile>();
 
-        if (missile != null)
+        if (projectile is Missile)
         {
-            missile.Seek(towerTarget);
+            projectile.GetComponent<Missile>().AssignTarget(towerTarget);
         }
 
-        //Bullet bullet = projectileGameObject.GetComponent<Bullet>();
-
-        //if(bullet != null)
-        //{
-        //    bullet.Seek(towerTarget);
-        //}
+        if(projectile is Bullet)
+        {
+            projectile.GetComponent<Bullet>().AssignTarget(towerTarget);
+        }        
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(this.transform.position, range);
-        Gizmos.DrawWireSphere(this.transform.position, innerRadius);
-        
+        Gizmos.DrawWireSphere(this.transform.position, innerRadius);        
     }
 }
