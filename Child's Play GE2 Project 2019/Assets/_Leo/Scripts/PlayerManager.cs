@@ -48,11 +48,8 @@ public class PlayerManager : MonoBehaviour
         foreach (Player p in _playerArray)
         {
             listOfPlayers.Add(p);
-            if(p.isFood)
-            {
-                p.hasFocus = true;
-                playerWithFocus = p;
-            }
+
+            playerWithFocus = p;
         }        
     }
 
@@ -66,13 +63,11 @@ public class PlayerManager : MonoBehaviour
             ClearEnemyFocusOnListAndCamera();
 
             int index = listOfPlayers.IndexOf(playerWithFocus);
-            listOfPlayers[index].hasFocus = false;
             index++;
             if (index >= listOfPlayers.Count)
             {
                 index = 0;
             }
-            listOfPlayers[index].hasFocus = true;
             playerWithFocus = listOfPlayers[index];
             cameraLocker.isLocked = true;
         }
@@ -90,13 +85,11 @@ public class PlayerManager : MonoBehaviour
         cameraLocker.enemyWithFocus = null;
 
         int index = listOfPlayers.IndexOf(playerWithFocus);
-        listOfPlayers[index].hasFocus = false;
         index++;
         if (index >= listOfPlayers.Count)
         {
             index = 0;
         }
-        listOfPlayers[index].hasFocus = true;
         playerWithFocus = listOfPlayers[index];
         cameraLocker.isLocked = true;
     }
