@@ -29,7 +29,7 @@ public class Player : PlayerBaseClass
             _cameraController.isLocked = false;
 
             PlayerManager.instance.ClearEnemyFocusOnListAndCamera();
-            this.hasFocus = true;
+            //this.hasFocus = true;
             PlayerManager.instance.playerWithFocus = this;  
         }
 

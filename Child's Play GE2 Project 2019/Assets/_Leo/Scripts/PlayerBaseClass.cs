@@ -9,7 +9,7 @@ public class PlayerBaseClass : MonoBehaviour
     public bool isFood;
     public bool isTower;
     public int hitPoints;
-    public bool hasFocus = false;
+    //public bool hasFocus = false;
 
     private void Update()
     {
