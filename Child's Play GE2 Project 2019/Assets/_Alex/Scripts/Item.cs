@@ -13,10 +13,10 @@ public class Item : MonoBehaviour
     /// this is the base value of the Item, when the players buys this item the value is reduce 
     /// but it will go up as this item is upgraded in order to increase its resell value.
     /// </summary>
-    [SerializeField] private float value = 1; 
+    [SerializeField] private int value = 1; 
 
     public GameObject RangeGO { get => rangeGO; set => rangeGO = value; }
-    public float Value { get => value; }
+    public int Value { get => value; }
     public string ItemName { get => itemName; }
     public int Health { get => health; set => health = value; }
 

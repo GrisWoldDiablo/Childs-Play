@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public class AlexGMTest : MonoBehaviour
 {
-    [SerializeField] private float currentcash = 5;
+    //[SerializeField] private float currentcash = 5;
     [SerializeField] private GameObject tileSelectionCursor;
     [SerializeField] private GameObject tileSelectedCursor;
     [SerializeField] private GameObject[] listOfTower;
@@ -17,6 +17,8 @@ public class AlexGMTest : MonoBehaviour
     [SerializeField] private GameObject[] listOfBarrierPlaceHolder;
     [SerializeField] private int selectedTowerIndex = 0;
     [SerializeField] private int selectedBarrierIndex = 0;
+
+    private Money myMoney;
 
     //-//
     // To be placed in UI management script
@@ -37,6 +39,7 @@ public class AlexGMTest : MonoBehaviour
         ItemSelectionReset(); // for testing
         UpdateCashText(); // to be place in UI management script
         UpdateSelectedTileText();
+        myMoney = new Money(0); // This value changes at the beginning of new level.
     }
 
     // Update is called once per frame
@@ -156,17 +159,19 @@ public class AlexGMTest : MonoBehaviour
         switch (selectedTile.TileType)
         {
             case TileType.Tower:
-                if (!BuyItem(listOfTower[selectedTowerIndex].GetComponent<Item>().Value))
+                if (!myMoney.TryToBuy(listOfTower[selectedTowerIndex].GetComponent<Item>().Value))
                 {
                     return;
                 }
+                UpdateCashText();
                 InstantiateItemOnTile(listOfTower[selectedTowerIndex]);
                 break;
             case TileType.Barrier:
-                if (!BuyItem(listOfBarrier[selectedBarrierIndex].GetComponent<Item>().Value))
+                if (!myMoney.TryToBuy(listOfTower[selectedTowerIndex].GetComponent<Item>().Value))
                 {
                     return;
                 }
+                UpdateCashText();
                 InstantiateItemOnTile(listOfBarrier[selectedBarrierIndex]);
                 break;
             default:
@@ -175,26 +180,7 @@ public class AlexGMTest : MonoBehaviour
         selectedTile.CurrentItem.name = selectedTile.CurrentItem.GetComponent<Item>().ItemName;
         TileSelection(selectedTile);
     }
-
-    /// <summary>
-    /// Verify if the player has enough cash to buy the item, 
-    /// if he does it removes the value from his cash 
-    /// and call the method to update the cash text on the UI.
-    /// </summary>
-    /// <param name="itemPrice">The value of the Item</param>
-    /// <returns></returns>
-    private bool BuyItem(float itemPrice)
-    {
-        if (itemPrice > currentcash)
-        {
-            Debug.Log("Not Enough Cash.");
-            return false;
-        }
-        currentcash -= itemPrice;
-        UpdateCashText();
-        return true;
-    }
-
+    
     /// <summary>
     /// Remove and destroy the Item on the current selected tile, and call the sell method.
     /// </summary>
@@ -210,27 +196,16 @@ public class AlexGMTest : MonoBehaviour
             Debug.Log("No Item on the current selected Tile.");
             return;
         }
-        SellItem(selectedTile.CurrentItem.GetComponent<Item>().Value);
+        myMoney.MoneyChange(selectedTile.CurrentItem.GetComponent<Item>().Value); //Sell item
         Destroy(selectedTile.CurrentItem.gameObject);
         selectedTile.CurrentItem = null;
         TileSelection(selectedTile);
     }
 
-    /// <summary>
-    /// Sell Item, Add item's value it to the player's cash
-    /// and call the method to update the cash text on the UI.
-    /// </summary>
-    /// <param name="itemValue">The value of the Item</param>
-    public void SellItem(float itemValue)
-    {
-        currentcash += itemValue;
-        UpdateCashText();
-    }
-
     // to be placed in UI management script
-    void UpdateCashText()
+    public void UpdateCashText()
     {
-        UITextCash.text = $"Current Cash: {currentcash}";
+        UITextCash.text = $"Current Cash: {myMoney.CurrentMoney}";
     }
 
     // to be placed in UI management script
