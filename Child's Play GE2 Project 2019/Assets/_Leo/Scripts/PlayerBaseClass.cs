@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerBaseClass : MonoBehaviour
 {
-    [SerializeField] private int hitPoints;
+    [SerializeField] private int hitPoints = 100;
     
     public int HitPoints { get => hitPoints; set => hitPoints = value; }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         if (this.HitPoints < 0)
         {

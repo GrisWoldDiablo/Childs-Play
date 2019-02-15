@@ -15,9 +15,9 @@ public class Player : PlayerBaseClass
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
-        
+        base.Update();
     }
 
     private void OnMouseOver()

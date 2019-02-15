@@ -58,6 +58,10 @@ public class PlayerManager : MonoBehaviour
     {
         if (Input.GetButtonDown("SwitchPlayer"))
         {
+            if (listOfPlayers.Count == 0)
+            {
+                return;
+            }
             ClearEnemyFocusOnListAndCamera();
 
             int index = listOfPlayers.IndexOf(playerWithFocus);
