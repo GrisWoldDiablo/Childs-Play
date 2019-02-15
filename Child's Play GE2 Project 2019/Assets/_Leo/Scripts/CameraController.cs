@@ -78,6 +78,10 @@ public class CameraController : MonoBehaviour
 
     private void CameraFollowPlayer()
     {
+        if (PlayerManager.instance.playerWithFocus == null)
+        {
+            return;
+        }
         _playerWithFocus = PlayerManager.instance.playerWithFocus.transform;
         if (EnemyManager.instance.enemyWithFocus != null)
         {
@@ -162,15 +166,15 @@ public class CameraController : MonoBehaviour
             _currentZoom += Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
             _currentZoom = Mathf.Clamp(_currentZoom, minZoom, maxZoom);
 
-            lerpHeight = _currentZoom;
-            float difference = 0f;
+            //lerpHeight = _currentZoom;
+            //float difference = 0f;
 
-            if(DistanceToTheGround() != lerpHeight)
-            {
-                difference = lerpHeight - DistanceToTheGround();
-            }
-
-            this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(this.transform.position.x, lerpHeight + difference, this.transform.position.z), Time.deltaTime * 5f);
+            //if(DistanceToTheGround() != lerpHeight)
+            //{
+            //    difference = lerpHeight - DistanceToTheGround();
+            //}
+            //
+            //this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(this.transform.position.x, lerpHeight + difference, this.transform.position.z), Time.deltaTime * 5f);
         }
     }    
 

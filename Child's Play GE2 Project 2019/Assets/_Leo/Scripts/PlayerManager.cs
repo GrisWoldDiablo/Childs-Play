@@ -15,7 +15,6 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     //Variables
-    private Player[] _playerArray;
     public List<Player> listOfPlayers = new List<Player>();
 
     //References for Cashing
@@ -32,7 +31,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         ChangePlayerFocusWithButton();
     }
@@ -44,8 +43,7 @@ public class PlayerManager : MonoBehaviour
     /// </summary>
     private void CreatePlayerList()
     {
-        _playerArray = GameObject.FindObjectsOfType<Player>();
-        foreach (Player p in _playerArray)
+        foreach (Player p in GameObject.FindObjectsOfType<Player>())
         {
             listOfPlayers.Add(p);
 
@@ -94,4 +92,19 @@ public class PlayerManager : MonoBehaviour
         cameraLocker.isLocked = true;
     }
     #endregion
+
+    public void AddPlayer(Player _player)
+    {
+        Debug.Log($"PLayer added {_player}");
+        if (playerWithFocus == null)
+        {
+            playerWithFocus = _player;
+        }
+        listOfPlayers.Add(_player);
+    }
+
+    public void RemovePlayer(Player _player)
+    {
+        listOfPlayers.Remove(_player);
+    }
 }

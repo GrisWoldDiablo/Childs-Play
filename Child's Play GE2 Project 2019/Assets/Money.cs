@@ -5,13 +5,9 @@ using UnityEngine;
 public class Money : MonoBehaviour
 {
     private int currentMoney;
-    public int CurrentMoney { get => currentMoney; private set => currentMoney = value; }
+    public int CurrentMoney { get => currentMoney; set => currentMoney = value; }
 
-    public Money(int InitialMoney)
-    {
-        currentMoney = InitialMoney;
-    }
-
+    
     public void ResetMoney()
     {
         currentMoney = 0;

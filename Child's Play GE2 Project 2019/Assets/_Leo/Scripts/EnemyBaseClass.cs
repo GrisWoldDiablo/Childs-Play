@@ -95,7 +95,7 @@ public class EnemyBaseClass : MonoBehaviour
         attackCountDown = attackSpeed;
         #endregion
 
-        target.Health -= damage;
+        target.HitPoints -= damage;
 
     }
 

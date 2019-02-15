@@ -87,7 +87,7 @@ public class EnemyMovementMechanics : MonoBehaviour
         //Don't do anything if the currentNode is not the same as the enteredNode.
         if (currentDestination != currentlyEnteredNode)
         {
-            Debug.LogError("Error Getting Next Node");
+            //Debug.LogError("Error Getting Next Node");
             return;
         }
         if (currentDestination == null)
@@ -99,7 +99,7 @@ public class EnemyMovementMechanics : MonoBehaviour
         Node nextNode = currentDestination.GetNextNode();
         if (nextNode == null)
         {
-            Debug.LogError("Next node is NULL");
+            //Debug.LogError("Next node is NULL");
             if (_navMeshAgent.enabled)
             {
                 FinalNodeReached();

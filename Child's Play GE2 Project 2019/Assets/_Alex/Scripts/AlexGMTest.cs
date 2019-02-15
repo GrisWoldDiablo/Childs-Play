@@ -18,6 +18,7 @@ public class AlexGMTest : MonoBehaviour
     [SerializeField] private int selectedTowerIndex = 0;
     [SerializeField] private int selectedBarrierIndex = 0;
 
+    [SerializeField] private int initialMoney = 100;
     private Money myMoney;
 
     //-//
@@ -33,13 +34,19 @@ public class AlexGMTest : MonoBehaviour
     public int SelectedTowerIndex { get => selectedTowerIndex; set => selectedTowerIndex = value; }
     public int SelectedBarrierIndex { get => selectedBarrierIndex; set => selectedBarrierIndex = value; }
 
+    //All Managers
+    private PlayerManager pmCode;
+
     // Start is called before the first frame update
     void Start()
     {
+        pmCode = PlayerManager.instance;
         ItemSelectionReset(); // for testing
-        UpdateCashText(); // to be place in UI management script
         UpdateSelectedTileText();
-        myMoney = new Money(0); // This value changes at the beginning of new level.
+
+        myMoney = gameObject.AddComponent<Money>();
+        myMoney.CurrentMoney = initialMoney; // This value changes at the beginning of new level.
+        UpdateCashText(); // to be place in UI management script
     }
 
     // Update is called once per frame
@@ -163,7 +170,6 @@ public class AlexGMTest : MonoBehaviour
                 {
                     return;
                 }
-                UpdateCashText();
                 InstantiateItemOnTile(listOfTower[selectedTowerIndex]);
                 break;
             case TileType.Barrier:
@@ -171,7 +177,6 @@ public class AlexGMTest : MonoBehaviour
                 {
                     return;
                 }
-                UpdateCashText();
                 InstantiateItemOnTile(listOfBarrier[selectedBarrierIndex]);
                 break;
             default:
@@ -197,6 +202,7 @@ public class AlexGMTest : MonoBehaviour
             return;
         }
         myMoney.MoneyChange(selectedTile.CurrentItem.GetComponent<Item>().Value); //Sell item
+        pmCode.RemovePlayer(selectedTile.CurrentItem.GetComponent<Item>());
         Destroy(selectedTile.CurrentItem.gameObject);
         selectedTile.CurrentItem = null;
         TileSelection(selectedTile);
@@ -232,8 +238,9 @@ public class AlexGMTest : MonoBehaviour
                         item,
                         selectedTile.transform.position + Vector3.up * 3.0f,
                         selectedTile.transform.rotation,
-                        selectedTile.transform
+                        null
                         );
+        pmCode.AddPlayer(selectedTile.CurrentItem.GetComponent<Item>());
         listOfBarrierPlaceHolder[SelectedBarrierIndex].SetActive(false);
         listOfTowerPlaceHolder[SelectedTowerIndex].SetActive(false);
     }
