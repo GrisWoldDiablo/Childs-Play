@@ -15,7 +15,7 @@ public class Player : PlayerBaseClass
     }
 
     // Update is called once per frame
-    protected void Update()
+    new protected void Update()
     {
         base.Update();
     }
@@ -28,8 +28,8 @@ public class Player : PlayerBaseClass
 
             _cameraController.isLocked = false;
 
-            PlayerManager.instance.ClearEnemyFocusOnListAndCamera();
-            PlayerManager.instance.playerWithFocus = this;  
+            PlayerManager.GetInstance().ClearEnemyFocusOnListAndCamera();
+            PlayerManager.GetInstance().playerWithFocus = this;  
         }
 
         if(clickCounter >= 2)

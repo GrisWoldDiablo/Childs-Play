@@ -5,11 +5,22 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     #region Singleton
-    public static PlayerManager instance;
+    public static PlayerManager instance = null;
+
+    public static PlayerManager GetInstance()
+    {
+        if (instance == null)
+        {
+            AlexGMTest gameManager = GameObject.FindObjectOfType<AlexGMTest>();
+            instance = gameManager.gameObject.AddComponent<PlayerManager>();
+        }
+        return instance;
+    }
+
 
     private void Awake()
     {
-        instance = this;
+        //instance = this;
         CreatePlayerList();
     }
     #endregion
@@ -99,7 +110,7 @@ public class PlayerManager : MonoBehaviour
 
     public void AddPlayer(Player _player)
     {
-        Debug.Log($"PLayer added {_player}");
+        //Debug.Log($"PLayer added {_player}");
         if (playerWithFocus == null)
         {
             playerWithFocus = _player;

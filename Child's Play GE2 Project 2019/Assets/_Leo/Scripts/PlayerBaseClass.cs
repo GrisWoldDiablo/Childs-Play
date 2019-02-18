@@ -11,7 +11,7 @@ public class PlayerBaseClass : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        if (this.HitPoints < 0)
+        if (this.HitPoints <= 0)
         {
             Die();
         }

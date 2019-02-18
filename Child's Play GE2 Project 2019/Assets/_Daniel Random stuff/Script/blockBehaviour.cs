@@ -77,7 +77,7 @@ public class blockBehaviour : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             var _enemy = other.gameObject.GetComponent<EnemyMovementMechanics>();
-            UnderAttack(_enemy.AttackDamage());
+            //UnderAttack(_enemy.AttackDamage());
         }
     }
 

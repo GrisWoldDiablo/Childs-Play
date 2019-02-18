@@ -165,9 +165,9 @@ GameObject:
   - component: {fileID: 4389062628653260490}
   - component: {fileID: 6646199835468626008}
   - component: {fileID: 735571412886468011}
-  - component: {fileID: 6624230006992555675}
+  - component: {fileID: 239668790641261686}
   m_Layer: 0
-  m_Name: NerfBullet
+  m_Name: Nerf Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +218,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6624230006992555675
+--- !u!114 &239668790641261686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,9 +227,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6888162193381485623}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b6311fc4a1a9274196c7a6abe9e0d83, type: 3}
+  m_Script: {fileID: 11500000, guid: fbac8c84f13b6544b9dbcdb8bf220a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 20
-  AoERadius: 0
+  projectileSpeed: 15
+  AoERadius: 2
   impactVFX: {fileID: 0}
+  targetLocation: {x: 0, y: 0, z: 0}
+  damageValue: 100

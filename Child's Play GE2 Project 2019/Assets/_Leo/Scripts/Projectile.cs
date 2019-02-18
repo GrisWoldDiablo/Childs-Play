@@ -11,36 +11,57 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     protected GameObject impactVFX;
 
+    [SerializeField] protected Vector3 targetLocation;
     protected Transform _target;
     protected Vector3 direction;
+    [SerializeField] protected int damageValue = 10;
+
+    public int DamageValue { get => damageValue; set => damageValue = value; }
+
+    protected void Update()
+    {
+        if (_target != null)
+        {
+            UpdatTargetLocation();
+        }
+    }
+
+    public void UpdatTargetLocation()
+    {
+        targetLocation = _target.position;
+    }
 
     public virtual void AssignTarget(Transform target)
     {
-        _target = target;        
+        _target = target;
+        UpdatTargetLocation();
     }
 
     public virtual void HittingTarget()
     {
         if (_target == null)
         {
-            Destroy(this.gameObject);
+            _target = new GameObject().transform;
+            _target.transform.position = targetLocation;
             return;
         }
         direction = _target.position - this.transform.position;
         float currentDistance = projectileSpeed * Time.deltaTime;
-                
-        if (direction.magnitude <= currentDistance) 
-        {            
-            this.HitTarget();
-            return;
-        }
+        
+        
+        // Retired,  using OnTriggerEnter
+        //if (direction.magnitude <= currentDistance) 
+        //{            
+        //    this.HitTarget();
+        //    return;
+        //}
 
         this.transform.Translate(direction.normalized * currentDistance, Space.World);
 
         //this.transform.LookAt(direction); // UNCOMMENT IF you want missiles that seek target
     }
 
-    public void HitTarget()
+    public void HitTarget(Collider other)
     {
         //TODO: spawn effect
         //TODO: destroy effect
@@ -50,6 +71,13 @@ public class Projectile : MonoBehaviour
             Explode();
         }
         else
+        {
+            if (other.CompareTag("Enemy"))
+            {
+                Damage(other.transform);
+            }
+        }
+        if (!_target.CompareTag("Enemy"))
         {
             Destroy(_target.gameObject);
         }
@@ -63,6 +91,14 @@ public class Projectile : MonoBehaviour
         {
             if (col.tag == "Enemy")
             {
+                //if (AoERadius > 0f)
+                //{
+                //    Explode();
+                //}
+                //else
+                //{
+                //    HitEnemy();
+                //}
                 Damage(col.transform);
             }
         }
@@ -70,7 +106,22 @@ public class Projectile : MonoBehaviour
 
     void Damage(Transform enemy)
     {
-        Destroy(enemy.gameObject);
+        enemy.GetComponent<Enemy>().HitPoints -= damageValue;
+        Debug.Log($"{enemy.GetInstanceID()} : {enemy.GetComponent<Enemy>().HitPoints}");
+        //Destroy(enemy.gameObject);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            HitTarget(other);
+        }
+        else if (other.gameObject.CompareTag("TilePath"))
+        {
+            HitTarget(other);
+        }
+    }
+
 }
 

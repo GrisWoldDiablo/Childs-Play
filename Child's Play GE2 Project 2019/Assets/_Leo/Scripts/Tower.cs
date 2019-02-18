@@ -54,6 +54,10 @@ public class Tower : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
+            if (enemy.GetComponent<Enemy>().IsDying)
+            {
+                continue;
+            }
             float distanceToEnemy = Vector3.Distance(this.transform.position, enemy.transform.position);
 
             if(distanceToEnemy < shortestDistance && distanceToEnemy >= innerRadius)
@@ -75,7 +79,8 @@ public class Tower : MonoBehaviour
 
     private void Update()
     {
-        if(towerTarget == null)
+        CountdownToNextFire -= Time.deltaTime;
+        if (towerTarget == null)
         {
             return;
         }
@@ -92,8 +97,8 @@ public class Tower : MonoBehaviour
             Shoot();
             CountdownToNextFire = 1f / rateOfFire;
         }
-
-        CountdownToNextFire -= Time.deltaTime;
+        
+        //CountdownToNextFire -= Time.deltaTime; // move to top of method so the countdown continues even if the tower has no target.
     }
 
     private void Shoot()

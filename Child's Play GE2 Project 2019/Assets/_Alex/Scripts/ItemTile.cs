@@ -113,12 +113,12 @@ public class ObjectBuilderEditor : Editor
 
         if (myScript.Rot90Degree)
         {
-            Debug.Log("90 Rot");
+            //Debug.Log("90 Rot");
             myScript.transform.rotation = Quaternion.Euler(0, 90, 0);
         }
         else
         {
-            Debug.Log("Zero Rot");
+            //Debug.Log("Zero Rot");
             myScript.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }

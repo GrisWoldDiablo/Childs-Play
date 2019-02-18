@@ -9,10 +9,13 @@ public class Missile : Projectile
     {
         _target = tar;
         direction = _target.position - this.transform.position;
+        UpdatTargetLocation();
+        _target = new GameObject().transform;
+        _target.transform.position = targetLocation;
     }    
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
         HittingTarget();
     }
@@ -28,12 +31,13 @@ public class Missile : Projectile
         float currentDistance = projectileSpeed * Time.deltaTime;       
 
         this.transform.Translate(direction.normalized * currentDistance, Space.World);
+        this.transform.LookAt(_target);
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        HitTarget();
+        HitTarget(other);
     }    
 
     private void OnDrawGizmosSelected()

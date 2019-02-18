@@ -78,11 +78,11 @@ public class CameraController : MonoBehaviour
 
     private void CameraFollowPlayer()
     {
-        if (PlayerManager.instance.playerWithFocus == null)
+        if (PlayerManager.GetInstance().playerWithFocus == null)
         {
             return;
         }
-        _playerWithFocus = PlayerManager.instance.playerWithFocus.transform;
+        _playerWithFocus = PlayerManager.GetInstance().playerWithFocus.transform;
         if (EnemyManager.instance.enemyWithFocus != null)
         {
             enemyWithFocus = EnemyManager.instance.enemyWithFocus.transform;

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5740055950189144266}
   - component: {fileID: 9195828301131788759}
   - component: {fileID: 8850160427376767442}
+  - component: {fileID: 4018969675872026169}
   - component: {fileID: 4035293377406075862}
   - component: {fileID: 2375716710091042841}
   - component: {fileID: 448642232823651993}
-  - component: {fileID: 4018969675872026169}
   - component: {fileID: 6250326876011676506}
   - component: {fileID: 843111833145098991}
   m_Layer: 0
@@ -70,6 +70,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9547a34b1472ce847a3bf50388f5b370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4018969675872026169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5740055950189144267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6719a753f66d6e54297a23b338f743b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasFocus: 0
+  target: {fileID: 0}
+  isAttacking: 0
+  damage: 1
+  attackSpeed: 0.5
+  attackCountDown: 0
+  hitPoints: 100
+  foodBites: 1
+  asEaten: 0
 --- !u!195 &4035293377406075862
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -122,24 +143,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4018969675872026169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5740055950189144267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6719a753f66d6e54297a23b338f743b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasFocus: 0
-  target: {fileID: 0}
-  isAttacking: 0
-  damage: 1
-  attackSpeed: 0.5
-  attackCountDown: 0
 --- !u!135 &6250326876011676506
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -164,7 +167,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.53728664, y: 0.42514896, z: 1.1156783}
+  m_Size: {x: 1.17, y: 0.42514896, z: 1.1156783}
   m_Center: {x: 0, y: 0.4213326, z: -0.0918622}
 --- !u!1001 &5740055948885264776
 PrefabInstance:

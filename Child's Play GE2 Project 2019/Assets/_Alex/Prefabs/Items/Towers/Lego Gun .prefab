@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5948756410623832033}
   m_Layer: 0
-  m_Name: ' Bullet Spawn Point'
+  m_Name: ' Projectile Spawn Point'
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1978,7 +1978,7 @@ MonoBehaviour:
   rotationSpeed: 10
   enemyTag: Enemy
   projectileSpawnPoint: {fileID: 5948756410623832033}
-  tower_SO: {fileID: 11400000, guid: 3853b6424cf9cfe44919b116bc56dd17, type: 2}
+  tower_SO: {fileID: 11400000, guid: 72872e477f3f9a44b8cfb8f5fda5680a, type: 2}
 --- !u!114 &7546464820478688018
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,8 +17,15 @@ public class EnemyBaseClass : MonoBehaviour
     [SerializeField] private int damage = 1;
     [SerializeField] private float attackSpeed = 0.5f;
     [SerializeField] private float attackCountDown = 0;
+    [SerializeField] private int hitPoints = 100;
+    [SerializeField] private int foodBites = 5;
+    private bool isDying = false;
+    [SerializeField] private bool asEaten = false;
 
     private EnemyMovementMechanics eMMCode;
+
+    public int HitPoints { get => hitPoints; set => hitPoints = value; }
+    public bool IsDying { get => isDying; }
 
     private void Awake()
     {
@@ -35,7 +42,11 @@ public class EnemyBaseClass : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        if (this.isAttacking)
+        if (hitPoints <= 0)
+        {
+            Die();
+        }
+        else if (this.isAttacking)
         {
             Attack();
         }
@@ -63,6 +74,18 @@ public class EnemyBaseClass : MonoBehaviour
 
     public void Die()
     {
+        if (isDying)
+        {
+            return;
+        }
+        var cols = GetComponents<Collider>();
+        foreach (Collider col in cols)
+        {
+            col.enabled = false;
+        }
+        transform.Rotate(Vector3.up * Random.Range(-360, 360));
+        eMMCode.StopAndGo();
+        isDying = true;
         SetAnimRetreating();
         Destroy(this.gameObject, 5);
     }
@@ -114,6 +137,20 @@ public class EnemyBaseClass : MonoBehaviour
                 SetAttacking(other.GetComponent<Item>());
             }
         }
+        if (other.CompareTag("Food"))
+        {
+            if (!asEaten)
+            {
+                EatFood(other.GetComponent<Food>());
+            } 
+        }
+    }
+
+    private void EatFood(Food _food)
+    {
+        asEaten = true;
+        _food.HitPoints -= foodBites;
+        //Debug.Log(_food.HitPoints);
     }
 
 

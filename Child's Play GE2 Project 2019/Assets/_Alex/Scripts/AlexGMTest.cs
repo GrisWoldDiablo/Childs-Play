@@ -35,12 +35,11 @@ public class AlexGMTest : MonoBehaviour
     public int SelectedBarrierIndex { get => selectedBarrierIndex; set => selectedBarrierIndex = value; }
 
     //All Managers
-    private PlayerManager pmCode;
+    //private PlayerManager PlayerManager.GetInstance();
 
     // Start is called before the first frame update
     void Start()
     {
-        pmCode = PlayerManager.instance;
         ItemSelectionReset(); // for testing
         UpdateSelectedTileText();
 
@@ -67,8 +66,7 @@ public class AlexGMTest : MonoBehaviour
     {
         tileSelectedCursor.SetActive(false);
 
-        listOfBarrierPlaceHolder[selectedBarrierIndex].SetActive(false);
-        listOfTowerPlaceHolder[selectedTowerIndex].SetActive(false);
+        HidePlaceHolders();
         selectedTile = null;
         UpdateSelectedTileText();
     }
@@ -78,14 +76,14 @@ public class AlexGMTest : MonoBehaviour
         for (int i = 0; i < listOfBarrierPlaceHolder.Length; i++)
         {
             listOfBarrierPlaceHolder[i] = Instantiate(listOfBarrierPlaceHolder[i]);
-            listOfBarrierPlaceHolder[i].SetActive(false);
         }
 
         for (int i = 0; i < listOfTowerPlaceHolder.Length; i++)
         {
             listOfTowerPlaceHolder[i] = Instantiate(listOfTowerPlaceHolder[i]);
-            listOfTowerPlaceHolder[i].SetActive(false);
         }
+
+        HidePlaceHolders();
 
         tileSelectionCursor.SetActive(false);
         tileSelectedCursor.SetActive(false);
@@ -98,8 +96,7 @@ public class AlexGMTest : MonoBehaviour
     /// <param name="tile">Tile to select</param>
     public void TileSelection(ItemTile tile)
     {
-        listOfBarrierPlaceHolder[selectedBarrierIndex].SetActive(false);
-        listOfTowerPlaceHolder[selectedTowerIndex].SetActive(false);
+        HidePlaceHolders();
         ShowCursorOnTile(tileSelectedCursor, tile);
         selectedTile = tile;
         UpdateSelectedTileText();
@@ -118,6 +115,18 @@ public class AlexGMTest : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    private void HidePlaceHolders()
+    {
+        foreach (var item in listOfBarrierPlaceHolder)
+        {
+            item.SetActive(false);
+        }
+        foreach (var item in listOfTowerPlaceHolder)
+        {
+            item.SetActive(false);
         }
     }
 
@@ -202,7 +211,7 @@ public class AlexGMTest : MonoBehaviour
             return;
         }
         myMoney.MoneyChange(selectedTile.CurrentItem.GetComponent<Item>().Value); //Sell item
-        pmCode.RemovePlayer(selectedTile.CurrentItem.GetComponent<Item>());
+        PlayerManager.GetInstance().RemovePlayer(selectedTile.CurrentItem.GetComponent<Item>());
         Destroy(selectedTile.CurrentItem.gameObject);
         selectedTile.CurrentItem = null;
         TileSelection(selectedTile);
@@ -240,8 +249,7 @@ public class AlexGMTest : MonoBehaviour
                         selectedTile.transform.rotation,
                         null
                         );
-        pmCode.AddPlayer(selectedTile.CurrentItem.GetComponent<Item>());
-        listOfBarrierPlaceHolder[SelectedBarrierIndex].SetActive(false);
-        listOfTowerPlaceHolder[SelectedTowerIndex].SetActive(false);
+        PlayerManager.GetInstance().AddPlayer(selectedTile.CurrentItem.GetComponent<Item>());
+        HidePlaceHolders();
     }
 }

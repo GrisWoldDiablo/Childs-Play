@@ -31,11 +31,11 @@ public class EnemyMovementMechanics : MonoBehaviour
     public float InitialMovementSpeed { get => initialMovementSpeed; }
     public bool Attacking { get => attacking; }
 
-    [SerializeField] private float damage = 1;
+    // [SerializeField] private float damage = 1; No Longer Used.
 
     private float inititalStoppingDistance;
-    private float attackAvoidanceRadious = 0.09375f;
-    private float attackStopingDistance = 5f;
+    [SerializeField] private float attackAvoidanceRadious = 0.09375f;
+    [SerializeField] private float attackStopingDistance = 5f;
     [SerializeField] private float agentAvoidanceRadious = 0.15f;
 
     void Start()
@@ -155,10 +155,11 @@ public class EnemyMovementMechanics : MonoBehaviour
     /// <summary>
     /// Damage Done to any wall.
     /// </summary>
-    public float AttackDamage()
-    {
-        return damage;
-    }
+    /// No Longer used.
+    //public float AttackDamage()
+    //{
+    //    return damage;
+    //}
 
 
     /// <summary>
