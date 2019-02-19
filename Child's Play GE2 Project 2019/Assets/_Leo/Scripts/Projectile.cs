@@ -106,8 +106,8 @@ public class Projectile : MonoBehaviour
 
     void Damage(Transform enemy)
     {
-        enemy.GetComponent<Enemy>().HitPoints -= damageValue;
-        Debug.Log($"{enemy.GetInstanceID()} : {enemy.GetComponent<Enemy>().HitPoints}");
+        enemy.GetComponent<Enemy>().TakeDamage(damageValue);
+        //Debug.Log($"{enemy.GetInstanceID()} : {enemy.GetComponent<Enemy>().HitPoints}");
         //Destroy(enemy.gameObject);
     }
 
