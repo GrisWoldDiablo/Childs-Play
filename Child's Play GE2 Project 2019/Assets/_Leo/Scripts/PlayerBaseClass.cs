@@ -11,14 +11,21 @@ public class PlayerBaseClass : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        if (this.HitPoints <= 0)
-        {
-            Die();
-        }
+        
     }
 
     private void Die()
     {
         Destroy(this.gameObject);
+    }
+
+    public void TakeDamage(int damageValue)
+    {
+        this.hitPoints -= damageValue;
+
+        if (this.HitPoints <= 0)
+        {
+            Die();
+        }
     }
 }

@@ -6,8 +6,10 @@ using UnityEngine;
 public class Food : Player
 {
     [SerializeField] private GameObject[] pieces;
-    [SerializeField] private Texture texture;
-    int initialHP;
+
+    private int initialHP;
+    private int currentPercentage = 100;
+
     void Start()
     {
         initialHP = HitPoints;
@@ -16,7 +18,11 @@ public class Food : Player
 
     new protected void Update()
     {
-        int currentPercentage = 100 - (HitPoints * 100 / initialHP) ;
+        if (currentPercentage == 100 - (HitPoints * 100 / initialHP))
+        {
+            return;
+        }
+        currentPercentage = 100 - (HitPoints * 100 / initialHP) ;
         int qtyToRemove = (int)Mathf.Floor(pieces.Length * (currentPercentage / 100.0f));
         for (int i = pieces.Length - 1; i >= pieces.Length - qtyToRemove; i--)
         {

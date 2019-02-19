@@ -42,13 +42,18 @@ public class EnemyBaseClass : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
+        if (this.isAttacking)
+        {
+            Attack();
+        }
+    }
+
+    public void TakeDamage(int damageValue)
+    {
+        this.hitPoints -= damageValue;
         if (hitPoints <= 0)
         {
             Die();
-        }
-        else if (this.isAttacking)
-        {
-            Attack();
         }
     }
 
@@ -106,6 +111,7 @@ public class EnemyBaseClass : MonoBehaviour
             target = null;
             isAttacking = false;
             ResumeWalking();
+            attackCountDown = 0f;
             return;
         }
 
@@ -118,7 +124,7 @@ public class EnemyBaseClass : MonoBehaviour
         attackCountDown = attackSpeed;
         #endregion
 
-        target.HitPoints -= damage;
+        target.TakeDamage(damage);
 
     }
 
@@ -149,8 +155,7 @@ public class EnemyBaseClass : MonoBehaviour
     private void EatFood(Food _food)
     {
         asEaten = true;
-        _food.HitPoints -= foodBites;
-        //Debug.Log(_food.HitPoints);
+        _food.TakeDamage(foodBites);
     }
 
 
