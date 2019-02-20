@@ -18,6 +18,11 @@ public class AlexGMTest : MonoBehaviour
     [SerializeField] private int selectedTowerIndex = 0;
     [SerializeField] private int selectedBarrierIndex = 0;
 
+    //Daniel Temporary
+    [SerializeField] private HudManager _hudManagerRef;
+    private int legoTowerIndex = 1;
+    private int soldierTowerIndex = 0;
+
     [SerializeField] private int initialMoney = 100;
     private Money myMoney;
 
@@ -69,6 +74,8 @@ public class AlexGMTest : MonoBehaviour
         HidePlaceHolders();
         selectedTile = null;
         UpdateSelectedTileText();
+
+        _hudManagerRef.DeActivatePanel(_hudManagerRef.storePanel);  //Daniel temporary testing
     }
 
     void ItemSelectionReset()
@@ -84,10 +91,9 @@ public class AlexGMTest : MonoBehaviour
         }
 
         HidePlaceHolders();
-
+        _hudManagerRef.DeActivatePanel(_hudManagerRef.storePanel);  //Daniel temporary testing
         tileSelectionCursor.SetActive(false);
         tileSelectedCursor.SetActive(false);
-
     }
 
     /// <summary>
@@ -108,9 +114,13 @@ public class AlexGMTest : MonoBehaviour
         switch (tile.TileType)
         {
             case TileType.Tower:
+                _hudManagerRef.SetPanel(_hudManagerRef.storePanel);  //Daniel temporary testing
+                _hudManagerRef.Display(listOfTower[selectedTowerIndex].GetComponent<Item>().ItemName, listOfTower[selectedTowerIndex].GetComponent<Item>().ItemDescription, listOfTower[selectedTowerIndex].GetComponent<Item>().Value);  //Daniel Temporary testing
                 ShowItemOnTile(listOfTowerPlaceHolder[selectedTowerIndex], tile);
                 break;
             case TileType.Barrier:
+                _hudManagerRef.SetPanel(_hudManagerRef.storePanel);  //Daniel temporary testing
+                _hudManagerRef.Display(listOfBarrier[selectedBarrierIndex].GetComponent<Item>().ItemName, listOfBarrier[selectedBarrierIndex].GetComponent<Item>().ItemDescription, listOfBarrier[selectedBarrierIndex].GetComponent<Item>().Value);
                 ShowItemOnTile(listOfBarrierPlaceHolder[selectedBarrierIndex], tile);
                 break;
             default:
@@ -220,7 +230,7 @@ public class AlexGMTest : MonoBehaviour
     // to be placed in UI management script
     public void UpdateCashText()
     {
-        UITextCash.text = $"Current Cash: {myMoney.CurrentMoney}";
+        UITextCash.text = $"Money: {myMoney.CurrentMoney}";
     }
 
     // to be placed in UI management script
@@ -251,5 +261,17 @@ public class AlexGMTest : MonoBehaviour
                         );
         PlayerManager.GetInstance().AddPlayer(selectedTile.CurrentItem.GetComponent<Item>());
         HidePlaceHolders();
+    }
+
+    public void StoreButtonPressed()
+    {
+        HidePlaceHolders();
+        ShowItemOnTile(listOfTowerPlaceHolder[selectedTowerIndex], selectedTile);
+        TileSelection(selectedTile);
+    }
+
+    public void SetTowerSelectionIndex(int index)
+    {
+        selectedTowerIndex = index;
     }
 }

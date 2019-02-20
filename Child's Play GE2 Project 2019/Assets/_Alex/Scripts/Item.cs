@@ -6,6 +6,9 @@ public class Item : Player
 {
     [SerializeField] private GameObject rangeGO;
     [SerializeField] private string itemName;
+    [SerializeField, Multiline] private string itemDescription;
+    [SerializeField] private int indexInGM;
+    
 
 
     /// <summary>
@@ -17,6 +20,8 @@ public class Item : Player
     public GameObject RangeGO { get => rangeGO; set => rangeGO = value; }
     public int Value { get => value; set => this.value = value; }
     public string ItemName { get => itemName; }
+    public string ItemDescription { get => itemDescription; private set => itemDescription = value; }
+    public int IndexInGM { get => indexInGM; private set => indexInGM = value; }
 
     // Start is called before the first frame update
     void Awake()
@@ -25,5 +30,8 @@ public class Item : Player
         {
             rangeGO.SetActive(false);
         }
+
+        indexInGM = 0;
+        itemDescription = "This is a placeholder description";
     }
 }

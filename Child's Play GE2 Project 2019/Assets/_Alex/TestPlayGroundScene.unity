@@ -322,7 +322,7 @@ PrefabInstance:
     - target: {fileID: 1531451963985151308, guid: b6c0b732c26e80148b88be8f49c90d9a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1531451963985151308, guid: b6c0b732c26e80148b88be8f49c90d9a,
         type: 3}
@@ -512,7 +512,7 @@ PrefabInstance:
     - target: {fileID: 6906098084253094380, guid: eb5b3cad99a12b243927e2e06bbef69c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6906098084253094380, guid: eb5b3cad99a12b243927e2e06bbef69c,
         type: 3}
@@ -689,7 +689,7 @@ Transform:
   m_Children:
   - {fileID: 7431685631155721243}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &758355591 stripped
 GameObject:
@@ -912,7 +912,7 @@ PrefabInstance:
     - target: {fileID: 5192044354230564299, guid: c2587c1d7b2b0aa4f8a7254ded612404,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5192044354230564299, guid: c2587c1d7b2b0aa4f8a7254ded612404,
         type: 3}
@@ -998,6 +998,10 @@ PrefabInstance:
     - target: {fileID: 100058, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
       propertyPath: m_Name
       value: ToySoldierM16
+      objectReference: {fileID: 0}
+    - target: {fileID: 100058, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400058, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1138,7 +1142,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 34.05, y: -61.42, z: 0}
 --- !u!114 &1076236423
 MonoBehaviour:
@@ -1273,6 +1277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToySoldierM16Standing (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100058, guid: 229b1c34487c44d47b2c8a40c14347a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400058, guid: 229b1c34487c44d47b2c8a40c14347a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37.543472
@@ -1375,7 +1383,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1363561909 stripped
 MonoBehaviour:
@@ -1708,7 +1716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 52083794, guid: ea02d184623424c40a72e6e04e55cfea, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 52083794, guid: ea02d184623424c40a72e6e04e55cfea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1908,6 +1916,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToySoldierAk47
       objectReference: {fileID: 0}
+    - target: {fileID: 100058, guid: d011889a0cf012f4497d318db9a382b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400058, guid: d011889a0cf012f4497d318db9a382b3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 34.2383
@@ -2033,7 +2045,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &2115786000
 GameObject:
