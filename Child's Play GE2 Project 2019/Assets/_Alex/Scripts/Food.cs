@@ -10,6 +10,8 @@ public class Food : Player
     private int initialHP;
     private int currentPercentage = 100;
 
+    public int CurrentPercentage { get => currentPercentage; private set => currentPercentage = value; } 
+
     void Start()
     {
         initialHP = HitPoints;
