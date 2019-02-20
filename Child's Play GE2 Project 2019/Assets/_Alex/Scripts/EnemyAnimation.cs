@@ -6,7 +6,8 @@ using UnityEngine;
 public class EnemyAnimation : MonoBehaviour
 {
     private Animator _animator;
-    private float animSpeedRandom = 1;
+    [SerializeField,Range(0.21f,2.0f)] private float animSpeedRandom = 1;
+    private const float randSpeedBound = 0.2f;
 
     private void Awake()
     {
@@ -16,7 +17,7 @@ public class EnemyAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _animator.SetFloat("Speed", Random.Range(0.8f, 1.2f));
+        _animator.SetFloat("Speed", Random.Range(animSpeedRandom - randSpeedBound, animSpeedRandom + randSpeedBound));
     }
 
     // Update is called once per frame

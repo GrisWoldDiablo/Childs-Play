@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
+
     [SerializeField]
     private Transform towerTarget;
 
@@ -16,7 +17,8 @@ public class Tower : MonoBehaviour
 
 
     //FIRING PART
-
+    [Header("Tower Option")]
+    [SerializeField] private bool LookAtTarget = false;
     private GameObject projectilePrefab;
     [SerializeField]
     private Transform projectileSpawnPoint;
@@ -86,11 +88,17 @@ public class Tower : MonoBehaviour
         }
 
         //Target Lock
-        Vector3 direction = towerTarget.position - this.transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        Vector3 rotation = Quaternion.Lerp(pivot.rotation, lookRotation, rotationSpeed * Time.deltaTime).eulerAngles;
-        pivot.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-
+        if (LookAtTarget)
+        {
+            pivot.LookAt(towerTarget);
+        }
+        else
+        {
+            Vector3 direction = towerTarget.position - this.transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            Vector3 rotation = Quaternion.Lerp(pivot.rotation, lookRotation, rotationSpeed * Time.deltaTime).eulerAngles;
+            pivot.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        }
         //FIRING PART
         if(CountdownToNextFire <= 0f)
         {

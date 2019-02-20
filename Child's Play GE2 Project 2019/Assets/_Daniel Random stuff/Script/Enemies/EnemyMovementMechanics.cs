@@ -64,7 +64,7 @@ public class EnemyMovementMechanics : MonoBehaviour
             this._navMeshAgent = GetComponent<NavMeshAgent>();
             this._myRigidBody = GetComponent<Rigidbody>();
             _myRigidBody.isKinematic = true;
-            this._navMeshAgent.speed = 5;
+            //this._navMeshAgent.speed = 5;
             //this._navMeshAgent.velocity = new Vector3 (0, 0, 0);
             this._navMeshAgent.angularSpeed = 1200;
             this._navMeshAgent.acceleration = 20;

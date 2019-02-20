@@ -62,7 +62,7 @@ public class AlexGMTest : MonoBehaviour
     /// hide all placeholder items
     /// and call the method to update the selected tile text.
     /// </summary>
-    private void DeselectTile()
+    public void DeselectTile()
     {
         tileSelectedCursor.SetActive(false);
 

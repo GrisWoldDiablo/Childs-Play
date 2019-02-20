@@ -183,9 +183,16 @@ public class ItemTile : MonoBehaviour
             return;
         }
         
-        if (Input.GetButton("Fire1") && tileType != TileType.Unavailable)
+        if (Input.GetButton("Fire1"))
         {
-            alexGMTestCode.TileSelection(this);
+            if (tileType != TileType.Unavailable)
+            {
+                alexGMTestCode.TileSelection(this);
+            }
+            else
+            {
+                alexGMTestCode.DeselectTile();
+            }
         }
     }
 

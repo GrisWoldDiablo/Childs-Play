@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7305829352068478495}
   - component: {fileID: 4384572138594503677}
   m_Layer: 0
-  m_Name: NerfBall
+  m_Name: Nerf Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   AoERadius: 0
   impactVFX: {fileID: 0}
   targetLocation: {x: 0, y: 0, z: 0}
+  damageValue: 10
 --- !u!135 &4384572138594503677
 SphereCollider:
   m_ObjectHideFlags: 0
