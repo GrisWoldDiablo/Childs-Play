@@ -61,7 +61,9 @@ public class Projectile : MonoBehaviour
         //this.transform.LookAt(direction); // UNCOMMENT IF you want missiles that seek target
     }
 
-    public void HitTarget(Collider other)
+    public void 
+        
+        HitTarget(Collider other)
     {
         //TODO: spawn effect
         //TODO: destroy effect
