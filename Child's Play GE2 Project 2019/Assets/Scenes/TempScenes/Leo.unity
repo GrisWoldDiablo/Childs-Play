@@ -2584,6 +2584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1313965503}
   - component: {fileID: 1313965502}
+  - component: {fileID: 1313965504}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -2598,7 +2599,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313965501}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87f636469a128464ea4a9c1a9d680a12, type: 3}
   m_Name: 
@@ -2621,6 +2622,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1313965504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313965501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda94f3d632cc3b45add6c1c90bb9b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waveSetup:
+  - {fileID: 11400000, guid: a9583f95f4fedfc42ab97fa39f0b1141, type: 2}
+  - {fileID: 11400000, guid: c6c9e8b8931335744afdd4c0eb382d1c, type: 2}
+  - {fileID: 11400000, guid: a9583f95f4fedfc42ab97fa39f0b1141, type: 2}
+  spawnPoint: {fileID: 1537552913}
+  timeBetweenWaves: 5
 --- !u!1 &1367577741
 GameObject:
   m_ObjectHideFlags: 0

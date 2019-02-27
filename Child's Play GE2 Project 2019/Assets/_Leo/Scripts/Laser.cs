@@ -31,19 +31,19 @@ public class Laser : Projectile
         
     }
 
-    //private new void Update()
-    //{
-    //    if(_tower.GetTowerTarget == null )
-    //    {
-    //        _lineRendererComponent.enabled = false;
-    //        this.impactVFX.Stop();
-    //        this._lightEffect.enabled = false;
+    private new void Update()
+    {
+        if (_tower.GetTowerTarget == null)
+        {
+            _lineRendererComponent.enabled = false;
+            this.impactVFX.Stop();
+            this._lightEffect.enabled = false;
 
-    //        _vfxBeam.Stop();
-    //        //_vfxCloud.Stop();
-    //    }
-        
-    //}
+            _vfxBeam.Stop();
+            //_vfxCloud.Stop();
+        }
+
+    }
 
     public void FireLaserBeam()
     {
@@ -62,11 +62,12 @@ public class Laser : Projectile
 
         Vector3 direction = _tower.GetProjectileSpawnPoint.position - _tower.GetTowerTarget.position;
 
-        this.impactVFX.transform.position = _tower.GetTowerTarget.position + direction.normalized *.5f;
+        this.impactVFX.transform.position = _tower.GetTowerTarget.position + direction.normalized;
 
         this.impactVFX.transform.rotation = Quaternion.LookRotation(direction);
 
-        //this._vfxCloud.transform.position = _tower.GetTowerTarget.position + direction.normalized * .5f;
+
+        //this._vfxCloud.transform.position = _tower.GetTowerTarget.position + direction.normalized;
 
         _vfxBeam.Play();
 
