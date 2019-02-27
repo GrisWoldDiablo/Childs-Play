@@ -107,27 +107,33 @@ public class Tower : MonoBehaviour
         }
         //FIRING PART
 
-        if (CountdownToNextFire <= 0f)
+        if (this.GetComponent<Laser>() == null)
         {
-            Shoot();
-            CountdownToNextFire = 1f / rateOfFire;
+            if (CountdownToNextFire <= 0f)
+            {
+                Shoot();
+                CountdownToNextFire = 1f / rateOfFire;
+            }
         }
-
-        ShootLaser();
+        else
+        {
+            ShootLaser();
+        }
+        
 
         //CountdownToNextFire -= Time.deltaTime; // move to top of method so the countdown continues even if the tower has no target.
     }
 
     private void Shoot()
     {
-        if(this.GetComponent<Laser>() != null)
-        {
-            Laser laser = this.GetComponent<Laser>();
+        //if(this.GetComponent<Laser>() != null)
+        //{
+        //    Laser laser = this.GetComponent<Laser>();
 
-            laser.FireLaserBeam();
+        //    laser.FireLaserBeam();
 
-            return;
-        }
+        //    return;
+        //}
 
         GameObject projectileGameObject = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
 
@@ -146,12 +152,14 @@ public class Tower : MonoBehaviour
 
     private void ShootLaser()
     {
-        if (this.GetComponent<Laser>() != null)
-        {
+        //if (this.GetComponent<Laser>() != null)
+        //{
+
             Laser laser = this.GetComponent<Laser>();
 
-            laser.FireLaserBeam();            
-        }
+            laser.FireLaserBeam();
+            //return;
+        //}
         //return;
     }
 

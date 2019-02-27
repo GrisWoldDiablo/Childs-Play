@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     protected float AoERadius = 0.0f;
     [SerializeField]
-    protected GameObject impactVFX;
+    protected ParticleSystem impactVFX;
 
     [SerializeField] protected Vector3 targetLocation;
     protected Transform _target;
