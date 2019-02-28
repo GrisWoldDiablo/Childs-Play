@@ -9,7 +9,6 @@ public class StoreButton : MonoBehaviour
 
     private int _myIndex;
 
- 
     public int MyIndex { get => _myIndex; set => _myIndex = value; }
 
     // Start is called before the first frame update
@@ -24,6 +23,4 @@ public class StoreButton : MonoBehaviour
     {
         
     }
-
- 
 }

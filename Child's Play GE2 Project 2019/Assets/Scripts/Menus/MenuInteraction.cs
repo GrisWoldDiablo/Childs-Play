@@ -16,9 +16,10 @@ public class MenuInteraction : MonoBehaviour {
     [SerializeField] private Selectable[] defaultSelections;
     public Selectable[] DefaultSelections { get { return defaultSelections; } }
 
+
     //placeholder testing variables
-    private int hudIndex = 0;
-    private int storeIndex = 5;
+    public readonly int defaultIndex = 0;
+    public readonly int storeIndex = 4;
 
 
     private int currentPanel;
@@ -27,7 +28,7 @@ public class MenuInteraction : MonoBehaviour {
     // Use this for initialization
     void Start () {
         selectables = Selectable.allSelectables;
-        PanelToggle(hudIndex);
+        PanelToggle(defaultIndex);
         //GetLeaderboard();
     }
 	
