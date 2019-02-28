@@ -8,7 +8,13 @@ public class HudComponent : MonoBehaviour
     [SerializeField] private GameObject food;
     [SerializeField] private Text _foodTxt;
     [SerializeField] private Image fillerImage;
-    private float _foodRemaining;
+    [SerializeField] private Text moneyTxt;
+    [SerializeField] private Text foodPercentageTxt;
+    private float foodRemaining;
+
+    public Text MoneyTxt { get => moneyTxt; set => moneyTxt = value; }
+    public Text FoodPercentageTxt { get => foodPercentageTxt; set => foodPercentageTxt = value; }
+    public float FoodRemaining { get => foodRemaining; set => foodRemaining = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -19,8 +25,8 @@ public class HudComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-          _foodRemaining = (float)food.GetComponent<Food>().HitPoints * 0.01f;
-          fillerImage.fillAmount = (float)_foodRemaining;    
-          Debug.Log("Current food percentage: " + _foodRemaining);
+          foodRemaining = (float)food.GetComponent<Food>().HitPoints;
+          fillerImage.fillAmount = (float)foodRemaining * 0.01f;    
+          Debug.Log("Current food percentage: " + foodRemaining * 0.01f);
     }
 }

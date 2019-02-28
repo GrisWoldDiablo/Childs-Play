@@ -13,7 +13,7 @@ public class HudManager : MonoBehaviour
     [SerializeField] private MenuInteraction _menuInteractionRef;
     private AlexGMTest _gmRef;
     private PlayerManager _playerManagerRef;
-
+    private HudComponent _hudComponentRef;
     private InfoPanel infoPanelScript;
 
     //Hud Properties
@@ -21,13 +21,20 @@ public class HudManager : MonoBehaviour
     void Start()
     {
         infoPanelScript = infoPanel.gameObject.GetComponent<InfoPanel>();
+        _hudComponentRef = hudPanel.GetComponent<HudComponent>();
         _gmRef = GameObject.Find("AlexGMTest").GetComponent<AlexGMTest>();
         _playerManagerRef = PlayerManager.GetInstance();
     }
 
     void Update()
     {
-        
+        HudUpdate();
+    }
+
+    public void HudUpdate()
+    {
+        _hudComponentRef.MoneyTxt.text = $"{_gmRef.MyMoney.CurrentMoney}";
+        _hudComponentRef.FoodPercentageTxt.text = $"{_hudComponentRef.FoodRemaining} %";
     }
 
     public void TowerSelect(StoreButton pressed)
@@ -41,21 +48,6 @@ public class HudManager : MonoBehaviour
         var _obj = obj.GetComponent<Item>();
         infoPanelScript._name.text = _obj.name;
         infoPanelScript._description.text = _obj.ItemDescription;
-        infoPanelScript._cost.text = "Cost: " + _obj.Value.ToString();
-    }
-
-    public void Display(string name, string desc, int value)
-    {
-
-    }
-
-    public void SetPanel(GameObject panel)
-    {
-        panel.SetActive(true);   
-    }
-
-    public void DeActivatePanel(GameObject panel)
-    {
-        panel.SetActive(false);
+        infoPanelScript._cost.text = _obj.Value.ToString();
     }
 }
