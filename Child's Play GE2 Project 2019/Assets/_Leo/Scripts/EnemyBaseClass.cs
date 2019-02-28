@@ -27,6 +27,22 @@ public class EnemyBaseClass : MonoBehaviour
     public int HitPoints { get => hitPoints; set => hitPoints = value; }
     public bool IsDying { get => isDying; }
 
+
+    [SerializeField] private int currentDamageOvertime;
+
+    public IEnumerator DamageOverTime(int damageValue, float tickSpeed, float lastTime)
+    {
+        float currentTime = Time.time;
+        float endTime = currentTime + lastTime;
+        while (currentTime <= endTime)
+        {
+            Debug.Log($"{gameObject.name} Take DOT{damageValue}");
+            this.TakeDamage(damageValue);
+            yield return new WaitForSeconds(tickSpeed);
+            currentTime = Time.time;
+        }
+    }
+
     private void Awake()
     {
         _enemyAnimation = GetComponent<EnemyAnimation>();

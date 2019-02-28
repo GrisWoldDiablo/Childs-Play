@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 5220411900073910474}
   - component: {fileID: 6687242804012111475}
   m_Layer: 2
-  m_Name: MagnifyingGlass
+  m_Name: Magnifying Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -326,8 +326,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d697b093a99166d47bb43bf7488525b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitPoints: 100
   rangeGO: {fileID: 370954401477334062}
   itemName: Magnifying Glass
+  itemDescription: 
+  indexInGM: 0
   value: 1
 --- !u!1 &7945094993569558258
 GameObject:

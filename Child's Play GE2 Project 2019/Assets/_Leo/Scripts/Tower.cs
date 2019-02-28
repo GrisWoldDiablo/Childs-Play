@@ -31,6 +31,12 @@ public class Tower : MonoBehaviour
     [SerializeField]
     private Tower_SO tower_SO;
 
+    [Header("Tower VFX")]
+    [SerializeField] private Light _lightEffect;
+    [SerializeField] private ParticleSystem _vfxLaser;
+    [SerializeField] private LineRenderer _lineRendererComponent;
+
+
     public Transform GetProjectileSpawnPoint
     { get { return projectileSpawnPoint; } }
 
@@ -39,6 +45,13 @@ public class Tower : MonoBehaviour
 
     private void Start()
     {
+        if (tower_SO.towerType == ProjectTileType.LASER)
+        {
+            _lightEffect = GetComponentInChildren<Light>();
+            _vfxLaser = GetComponentInChildren<ParticleSystem>();
+            _lineRendererComponent = GetComponentInChildren<LineRenderer>();
+        }
+
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
 
         SO_Reference();
@@ -48,7 +61,7 @@ public class Tower : MonoBehaviour
     {         
          range = tower_SO.range;
          rateOfFire = tower_SO.rateOfFire;
-        innerRadius = tower_SO.innerRadius;
+         innerRadius = tower_SO.innerRadius;
          projectilePrefab = tower_SO.projectilePrefab;
     }
 
@@ -90,6 +103,7 @@ public class Tower : MonoBehaviour
         CountdownToNextFire -= Time.deltaTime;
         if (towerTarget == null)
         {
+            StopShooting();
             return;
         }
 
@@ -107,19 +121,18 @@ public class Tower : MonoBehaviour
         }
         //FIRING PART
 
-        if (this.GetComponent<Laser>() == null)
+
+        if (CountdownToNextFire <= 0f)
         {
-            if (CountdownToNextFire <= 0f)
-            {
-                Shoot();
-                CountdownToNextFire = 1f / rateOfFire;
-            }
+            Shoot();
+            CountdownToNextFire = 1f / rateOfFire;
         }
-        else
+        if (tower_SO.towerType == ProjectTileType.LASER)
         {
-            ShootLaser();
+            //ShootLaser();
+            FireLaserBeam();
         }
-        
+
 
         //CountdownToNextFire -= Time.deltaTime; // move to top of method so the countdown continues even if the tower has no target.
     }
@@ -143,24 +156,28 @@ public class Tower : MonoBehaviour
         {
             projectile.GetComponent<Missile>().AssignTarget(towerTarget);
         }
-
-        if(projectile is Bullet)
+        else if(projectile is Bullet)
         {
             projectile.GetComponent<Bullet>().AssignTarget(towerTarget);
-        }        
+        }
+        else if (projectile is Laser)
+        {
+            projectile.GetComponent<Laser>().AssignTarget(towerTarget);
+        }
     }
 
     private void ShootLaser()
     {
-        //if (this.GetComponent<Laser>() != null)
-        //{
+        FireLaserBeam();
+        ////if (this.GetComponent<Laser>() != null)
+        ////{
 
-            Laser laser = this.GetComponent<Laser>();
+        //    Laser laser = this.GetComponent<Laser>();
 
-            laser.FireLaserBeam();
-            //return;
-        //}
-        //return;
+        //    laser.FireLaserBeam();
+        //    //return;
+        ////}
+        ////return;
     }
 
     private void OnDrawGizmosSelected()
@@ -168,5 +185,40 @@ public class Tower : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(this.transform.position, range);
         Gizmos.DrawWireSphere(this.transform.position, innerRadius);        
+    }
+
+    public void FireLaserBeam()
+    {
+        //TODO: DAMAGE INPUT
+
+
+        //GRAPHICS PART
+        _lineRendererComponent.enabled = true;
+
+        _lineRendererComponent.SetPosition(0, this.GetProjectileSpawnPoint.position);
+        _lineRendererComponent.SetPosition(1, this.GetTowerTarget.position);
+
+        this._vfxLaser.Play();
+        this._lightEffect.enabled = true;
+        Vector3 direction = this.GetProjectileSpawnPoint.position - this.GetTowerTarget.position;
+        this._vfxLaser.transform.position = this.GetTowerTarget.position + direction.normalized;
+        this._vfxLaser.transform.rotation = Quaternion.LookRotation(direction);
+
+
+        //this._vfxCloud.transform.position = _tower.GetTowerTarget.position + direction.normalized;
+
+        //_vfxLaser.Play();
+
+        //_vfxLaser.transform.position = this.GetProjectileSpawnPoint.position;
+    }
+
+    public void StopShooting()
+    {
+        //_vfxLaser.Stop();
+
+        _lineRendererComponent.enabled = false;
+        this._vfxLaser.Stop();
+        this._lightEffect.enabled = false;
+
     }
 }

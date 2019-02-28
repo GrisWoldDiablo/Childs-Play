@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+#if UNITY_EDITOR
+    [Header("DEBUG")]
+    public bool disableMouseMovement = false;
+#endif
+
     //Zoom Variables
     public float zoomSpeed = 4f;
     public float maxZoom = 10f;
@@ -22,6 +27,7 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     public bool isLocked = true;
     private Vector3 _cameraFreeMovement;
+    [SerializeField]
     private float _cameraTranslationSpeed = 5f;
 
     //Camera Height Adjustments
@@ -66,8 +72,15 @@ public class CameraController : MonoBehaviour
         YawCorrection();
         CameraZoomAndRotationWhenLocked();
         CameraMovementFreeModeWithKeyboard();
-        CameraMovementFreeModeWithMouse();
-        if (Input.GetButtonDown("CameraLockMode"))
+#if UNITY_EDITOR
+        if (!disableMouseMovement)
+        {
+#endif
+            CameraMovementFreeModeWithMouse();
+#if UNITY_EDITOR
+        }
+#endif
+                if (Input.GetButtonDown("CameraLockMode"))
         {
             CameraLockerButton();
         }
@@ -166,15 +179,15 @@ public class CameraController : MonoBehaviour
             _currentZoom += Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
             _currentZoom = Mathf.Clamp(_currentZoom, minZoom, maxZoom);
 
-            //lerpHeight = _currentZoom;
-            //float difference = 0f;
+            lerpHeight = _currentZoom;
+            float difference = 0f;
 
-            //if(DistanceToTheGround() != lerpHeight)
-            //{
-            //    difference = lerpHeight - DistanceToTheGround();
-            //}
-            //
-            //this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(this.transform.position.x, lerpHeight + difference, this.transform.position.z), Time.deltaTime * 5f);
+            if (DistanceToTheGround() != lerpHeight)
+            {
+                difference = lerpHeight - DistanceToTheGround();
+            }
+
+            this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(this.transform.position.x, lerpHeight + difference, this.transform.position.z), Time.deltaTime * 5f);
         }
     }    
 

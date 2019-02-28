@@ -61,9 +61,7 @@ public class Projectile : MonoBehaviour
         //this.transform.LookAt(direction); // UNCOMMENT IF you want missiles that seek target
     }
 
-    public void 
-        
-        HitTarget(Collider other)
+    public void HitTarget(Collider other)
     {
         //TODO: spawn effect
         //TODO: destroy effect
@@ -93,20 +91,12 @@ public class Projectile : MonoBehaviour
         {
             if (col.tag == "Enemy")
             {
-                //if (AoERadius > 0f)
-                //{
-                //    Explode();
-                //}
-                //else
-                //{
-                //    HitEnemy();
-                //}
                 Damage(col.transform);
             }
         }
     }
 
-    void Damage(Transform enemy)
+    public virtual void Damage(Transform enemy)
     {
         enemy.GetComponent<Enemy>().TakeDamage(damageValue);
         //Debug.Log($"{enemy.GetInstanceID()} : {enemy.GetComponent<Enemy>().HitPoints}");
