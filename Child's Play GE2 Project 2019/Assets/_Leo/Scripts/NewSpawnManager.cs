@@ -5,55 +5,47 @@ using UnityEngine;
 public class NewSpawnManager : MonoBehaviour
 {
     [SerializeField]
-    private WaveSetup_SO[] _waveSetup;
-
-    //public Transform enemyTypeAPrefab;
-    //public Transform enemyTypeBPrefab;
+    private WaveSetup_SO[] _waveSetup;    
 
     public Transform spawnPoint;
 
     public float timeBetweenWaves = 5f;
+        
+    private float _counterToNextWave;
 
-    private float _countdownToNextWave;
 
     private int _waveIndex = 0;
 
     private bool _startNewWave = false;
+    private bool _startCounter = false;
     
+    void Start()
+    {
+        _startNewWave = true;        
+    }
 
     // Update is called once per frame
     void Update()
     {
-        //if (_countdownToNextWave <= 0f)
-        //{
-        //    StartCoroutine(WaveSpawner());
-        //    _countdownToNextWave = timeBetweenWaves;
-        //}
-
-        //_countdownToNextWave -= Time.deltaTime;
-
-        if (_startNewWave)//(_countdownToNextWave <= 0f)
+        if (_startNewWave)
         {
             StartCoroutine(WaveSpawner());
-            //_countdownToNextWave = int.MaxValue;
+            
             _startNewWave = false;
+            
         }
-        //else if(_countdownToNextWave == timeBetweenWaves)   
-        //{
-        //    _countdownToNextWave -= Time.deltaTime;
-        //}
-        
-
-        //_countdownToNextWave = Mathf.Clamp(_countdownToNextWave, 0f, Mathf.Infinity);
+        if(_startCounter)
+        {
+            _counterToNextWave += Time.deltaTime;
+            if(_counterToNextWave >= timeBetweenWaves)
+            {
+                _startNewWave = true;
+                _startCounter = false;
+            }
+        }
 
     }
 
-    void Start()
-    {
-        _startNewWave = true;
-        _countdownToNextWave = 0f;
-        //StartCoroutine(WaveSpawner());
-    }
 
     IEnumerator WaveSpawner()
     {        
@@ -62,10 +54,8 @@ public class NewSpawnManager : MonoBehaviour
             SpawnEnemy(_waveSetup[_waveIndex].enemy);
             yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave
         }
-        //yield return new WaitForSeconds(timeBetweenWaves);
-        _waveIndex++;
-
         
+        _waveIndex++;
 
         if(_waveIndex == _waveSetup.Length)
         {
@@ -74,13 +64,8 @@ public class NewSpawnManager : MonoBehaviour
             this.enabled = false;
         }
 
-
-
-        //StartCoroutine(WaveSpawner());
-        //_countdownToNextWave = timeBetweenWaves;
-        //_startNewWave = true;
-        yield return new WaitForSeconds(timeBetweenWaves);
-        _startNewWave = true;
+        _counterToNextWave = 0f;
+        _startCounter = true;        
     }
 
     void SpawnEnemy(GameObject enemyToSpawn)
@@ -88,15 +73,5 @@ public class NewSpawnManager : MonoBehaviour
         Instantiate(enemyToSpawn, spawnPoint.position, spawnPoint.rotation);
     }
 
-    IEnumerator TimeBetweenWavesCountdown()
-    {
-        _countdownToNextWave = 1 * Time.deltaTime;
-        yield return new WaitForSeconds(1);
-        if (_countdownToNextWave == timeBetweenWaves)
-        {
-
-        }
-        
-
-    }
+    
 }
