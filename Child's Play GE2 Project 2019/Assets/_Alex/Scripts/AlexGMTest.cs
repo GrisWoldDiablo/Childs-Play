@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class AlexGMTest : MonoBehaviour
 {
     //[SerializeField] private float currentcash = 5;
+    [SerializeField] private MenuInteraction _menuInteractionRef;
     [SerializeField] private GameObject tileSelectionCursor;
     [SerializeField] private GameObject tileSelectedCursor;
     [SerializeField] private GameObject[] listOfTower;
@@ -75,7 +76,7 @@ public class AlexGMTest : MonoBehaviour
         selectedTile = null;
         UpdateSelectedTileText();
 
-        _hudManagerRef.DeActivatePanel(_hudManagerRef.storePanel);  //Daniel temporary testing
+        PanelSelection(_menuInteractionRef.defaultIndex);
     }
 
     void ItemSelectionReset()
@@ -91,7 +92,7 @@ public class AlexGMTest : MonoBehaviour
         }
 
         HidePlaceHolders();
-        _hudManagerRef.DeActivatePanel(_hudManagerRef.storePanel);  //Daniel temporary testing
+        PanelSelection(_menuInteractionRef.defaultIndex); //Daniel temporary testing
         tileSelectionCursor.SetActive(false);
         tileSelectedCursor.SetActive(false);
     }
@@ -108,19 +109,21 @@ public class AlexGMTest : MonoBehaviour
         UpdateSelectedTileText();
         if (tile.CurrentItem != null)
         {
+             PanelSelection(_menuInteractionRef.storeIndex);  //Daniel temporary testing
+            _hudManagerRef.Display(listOfTower[SelectedTowerIndex]);  //Daniel Temporary testing
             return;
         }
 
         switch (tile.TileType)
         {
             case TileType.Tower:
-                _hudManagerRef.SetPanel(_hudManagerRef.storePanel);  //Daniel temporary testing
-                _hudManagerRef.Display(listOfTower[selectedTowerIndex].GetComponent<Item>().ItemName, listOfTower[selectedTowerIndex].GetComponent<Item>().ItemDescription, listOfTower[selectedTowerIndex].GetComponent<Item>().Value);  //Daniel Temporary testing
+                 PanelSelection(_menuInteractionRef.storeIndex);  //Daniel temporary testing
+                _hudManagerRef.Display(listOfTower[selectedTowerIndex]);  //Daniel Temporary testing
                 ShowItemOnTile(listOfTowerPlaceHolder[selectedTowerIndex], tile);
                 break;
             case TileType.Barrier:
-                _hudManagerRef.SetPanel(_hudManagerRef.storePanel);  //Daniel temporary testing
-                _hudManagerRef.Display(listOfBarrier[selectedBarrierIndex].GetComponent<Item>().ItemName, listOfBarrier[selectedBarrierIndex].GetComponent<Item>().ItemDescription, listOfBarrier[selectedBarrierIndex].GetComponent<Item>().Value);
+                PanelSelection(_menuInteractionRef.storeIndex); //Daniel temporary testing
+                _hudManagerRef.Display(listOfBarrier[selectedBarrierIndex]);
                 ShowItemOnTile(listOfBarrierPlaceHolder[selectedBarrierIndex], tile);
                 break;
             default:
@@ -273,5 +276,10 @@ public class AlexGMTest : MonoBehaviour
     public void SetTowerSelectionIndex(int index)
     {
         selectedTowerIndex = index;
+    }
+
+    public void PanelSelection(int index)
+    {
+        _menuInteractionRef.PanelToggle(index);
     }
 }
