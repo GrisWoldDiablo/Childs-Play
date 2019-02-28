@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NewSpawnManager : MonoBehaviour
 {
     [SerializeField]
-    private WaveSetup_SO[] _waveSetup;    
+    private WaveSetup_SO[] _waveSetup;
+    [SerializeField]
+    private Text _waveCountDown;
 
     public Transform spawnPoint;
 
@@ -36,13 +39,18 @@ public class NewSpawnManager : MonoBehaviour
         }
         if(_startCounter)
         {
-            _counterToNextWave += Time.deltaTime;
-            if(_counterToNextWave >= timeBetweenWaves)
+            //_counterToNextWave += Time.deltaTime;
+            _counterToNextWave -= Time.deltaTime;
+            if(_counterToNextWave <= 0)
             {
                 _startNewWave = true;
                 _startCounter = false;
             }
         }
+
+        _counterToNextWave = Mathf.Clamp(_counterToNextWave, 0f, Mathf.Infinity);
+
+        _waveCountDown.text = string.Format("{0:00.00}", _counterToNextWave);
 
     }
 
@@ -64,7 +72,8 @@ public class NewSpawnManager : MonoBehaviour
             this.enabled = false;
         }
 
-        _counterToNextWave = 0f;
+        //_counterToNextWave = 0f;
+        _counterToNextWave = timeBetweenWaves;
         _startCounter = true;        
     }
 
