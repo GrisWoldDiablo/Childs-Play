@@ -31,6 +31,12 @@ public class Tower : MonoBehaviour
     [SerializeField]
     private Tower_SO tower_SO;
 
+    public Transform GetProjectileSpawnPoint
+    { get { return projectileSpawnPoint; } }
+
+    public Transform GetTowerTarget
+    { get { return towerTarget; } }
+
     private void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
@@ -100,17 +106,35 @@ public class Tower : MonoBehaviour
             pivot.rotation = Quaternion.Euler(0f, rotation.y, 0f);
         }
         //FIRING PART
-        if(CountdownToNextFire <= 0f)
+
+        if (this.GetComponent<Laser>() == null)
         {
-            Shoot();
-            CountdownToNextFire = 1f / rateOfFire;
+            if (CountdownToNextFire <= 0f)
+            {
+                Shoot();
+                CountdownToNextFire = 1f / rateOfFire;
+            }
+        }
+        else
+        {
+            ShootLaser();
         }
         
+
         //CountdownToNextFire -= Time.deltaTime; // move to top of method so the countdown continues even if the tower has no target.
     }
 
     private void Shoot()
     {
+        //if(this.GetComponent<Laser>() != null)
+        //{
+        //    Laser laser = this.GetComponent<Laser>();
+
+        //    laser.FireLaserBeam();
+
+        //    return;
+        //}
+
         GameObject projectileGameObject = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
 
         Projectile projectile = projectileGameObject.GetComponent<Projectile>();
@@ -124,6 +148,19 @@ public class Tower : MonoBehaviour
         {
             projectile.GetComponent<Bullet>().AssignTarget(towerTarget);
         }        
+    }
+
+    private void ShootLaser()
+    {
+        //if (this.GetComponent<Laser>() != null)
+        //{
+
+            Laser laser = this.GetComponent<Laser>();
+
+            laser.FireLaserBeam();
+            //return;
+        //}
+        //return;
     }
 
     private void OnDrawGizmosSelected()

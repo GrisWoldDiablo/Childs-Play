@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     protected float AoERadius = 0.0f;
     [SerializeField]
-    protected GameObject impactVFX;
+    protected ParticleSystem impactVFX;
 
     [SerializeField] protected Vector3 targetLocation;
     protected Transform _target;
@@ -61,7 +61,9 @@ public class Projectile : MonoBehaviour
         //this.transform.LookAt(direction); // UNCOMMENT IF you want missiles that seek target
     }
 
-    public void HitTarget(Collider other)
+    public void 
+        
+        HitTarget(Collider other)
     {
         //TODO: spawn effect
         //TODO: destroy effect
