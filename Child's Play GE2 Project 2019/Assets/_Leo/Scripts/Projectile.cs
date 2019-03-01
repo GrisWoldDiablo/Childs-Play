@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     protected ParticleSystem impactVFX;
 
     [SerializeField] protected Vector3 targetLocation;
-    protected Transform _target;
+    [SerializeField] protected Transform _target;
     protected Vector3 direction;
     [SerializeField] protected int damageValue = 10;
 
@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour
         }
         else
         {
+            Destroy(_target.gameObject);
             Destroy(this.gameObject);
         }
     }
@@ -43,7 +44,7 @@ public class Projectile : MonoBehaviour
 
     public virtual void HittingTarget()
     {
-        if (_target == null)
+        if (_target == null && this.GetType() != typeof(Laser))
         {
             _target = new GameObject().transform;
             _target.transform.position = targetLocation;

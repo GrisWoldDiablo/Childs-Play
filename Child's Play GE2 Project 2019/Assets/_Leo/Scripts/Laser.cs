@@ -35,6 +35,10 @@ public class Laser : Projectile
     {
         base.Update();
         HittingTarget();
+        if (_target.gameObject == null)
+        {
+            Destroy(this.gameObject);
+        }
         //if (DOTStarted == true)
         //{
         //    if (_coroutine == null || itsTarget.IsDying)
@@ -55,8 +59,14 @@ public class Laser : Projectile
 
     public override void Damage(Transform enemy)
     {
-        StartCoroutine(enemy.GetComponent<Enemy>().DamageOverTime(damageValue, secondPerTick, secondItLast,this.gameObject));
+        StartCoroutine(enemy.GetComponent<Enemy>().DamageOverTime(damageValue, secondPerTick, secondItLast,this));
     }
+
+    public void DestroyLaserGO()
+    {
+        Destroy(this.gameObject);
+    }
+    
     //private new void Update()
     //{
     //if (_tower.GetTowerTarget == null)
