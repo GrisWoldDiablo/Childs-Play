@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 423d8f540af89d640b6e1909bcd02b10, type: 3}
-  m_Name: LaserTower
+  m_Name: AoETower
   m_EditorClassIdentifier: 
-  towerType: 2
-  description: Laser Beamer Tower
-  range: 20
-  bulletPerSecond: 0
-  innerRadius: 0
-  projectilePrefab: {fileID: 6419956677275362294, guid: 3f8809e9b9490e54c8d106338080a53c,
+  towerType: 0
+  description: Missile Tower
+  range: 8
+  bulletPerSecond: 0.25
+  innerRadius: 2
+  projectilePrefab: {fileID: 6888162193381485623, guid: bf6d70a1f56422a4c8fc4ce96ccad7d5,
     type: 3}
