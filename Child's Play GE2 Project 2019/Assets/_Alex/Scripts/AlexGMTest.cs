@@ -29,8 +29,8 @@ public class AlexGMTest : MonoBehaviour
 
     //-//
     // To be placed in UI management script
-    [SerializeField] private Text UITextSelectedTile;
-    [SerializeField] private Text UITextCash;
+    // [SerializeField] private Text UITextSelectedTile;
+    // [SerializeField] private Text UITextCash;
     //-//
 
     private ItemTile selectedTile;
@@ -39,6 +39,7 @@ public class AlexGMTest : MonoBehaviour
 
     public int SelectedTowerIndex { get => selectedTowerIndex; set => selectedTowerIndex = value; }
     public int SelectedBarrierIndex { get => selectedBarrierIndex; set => selectedBarrierIndex = value; }
+    public Money MyMoney { get => myMoney; private set => myMoney = value; }
 
     //All Managers
     //private PlayerManager PlayerManager.GetInstance();
@@ -47,11 +48,11 @@ public class AlexGMTest : MonoBehaviour
     void Start()
     {
         ItemSelectionReset(); // for testing
-        UpdateSelectedTileText();
+        //UpdateSelectedTileText();
 
         myMoney = gameObject.AddComponent<Money>();
         myMoney.CurrentMoney = initialMoney; // This value changes at the beginning of new level.
-        UpdateCashText(); // to be place in UI management script
+        //UpdateCashText(); // to be place in UI management script
     }
 
     // Update is called once per frame
@@ -74,7 +75,7 @@ public class AlexGMTest : MonoBehaviour
 
         HidePlaceHolders();
         selectedTile = null;
-        UpdateSelectedTileText();
+        //UpdateSelectedTileText();
 
         PanelSelection(_menuInteractionRef.defaultIndex);
     }
@@ -106,7 +107,7 @@ public class AlexGMTest : MonoBehaviour
         HidePlaceHolders();
         ShowCursorOnTile(tileSelectedCursor, tile);
         selectedTile = tile;
-        UpdateSelectedTileText();
+        //UpdateSelectedTileText();
         if (tile.CurrentItem != null)
         {
              PanelSelection(_menuInteractionRef.storeIndex);  //Daniel temporary testing
@@ -230,28 +231,28 @@ public class AlexGMTest : MonoBehaviour
         TileSelection(selectedTile);
     }
 
-    // to be placed in UI management script
-    public void UpdateCashText()
-    {
-        UITextCash.text = $"Money: {myMoney.CurrentMoney}";
-    }
+    //// to be placed in UI management script
+    //public void UpdateCashText()
+    //{
+    //    UITextCash.text = $"Money: {myMoney.CurrentMoney}";
+    //}
 
-    // to be placed in UI management script
-    private void UpdateSelectedTileText()
-    {
-        if (UITextSelectedTile != null)
-        {
-            UITextSelectedTile.text = $"Selected Tile: " + (selectedTile != null ? selectedTile.name : "");
-            if (selectedTile != null)
-            {
-                UITextSelectedTile.text += $"\nCurrent Item: " + (selectedTile.CurrentItem != null ? selectedTile.CurrentItem.name : "");
-            }
-            else
-            {
-                UITextSelectedTile.text += $"\nCurrent Item: ";
-            }
-        }
-    }
+    //// to be placed in UI management script
+    //private void UpdateSelectedTileText()
+    //{
+    //    if (UITextSelectedTile != null)
+    //    {
+    //        UITextSelectedTile.text = $"Selected Tile: " + (selectedTile != null ? selectedTile.name : "");
+    //        if (selectedTile != null)
+    //        {
+    //            UITextSelectedTile.text += $"\nCurrent Item: " + (selectedTile.CurrentItem != null ? selectedTile.CurrentItem.name : "");
+    //        }
+    //        else
+    //        {
+    //            UITextSelectedTile.text += $"\nCurrent Item: ";
+    //        }
+    //    }
+    //}
     
     public void InstantiateItemOnTile(GameObject item)
     {
