@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423d8f540af89d640b6e1909bcd02b10, type: 3}
   m_Name: AoETower Test
   m_EditorClassIdentifier: 
+  towerType: 0
   description: Missile Tower
   range: 8
-  rateOfFire: 0.25
+  bulletPerSecond: 0.25
   innerRadius: 2
   projectilePrefab: {fileID: 6888162193381485623, guid: bf6d70a1f56422a4c8fc4ce96ccad7d5,
     type: 3}

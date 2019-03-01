@@ -10,7 +10,7 @@ public class Tower_SO : ScriptableObject
     public ProjectTileType towerType = ProjectTileType.BULLET;
     public string description;
     public float range;
-    public float rateOfFire;
+    public float bulletPerSecond;
     public float innerRadius;
     public GameObject projectilePrefab;
 }

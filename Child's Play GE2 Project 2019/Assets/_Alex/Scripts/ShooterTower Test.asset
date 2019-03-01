@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423d8f540af89d640b6e1909bcd02b10, type: 3}
   m_Name: ShooterTower Test
   m_EditorClassIdentifier: 
+  towerType: 0
   description: Standard Shooter Tower
-  range: 52.7
-  rateOfFire: 14.3
+  range: 52
+  bulletPerSecond: 14
   innerRadius: 0
   projectilePrefab: {fileID: 2436979658458845343, guid: 62549f5041872e44f9cadf1eb2745b16,
     type: 3}

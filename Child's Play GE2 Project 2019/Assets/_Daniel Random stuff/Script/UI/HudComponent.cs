@@ -21,6 +21,6 @@ public class HudComponent : MonoBehaviour
     {
           _foodRemaining = (float)food.GetComponent<Food>().HitPoints * 0.01f;
           fillerImage.fillAmount = (float)_foodRemaining;    
-          Debug.Log("Current food percentage: " + _foodRemaining);
+          //Debug.Log("Current food percentage: " + _foodRemaining);
     }
 }

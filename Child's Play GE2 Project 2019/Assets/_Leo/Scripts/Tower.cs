@@ -60,7 +60,7 @@ public class Tower : MonoBehaviour
     void SO_Reference()
     {         
          range = tower_SO.range;
-         rateOfFire = tower_SO.rateOfFire;
+         rateOfFire = tower_SO.bulletPerSecond;
          innerRadius = tower_SO.innerRadius;
          projectilePrefab = tower_SO.projectilePrefab;
     }
@@ -189,16 +189,16 @@ public class Tower : MonoBehaviour
 
     public void FireLaserBeam()
     {
-        //TODO: DAMAGE INPUT
-
-
         //GRAPHICS PART
         _lineRendererComponent.enabled = true;
 
         _lineRendererComponent.SetPosition(0, this.GetProjectileSpawnPoint.position);
         _lineRendererComponent.SetPosition(1, this.GetTowerTarget.position);
-
-        this._vfxLaser.Play();
+        
+        if (!this._vfxLaser.isPlaying)
+        {
+            this._vfxLaser.Play();
+        }    
         this._lightEffect.enabled = true;
         Vector3 direction = this.GetProjectileSpawnPoint.position - this.GetTowerTarget.position;
         this._vfxLaser.transform.position = this.GetTowerTarget.position + direction.normalized;
@@ -216,9 +216,12 @@ public class Tower : MonoBehaviour
     {
         //_vfxLaser.Stop();
 
-        _lineRendererComponent.enabled = false;
-        this._vfxLaser.Stop();
-        this._lightEffect.enabled = false;
+        if (tower_SO.towerType == ProjectTileType.LASER)
+        {
+            _lineRendererComponent.enabled = false;
+            this._vfxLaser.Stop();
+            this._lightEffect.enabled = false; 
+        }
 
     }
 }

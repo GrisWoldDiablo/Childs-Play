@@ -36,9 +36,11 @@ public class EnemyBaseClass : MonoBehaviour
         float endTime = currentTime + lastTime;
         while (currentTime <= endTime)
         {
-            Debug.Log($"{gameObject.name} Take DOT{damageValue}");
+            Debug.Log($"{gameObject.GetInstanceID()} Take DOT:{damageValue}, HP:{this.hitPoints}");
             this.TakeDamage(damageValue);
+            Debug.Log($"{gameObject.GetInstanceID()} wait for {tickSpeed}");
             yield return new WaitForSeconds(tickSpeed);
+            Debug.Log($"{gameObject.GetInstanceID()} Next Tick");
             currentTime = Time.time;
         }
     }
