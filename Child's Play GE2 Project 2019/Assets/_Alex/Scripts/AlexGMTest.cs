@@ -49,7 +49,7 @@ public class AlexGMTest : MonoBehaviour
     {
         ItemSelectionReset(); // for testing
         //UpdateSelectedTileText();
-
+        Debug.Log("Tower index" +SelectedTowerIndex);
         myMoney = gameObject.AddComponent<Money>();
         myMoney.CurrentMoney = initialMoney; // This value changes at the beginning of new level.
         //UpdateCashText(); // to be place in UI management script

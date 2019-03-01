@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HudComponent : MonoBehaviour
 {
-    [SerializeField] private GameObject food;
+    [SerializeField] private Food food;
     [SerializeField] private Text _foodTxt;
     [SerializeField] private Image fillerImage;
     [SerializeField] private Text moneyTxt;
@@ -19,7 +19,7 @@ public class HudComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
+
     }
 
     // Update is called once per frame
