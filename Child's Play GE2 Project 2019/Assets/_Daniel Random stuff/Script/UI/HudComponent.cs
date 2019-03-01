@@ -25,8 +25,8 @@ public class HudComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-          _foodRemaining = (float)food.GetComponent<Food>().HitPoints * 0.01f;
-          fillerImage.fillAmount = (float)_foodRemaining;    
-          //Debug.Log("Current food percentage: " + _foodRemaining);
+        foodRemaining = food.GetComponent<Food>().CurrentPercentage;
+        fillerImage.fillAmount = 1.0f - foodRemaining / 100.0f;
+        //Debug.Log("Current food percentage: " + _foodRemaining);
     }
 }

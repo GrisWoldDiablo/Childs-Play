@@ -30,19 +30,20 @@ public class EnemyBaseClass : MonoBehaviour
 
     [SerializeField] private int currentDamageOvertime;
 
-    public IEnumerator DamageOverTime(int damageValue, float tickSpeed, float lastTime)
+    public IEnumerator DamageOverTime(int damageValue, float tickSpeed, float lastTime, GameObject incomingGO)
     {
         float currentTime = Time.time;
         float endTime = currentTime + lastTime;
         while (currentTime <= endTime)
         {
-            Debug.Log($"{gameObject.GetInstanceID()} Take DOT:{damageValue}, HP:{this.hitPoints}");
+            //Debug.Log($"{gameObject.GetInstanceID()} Take DOT:{damageValue}, HP:{this.hitPoints}");
             this.TakeDamage(damageValue);
-            Debug.Log($"{gameObject.GetInstanceID()} wait for {tickSpeed}");
+            //Debug.Log($"{gameObject.GetInstanceID()} wait for {tickSpeed}");
             yield return new WaitForSeconds(tickSpeed);
             Debug.Log($"{gameObject.GetInstanceID()} Next Tick");
             currentTime = Time.time;
         }
+        Destroy(incomingGO);
     }
 
     private void Awake()

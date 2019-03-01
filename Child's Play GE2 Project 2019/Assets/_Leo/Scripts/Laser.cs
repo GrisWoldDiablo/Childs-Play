@@ -9,9 +9,9 @@ public class Laser : Projectile
 {
     [SerializeField] private float secondPerTick;
     [SerializeField] private float secondItLast;
-    private bool DOTStarted = false;
-    private Coroutine _coroutine;
-    private Enemy itsTarget;
+    //private bool DOTStarted = false;
+    //private Coroutine _coroutine;
+    //private Enemy itsTarget;
     //[SerializeField]
     //private Light _lightEffect;
 
@@ -35,28 +35,27 @@ public class Laser : Projectile
     {
         base.Update();
         HittingTarget();
-        if (DOTStarted == true)
-        {
-            if (_coroutine == null || itsTarget.IsDying)
-            {
-                Destroy(this.gameObject); 
-            }
-        }
+        //if (DOTStarted == true)
+        //{
+        //    if (_coroutine == null || itsTarget.IsDying)
+        //    {
+        //        Destroy(this.gameObject); 
+        //    }
+        //}
     }
 
     public override void HitTarget(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
-            itsTarget = other.gameObject.GetComponent<Enemy>();
+            //itsTarget = other.gameObject.GetComponent<Enemy>();
             Damage(other.transform);
         }
     }
 
     public override void Damage(Transform enemy)
     {
-        DOTStarted = true;
-        _coroutine = StartCoroutine(enemy.GetComponent<Enemy>().DamageOverTime(damageValue, secondPerTick, secondItLast));
+        StartCoroutine(enemy.GetComponent<Enemy>().DamageOverTime(damageValue, secondPerTick, secondItLast,this.gameObject));
     }
     //private new void Update()
     //{
