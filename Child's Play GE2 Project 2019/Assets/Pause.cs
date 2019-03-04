@@ -21,13 +21,13 @@ public class Pause : MonoBehaviour
 
     }
 
-    public void PauseGame()
+    public static void PauseGame()
     {
         paused = true;
         Time.timeScale = 0;
     }
 
-    public void UnPauseGame()
+    public static void UnPauseGame()
     {
         paused = false;
         Time.timeScale = 1;

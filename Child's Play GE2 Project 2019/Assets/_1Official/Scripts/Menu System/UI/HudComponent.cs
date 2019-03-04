@@ -19,7 +19,7 @@ public class HudComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        foodRemaining = food.GetComponent<Food>().CurrentPercentage;
     }
 
     // Update is called once per frame
@@ -27,6 +27,5 @@ public class HudComponent : MonoBehaviour
     {
         foodRemaining = food.GetComponent<Food>().CurrentPercentage;
         fillerImage.fillAmount = 1.0f - foodRemaining / 100.0f;
-        //Debug.Log("Current food percentage: " + _foodRemaining);
     }
 }

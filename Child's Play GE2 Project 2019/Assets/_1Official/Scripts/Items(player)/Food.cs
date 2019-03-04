@@ -37,4 +37,12 @@ public class Food : Player
         base.Update();
     }
 
+    
+
+    private void OnDestroy()
+    {
+        Debug.Log("I got destroyed");
+        Pause.PauseGame();
+        AlexGMTest.gameOver = true;
+    }
 }

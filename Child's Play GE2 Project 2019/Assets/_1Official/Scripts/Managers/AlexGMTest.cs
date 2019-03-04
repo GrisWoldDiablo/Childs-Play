@@ -23,6 +23,7 @@ public class AlexGMTest : MonoBehaviour
     [SerializeField] private HudManager _hudManagerRef;
     private int legoTowerIndex = 1;
     private int soldierTowerIndex = 0;
+    public static bool gameOver;
 
     [SerializeField] private int initialMoney = 100;
     private Money myMoney;
@@ -47,6 +48,7 @@ public class AlexGMTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameOver = false;
         ItemSelectionReset(); // for testing
         //UpdateSelectedTileText();
         Debug.Log("Tower index" +SelectedTowerIndex);
@@ -62,6 +64,7 @@ public class AlexGMTest : MonoBehaviour
         {
             DeselectTile();
         }
+        Debug.Log("My game over value:" + gameOver);
     }
 
     /// <summary>
