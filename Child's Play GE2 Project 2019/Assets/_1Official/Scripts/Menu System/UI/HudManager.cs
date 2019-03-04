@@ -9,7 +9,7 @@ public class HudManager : MonoBehaviour
     [SerializeField] public GameObject infoPanel;
     [SerializeField] public GameObject storePanel;
     [SerializeField] public GameObject hudPanel;
-    [SerializeField] private EnemyManager _enemyManagerRef;
+    //[SerializeField] private EnemyManager _enemyManagerRef;
     [SerializeField] private MenuInteraction _menuInteractionRef;
     [SerializeField] private AlexGMTest _gmRef;
 
@@ -47,7 +47,7 @@ public class HudManager : MonoBehaviour
     public void Display(GameObject obj)
     {
         var _obj = obj.GetComponent<Item>();
-        infoPanelScript._name.text = _obj.name;
+        infoPanelScript._name.text = _obj.ItemName;
         infoPanelScript._description.text = _obj.ItemDescription;
         infoPanelScript._cost.text = _obj.Value.ToString();
     }
