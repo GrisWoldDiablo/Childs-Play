@@ -24,11 +24,11 @@ public class Projectile : MonoBehaviour
         {
             UpdatTargetLocation();
         }
-        else
-        {
-            Destroy(_target.gameObject);
-            Destroy(this.gameObject);
-        }
+        //else
+        //{
+        //    Destroy(_target.gameObject);
+        //    Destroy(this.gameObject);
+        //}
     }
 
     public void UpdatTargetLocation()
