@@ -305,15 +305,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Menu System PlayScene
       objectReference: {fileID: 0}
-    - target: {fileID: 1346687162, guid: 0cb8b41ea90f4784a8d825f0a44eb84e, type: 3}
-      propertyPath: _gmRef
-      value: 
-      objectReference: {fileID: 498272010}
-    - target: {fileID: 181834847006176893, guid: 0cb8b41ea90f4784a8d825f0a44eb84e,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 498272010}
     - target: {fileID: 1225304975491194417, guid: 0cb8b41ea90f4784a8d825f0a44eb84e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -369,16 +360,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2748291064927747282, guid: 0cb8b41ea90f4784a8d825f0a44eb84e,
-        type: 3}
-      propertyPath: food
-      value: 
-      objectReference: {fileID: 1795079468}
-    - target: {fileID: 8257914776880726214, guid: 0cb8b41ea90f4784a8d825f0a44eb84e,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 498272010}
     - target: {fileID: 1654738516556103866, guid: 0cb8b41ea90f4784a8d825f0a44eb84e,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -387,8 +368,12 @@ PrefabInstance:
     - target: {fileID: 7903387081663542315, guid: 0cb8b41ea90f4784a8d825f0a44eb84e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -4.699524
+      value: -4.699463
       objectReference: {fileID: 0}
+    - target: {fileID: 1346687162, guid: 0cb8b41ea90f4784a8d825f0a44eb84e, type: 3}
+      propertyPath: _gmRef
+      value: 
+      objectReference: {fileID: 498272010}
     - target: {fileID: 1654738516578327524, guid: 0cb8b41ea90f4784a8d825f0a44eb84e,
         type: 3}
       propertyPath: m_PlayOnAwake
@@ -399,6 +384,21 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 7056efe661d44584dafd164cebbe10aa, type: 3}
+    - target: {fileID: 8257914776880726214, guid: 0cb8b41ea90f4784a8d825f0a44eb84e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 498272010}
+    - target: {fileID: 2748291064927747282, guid: 0cb8b41ea90f4784a8d825f0a44eb84e,
+        type: 3}
+      propertyPath: food
+      value: 
+      objectReference: {fileID: 1795079468}
+    - target: {fileID: 181834847006176893, guid: 0cb8b41ea90f4784a8d825f0a44eb84e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 498272010}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cb8b41ea90f4784a8d825f0a44eb84e, type: 3}
 --- !u!114 &898532621 stripped
@@ -663,21 +663,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97fa0556ceb35ed468960db890782836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableMouseMovement: 0
+  disableMouseMovement: 1
   zoomSpeed: 4
-  maxZoom: 10
-  minZoom: 3
+  maxZoom: 15
+  minZoom: 5
   pitch: 0
-  _currentZoom: 0
+  _currentZoom: 14.6
   yawSpeed: 100
-  cameraArm: {x: 0, y: 0, z: 0}
-  _currentYaw: 0
-  isLocked: 1
-  _cameraTranslationSpeed: 5
+  cameraArm: {x: 2.36, y: -1.76, z: 0}
+  _currentYaw: 275.96844
+  isLocked: 0
+  _cameraTranslationSpeed: 12.7
   inferiorLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  lerpHeight: 0
+  lerpHeight: 14.6
   actorWithFocus: {fileID: 0}
   enemyWithFocus: {fileID: 0}
 --- !u!114 &1795079468 stripped
