@@ -6,7 +6,7 @@ public class Pause : MonoBehaviour
 {
     private static bool paused;
 
-    public static bool Paused { get => paused; set => paused = value; }
+    public static bool Paused { get => paused; private set => paused = value; }
 
 
     // Start is called before the first frame update
@@ -18,12 +18,6 @@ public class Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.gameObject.activeSelf == true)
-        {
-            PauseGame();
-        }
-        else UnPauseGame();
-        
 
     }
 
