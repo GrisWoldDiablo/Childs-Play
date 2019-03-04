@@ -50,7 +50,7 @@ public class NewSpawnManager : MonoBehaviour
 
         _counterToNextWave = Mathf.Clamp(_counterToNextWave, 0f, Mathf.Infinity);
 
-        _waveCountDown.text = string.Format("{0:00.00}", _counterToNextWave);
+        //_waveCountDown.text = string.Format("{0:00.00}", _counterToNextWave);
 
     }
 
