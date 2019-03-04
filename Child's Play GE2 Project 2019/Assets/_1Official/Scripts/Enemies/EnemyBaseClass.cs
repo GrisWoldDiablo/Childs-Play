@@ -30,7 +30,7 @@ public class EnemyBaseClass : MonoBehaviour
 
     [SerializeField] private int currentDamageOvertime;
 
-    public IEnumerator DamageOverTime(int damageValue, float tickSpeed, float lastTime, Laser incomingGO)
+    public IEnumerator DamageOverTime(int damageValue, float tickSpeed, float lastTime)
     {
         float currentTime = Time.time;
         float endTime = currentTime + lastTime;
@@ -43,7 +43,6 @@ public class EnemyBaseClass : MonoBehaviour
             Debug.Log($"{gameObject.GetInstanceID()} Next Tick");
             currentTime = Time.time;
         }
-        incomingGO.DestroyLaserGO();
     }
 
     private void Awake()
