@@ -18,7 +18,7 @@ public class MenuInteraction : MonoBehaviour {
 
 
     //placeholder testing variables
-    public readonly int defaultIndex = 5;
+    public int defaultIndex = 5;
     public readonly int storeIndex = 6;
 
 

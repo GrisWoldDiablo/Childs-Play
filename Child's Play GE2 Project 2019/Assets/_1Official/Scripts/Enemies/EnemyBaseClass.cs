@@ -8,27 +8,33 @@ using UnityEngine;
     )]
 public class EnemyBaseClass : MonoBehaviour
 {
-    public bool hasFocus = false;
-    private EnemyAnimation _enemyAnimation;
-
-    [SerializeField] private Item target;
-    private GameObject targetGO;
-    [SerializeField] protected bool isAttacking = false;
+    [Header("Settings")]
+    [SerializeField] private int hitPoints = 100;
     [SerializeField] private int damage = 1;
     [SerializeField] private float attackSpeed = 0.5f;
-    [SerializeField] private float attackCountDown = 0;
-    [SerializeField] private int hitPoints = 100;
     [SerializeField] private int foodBites = 5;
+    [SerializeField] private int value = 10;
+
+    protected bool hasFocus = false;
+    private EnemyAnimation _enemyAnimation;
+    private Item target;
+    private GameObject targetGO;
+    protected bool isAttacking = false;
+
+    private float attackCountDown = 0;
     private bool isDying = false;
-    [SerializeField] private bool asEaten = false;
+    private bool asEaten = false;
 
     private EnemyMovementMechanics eMMCode;
 
     public int HitPoints { get => hitPoints; set => hitPoints = value; }
     public bool IsDying { get => isDying; }
+    public bool HasFocus { get => hasFocus; set => hasFocus = value; }
 
+    private int currentDamageOvertime;
 
-    [SerializeField] private int currentDamageOvertime;
+    private AlexGMTest gmCode;
+
 
     public IEnumerator DamageOverTime(int damageValue, float tickSpeed, float lastTime)
     {
@@ -49,6 +55,7 @@ public class EnemyBaseClass : MonoBehaviour
     {
         _enemyAnimation = GetComponent<EnemyAnimation>();
         eMMCode = GetComponent<EnemyMovementMechanics>();
+        gmCode = GameObject.FindObjectOfType<AlexGMTest>();
     }
 
     // Start is called before the first frame update
@@ -111,6 +118,7 @@ public class EnemyBaseClass : MonoBehaviour
         isDying = true;
         SetAnimRetreating();
         Destroy(this.gameObject, 5);
+        gmCode.MyMoney.CurrentMoney += value;
     }
 
     public void SetAttacking(Item target)

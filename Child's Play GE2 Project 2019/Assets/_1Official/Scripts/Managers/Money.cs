@@ -16,7 +16,7 @@ public class Money : MonoBehaviour
     public void MoneyChange(int change)
     {
         CurrentMoney += change;
-        BroadcastMessage("UpdateCashText");
+        //BroadcastMessage("UpdateCashText");
     }
 
     public bool TryToBuy(int cost)

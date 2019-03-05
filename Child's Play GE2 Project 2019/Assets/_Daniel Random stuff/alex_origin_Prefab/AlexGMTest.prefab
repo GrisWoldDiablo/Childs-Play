@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4284695540638597293}
-  - component: {fileID: 4284695540638597298}
+  - component: {fileID: 498272010}
   m_Layer: 0
   m_Name: AlexGMTest
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4284695540638597298
+--- !u!114 &498272010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,15 +40,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4284695540638597299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ad254fc90c2be24390966cebab7467f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e4fa51e29145f842b3749b9d092c997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefabTestTower: {fileID: 7547695908117366028, guid: 46d09c5e10c107f4386463229df7404c,
-    type: 3}
-  itemPrefabTestPath: {fileID: 6920847240545005633, guid: 60d8e72c00be7544f82948c26d6fa759,
-    type: 3}
-  currentcash: 5
+  _menuInteractionRef: {fileID: 0}
   tileSelectionCursor: {fileID: 0}
   tileSelectedCursor: {fileID: 0}
-  UITextSelectedTile: {fileID: 0}
-  UITextCash: {fileID: 0}
+  listOfTower:
+  - {fileID: 6341123844494633285, guid: b9ad39a5173a14943baec10f299399bb, type: 3}
+  - {fileID: 2958411723986945016, guid: 7b27dbe332062c54c836a499d36e8116, type: 3}
+  - {fileID: 1468471132, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
+  listOfTowerPlaceHolder:
+  - {fileID: 5447843336627432717, guid: 699c8edbfcf692041837e733f477449c, type: 3}
+  - {fileID: 5558853459489242495, guid: 5acffab977abe144b98058e16b7075ae, type: 3}
+  - {fileID: 5015823971581707803, guid: 7986724d3691a544ea8ee9a3fc31d3fe, type: 3}
+  listOfBarrier:
+  - {fileID: 1601952980, guid: 81f152383e2a7c74e8457718080ce084, type: 3}
+  listOfBarrierPlaceHolder:
+  - {fileID: 7940086708241864223, guid: d2c717fb959001848b906263c9461fd9, type: 3}
+  selectedTowerIndex: 0
+  selectedBarrierIndex: 0
+  _hudManagerRef: {fileID: 0}
+  initialMoney: 200

@@ -166,10 +166,10 @@ public class Tower : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(this.transform.position, range);
+        Gizmos.DrawWireSphere(this.transform.position, tower_SO.range);
         Gizmos.DrawWireSphere(this.transform.position, innerRadius);        
     }
 

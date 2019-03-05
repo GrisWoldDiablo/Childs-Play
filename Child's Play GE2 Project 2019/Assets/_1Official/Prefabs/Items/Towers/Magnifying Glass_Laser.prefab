@@ -347,7 +347,7 @@ MonoBehaviour:
   itemName: Laser Tower
   itemDescription: The will burn them :)
   indexInGM: 2
-  value: 1
+  value: 1000
 --- !u!114 &7387378540488469875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,6 +745,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1468471133}
     m_Modifications:
+    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+        type: 3}
+      propertyPath: m_Name
+      value: VFX_Laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5886706566434731798, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -815,19 +825,9 @@ PrefabInstance:
       propertyPath: SubModule.subEmitters.Array.data[0].type
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
-        type: 3}
-      propertyPath: m_Name
-      value: VFX_Laser
-      objectReference: {fileID: 0}
-    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+    - target: {fileID: 5886706566973664803, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5886706566973664804, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
-        type: 3}
-      propertyPath: lengthInSec
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1588103702515199694, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
@@ -835,9 +835,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5886706566973664803, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+    - target: {fileID: 5886706566973664804, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
-      propertyPath: m_IsActive
+      propertyPath: lengthInSec
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

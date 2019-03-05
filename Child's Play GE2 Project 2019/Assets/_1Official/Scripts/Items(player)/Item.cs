@@ -32,6 +32,6 @@ public class Item : Player
         }
 
         indexInGM = 0;
-        itemDescription = "This is a placeholder description";
+        //itemDescription = "This is a placeholder description";
     }
 }

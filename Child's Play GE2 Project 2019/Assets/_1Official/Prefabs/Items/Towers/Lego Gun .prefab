@@ -441,7 +441,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100006, guid: efa16d86ea226b744bb6fa6b7d23fc0e, type: 3}
+  - {fileID: 2100000, guid: f05b510f9a4c4ef4f853d408de2076eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -903,7 +903,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100006, guid: efa16d86ea226b744bb6fa6b7d23fc0e, type: 3}
+  - {fileID: 2100000, guid: f05b510f9a4c4ef4f853d408de2076eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1674,7 +1674,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100006, guid: efa16d86ea226b744bb6fa6b7d23fc0e, type: 3}
+  - {fileID: 2100000, guid: f05b510f9a4c4ef4f853d408de2076eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1751,7 +1751,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100006, guid: efa16d86ea226b744bb6fa6b7d23fc0e, type: 3}
+  - {fileID: 2100000, guid: f05b510f9a4c4ef4f853d408de2076eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1906,7 +1906,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100006, guid: efa16d86ea226b744bb6fa6b7d23fc0e, type: 3}
+  - {fileID: 2100000, guid: f05b510f9a4c4ef4f853d408de2076eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1980,6 +1980,9 @@ MonoBehaviour:
   LookAtTarget: 1
   projectileSpawnPoint: {fileID: 5948756410623832033}
   tower_SO: {fileID: 11400000, guid: 72872e477f3f9a44b8cfb8f5fda5680a, type: 2}
+  _lightEffect: {fileID: 0}
+  _vfxLaser: {fileID: 0}
+  _lineRendererComponent: {fileID: 0}
 --- !u!114 &7546464820478688018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1997,7 +2000,7 @@ MonoBehaviour:
   itemName: Brick Gun
   itemDescription: This is an AOE tower.
   indexInGM: 1
-  value: 1
+  value: 160
 --- !u!1 &2958411723986945018
 GameObject:
   m_ObjectHideFlags: 0

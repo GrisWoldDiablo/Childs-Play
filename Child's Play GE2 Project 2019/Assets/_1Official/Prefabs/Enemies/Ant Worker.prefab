@@ -83,15 +83,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6719a753f66d6e54297a23b338f743b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasFocus: 0
-  target: {fileID: 0}
-  isAttacking: 0
-  damage: 1
-  attackSpeed: 0.5
-  attackCountDown: 0
-  hitPoints: 100
+  hitPoints: 1000
+  damage: 5
+  attackSpeed: 0.25
   foodBites: 1
-  asEaten: 0
+  value: 2
 --- !u!195 &4035293377406075862
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -231,7 +231,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 15
-  AoERadius: 2
+  AoERadius: 5
   impactVFX: {fileID: 0}
   targetLocation: {x: 0, y: 0, z: 0}
-  damageValue: 100
+  _target: {fileID: 0}
+  damageValue: 1000

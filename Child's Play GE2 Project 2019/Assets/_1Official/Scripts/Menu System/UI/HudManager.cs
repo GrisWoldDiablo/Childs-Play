@@ -23,7 +23,7 @@ public class HudManager : MonoBehaviour
 
     void Start()
     {
-        Pause.UnPauseGame();
+        Pause.GetInstance().UnPauseGame();
         infoPanelScript = infoPanel.gameObject.GetComponent<InfoPanel>();
         _hudComponentRef = hudPanel.GetComponent<HudComponent>();
         _gmRef = GameObject.Find("AlexGMTest").GetComponent<AlexGMTest>();

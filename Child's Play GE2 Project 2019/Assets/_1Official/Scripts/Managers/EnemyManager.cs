@@ -46,7 +46,7 @@ public class EnemyManager : MonoBehaviour
         foreach (Enemy e in _enemyArray)
         {
             listOfEnemies.Add(e);
-            if (e.hasFocus)
+            if (e.HasFocus)
             {
                 enemyWithFocus = e;
             }
@@ -62,10 +62,10 @@ public class EnemyManager : MonoBehaviour
         foreach (Enemy e in listOfEnemies)
         {
             //listOfEnemies.Add(e);
-            if (e.hasFocus)
+            if (e.HasFocus)
             {
                 //enemyWithFocus = e;
-                e.hasFocus = false;
+                e.HasFocus = false;
             }
         }
     }
@@ -78,7 +78,7 @@ public class EnemyManager : MonoBehaviour
         enemyWithFocus = null;
         foreach (Enemy e in listOfEnemies)
         {
-            if (e.hasFocus)
+            if (e.HasFocus)
             {
                 enemyWithFocus = e;                
             }

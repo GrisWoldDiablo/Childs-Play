@@ -110,8 +110,12 @@ MonoBehaviour:
   pivot: {fileID: 5044917573942952230}
   rotationSpeed: 10
   enemyTag: Enemy
+  LookAtTarget: 0
   projectileSpawnPoint: {fileID: 5150384281021583086}
   tower_SO: {fileID: 11400000, guid: 3853b6424cf9cfe44919b116bc56dd17, type: 2}
+  _lightEffect: {fileID: 0}
+  _vfxLaser: {fileID: 0}
+  _lineRendererComponent: {fileID: 0}
 --- !u!114 &6589336874733247523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +132,8 @@ MonoBehaviour:
   rangeGO: {fileID: 0}
   itemName: Toy Soldier M16
   itemDescription: This is a toy soldier.
-  value: 1
+  indexInGM: 0
+  value: 80
 --- !u!1001 &5627137814356796409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -204,19 +209,19 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 13700000, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
+    - target: {fileID: 2300000, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e6a8af884f320cf42aecf4c94fe2bb17, type: 2}
-    - target: {fileID: 13700000, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
+    - target: {fileID: 2300000, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
       propertyPath: m_CastShadows
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
+    - target: {fileID: 13700000, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e6a8af884f320cf42aecf4c94fe2bb17, type: 2}
-    - target: {fileID: 2300000, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
+    - target: {fileID: 13700000, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
       propertyPath: m_CastShadows
       value: 2
       objectReference: {fileID: 0}

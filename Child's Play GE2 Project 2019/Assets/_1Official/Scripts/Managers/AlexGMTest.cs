@@ -114,7 +114,8 @@ public class AlexGMTest : MonoBehaviour
         if (tile.CurrentItem != null)
         {
              PanelSelection(_menuInteractionRef.storeIndex);  //Daniel temporary testing
-            _hudManagerRef.Display(listOfTower[SelectedTowerIndex]);  //Daniel Temporary testing
+            //_hudManagerRef.Display(listOfTower[SelectedTowerIndex]);  //Daniel Temporary testing
+            _hudManagerRef.Display(tile.CurrentItem);  //Daniel Temporary testing
             return;
         }
 
@@ -199,7 +200,7 @@ public class AlexGMTest : MonoBehaviour
                 InstantiateItemOnTile(listOfTower[selectedTowerIndex]);
                 break;
             case TileType.Barrier:
-                if (!myMoney.TryToBuy(listOfTower[selectedTowerIndex].GetComponent<Item>().Value))
+                if (!myMoney.TryToBuy(listOfBarrier[selectedBarrierIndex].GetComponent<Item>().Value))
                 {
                     return;
                 }
@@ -266,7 +267,9 @@ public class AlexGMTest : MonoBehaviour
                         selectedTile.transform.rotation,
                         null
                         );
-        PlayerManager.GetInstance().AddPlayer(selectedTile.CurrentItem.GetComponent<Item>());
+        Item newItem = selectedTile.CurrentItem.GetComponent<Item>();
+        newItem.Value /= 2;
+        PlayerManager.GetInstance().AddPlayer(newItem);
         HidePlaceHolders();
     }
 

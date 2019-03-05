@@ -42,7 +42,7 @@ public class Food : Player
     private void OnDestroy()
     {
         Debug.Log("I got destroyed");
-        Pause.PauseGame();
+        Pause.GetInstance().PauseGame();
         AlexGMTest.gameOver = true;
     }
 }
