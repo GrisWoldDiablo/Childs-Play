@@ -8,6 +8,19 @@ using UnityEngine.UI;
 /// </summary>
 public class AlexGMTest : MonoBehaviour
 {
+    #region Singleton
+    public static AlexGMTest instance = null;
+
+    public static AlexGMTest GetInstance()
+    {
+        if (instance == null)
+        {
+            instance = GameObject.FindObjectOfType<AlexGMTest>();
+        }
+        return instance;
+    }
+    #endregion
+
     //[SerializeField] private float currentcash = 5;
     [SerializeField] private MenuInteraction _menuInteractionRef;
     [SerializeField] private GameObject tileSelectionCursor;
@@ -27,6 +40,7 @@ public class AlexGMTest : MonoBehaviour
 
     [SerializeField] private int initialMoney = 100;
     private Money myMoney;
+    [SerializeField, Header("GameOver Panel")] private int gameOverIndex = 7;
 
     //-//
     // To be placed in UI management script
@@ -35,6 +49,7 @@ public class AlexGMTest : MonoBehaviour
     //-//
 
     private ItemTile selectedTile;
+
     public ItemTile SelectedTile { get => selectedTile; }
     public GameObject TileSelectionCursor { get => tileSelectionCursor; }
 
@@ -288,5 +303,11 @@ public class AlexGMTest : MonoBehaviour
     public void PanelSelection(int index)
     {
         _menuInteractionRef.PanelToggle(index);
+    }
+
+    public void GameOver()
+    {
+        Pause.GetInstance().PauseGame();
+        PanelSelection(gameOverIndex);
     }
 }

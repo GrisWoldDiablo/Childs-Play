@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class NewSpawnManager : MonoBehaviour
 {
+    [SerializeField] private float warmUpSeconds = 10.0f;
+    private float warmuUpCounter;
+    private bool warmedUp = false;
     [SerializeField]
     private WaveSetup_SO[] _waveSetup;
     [SerializeField]
@@ -24,20 +27,27 @@ public class NewSpawnManager : MonoBehaviour
     
     void Start()
     {
-        _startNewWave = true;        
+        //_startNewWave = true;       
+        warmuUpCounter = Time.time + warmUpSeconds;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!warmedUp && warmuUpCounter <= Time.time)
+        {
+            warmedUp = true;
+            _startNewWave = true;
+        }
+
         if (_startNewWave)
         {
             StartCoroutine(WaveSpawner());
-            
+
             _startNewWave = false;
-            
+
         }
-        if(_startCounter)
+        if (_startCounter)
         {
             //_counterToNextWave += Time.deltaTime;
             _counterToNextWave -= Time.deltaTime;

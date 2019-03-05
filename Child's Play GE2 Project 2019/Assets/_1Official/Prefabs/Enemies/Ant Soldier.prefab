@@ -83,11 +83,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6719a753f66d6e54297a23b338f743b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 10000
+  hitPoints: 13000
   damage: 100
   attackSpeed: 1
   foodBites: 50
-  value: 100
+  value: 10
 --- !u!195 &5194836902200934543
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ SphereCollider:
   m_GameObject: {fileID: 2557512320319996496}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.09375
   m_Center: {x: 0, y: 0.55, z: 0}

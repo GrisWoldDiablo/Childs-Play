@@ -37,12 +37,10 @@ public class Food : Player
         base.Update();
     }
 
-    
-
-    private void OnDestroy()
+    protected override void Die()
     {
-        Debug.Log("I got destroyed");
-        Pause.GetInstance().PauseGame();
-        AlexGMTest.gameOver = true;
+        AlexGMTest.GetInstance().GameOver();
+        base.Die();
     }
+    
 }

@@ -17,7 +17,7 @@ public class HudManager : MonoBehaviour
     private HudComponent _hudComponentRef;
     private InfoPanel infoPanelScript;
 
-    private int gameOverIndex;
+    //private int gameOverIndex;
 
     //Hud Properties
 
@@ -28,19 +28,19 @@ public class HudManager : MonoBehaviour
         _hudComponentRef = hudPanel.GetComponent<HudComponent>();
         _gmRef = GameObject.Find("AlexGMTest").GetComponent<AlexGMTest>();
         _playerManagerRef = PlayerManager.GetInstance();
-        gameOverIndex = 7;
+        //gameOverIndex = 7;
     }
 
     void Update()
     {
         HudUpdate();
-        GameOver();
+        //GameOver();
     }
 
     public void HudUpdate()
     {
             _hudComponentRef.MoneyTxt.text = $"{_gmRef.MyMoney.CurrentMoney}";
-            _hudComponentRef.FoodPercentageTxt.text = $"{_hudComponentRef.FoodRemaining} %";      
+            _hudComponentRef.FoodPercentageTxt.text = $"{100.0f - _hudComponentRef.FoodRemaining} %";      
     }
 
     public void TowerSelect(StoreButton pressed)
@@ -57,11 +57,5 @@ public class HudManager : MonoBehaviour
         infoPanelScript._cost.text = _obj.Value.ToString();
     }
 
-    public void GameOver()
-    {
-        if (AlexGMTest.gameOver)
-        {
-            _menuInteractionRef.PanelToggle(gameOverIndex);
-        }
-    }
+    
 }

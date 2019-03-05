@@ -35,10 +35,10 @@ public class Missile : Projectile
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        HitTarget(other);
-    }    
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    HitTarget(other);
+    //}    
 
     private void OnDrawGizmosSelected()
     {
