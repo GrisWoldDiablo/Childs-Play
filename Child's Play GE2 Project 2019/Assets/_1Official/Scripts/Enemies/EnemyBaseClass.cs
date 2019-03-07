@@ -33,7 +33,7 @@ public class EnemyBaseClass : MonoBehaviour
 
     private int currentDamageOvertime;
 
-    private AlexGMTest gmCode;
+    //private GameManager gmCode;
 
 
     public IEnumerator DamageOverTime(int damageValue, float tickSpeed, float lastTime)
@@ -55,7 +55,7 @@ public class EnemyBaseClass : MonoBehaviour
     {
         _enemyAnimation = GetComponent<EnemyAnimation>();
         eMMCode = GetComponent<EnemyMovementMechanics>();
-        gmCode = GameObject.FindObjectOfType<AlexGMTest>();
+        //gmCode = GameObject.FindObjectOfType<GameManager>();
     }
 
     // Start is called before the first frame update
@@ -118,7 +118,7 @@ public class EnemyBaseClass : MonoBehaviour
         isDying = true;
         SetAnimRetreating();
         Destroy(this.gameObject, 5);
-        gmCode.MyMoney.CurrentMoney += value;
+        GameManager.GetInstance().MyMoney.MoneyChange(value);
     }
 
     public void SetAttacking(Item target)

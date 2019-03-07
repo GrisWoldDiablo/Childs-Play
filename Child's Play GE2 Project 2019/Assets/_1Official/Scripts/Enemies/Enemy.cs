@@ -22,7 +22,7 @@ public class Enemy : EnemyBaseClass
         base.Update();
         if (this.hasFocus)
         {
-            EnemyManager.instance.UpdateEnemyWithFocus();
+            EnemyManager.GetInstance().UpdateEnemyWithFocus();
         }
     }
 
@@ -34,9 +34,9 @@ public class Enemy : EnemyBaseClass
         {
             _cameraController.isLocked = true;
 
-            EnemyManager.instance.ClearEnemyFocus();
+            EnemyManager.GetInstance().ClearEnemyFocus();
             this.hasFocus = true;
-            EnemyManager.instance.UpdateEnemyWithFocus();
+            EnemyManager.GetInstance().UpdateEnemyWithFocus();
         }
     }
 }

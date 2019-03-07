@@ -5,11 +5,16 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     #region Singleton
-    public static EnemyManager instance;
+    private static EnemyManager instance = null;
 
-    private void Awake()
+    public static EnemyManager GetInstance()
     {
-        instance = this;        
+        if (instance == null)
+        {
+            //GameManager gameManager = GameObject.FindObjectOfType<GameManager>();
+            instance = GameManager.GetInstance().gameObject.AddComponent<EnemyManager>();
+        }
+        return instance;
     }
     #endregion
 

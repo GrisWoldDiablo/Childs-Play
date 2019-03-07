@@ -7,7 +7,12 @@ public class Money : MonoBehaviour
     private int currentMoney;
     public int CurrentMoney { get => currentMoney; set => currentMoney = value; }
 
-    
+
+    public void Start()
+    {
+        UpdateMoneyText();
+    }
+
     public void ResetMoney()
     {
         currentMoney = 0;
@@ -16,7 +21,12 @@ public class Money : MonoBehaviour
     public void MoneyChange(int change)
     {
         CurrentMoney += change;
-        //BroadcastMessage("UpdateCashText");
+        UpdateMoneyText();
+    }
+
+    public void UpdateMoneyText()
+    {
+        HudManager.GetInstance().MoneyTxt.text = $"{currentMoney}";
     }
 
     public bool TryToBuy(int cost)

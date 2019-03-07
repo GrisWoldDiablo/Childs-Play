@@ -6,16 +6,16 @@ using UnityEngine.UI;
 /// <summary>
 /// This is to be place in the GameManager script
 /// </summary>
-public class AlexGMTest : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     #region Singleton
-    public static AlexGMTest instance = null;
+    private static GameManager instance = null;
 
-    public static AlexGMTest GetInstance()
+    public static GameManager GetInstance()
     {
         if (instance == null)
         {
-            instance = GameObject.FindObjectOfType<AlexGMTest>();
+            instance = GameObject.FindObjectOfType<GameManager>();
         }
         return instance;
     }
@@ -33,7 +33,7 @@ public class AlexGMTest : MonoBehaviour
     [SerializeField] private int selectedBarrierIndex = 0;
 
     //Daniel Temporary
-    [SerializeField] private HudManager _hudManagerRef;
+    //[SerializeField] private HudManager _hudManagerRef;
     private int legoTowerIndex = 1;
     private int soldierTowerIndex = 0;
     public static bool gameOver;
@@ -79,7 +79,7 @@ public class AlexGMTest : MonoBehaviour
         {
             DeselectTile();
         }
-        Debug.Log("My game over value:" + gameOver);
+        //Debug.Log("My game over value:" + gameOver);
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ public class AlexGMTest : MonoBehaviour
         {
              PanelSelection(_menuInteractionRef.storeIndex);  //Daniel temporary testing
             //_hudManagerRef.Display(listOfTower[SelectedTowerIndex]);  //Daniel Temporary testing
-            _hudManagerRef.Display(tile.CurrentItem);  //Daniel Temporary testing
+            HudManager.GetInstance().Display(tile.CurrentItem);  //Daniel Temporary testing
             return;
         }
 
@@ -138,12 +138,12 @@ public class AlexGMTest : MonoBehaviour
         {
             case TileType.Tower:
                  PanelSelection(_menuInteractionRef.storeIndex);  //Daniel temporary testing
-                _hudManagerRef.Display(listOfTower[selectedTowerIndex]);  //Daniel Temporary testing
+                HudManager.GetInstance().Display(listOfTower[selectedTowerIndex]);  //Daniel Temporary testing
                 ShowItemOnTile(listOfTowerPlaceHolder[selectedTowerIndex], tile);
                 break;
             case TileType.Barrier:
                 PanelSelection(_menuInteractionRef.storeIndex); //Daniel temporary testing
-                _hudManagerRef.Display(listOfBarrier[selectedBarrierIndex]);
+                HudManager.GetInstance().Display(listOfBarrier[selectedBarrierIndex]);
                 ShowItemOnTile(listOfBarrierPlaceHolder[selectedBarrierIndex], tile);
                 break;
             default:

@@ -5,13 +5,24 @@ using UnityEngine.UI;
 
 public class NewSpawnManager : MonoBehaviour
 {
+    #region Singleton
+    private static NewSpawnManager instance = null;
+
+    public static NewSpawnManager GetInstance()
+    {
+        if (instance == null)
+        {
+            instance = GameObject.FindObjectOfType<NewSpawnManager>();
+        }
+        return instance;
+    }
+    #endregion
+
     [SerializeField] private float warmUpSeconds = 10.0f;
     private float warmuUpCounter;
     private bool warmedUp = false;
     [SerializeField]
     private WaveSetup_SO[] _waveSetup;
-    [SerializeField]
-    private Text _waveCountDown;
 
     public Transform spawnPoint;
 
@@ -24,7 +35,7 @@ public class NewSpawnManager : MonoBehaviour
 
     private bool _startNewWave = false;
     private bool _startCounter = false;
-    
+    public float WarmupCounter { get => (int)(warmuUpCounter - Time.time); }
     void Start()
     {
         //_startNewWave = true;       
@@ -34,10 +45,16 @@ public class NewSpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!warmedUp)
+        {
+            //Debug.Log($"Countdown warmup : {WarmupCounter}");
+            HudManager.GetInstance().WarmUpText.text = $"Ants Incoming \n{WarmupCounter.ToString()}s";
+        }
         if (!warmedUp && warmuUpCounter <= Time.time)
         {
             warmedUp = true;
             _startNewWave = true;
+            HudManager.GetInstance().WarmUpText.enabled = false;
         }
 
         if (_startNewWave)

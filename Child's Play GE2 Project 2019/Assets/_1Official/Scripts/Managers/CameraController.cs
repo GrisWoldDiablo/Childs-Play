@@ -96,9 +96,9 @@ public class CameraController : MonoBehaviour
             return;
         }
         _playerWithFocus = PlayerManager.GetInstance().playerWithFocus.transform;
-        if (EnemyManager.instance.enemyWithFocus != null)
+        if (EnemyManager.GetInstance().enemyWithFocus != null)
         {
-            enemyWithFocus = EnemyManager.instance.enemyWithFocus.transform;
+            enemyWithFocus = EnemyManager.GetInstance().enemyWithFocus.transform;
         }
 
         if (!isLocked)

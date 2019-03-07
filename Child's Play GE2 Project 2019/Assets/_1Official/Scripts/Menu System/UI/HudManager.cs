@@ -5,17 +5,45 @@ using UnityEngine.UI;
 
 public class HudManager : MonoBehaviour
 {
+
+    #region Singleton
+    private static HudManager instance = null;
+
+    public static HudManager GetInstance()
+    {
+        if (instance == null)
+        {
+            instance = GameObject.FindObjectOfType<HudManager>();
+        }
+        return instance;
+    }
+    #endregion
+
     //External References
     [SerializeField] public GameObject infoPanel;
     [SerializeField] public GameObject storePanel;
     [SerializeField] public GameObject hudPanel;
     //[SerializeField] private EnemyManager _enemyManagerRef;
     [SerializeField] private MenuInteraction _menuInteractionRef;
-    [SerializeField] private AlexGMTest _gmRef;
+    //[SerializeField] private GameManager _gmRef;
 
-    private PlayerManager _playerManagerRef;
-    private HudComponent _hudComponentRef;
+    //private PlayerManager _playerManagerRef;
+    //private HudComponent _hudComponentRef;
     private InfoPanel infoPanelScript;
+
+    //public HudComponent HudComponentRef { get => _hudComponentRef;}
+    [Header("HUD Components")]
+    [SerializeField] private Image fillerImage;
+    [SerializeField] private Text moneyTxt;
+    [SerializeField] private Text foodPercentageTxt;
+    [SerializeField] private Text warmUpText;
+    private float foodRemaining;
+
+    public Text MoneyTxt { get => moneyTxt; set => moneyTxt = value; }
+    public Text FoodPercentageTxt { get => foodPercentageTxt; set => foodPercentageTxt = value; }
+    //public float FoodRemaining { get => foodRemaining; set => foodRemaining = value; }
+    public Text WarmUpText { get => warmUpText; set => warmUpText = value; }
+    public Image FillerImage { get => fillerImage; set => fillerImage = value; }
 
     //private int gameOverIndex;
 
@@ -25,28 +53,27 @@ public class HudManager : MonoBehaviour
     {
         Pause.GetInstance().UnPauseGame();
         infoPanelScript = infoPanel.gameObject.GetComponent<InfoPanel>();
-        _hudComponentRef = hudPanel.GetComponent<HudComponent>();
-        _gmRef = GameObject.Find("AlexGMTest").GetComponent<AlexGMTest>();
-        _playerManagerRef = PlayerManager.GetInstance();
+        //_hudComponentRef = GetComponent<HudComponent>();
+        //_gmRef = GameObject.Find("AlexGMTest").GetComponent<GameManager>();
+        //_playerManagerRef = PlayerManager.GetInstance();
         //gameOverIndex = 7;
     }
 
     void Update()
     {
-        HudUpdate();
+        //HudUpdate();
         //GameOver();
     }
 
     public void HudUpdate()
     {
-            _hudComponentRef.MoneyTxt.text = $"{_gmRef.MyMoney.CurrentMoney}";
-            _hudComponentRef.FoodPercentageTxt.text = $"{100.0f - _hudComponentRef.FoodRemaining} %";      
+        moneyTxt.text = $"{GameManager.GetInstance().MyMoney.CurrentMoney}";
     }
 
     public void TowerSelect(StoreButton pressed)
     {
-        _gmRef.SetTowerSelectionIndex(pressed.MyIndex);
-        _gmRef.StoreButtonPressed();
+        GameManager.GetInstance().SetTowerSelectionIndex(pressed.MyIndex);
+        GameManager.GetInstance().StoreButtonPressed();
     }
 
     public void Display(GameObject obj)
@@ -57,5 +84,6 @@ public class HudManager : MonoBehaviour
         infoPanelScript._cost.text = _obj.Value.ToString();
     }
 
+    
     
 }

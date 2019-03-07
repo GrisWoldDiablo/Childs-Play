@@ -19,7 +19,7 @@ public class PlayerBaseClass : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public void TakeDamage(int damageValue)
+    public virtual void TakeDamage(int damageValue)
     {
         this.hitPoints -= damageValue;
 

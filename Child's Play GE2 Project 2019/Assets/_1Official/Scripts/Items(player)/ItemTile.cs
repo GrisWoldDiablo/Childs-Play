@@ -158,12 +158,12 @@ public class ItemTile : MonoBehaviour
 
 #endif
 
-    private AlexGMTest alexGMTestCode;
+    //private GameManager alexGMTestCode;
     
     // Start is called before the first frame update
     void Start()
     {
-        alexGMTestCode = GameObject.Find("AlexGMTest").GetComponent<AlexGMTest>();
+        //alexGMTestCode = GameObject.Find("AlexGMTest").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -187,11 +187,11 @@ public class ItemTile : MonoBehaviour
         {
             if (tileType != TileType.Unavailable)
             {
-                alexGMTestCode.TileSelection(this);
+                GameManager.GetInstance().TileSelection(this);
             }
             else
             {
-                alexGMTestCode.DeselectTile();
+                GameManager.GetInstance().DeselectTile();
             }
         }
     }
@@ -201,7 +201,7 @@ public class ItemTile : MonoBehaviour
     /// </summary>
     private void OnMouseExit()
     {
-        alexGMTestCode.TileSelectionCursor.SetActive(false);
+        GameManager.GetInstance().TileSelectionCursor.SetActive(false);
     }
 
     /// <summary>
@@ -217,7 +217,7 @@ public class ItemTile : MonoBehaviour
 
         if (tileType != TileType.Unavailable)
         {
-            alexGMTestCode.ShowCursorOnTile(alexGMTestCode.TileSelectionCursor, this); 
+            GameManager.GetInstance().ShowCursorOnTile(GameManager.GetInstance().TileSelectionCursor, this); 
         }
     }
 

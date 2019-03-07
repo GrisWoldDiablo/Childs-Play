@@ -5,17 +5,18 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     #region Singleton
-    public static PlayerManager instance = null;
+    private static PlayerManager instance = null;
 
     public static PlayerManager GetInstance()
     {
         if (instance == null)
         {
-            AlexGMTest gameManager = GameObject.FindObjectOfType<AlexGMTest>();
-            instance = gameManager.gameObject.AddComponent<PlayerManager>();
+            //GameManager gameManager = GameObject.FindObjectOfType<GameManager>();
+            instance = GameManager.GetInstance().gameObject.AddComponent<PlayerManager>();
         }
         return instance;
     }
+    #endregion
 
 
     private void Awake()
@@ -23,7 +24,6 @@ public class PlayerManager : MonoBehaviour
         //instance = this;
         CreatePlayerList();
     }
-    #endregion
 
     //Variables
     public List<Player> listOfPlayers = new List<Player>();
@@ -88,13 +88,13 @@ public class PlayerManager : MonoBehaviour
 
     public void ClearEnemyFocusOnListAndCamera()
     {
-        EnemyManager.instance.ClearEnemyFocus();
+        EnemyManager.GetInstance().ClearEnemyFocus();
         cameraLocker.enemyWithFocus = null;
     }
 
     private void ChangePlayerFocusWithMouse()
     {
-        EnemyManager.instance.ClearEnemyFocus();
+        EnemyManager.GetInstance().ClearEnemyFocus();
         cameraLocker.enemyWithFocus = null;
 
         int index = listOfPlayers.IndexOf(playerWithFocus);
