@@ -17,7 +17,7 @@ public class SetVolume : MonoBehaviour {
     private Slider slider;
     public Slider Slider { get { return slider; } }
     private Button applyButton;
-    private Settings settingsCode;
+    //private Settings settingsCode;
 
     public void SetVol(float sliderValue)
     {
@@ -32,20 +32,20 @@ public class SetVolume : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        settingsCode = GameObject.FindObjectOfType<Settings>();
+        //Settings.GetInstance() = GameObject.FindObjectOfType<Settings>();
         switch (volumeType)
         {
             case VolumeTypes.Master:
-                nameParam = settingsCode.MasterVolParam;
-                prefValue = settingsCode.MasterVolValue;
+                nameParam = Settings.GetInstance().MasterVolParam;
+                prefValue = Settings.GetInstance().MasterVolValue;
                 break;
             case VolumeTypes.Music:
-                nameParam = settingsCode.MusicVolParam;
-                prefValue = settingsCode.MusicVolValue;
+                nameParam = Settings.GetInstance().MusicVolParam;
+                prefValue = Settings.GetInstance().MusicVolValue;
                 break;
             case VolumeTypes.SFX:
-                nameParam = settingsCode.SFXVolParam;
-                prefValue = settingsCode.SFXVolValue;
+                nameParam = Settings.GetInstance().SFXVolParam;
+                prefValue = Settings.GetInstance().SFXVolValue;
                 break;
             default:
                 break;

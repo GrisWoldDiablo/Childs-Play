@@ -13,9 +13,9 @@ public class EnemyMovementMechanics : MonoBehaviour
 {
 
     //Events
-    public delegate void DestinationReached();
-    public event DestinationReached OnFood;
-    public event DestinationReached OnFinalNode; 
+    //public delegate void DestinationReached();
+    //public event DestinationReached OnFood;
+    //public event DestinationReached OnFinalNode; 
 
     //Game Object Components
     private NavMeshAgent _navMeshAgent;
@@ -149,7 +149,8 @@ public class EnemyMovementMechanics : MonoBehaviour
     { 
         _navMeshAgent.isStopped = true;
         //OnFinalNode(); //event
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        BroadcastMessage("LeaveWithFood");
     }
 
     /// <summary>

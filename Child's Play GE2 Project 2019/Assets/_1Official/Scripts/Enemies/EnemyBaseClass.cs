@@ -59,9 +59,11 @@ public class EnemyBaseClass : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         SetAnimWalking();
+
+        EnemyManager.GetInstance().AddEnemyToList(this as Enemy);
     }
 
     // Update is called once per frame
@@ -118,6 +120,7 @@ public class EnemyBaseClass : MonoBehaviour
         isDying = true;
         SetAnimRetreating();
         Destroy(this.gameObject, 5);
+        EnemyManager.GetInstance().RemoveEnemyFromList(this as Enemy);
         GameManager.GetInstance().MyMoney.MoneyChange(value);
     }
 
@@ -184,5 +187,10 @@ public class EnemyBaseClass : MonoBehaviour
         _food.TakeDamage(foodBites);
     }
 
+    public void LeaveWithFood()
+    {
+        EnemyManager.GetInstance().RemoveEnemyFromList(this as Enemy);
+        Destroy(this.gameObject);
+    }
 
 }

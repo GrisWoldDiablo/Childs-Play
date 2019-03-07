@@ -24,7 +24,7 @@ public class HudManager : MonoBehaviour
     [SerializeField] public GameObject storePanel;
     [SerializeField] public GameObject hudPanel;
     //[SerializeField] private EnemyManager _enemyManagerRef;
-    [SerializeField] private MenuInteraction _menuInteractionRef;
+    //[SerializeField] private MenuInteraction _menuInteractionRef;
     //[SerializeField] private GameManager _gmRef;
 
     //private PlayerManager _playerManagerRef;

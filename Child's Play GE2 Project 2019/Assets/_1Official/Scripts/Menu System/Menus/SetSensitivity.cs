@@ -15,7 +15,7 @@ public class SetSensitivity : MonoBehaviour
     public Slider Slider { get { return slider; } }
     [SerializeField] private Text valueText;
     [SerializeField] private SensitivityDirection sensDirection;
-    private Settings settingsCode;
+    //private Settings settingsCode;
 
     public void SetSens(float sliderValue)
     {
@@ -32,16 +32,16 @@ public class SetSensitivity : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        settingsCode = GameObject.FindObjectOfType<Settings>();
+        //settingsCode = GameObject.FindObjectOfType<Settings>();
         switch (sensDirection)
         {
             case SensitivityDirection.Horizontal:
-                nameParam = settingsCode.SensitivityHParam;
-                prefValue = settingsCode.SensitivityH;
+                nameParam = Settings.GetInstance().SensitivityHParam;
+                prefValue = Settings.GetInstance().SensitivityH;
                 break;
             case SensitivityDirection.Vertical:
-                nameParam = settingsCode.SensitivityVParam;
-                prefValue = settingsCode.SensitivityV;
+                nameParam = Settings.GetInstance().SensitivityVParam;
+                prefValue = Settings.GetInstance().SensitivityV;
                 break;
             default:
                 break;

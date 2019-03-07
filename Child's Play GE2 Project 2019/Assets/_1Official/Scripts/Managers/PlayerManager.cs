@@ -11,7 +11,6 @@ public class PlayerManager : MonoBehaviour
     {
         if (instance == null)
         {
-            //GameManager gameManager = GameObject.FindObjectOfType<GameManager>();
             instance = GameManager.GetInstance().gameObject.AddComponent<PlayerManager>();
         }
         return instance;
@@ -30,16 +29,16 @@ public class PlayerManager : MonoBehaviour
 
     //References for Cashing
     public Player playerWithFocus;
-    public CameraController cameraLocker;
+    //public CameraController cameraLocker;
 
     //private CameraController _cameraController;
 
     #region Unity API Methods
     // Start is called before the first frame update
-    void Start()
-    {
-        cameraLocker = Camera.main.GetComponent<CameraController>();
-    }
+    //void Start()
+    //{
+    //    //cameraLocker = Camera.main.GetComponent<CameraController>();
+    //}
 
     // Update is called once per frame
     public void Update()
@@ -82,20 +81,20 @@ public class PlayerManager : MonoBehaviour
                 index = 0;
             }
             playerWithFocus = listOfPlayers[index];
-            cameraLocker.isLocked = true;
+            CameraManager.GetInstance().isLocked = true;
         }
     }
 
     public void ClearEnemyFocusOnListAndCamera()
     {
         EnemyManager.GetInstance().ClearEnemyFocus();
-        cameraLocker.enemyWithFocus = null;
+        CameraManager.GetInstance().enemyWithFocus = null;
     }
 
     private void ChangePlayerFocusWithMouse()
     {
         EnemyManager.GetInstance().ClearEnemyFocus();
-        cameraLocker.enemyWithFocus = null;
+        CameraManager.GetInstance().enemyWithFocus = null;
 
         int index = listOfPlayers.IndexOf(playerWithFocus);
         index++;
@@ -104,7 +103,7 @@ public class PlayerManager : MonoBehaviour
             index = 0;
         }
         playerWithFocus = listOfPlayers[index];
-        cameraLocker.isLocked = true;
+        CameraManager.GetInstance().isLocked = true;
     }
     #endregion
 

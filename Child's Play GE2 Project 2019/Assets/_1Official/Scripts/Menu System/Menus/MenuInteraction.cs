@@ -10,6 +10,19 @@ using UnityEngine.UI;
 
 public class MenuInteraction : MonoBehaviour {
 
+    #region Singleton
+    private static MenuInteraction instance = null;
+
+    public static MenuInteraction GetInstance()
+    {
+        if (instance == null)
+        {
+            instance = GameObject.FindObjectOfType<MenuInteraction>();
+        }
+        return instance;
+    }
+    #endregion
+
     [Header("Menus")]
     [SerializeField] private GameObject[] panels;
     public GameObject[] Panels { get { return panels; } }

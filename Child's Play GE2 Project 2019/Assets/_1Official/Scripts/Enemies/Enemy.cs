@@ -6,18 +6,19 @@ using UnityEngine.AI;
 //[RequireComponent(typeof(EnemyController))]
 public class Enemy : EnemyBaseClass
 {
-    private CameraController _cameraController;
+    //private CameraController _cameraController;
 
     //NavMeshAgent navMeshAgent;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        _cameraController = Camera.main.GetComponent<CameraController>();
-    }
+    //new void Start()
+    //{
+    //    base.Start();
+    //    //_cameraController = Camera.main.GetComponent<CameraController>();
+    //}
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
         base.Update();
         if (this.hasFocus)
@@ -32,7 +33,7 @@ public class Enemy : EnemyBaseClass
     {        
         if(Input.GetMouseButtonDown(0))
         {
-            _cameraController.isLocked = true;
+            CameraManager.GetInstance().isLocked = true;
 
             EnemyManager.GetInstance().ClearEnemyFocus();
             this.hasFocus = true;

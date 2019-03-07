@@ -11,7 +11,6 @@ public class EnemyManager : MonoBehaviour
     {
         if (instance == null)
         {
-            //GameManager gameManager = GameObject.FindObjectOfType<GameManager>();
             instance = GameManager.GetInstance().gameObject.AddComponent<EnemyManager>();
         }
         return instance;
@@ -19,18 +18,20 @@ public class EnemyManager : MonoBehaviour
     #endregion
 
     //Variables
-    private Enemy[] _enemyArray;
-    public List<Enemy> listOfEnemies = new List<Enemy>();
+    //private Enemy[] _enemyArray;
+    [SerializeField] private List<Enemy> listOfEnemies = new List<Enemy>();
 
     //References for Cashing
     public Enemy enemyWithFocus;
-    public CameraController cameraLocker;
+    //public CameraController cameraLocker;
+
+    public List<Enemy> ListOfEnemies { get => listOfEnemies;}
 
     #region Unity API Methods
     // Start is called before the first frame update
     void Start()
     {
-        cameraLocker = Camera.main.GetComponent<CameraController>();
+        //cameraLocker = Camera.main.GetComponent<CameraController>();
         UpdateEnemyList();
     }
 
@@ -47,15 +48,15 @@ public class EnemyManager : MonoBehaviour
     /// </summary>
     public void UpdateEnemyList()
     {
-        _enemyArray = GameObject.FindObjectsOfType<Enemy>();
-        foreach (Enemy e in _enemyArray)
-        {
-            listOfEnemies.Add(e);
-            if (e.HasFocus)
-            {
-                enemyWithFocus = e;
-            }
-        }
+        //_enemyArray = GameObject.FindObjectsOfType<Enemy>();
+        //foreach (Enemy e in _enemyArray)
+        //{
+        //    listOfEnemies.Add(e);
+        //    if (e.HasFocus)
+        //    {
+        //        enemyWithFocus = e;
+        //    }
+        //}
     }
 
     /// <summary>
@@ -90,4 +91,16 @@ public class EnemyManager : MonoBehaviour
         }
     }
     #endregion
+
+    public void AddEnemyToList(Enemy enemy)
+    {
+        listOfEnemies.Add(enemy);
+    }
+
+    public void RemoveEnemyFromList(Enemy enemy)
+    {
+        listOfEnemies.Remove(enemy);
+    }
+
+
 }

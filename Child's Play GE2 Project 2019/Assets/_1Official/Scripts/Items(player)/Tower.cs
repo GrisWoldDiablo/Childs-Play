@@ -12,8 +12,8 @@ public class Tower : MonoBehaviour
     private Transform pivot;
     [SerializeField]
     private float rotationSpeed = 10f;
-    [SerializeField]
-    private string enemyTag = "Enemy";
+    //[SerializeField]
+    //private string enemyTag = "Enemy";
 
 
     //FIRING PART
@@ -52,7 +52,7 @@ public class Tower : MonoBehaviour
             _lineRendererComponent = GetComponentInChildren<LineRenderer>();
         }
 
-        InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        //InvokeRepeating("UpdateTarget", 0f, 0.5f);
 
         SO_Reference();
     }
@@ -67,13 +67,11 @@ public class Tower : MonoBehaviour
 
     void UpdateTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-
         float shortestDistance = Mathf.Infinity;
 
-        GameObject nearestEnemy = null;
+        Enemy nearestEnemy = null;
 
-        foreach (GameObject enemy in enemies)
+        foreach (Enemy enemy in EnemyManager.GetInstance().ListOfEnemies)
         {
             if (enemy.GetComponent<Enemy>().IsDying)
             {
@@ -99,6 +97,15 @@ public class Tower : MonoBehaviour
     }
 
     private void Update()
+    {
+        UpdateTarget();
+        ShootAndLookAtTarget();
+
+
+        //CountdownToNextFire -= Time.deltaTime; // move to top of method so the countdown continues even if the tower has no target.
+    }
+
+    private void ShootAndLookAtTarget()
     {
         CountdownToNextFire -= Time.deltaTime;
         if (towerTarget == null)
@@ -132,21 +139,10 @@ public class Tower : MonoBehaviour
             //ShootLaser();
             FireLaserBeam();
         }
-
-
-        //CountdownToNextFire -= Time.deltaTime; // move to top of method so the countdown continues even if the tower has no target.
     }
 
     private void Shoot()
     {
-        //if(this.GetComponent<Laser>() != null)
-        //{
-        //    Laser laser = this.GetComponent<Laser>();
-
-        //    laser.FireLaserBeam();
-
-        //    return;
-        //}
 
         GameObject projectileGameObject = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
 

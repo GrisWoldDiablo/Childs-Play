@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 5194836902200934543}
   - component: {fileID: 6466226208676549235}
   - component: {fileID: 6573137401401493811}
-  - component: {fileID: 4786534706320229056}
   - component: {fileID: 1379868861179429741}
   m_Layer: 0
   m_Name: Ant Soldier
@@ -141,19 +140,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &4786534706320229056
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2557512320319996496}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.09375
-  m_Center: {x: 0, y: 0.55, z: 0}
 --- !u!65 &1379868861179429741
 BoxCollider:
   m_ObjectHideFlags: 0

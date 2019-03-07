@@ -4,25 +4,24 @@ using UnityEngine.UI;
 public class ReturnSettings : MonoBehaviour {
 
     [SerializeField] private int confirmationPanelIndex;
-    private MenuInteraction menuCode;
+    //private MenuInteraction menuCode;
     private Button applyButton;
 
     public void ExitSettings(int panelIndex)
     {
         if (!applyButton.interactable)
         {
-            menuCode.PanelToggle(panelIndex);
+            MenuInteraction.GetInstance().PanelToggle(panelIndex);
         }
         else
         {
-            menuCode.PanelToggle(confirmationPanelIndex);
+            MenuInteraction.GetInstance().PanelToggle(confirmationPanelIndex);
         }
     }
 
 	// Use this for initialization
 	void Start () {
         applyButton = GameObject.Find("ApplyButton").GetComponent<Button>();
-        menuCode = GameObject.FindObjectOfType<MenuInteraction>();
     }
 	
 	// Update is called once per frame

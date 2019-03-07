@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     //[SerializeField] private float currentcash = 5;
-    [SerializeField] private MenuInteraction _menuInteractionRef;
+    //[SerializeField] private MenuInteraction _menuInteractionRef;
     [SerializeField] private GameObject tileSelectionCursor;
     [SerializeField] private GameObject tileSelectedCursor;
     [SerializeField] private GameObject[] listOfTower;
@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour
 
     //Daniel Temporary
     //[SerializeField] private HudManager _hudManagerRef;
-    private int legoTowerIndex = 1;
-    private int soldierTowerIndex = 0;
+    //private int legoTowerIndex = 1;
+    //private int soldierTowerIndex = 0;
     public static bool gameOver;
 
     [SerializeField] private int initialMoney = 100;
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         ItemSelectionReset(); // for testing
         //UpdateSelectedTileText();
-        Debug.Log("Tower index" +SelectedTowerIndex);
+        //Debug.Log("Tower index" +SelectedTowerIndex);
         myMoney = gameObject.AddComponent<Money>();
         myMoney.CurrentMoney = initialMoney; // This value changes at the beginning of new level.
         //UpdateCashText(); // to be place in UI management script
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
         selectedTile = null;
         //UpdateSelectedTileText();
 
-        PanelSelection(_menuInteractionRef.defaultIndex);
+        PanelSelection(MenuInteraction.GetInstance().defaultIndex);
     }
 
     void ItemSelectionReset()
@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
         }
 
         HidePlaceHolders();
-        PanelSelection(_menuInteractionRef.defaultIndex); //Daniel temporary testing
+        PanelSelection(MenuInteraction.GetInstance().defaultIndex); //Daniel temporary testing
         tileSelectionCursor.SetActive(false);
         tileSelectedCursor.SetActive(false);
     }
@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
         //UpdateSelectedTileText();
         if (tile.CurrentItem != null)
         {
-             PanelSelection(_menuInteractionRef.storeIndex);  //Daniel temporary testing
+             PanelSelection(MenuInteraction.GetInstance().storeIndex);  //Daniel temporary testing
             //_hudManagerRef.Display(listOfTower[SelectedTowerIndex]);  //Daniel Temporary testing
             HudManager.GetInstance().Display(tile.CurrentItem);  //Daniel Temporary testing
             return;
@@ -137,12 +137,12 @@ public class GameManager : MonoBehaviour
         switch (tile.TileType)
         {
             case TileType.Tower:
-                 PanelSelection(_menuInteractionRef.storeIndex);  //Daniel temporary testing
+                 PanelSelection(MenuInteraction.GetInstance().storeIndex);  //Daniel temporary testing
                 HudManager.GetInstance().Display(listOfTower[selectedTowerIndex]);  //Daniel Temporary testing
                 ShowItemOnTile(listOfTowerPlaceHolder[selectedTowerIndex], tile);
                 break;
             case TileType.Barrier:
-                PanelSelection(_menuInteractionRef.storeIndex); //Daniel temporary testing
+                PanelSelection(MenuInteraction.GetInstance().storeIndex); //Daniel temporary testing
                 HudManager.GetInstance().Display(listOfBarrier[selectedBarrierIndex]);
                 ShowItemOnTile(listOfBarrierPlaceHolder[selectedBarrierIndex], tile);
                 break;
@@ -249,29 +249,6 @@ public class GameManager : MonoBehaviour
         selectedTile.CurrentItem = null;
         TileSelection(selectedTile);
     }
-
-    //// to be placed in UI management script
-    //public void UpdateCashText()
-    //{
-    //    UITextCash.text = $"Money: {myMoney.CurrentMoney}";
-    //}
-
-    //// to be placed in UI management script
-    //private void UpdateSelectedTileText()
-    //{
-    //    if (UITextSelectedTile != null)
-    //    {
-    //        UITextSelectedTile.text = $"Selected Tile: " + (selectedTile != null ? selectedTile.name : "");
-    //        if (selectedTile != null)
-    //        {
-    //            UITextSelectedTile.text += $"\nCurrent Item: " + (selectedTile.CurrentItem != null ? selectedTile.CurrentItem.name : "");
-    //        }
-    //        else
-    //        {
-    //            UITextSelectedTile.text += $"\nCurrent Item: ";
-    //        }
-    //    }
-    //}
     
     public void InstantiateItemOnTile(GameObject item)
     {
@@ -293,6 +270,7 @@ public class GameManager : MonoBehaviour
         HidePlaceHolders();
         ShowItemOnTile(listOfTowerPlaceHolder[selectedTowerIndex], selectedTile);
         TileSelection(selectedTile);
+
     }
 
     public void SetTowerSelectionIndex(int index)
@@ -302,7 +280,7 @@ public class GameManager : MonoBehaviour
 
     public void PanelSelection(int index)
     {
-        _menuInteractionRef.PanelToggle(index);
+        MenuInteraction.GetInstance().PanelToggle(index);
     }
 
     public void GameOver()

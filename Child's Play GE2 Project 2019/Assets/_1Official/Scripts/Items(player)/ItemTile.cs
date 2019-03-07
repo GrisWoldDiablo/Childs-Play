@@ -157,9 +157,9 @@ public class ItemTile : MonoBehaviour
     public Mesh[] TileMeshes { get => tileMeshes; set => tileMeshes = value; }
 
 #endif
-
+    private int clickCounter = 0;
     //private GameManager alexGMTestCode;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -182,7 +182,7 @@ public class ItemTile : MonoBehaviour
         {
             return;
         }
-        
+
         if (Input.GetButton("Fire1"))
         {
             if (tileType != TileType.Unavailable)
@@ -193,6 +193,18 @@ public class ItemTile : MonoBehaviour
             {
                 GameManager.GetInstance().DeselectTile();
             }
+
+            clickCounter++;
+        }
+        if (currentItem != null)
+        {
+            if (clickCounter >= 2)
+            {
+                PlayerManager.GetInstance().ClearEnemyFocusOnListAndCamera();
+                PlayerManager.GetInstance().playerWithFocus = currentItem.GetComponent<Item>();
+                CameraManager.GetInstance().isLocked = true;
+                clickCounter = 0;
+            } 
         }
     }
 
@@ -202,6 +214,7 @@ public class ItemTile : MonoBehaviour
     private void OnMouseExit()
     {
         GameManager.GetInstance().TileSelectionCursor.SetActive(false);
+        clickCounter = 0;
     }
 
     /// <summary>

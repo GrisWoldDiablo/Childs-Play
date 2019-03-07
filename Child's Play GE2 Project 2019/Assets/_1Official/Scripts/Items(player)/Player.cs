@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Player : PlayerBaseClass
 {
-    private CameraController _cameraController;
+    //private CameraController _cameraController;
             
     private int clickCounter;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        _cameraController = Camera.main.GetComponent<CameraController>();
-    }
+    //void Start()
+    //{
+    //    //_cameraController = Camera.main.GetComponent<CameraController>();
+    //}
 
     // Update is called once per frame
     new protected void Update()
@@ -25,16 +25,14 @@ public class Player : PlayerBaseClass
         if (Input.GetMouseButtonDown(0))
         {
             clickCounter++;
-
-            _cameraController.isLocked = false;
-
-            PlayerManager.GetInstance().ClearEnemyFocusOnListAndCamera();
-            PlayerManager.GetInstance().playerWithFocus = this;  
+            //CameraManager.GetInstance().isLocked = false;
         }
 
         if(clickCounter >= 2)
         {
-            _cameraController.isLocked = true;
+            PlayerManager.GetInstance().ClearEnemyFocusOnListAndCamera();
+            PlayerManager.GetInstance().playerWithFocus = this;  
+            CameraManager.GetInstance().isLocked = true;
             clickCounter = 0;
         }
     }

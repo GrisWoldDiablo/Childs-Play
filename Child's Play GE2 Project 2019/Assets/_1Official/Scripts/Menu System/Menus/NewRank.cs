@@ -5,12 +5,12 @@ public class NewRank : MonoBehaviour
 {
     [SerializeField] private Text newRankText;
     [SerializeField] private InputField inputField;
-    private Settings settingsCode;
+    //private Settings settingsCode;
 
     // Use this for initialization
     void Start()
     {
-        settingsCode = GameObject.Find("EventSystem").GetComponent<Settings>();
+        //settingsCode = GameObject.Find("EventSystem").GetComponent<Settings>();
     }
 
     // Update is called once per frame
@@ -23,11 +23,11 @@ public class NewRank : MonoBehaviour
     {
         if (inputField.text == string.Empty)
         {
-            settingsCode.SetLoaderboard();
+            Settings.GetInstance().SetLoaderboard();
         }
         else
         {
-            settingsCode.SetLoaderboard(inputField.text.ToUpper());
+            Settings.GetInstance().SetLoaderboard(inputField.text.ToUpper());
         }
         inputField.text = string.Empty;
     }

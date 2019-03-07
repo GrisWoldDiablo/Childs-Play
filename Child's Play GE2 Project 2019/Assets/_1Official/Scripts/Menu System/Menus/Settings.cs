@@ -6,6 +6,19 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class Settings : MonoBehaviour {
+    
+    #region Singleton
+    private static Settings instance = null;
+
+    public static Settings GetInstance()
+    {
+        if (instance == null)
+        {
+            instance = GameObject.FindObjectOfType<Settings>();
+        }
+        return instance;
+    }
+    #endregion
 
     [Header("Settings")]
     [SerializeField] private AudioMixer audioMixer;
