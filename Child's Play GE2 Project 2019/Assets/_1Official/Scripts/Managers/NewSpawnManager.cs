@@ -109,5 +109,8 @@ public class NewSpawnManager : MonoBehaviour
         Instantiate(enemyToSpawn, spawnPoint.position, spawnPoint.rotation);
     }
 
-    
+    private void OnDestroy()
+    {
+        instance = null;
+    }
 }

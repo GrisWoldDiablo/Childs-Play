@@ -19,7 +19,7 @@ public class EnemyMovementMechanics : MonoBehaviour
 
     //Game Object Components
     private NavMeshAgent _navMeshAgent;
-    private Rigidbody _myRigidBody;
+    //private Rigidbody _myRigidBody;
    
     //Node & Position
     protected Node currentDestination;
@@ -27,9 +27,9 @@ public class EnemyMovementMechanics : MonoBehaviour
 
     //Other
     private float initialMovementSpeed;
-    private bool attacking;
+    //private bool attacking;
     public float InitialMovementSpeed { get => initialMovementSpeed; }
-    public bool Attacking { get => attacking; }
+    //public bool Attacking { get => attacking; }
 
     // [SerializeField] private float damage = 1; No Longer Used.
 
@@ -40,12 +40,13 @@ public class EnemyMovementMechanics : MonoBehaviour
 
     void Start()
     {
-        currentDestination = GameObject.FindGameObjectWithTag("Spawn").GetComponent<Node>();
+        //currentDestination = GameObject.FindGameObjectWithTag("Spawn").GetComponent<Node>();
+        currentDestination = NewSpawnManager.GetInstance().spawnPoint.GetComponent<Node>();
         EnemyAgentNaveMeshSetup();
         SetNode(currentDestination);
-        _myRigidBody = gameObject.GetComponent<Rigidbody>();
-        _myRigidBody.isKinematic = false;
-        attacking = false;
+        //_myRigidBody = gameObject.GetComponent<Rigidbody>();
+        //_myRigidBody.isKinematic = false;
+        //attacking = false;
     }
 
     void Update()
@@ -62,8 +63,8 @@ public class EnemyMovementMechanics : MonoBehaviour
         if (_navMeshAgent == null)
         {
             this._navMeshAgent = GetComponent<NavMeshAgent>();
-            this._myRigidBody = GetComponent<Rigidbody>();
-            _myRigidBody.isKinematic = true;
+            //this._myRigidBody = GetComponent<Rigidbody>();
+            //_myRigidBody.isKinematic = true;
             //this._navMeshAgent.speed = 5;
             //this._navMeshAgent.velocity = new Vector3 (0, 0, 0);
             this._navMeshAgent.angularSpeed = 1200;
@@ -192,7 +193,7 @@ public class EnemyMovementMechanics : MonoBehaviour
         this.NavigateTo(target);
         this.SetStoppingDistance(attackStopingDistance);
         this.SetAvoidanceRadious(attackAvoidanceRadious);
-        this.attacking = true;
+        //this.attacking = true;
     }
 
     public void MoveOnStance()
@@ -200,7 +201,7 @@ public class EnemyMovementMechanics : MonoBehaviour
         this.MoveToNode();
         this.SetStoppingDistance(inititalStoppingDistance);
         this.SetAvoidanceRadious(agentAvoidanceRadious);
-        this.attacking = false;
+        //this.attacking = false;
     }
 
 }

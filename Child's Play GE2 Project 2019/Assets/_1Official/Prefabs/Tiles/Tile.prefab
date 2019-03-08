@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4577512356521743571}
   - component: {fileID: 1430129536324600232}
   - component: {fileID: 8707788555566940746}
+  - component: {fileID: 5476298373441786299}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Tile
@@ -93,7 +94,7 @@ BoxCollider:
   m_GameObject: {fileID: 1623256074732913475}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 5, y: 3, z: 5}
   m_Center: {x: 0, y: 1.5, z: 0}
@@ -132,3 +133,17 @@ MonoBehaviour:
   - {fileID: 4300000, guid: 39ab91c865a21114fa9f8c1ffd8e7a95, type: 3}
   - {fileID: 4300000, guid: 44beebc6c71e5234e9179370e7e8badc, type: 3}
   arrowMesh: {fileID: 4300000, guid: 0c8babb6e1cb4c0479e0c2026485d1e7, type: 3}
+--- !u!64 &5476298373441786299
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623256074732913475}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: -1
+  m_Mesh: {fileID: 4300000, guid: 508af0f88d1196f49841b632276de568, type: 3}
