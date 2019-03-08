@@ -32,30 +32,11 @@ public class EnemyBaseClass : MonoBehaviour
     public bool HasFocus { get => hasFocus; set => hasFocus = value; }
 
     private int currentDamageOvertime;
-
-    //private GameManager gmCode;
-
-
-    public IEnumerator DamageOverTime(int damageValue, float tickSpeed, float lastTime)
-    {
-        float currentTime = Time.time;
-        float endTime = currentTime + lastTime;
-        while (currentTime <= endTime)
-        {
-            //Debug.Log($"{gameObject.GetInstanceID()} Take DOT:{damageValue}, HP:{this.hitPoints}");
-            this.TakeDamage(damageValue);
-            //Debug.Log($"{gameObject.GetInstanceID()} wait for {tickSpeed}");
-            yield return new WaitForSeconds(tickSpeed);
-            Debug.Log($"{gameObject.GetInstanceID()} Next Tick");
-            currentTime = Time.time;
-        }
-    }
-
+    
     private void Awake()
     {
         _enemyAnimation = GetComponent<EnemyAnimation>();
         eMMCode = GetComponent<EnemyMovementMechanics>();
-        //gmCode = GameObject.FindObjectOfType<GameManager>();
     }
 
     // Start is called before the first frame update
@@ -193,4 +174,20 @@ public class EnemyBaseClass : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    public void DamageOverTime(int damageValue, float tickSpeed, float lastTime)
+    {
+        StartCoroutine(DamageOverTimeRoutine(damageValue, tickSpeed, lastTime));
+    }
+
+    private IEnumerator DamageOverTimeRoutine(int damageValue, float tickSpeed, float lastTime)
+    {
+        float currentTime = Time.time;
+        float endTime = currentTime + lastTime;
+        while (currentTime <= endTime)
+        {
+            this.TakeDamage(damageValue);
+            yield return new WaitForSeconds(tickSpeed);
+            currentTime = Time.time;
+        }
+    }
 }
