@@ -111,6 +111,7 @@ public class NewSpawnManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        //Destroy the Singleton, so it can be recreated from new prefab Spawnpoint.
         instance = null;
     }
 }

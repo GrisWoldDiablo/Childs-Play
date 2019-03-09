@@ -183,7 +183,7 @@ public class EnemyBaseClass : MonoBehaviour
     {
         float currentTime = Time.time;
         float endTime = currentTime + lastTime;
-        while (currentTime <= endTime)
+        while (currentTime <= endTime && this.hitPoints > 0)
         {
             this.TakeDamage(damageValue);
             yield return new WaitForSeconds(tickSpeed);

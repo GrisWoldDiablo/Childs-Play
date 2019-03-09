@@ -224,8 +224,9 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
-        selectedTile.CurrentItem.name = selectedTile.CurrentItem.GetComponent<Item>().ItemName;
-        TileSelection(selectedTile);
+        //selectedTile.CurrentItem.name = selectedTile.CurrentItem.GetComponent<Item>().ItemName;
+        //TileSelection(selectedTile);
+        DeselectTile();
     }
     
     /// <summary>

@@ -139,7 +139,7 @@ public class CameraManager : MonoBehaviour
             _currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
             _currentZoom = Mathf.Clamp(_currentZoom, minZoom, maxZoom);
 
-            _currentYaw += Input.GetAxis("RotateCamera") * yawSpeed * Time.deltaTime;           
+            _currentYaw += Input.GetAxis("RotateCamera") * yawSpeed * Time.fixedDeltaTime;           
         }
     }
 
@@ -149,7 +149,7 @@ public class CameraManager : MonoBehaviour
         {
             this.isLocked = false;
             _cameraFreeMovement = new Vector3(GetKeyboardInput.x, 0, GetKeyboardInput.y);
-            _cameraFreeMovement *= _cameraTranslationSpeed * Time.deltaTime;
+            _cameraFreeMovement *= _cameraTranslationSpeed * Time.fixedDeltaTime;
             _cameraFreeMovement = Quaternion.Euler(new Vector3(0, this.transform.eulerAngles.y, 0)) * _cameraFreeMovement;
             _cameraFreeMovement = this.transform.InverseTransformDirection(_cameraFreeMovement);
 
@@ -171,7 +171,7 @@ public class CameraManager : MonoBehaviour
             _cameraFreeMovement.x = leftRect.Contains(Input.mousePosition) ? -1 : rightRect.Contains(Input.mousePosition) ? 1 : 0;
             _cameraFreeMovement.z = upperRect.Contains(Input.mousePosition) ? 1 : lowerRect.Contains(Input.mousePosition) ? -1 : 0;
 
-            _cameraFreeMovement *= _cameraTranslationSpeed * Time.deltaTime;
+            _cameraFreeMovement *= _cameraTranslationSpeed * Time.fixedDeltaTime;
             _cameraFreeMovement = Quaternion.Euler(new Vector3(0f, this.transform.eulerAngles.y, 0f)) * _cameraFreeMovement;
             _cameraFreeMovement = this.transform.InverseTransformDirection(_cameraFreeMovement);
 
@@ -185,8 +185,8 @@ public class CameraManager : MonoBehaviour
         {
             if (Input.GetButton("RotateCamera"))
             {
-                this.transform.Rotate(Vector3.up, Input.GetAxis("RotateCamera") * 2 * yawSpeed * Time.deltaTime * .3f, Space.World);
-                _currentYaw += Input.GetAxis("RotateCamera") * yawSpeed * Time.deltaTime;                
+                this.transform.Rotate(Vector3.up, Input.GetAxis("RotateCamera") * 2 * yawSpeed * Time.fixedDeltaTime * .3f, Space.World);
+                _currentYaw += Input.GetAxis("RotateCamera") * yawSpeed * Time.fixedDeltaTime;                
             }
 
             _currentZoom += Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
