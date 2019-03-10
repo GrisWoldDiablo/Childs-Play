@@ -14,22 +14,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class BSGEditorMenu : MonoBehaviour {
-    
-    [MenuItem("BSGMenu/Scenes in Build Generator")]
-    static void GetGenerator()
-    {
-        Object asset = AssetDatabase.LoadAssetAtPath("Assets/plugins/BSG/BSG.prefab", typeof(Object));
-        if (asset != null)
-        {
-            Selection.activeObject = asset;
-        }
-        else
-        {
-            Debug.Log("Assets/plugins/BSG/BSG.prefab | Not Found!");
-        }
-    }
-}
+//public class BSGEditorMenu : MonoBehaviour {
+//    
+//    [MenuItem("BSGMenu/Scenes in Build Generator")]
+//    static void GetGenerator()
+//    {
+//        Object asset = AssetDatabase.LoadAssetAtPath("Assets/plugins/BSG/BSG.prefab", typeof(Object));
+//        if (asset != null)
+//        {
+//            Selection.activeObject = asset;
+//        }
+//        else
+//        {
+//            Debug.Log("Assets/plugins/BSG/BSG.prefab | Not Found!");
+//        }
+//    }
+//}
 
 public class BSGWindow : EditorWindow
 {

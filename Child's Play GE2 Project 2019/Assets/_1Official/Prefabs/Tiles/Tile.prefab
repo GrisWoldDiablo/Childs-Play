@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 2339762534124644367}
   - component: {fileID: 8130638337151559807}
   - component: {fileID: 4577512356521743571}
-  - component: {fileID: 1430129536324600232}
-  - component: {fileID: 8707788555566940746}
   - component: {fileID: 5476298373441786299}
+  - component: {fileID: 8707788555566940746}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Tile
@@ -84,20 +83,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1430129536324600232
-BoxCollider:
+--- !u!64 &5476298373441786299
+MeshCollider:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4801620236187235362, guid: 5b725a18d37af734a9a7ca3670cdb83f,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623256074732913475}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 5, y: 3, z: 5}
-  m_Center: {x: 0, y: 1.5, z: 0}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: -1
+  m_Mesh: {fileID: 4300000, guid: 508af0f88d1196f49841b632276de568, type: 3}
 --- !u!114 &8707788555566940746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,37 +112,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileType: 0
   currentItem: {fileID: 0}
-  meshFlipX: 0
-  meshFlipZ: 0
   rot90Degree: 0
-  tileMeshSelected: 0
-  tileMeshes:
-  - {fileID: 4300000, guid: 508af0f88d1196f49841b632276de568, type: 3}
-  - {fileID: 4300000, guid: 2c89f80cbc345274baec801a6acf8e3d, type: 3}
-  - {fileID: 4300000, guid: cfaa4f9f2fc296b4bb201931825f0933, type: 3}
-  - {fileID: 4300000, guid: 2bffbead30628e64ba46818cea5e0ce9, type: 3}
-  - {fileID: 4300000, guid: 163e40b756672b14384c27c91580807a, type: 3}
-  - {fileID: 4300000, guid: ff5df27601818dd4daaab1a19d6d0dcf, type: 3}
-  - {fileID: 4300000, guid: 7bca0dec0bf696b408f1b624e9319a8d, type: 3}
-  - {fileID: 4300000, guid: f37a450c611409749b643e1a23b480b6, type: 3}
-  - {fileID: 4300000, guid: b9e4a3f549fb1e54a8ce6ef65ce27458, type: 3}
-  - {fileID: 4300000, guid: 4b6d5d716a35026499a5d06e33cafd55, type: 3}
-  - {fileID: 4300000, guid: f7aeed9d5826e6b4d952a0060fb73e90, type: 3}
-  - {fileID: 4300000, guid: 516a6cb60a97131469d215a6d8c9e602, type: 3}
-  - {fileID: 4300000, guid: 39ab91c865a21114fa9f8c1ffd8e7a95, type: 3}
-  - {fileID: 4300000, guid: 44beebc6c71e5234e9179370e7e8badc, type: 3}
   arrowMesh: {fileID: 4300000, guid: 0c8babb6e1cb4c0479e0c2026485d1e7, type: 3}
---- !u!64 &5476298373441786299
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623256074732913475}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: -1
-  m_Mesh: {fileID: 4300000, guid: 508af0f88d1196f49841b632276de568, type: 3}

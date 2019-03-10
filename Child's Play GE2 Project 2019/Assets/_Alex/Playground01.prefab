@@ -134,11 +134,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warmUpSeconds: 10
   _waveSetup:
-  - {fileID: 11400000, guid: 27ca874bbe5b81d4f81b6b593b0bf491, type: 2}
-  - {fileID: 11400000, guid: 1c9995ccfbd88b94dbc1bd342a3d97a5, type: 2}
-  _waveCountDown: {fileID: 0}
+  - {fileID: 11400000, guid: c773cbc0216d20a4cac08874e3edd355, type: 2}
+  - {fileID: 11400000, guid: aa19c5d16b27da34ab2c16f41732e0bf, type: 2}
+  - {fileID: 11400000, guid: 442be2245271917459a70ed3a7da0bc5, type: 2}
+  - {fileID: 11400000, guid: f82222658559d3a4eb133f213147c084, type: 2}
+  - {fileID: 11400000, guid: aa88add74fa978640a42b5fbb7cbdb57, type: 2}
+  - {fileID: 11400000, guid: 42206babf9b88fc43b01d56961a9078c, type: 2}
+  - {fileID: 11400000, guid: f7c6e880e7038ce47bf52b2b4e968f6f, type: 2}
+  - {fileID: 11400000, guid: 98ce07a30aeb2814dac0b3ea2674d362, type: 2}
+  - {fileID: 11400000, guid: b0ef176f2c0df4f46be7b2494b971b1a, type: 2}
+  - {fileID: 11400000, guid: 3c61ba92f7fe60d4396d4bfed1b5110f, type: 2}
   spawnPoint: {fileID: 151551255995929583}
-  timeBetweenWaves: 5
+  timeBetweenWaves: 10
 --- !u!1 &357066899360441529
 GameObject:
   m_ObjectHideFlags: 0
@@ -9094,7 +9101,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4868580082578542242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.7, y: 6.270912, z: 103.9}
+  m_LocalPosition: {x: -36.1, y: 9.5, z: 183.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 151551255995929583}
@@ -14813,7 +14820,6 @@ MonoBehaviour:
   towerTarget: {fileID: 0}
   pivot: {fileID: 283167200101898126}
   rotationSpeed: 10
-  enemyTag: Enemy
   LookAtTarget: 0
   projectileSpawnPoint: {fileID: 4762578686465202035}
   tower_SO: {fileID: 11400000, guid: 3cd21a4f798c7344197c49e6cfc520bf, type: 2}
@@ -14912,7 +14918,6 @@ MonoBehaviour:
   towerTarget: {fileID: 0}
   pivot: {fileID: 283167200012070805}
   rotationSpeed: 10
-  enemyTag: Enemy
   LookAtTarget: 0
   projectileSpawnPoint: {fileID: 4762578686426066792}
   tower_SO: {fileID: 11400000, guid: 3cd21a4f798c7344197c49e6cfc520bf, type: 2}
@@ -15011,7 +15016,6 @@ MonoBehaviour:
   towerTarget: {fileID: 0}
   pivot: {fileID: 283167199566467035}
   rotationSpeed: 10
-  enemyTag: Enemy
   LookAtTarget: 0
   projectileSpawnPoint: {fileID: 4762578687003774758}
   tower_SO: {fileID: 11400000, guid: 3cd21a4f798c7344197c49e6cfc520bf, type: 2}
@@ -15418,7 +15422,6 @@ MonoBehaviour:
   towerTarget: {fileID: 0}
   pivot: {fileID: 283167198453636060}
   rotationSpeed: 10
-  enemyTag: Enemy
   LookAtTarget: 0
   projectileSpawnPoint: {fileID: 4762578687987571489}
   tower_SO: {fileID: 11400000, guid: 3cd21a4f798c7344197c49e6cfc520bf, type: 2}
