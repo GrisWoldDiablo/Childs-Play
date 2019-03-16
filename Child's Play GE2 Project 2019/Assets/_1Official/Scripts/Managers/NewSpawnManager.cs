@@ -54,7 +54,7 @@ public class NewSpawnManager : MonoBehaviour
         {
             warmedUp = true;
             _startNewWave = true;
-            HudManager.GetInstance().WarmUpText.enabled = false;
+            HudManager.GetInstance().WarmUpText.gameObject.SetActive(false);
         }
 
         if (_startNewWave)
