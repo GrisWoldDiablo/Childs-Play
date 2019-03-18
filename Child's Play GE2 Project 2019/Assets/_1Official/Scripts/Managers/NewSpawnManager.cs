@@ -94,6 +94,8 @@ public class NewSpawnManager : MonoBehaviour
 
         if(_waveIndex == _waveSetup.Length)
         {
+            LevelManager.CurrentLvl++;
+            LevelManager.GetInstance().LoadLvl();
             //TODO: LEVEL FINISHED! GOTO NEXT LEVEL
             Debug.Log("Level Finished!");
             this.enabled = false;
