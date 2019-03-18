@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     //private int legoTowerIndex = 1;
     //private int soldierTowerIndex = 0;
     public static bool gameOver;
+    public static bool gameCompleted;
 
     [SerializeField] private int initialMoney = 100;
     private Money myMoney;
@@ -258,7 +259,7 @@ public class GameManager : MonoBehaviour
                         item,
                         selectedTile.transform.position + Vector3.up * 3.0f,
                         selectedTile.transform.rotation,
-                        null
+                        LevelManager.GetInstance().CurrLvlObj.transform
                         );
         Item newItem = selectedTile.CurrentItem.GetComponent<Item>();
         newItem.Value /= 2;
