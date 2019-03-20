@@ -21,12 +21,14 @@ public class LevelManager : MonoBehaviour
     private GameObject currLvlObj;
     private static int currentLvl = 0;
     private bool currLvlCompleted = false;
+    private Transform root;
 
     public static int CurrentLvl { get => currentLvl; set => currentLvl = value; }
     public GameObject CurrLvlObj { get => currLvlObj; set => currLvlObj = value; }
 
     void Start()
     {
+        root = GameObject.FindGameObjectWithTag("Root").transform;
         LoadLvl();
     }
 
@@ -50,7 +52,7 @@ public class LevelManager : MonoBehaviour
             {
                 Destroy(currLvlObj);
             }
-            currLvlObj = Instantiate(levels[currentLvl]);
+            currLvlObj = Instantiate(levels[currentLvl], root);
         }
     }
 }
