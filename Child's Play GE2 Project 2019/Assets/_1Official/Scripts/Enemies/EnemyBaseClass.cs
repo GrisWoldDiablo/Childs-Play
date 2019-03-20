@@ -96,16 +96,17 @@ public class EnemyBaseClass : MonoBehaviour
         {
             col.enabled = false;
         }
-        transform.Rotate(Vector3.up * Random.Range(-360, 360));
-        eMMCode.StopAndGo();
+        //eMMCode.StopAndGo();
+        eMMCode.NavMeshAgent.enabled = false;
         isDying = true;
         SetAnimRetreating();
         Destroy(this.gameObject, 5);
+        transform.Rotate(Vector3.up * Random.Range(-180, 180));
         EnemyManager.GetInstance().RemoveEnemyFromList(this as Enemy);
         GameManager.GetInstance().MyMoney.MoneyChange(value);
     }
 
-    public void SetAttacking(Item target)
+    public virtual void SetAttacking(Item target)
     {
         isAttacking = true;
         this.targetGO = target.gameObject;

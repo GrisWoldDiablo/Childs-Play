@@ -10,11 +10,12 @@ public class Laser : Projectile
     [SerializeField] private float secondPerTick;
     [SerializeField] private float secondItLast;
 
-    new void Update()
-    {
-        base.Update();
-        HittingTarget();
-    }
+    //new void Update()
+    //{
+    //    base.Update();
+    //    HittingTarget();
+    //}
+
 
     public override void Damage(Transform enemy)
     {

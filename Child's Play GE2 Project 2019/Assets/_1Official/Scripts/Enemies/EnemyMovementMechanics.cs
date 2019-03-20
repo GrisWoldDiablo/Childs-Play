@@ -29,6 +29,8 @@ public class EnemyMovementMechanics : MonoBehaviour
     private float initialMovementSpeed;
     //private bool attacking;
     public float InitialMovementSpeed { get => initialMovementSpeed; }
+    public NavMeshAgent NavMeshAgent { get => _navMeshAgent; set => _navMeshAgent = value; }
+
     //public bool Attacking { get => attacking; }
 
     // [SerializeField] private float damage = 1; No Longer Used.

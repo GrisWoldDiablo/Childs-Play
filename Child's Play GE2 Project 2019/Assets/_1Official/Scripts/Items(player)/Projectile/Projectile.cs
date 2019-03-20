@@ -15,15 +15,22 @@ public class Projectile : MonoBehaviour
     [SerializeField] protected Transform _target;
     protected Vector3 direction;
     [SerializeField] protected int damageValue = 10;
-
+    private Rigidbody rb;
     public int DamageValue { get => damageValue; set => damageValue = value; }
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        Destroy(this.gameObject, 5.0f);
+    }
 
     protected void Update()
     {
-        if (_target != null)
-        {
-            UpdatTargetLocation();
-        }
+        MoveProjectile();
+        //if (_target != null)
+        //{
+        //    UpdatTargetLocation();
+        //}
         //else
         //{
         //    Destroy(_target.gameObject);
@@ -31,40 +38,53 @@ public class Projectile : MonoBehaviour
         //}
     }
 
-    public void UpdatTargetLocation()
+    private void MoveProjectile()
     {
-        targetLocation = _target.position;
+        rb.AddForce(direction * projectileSpeed * Time.deltaTime, ForceMode.VelocityChange);
     }
+
+    //public void UpdatTargetLocation()
+    //{
+    //    targetLocation = _target.position;
+    //    
+    //}
 
     public virtual void AssignTarget(Transform target)
     {
         _target = target;
-        UpdatTargetLocation();
+        direction = _target.position + _target.forward - this.transform.position;
+        this.transform.LookAt(_target);
+        //UpdatTargetLocation();
     }
 
-    public virtual void HittingTarget()
-    {
-        if (_target == null && this.GetType() != typeof(Laser))
-        {
-            _target = new GameObject().transform;
-            _target.transform.position = targetLocation;
-            return;
-        }
-        direction = _target.position - this.transform.position;
-        float currentDistance = projectileSpeed * Time.deltaTime;
-        
-        
-        // Retired,  using OnTriggerEnter
-        //if (direction.magnitude <= currentDistance) 
-        //{            
-        //    this.HitTarget();
-        //    return;
-        //}
+    //public virtual void HittingTarget()
+    //{
+    //    rb.AddForce(direction * projectileSpeed * Time.deltaTime, ForceMode.VelocityChange);
 
-        this.transform.Translate(direction.normalized * currentDistance, Space.World);
+    //    //if (_target == null && this.GetType() != typeof(Laser))
+    //    //{
+    //    //    _target = new GameObject().transform;
+    //    //    _target.transform.position = targetLocation;
+    //    //    return;
+    //    //}
+    //    //direction = _target.position - this.transform.position;
+    //    //float currentDistance = projectileSpeed * Time.deltaTime;
 
-        //this.transform.LookAt(direction); // UNCOMMENT IF you want missiles that seek target
-    }
+
+    //    // Retired,  using OnTriggerEnter
+    //    //if (direction.magnitude <= currentDistance) 
+    //    //{            
+    //    //    this.HitTarget();
+    //    //    return;
+    //    //}
+
+    //    //this.transform.Translate(direction.normalized * currentDistance, Space.World);
+    //    //if (Vector3.Distance(this.transform.position,_target.position) < 0.1f)
+    //    //{
+    //    //    Destroy(this.gameObject);
+    //    //}
+    //    //this.transform.LookAt(direction); // UNCOMMENT IF you want missiles that seek target
+    //}
 
     public virtual void HitTarget(Collider other)
     {
@@ -114,7 +134,7 @@ public class Projectile : MonoBehaviour
         {
             HitTarget(other);
         }
-        else if (other.gameObject.CompareTag("TilePath"))
+        else if (other.gameObject.CompareTag("TilePath") || other.gameObject.CompareTag("Terrain"))
         {
             HitTarget(other);
         }

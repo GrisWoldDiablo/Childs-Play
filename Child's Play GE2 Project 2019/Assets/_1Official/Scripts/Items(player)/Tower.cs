@@ -147,19 +147,19 @@ public class Tower : MonoBehaviour
         GameObject projectileGameObject = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
 
         Projectile projectile = projectileGameObject.GetComponent<Projectile>();
-
-        if (projectile is Missile)
-        {
-            projectile.GetComponent<Missile>().AssignTarget(towerTarget);
-        }
-        else if(projectile is Bullet)
-        {
-            projectile.GetComponent<Bullet>().AssignTarget(towerTarget);
-        }
-        else if (projectile is Laser)
-        {
-            projectile.GetComponent<Laser>().AssignTarget(towerTarget);
-        }
+        projectile.AssignTarget(towerTarget);
+        //if (projectile is Missile)
+        //{
+        //    projectile.GetComponent<Missile>().AssignTarget(towerTarget);
+        //}
+        //else if(projectile is Bullet)
+        //{
+        //    projectile.GetComponent<Bullet>().AssignTarget(towerTarget);
+        //}
+        //else if (projectile is Laser)
+        //{
+        //    projectile.GetComponent<Laser>().AssignTarget(towerTarget);
+        //}
     }
 
     private void OnDrawGizmos()
