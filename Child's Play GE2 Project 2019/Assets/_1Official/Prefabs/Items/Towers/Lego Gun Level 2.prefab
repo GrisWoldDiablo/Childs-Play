@@ -1042,6 +1042,22 @@ PrefabInstance:
       propertyPath: itemName
       value: Brick Gun Level 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
+        type: 3}
+      propertyPath: upgradeVersion
+      value: 
+      objectReference: {fileID: 5715736335120211671, guid: 1f4ac9beedd837b41958f1fc68577752,
+        type: 3}
+    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
+        type: 3}
+      propertyPath: rangeGO
+      value: 
+      objectReference: {fileID: 2560850720114641860}
+    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
+        type: 3}
+      propertyPath: value
+      value: 320
+      objectReference: {fileID: 0}
     - target: {fileID: 1140563546444235329, guid: 7b27dbe332062c54c836a499d36e8116,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -1161,6 +1177,12 @@ Transform:
 --- !u!4 &1538665063918054986 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3653085144851188623, guid: 7b27dbe332062c54c836a499d36e8116,
+    type: 3}
+  m_PrefabInstance: {fileID: 2875603529492276677}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2560850720114641860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 315755575424298497, guid: 7b27dbe332062c54c836a499d36e8116,
     type: 3}
   m_PrefabInstance: {fileID: 2875603529492276677}
   m_PrefabAsset: {fileID: 0}

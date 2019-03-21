@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -93,10 +94,26 @@ public class GameManager : MonoBehaviour
         tileSelectedCursor.SetActive(false);
 
         HidePlaceHolders();
+        ShowRange(false);
         selectedTile = null;
         //UpdateSelectedTileText();
 
         PanelSelection(MenuInteraction.GetInstance().defaultIndex);
+    }
+
+    private void ShowRange(bool show = true)
+    {
+        if (selectedTile != null)
+        {
+            if (selectedTile.CurrentItem != null)
+            {
+                GameObject rangeGO = selectedTile.CurrentItem.GetComponent<Item>().RangeGO;
+                if (rangeGO != null)
+                {
+                    rangeGO.SetActive(show);
+                }
+            }
+        }
     }
 
     void ItemSelectionReset()
@@ -125,6 +142,7 @@ public class GameManager : MonoBehaviour
     {
         HidePlaceHolders();
         ShowCursorOnTile(tileSelectedCursor, tile);
+        ShowRange(false);
         selectedTile = tile;
         //UpdateSelectedTileText();
         if (tile.CurrentItem != null)
@@ -132,6 +150,7 @@ public class GameManager : MonoBehaviour
              PanelSelection(MenuInteraction.GetInstance().storeIndex);  //Daniel temporary testing
             //_hudManagerRef.Display(listOfTower[SelectedTowerIndex]);  //Daniel Temporary testing
             HudManager.GetInstance().Display(tile.CurrentItem);  //Daniel Temporary testing
+            ShowRange(true);
             return;
         }
 
@@ -202,7 +221,7 @@ public class GameManager : MonoBehaviour
         }
         if (selectedTile.CurrentItem != null)
         {
-            Debug.Log("Already an Item, remove current Item before.");
+            UpgradeItem();
             return;
         }
 
@@ -229,7 +248,31 @@ public class GameManager : MonoBehaviour
         //TileSelection(selectedTile);
         DeselectTile();
     }
-    
+
+    private void UpgradeItem()
+    {
+        Item upgradeVersion = selectedTile.CurrentItem.GetComponent<Item>().UpgradeVersion;
+        if (upgradeVersion != null)
+        {
+            if (!myMoney.TryToBuy(upgradeVersion.Value))
+            {
+                Debug.Log("Not enough money for Upgrade!");
+                return;
+            }
+            else
+            {
+                Debug.Log("Upgrading!");
+                Destroy(selectedTile.CurrentItem);
+                InstantiateItemOnTile(upgradeVersion.gameObject);
+            }
+        }
+        else
+        {
+            Debug.Log("No upgrade version, available.");
+        }
+        DeselectTile();
+    }
+
     /// <summary>
     /// Remove and destroy the Item on the current selected tile, and call the sell method.
     /// </summary>
