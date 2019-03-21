@@ -11,10 +11,14 @@ GameObject:
   - component: {fileID: 52083794}
   - component: {fileID: 52083793}
   - component: {fileID: 52083792}
+  - component: {fileID: 2566838013390438452}
+  - component: {fileID: 7672249634627652212}
+  - component: {fileID: 1738881603286128637}
+  - component: {fileID: 4489509179048153639}
   m_Layer: 0
-  m_Name: Ant Entrance
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Name: Ant Entrance (SPAWN)
+  m_TagString: Spawn
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -78,6 +82,61 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &2566838013390438452
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52083791}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.906109
+  m_Center: {x: -0.063080564, y: 0.11871934, z: 0.04428501}
+--- !u!114 &7672249634627652212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52083791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda94f3d632cc3b45add6c1c90bb9b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  warmUpSeconds: 10
+  _waveSetup: []
+  spawnPoint: {fileID: 52083794}
+  timeBetweenWaves: 5
+--- !u!114 &1738881603286128637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52083791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3501d18c693304e80e6bc9c423bfc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4489509179048153639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52083791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5e4d458d5b01f4480f1bdc0eea4494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfNodes:
+  - {fileID: 1738881603286128637}
 --- !u!1 &609611475
 GameObject:
   m_ObjectHideFlags: 0
