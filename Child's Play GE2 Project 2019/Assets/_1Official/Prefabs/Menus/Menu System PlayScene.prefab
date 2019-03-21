@@ -429,7 +429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1.3099797, y: -101.1}
+  m_AnchoredPosition: {x: 1.3099797, y: -101.1001}
   m_SizeDelta: {x: 35.66, y: 39.880005}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1132630888
@@ -1867,7 +1867,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.29999924, y: -13.599976}
+  m_AnchoredPosition: {x: -0.29999924, y: -13.600098}
   m_SizeDelta: {x: 47.88, y: 18.470001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7768795655534336055
@@ -2694,14 +2694,14 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: b9d406e32b146ac4d97f3bd8045ef6f1, type: 3}
     m_FontSize: 12
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 0
 --- !u!114 &973090707758350124
@@ -3027,6 +3027,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 272286927757983858, guid: fb44c2740277ecc448288d4d0be8a4ff,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 172.7002
       objectReference: {fileID: 0}
     - target: {fileID: 272286928089430219, guid: fb44c2740277ecc448288d4d0be8a4ff,
         type: 3}
