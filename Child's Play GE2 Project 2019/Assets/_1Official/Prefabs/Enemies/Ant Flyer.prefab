@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1258019723663596742}
   - component: {fileID: 3406558363938730379}
   - component: {fileID: 8754108290805282532}
-  - component: {fileID: 7845555249266540726}
+  - component: {fileID: 1837904829125984527}
   m_Layer: 0
   m_Name: Ant Flyer
   m_TagString: Enemy
@@ -154,8 +154,8 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8567898, y: 0.6124548, z: 1.9554796}
   m_Center: {x: 0, y: 0, z: -0.42394853}
---- !u!65 &7845555249266540726
-BoxCollider:
+--- !u!135 &1837904829125984527
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -165,8 +165,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.33754054, y: 0.28912783, z: 0.36567593}
-  m_Center: {x: 0, y: -3.5, z: 3.0775865e-14}
+  m_Radius: 0.2
+  m_Center: {x: 0, y: -3.5, z: 0}
 --- !u!1 &8072516212597103562
 GameObject:
   m_ObjectHideFlags: 0
