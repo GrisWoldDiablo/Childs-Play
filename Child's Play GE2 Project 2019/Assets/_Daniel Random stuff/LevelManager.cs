@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
     private static int currentLvl = 0;
     private bool currLvlCompleted = false;
     private Transform root;
+    private bool finishSpawn;
 
     public static int CurrentLvl { get => currentLvl; set => currentLvl = value; }
     public GameObject CurrLvlObj { get => currLvlObj; set => currLvlObj = value; }
@@ -35,7 +36,12 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (finishSpawn && EnemyManager.GetInstance().ListOfEnemies.Count <= 0)
+        {
+            currentLvl++;
+            LoadLvl();
+            finishSpawn = false;
+        }
     }
 
     public void LoadLvl()
@@ -54,5 +60,10 @@ public class LevelManager : MonoBehaviour
             }
             currLvlObj = Instantiate(levels[currentLvl], root);
         }
+    }
+
+    public void FinishedSpawn()
+    {
+        finishSpawn = true;
     }
 }
