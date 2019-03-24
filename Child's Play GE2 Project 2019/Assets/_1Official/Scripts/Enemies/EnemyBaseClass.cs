@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(
     typeof(EnemyAnimation),
@@ -32,7 +33,14 @@ public class EnemyBaseClass : MonoBehaviour
     public bool HasFocus { get => hasFocus; set => hasFocus = value; }
 
     private int currentDamageOvertime;
-    
+
+    [Header("Health Bar")]
+    [SerializeField] private Color startingHealthColor;
+    [SerializeField] private Color endHealthColor;
+    private Image healthBar;
+    private float ogHP;
+    public Image HealthBar { get => healthBar; set => healthBar = value; }
+
     private void Awake()
     {
         _enemyAnimation = GetComponent<EnemyAnimation>();
@@ -45,6 +53,9 @@ public class EnemyBaseClass : MonoBehaviour
         SetAnimWalking();
 
         EnemyManager.GetInstance().AddEnemyToList(this as Enemy);
+        healthBar = GetComponentInChildren<Image>();
+        healthBar.gameObject.SetActive(GameManager.GetInstance().ShowHealthBars);
+        ogHP = hitPoints;
     }
 
     // Update is called once per frame
@@ -59,6 +70,7 @@ public class EnemyBaseClass : MonoBehaviour
     public void TakeDamage(int damageValue)
     {
         this.hitPoints -= damageValue;
+        UpdateHealthBar();
         if (hitPoints <= 0)
         {
             Die();
@@ -190,5 +202,15 @@ public class EnemyBaseClass : MonoBehaviour
             yield return new WaitForSeconds(tickSpeed);
             currentTime = Time.time;
         }
+    }
+
+    private void UpdateHealthBar()
+    {
+        if (healthBar == null)
+        {
+            return;
+        }
+        healthBar.fillAmount = hitPoints / ogHP;
+        healthBar.color = Color.Lerp(endHealthColor, startingHealthColor, healthBar.fillAmount);
     }
 }
