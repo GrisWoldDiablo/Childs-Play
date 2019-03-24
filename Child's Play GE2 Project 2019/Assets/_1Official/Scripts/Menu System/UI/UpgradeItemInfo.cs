@@ -1,37 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class UpgradeItemInfo : MonoBehaviour
+public class UpgradeItemInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private SelectableInteraction buyUpgradeBtn;
-    private GameObject rangeGOUpgrade;
-    // Start is called before the first frame update
-    void Start()
-    {
-        buyUpgradeBtn = GetComponent<SelectableInteraction>();
-    }
 
-    // Update is called once per frame
-    void Update()
+    private GameObject rangeGOUpgrade;
+       
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        if (buyUpgradeBtn.Selected &&
-            GameManager.GetInstance().SelectedTile != null &&
+        if (GameManager.GetInstance().SelectedTile != null &&
             GameManager.GetInstance().SelectedTile.CurrentItem != null &&
             GameManager.GetInstance().SelectedTile.CurrentItem.GetComponent<Item>().UpgradeVersion != null)
         {
+            // Insert Code here when mouse is over button and there is upgrade available.
+
+            // Show range upgrade.
             if (rangeGOUpgrade == null)
             {
                 rangeGOUpgrade = GameManager.GetInstance().SelectedTile.CurrentItem.GetComponent<Item>().RangeGOUpgrade;
                 rangeGOUpgrade.SetActive(true);
             }
         }
-        else if (rangeGOUpgrade != null)
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        // Insert Code here when mouse exit button to reset any changes made on enter.
+
+        //Hide range upgrade.
+        if (rangeGOUpgrade != null)
         {
             rangeGOUpgrade.SetActive(false);
             rangeGOUpgrade = null;
         }
-        
-        
     }
 }

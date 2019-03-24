@@ -44,11 +44,8 @@ public class GameManager : MonoBehaviour
     private Money myMoney;
     [SerializeField, Header("GameOver Panel")] private int gameOverIndex = 7;
 
-    //-//
-    // To be placed in UI management script
-    // [SerializeField] private Text UITextSelectedTile;
-    // [SerializeField] private Text UITextCash;
-    //-//
+    
+    private bool showHealthBars = true;
 
     private ItemTile selectedTile;
 
@@ -58,6 +55,7 @@ public class GameManager : MonoBehaviour
     public int SelectedTowerIndex { get => selectedTowerIndex; set => selectedTowerIndex = value; }
     public int SelectedBarrierIndex { get => selectedBarrierIndex; set => selectedBarrierIndex = value; }
     public Money MyMoney { get => myMoney; private set => myMoney = value; }
+    public bool ShowHealthBars { get => showHealthBars; set => showHealthBars = value; }
 
     //All Managers
     //private PlayerManager PlayerManager.GetInstance();
@@ -112,6 +110,15 @@ public class GameManager : MonoBehaviour
                 {
                     rangeGO.SetActive(show);
                 }
+
+                //if (!show)
+                //{
+                //    GameObject rangeGOUP = selectedTile.CurrentItem.GetComponent<Item>().RangeGOUpgrade;
+                //    if (rangeGOUP != null)
+                //    {
+                //        rangeGOUP.SetActive(show);
+                //    } 
+                //}
             }
         }
     }
@@ -332,5 +339,14 @@ public class GameManager : MonoBehaviour
     {
         Pause.GetInstance().PauseGame();
         PanelSelection(gameOverIndex);
+    }
+
+    public void ToggleHealthBars()
+    {
+        showHealthBars = !showHealthBars;
+        foreach (var item in EnemyManager.GetInstance().ListOfEnemies)
+        {
+            item.HealthBar.gameObject.SetActive(showHealthBars);
+        }
     }
 }
