@@ -99,13 +99,13 @@ public class Projectile : MonoBehaviour
         {
             if (other.CompareTag("Enemy"))
             {
-                Damage(other.transform);
+                Damage(other.gameObject);
             }
         }
-        if (!_target.CompareTag("Enemy"))
-        {
-            Destroy(_target.gameObject);
-        }
+        //if (!_target.CompareTag("Enemy"))
+        //{
+        //    Destroy(_target.gameObject);
+        //}
         Destroy(this.gameObject);
     }
 
@@ -116,14 +116,18 @@ public class Projectile : MonoBehaviour
         {
             if (col.tag == "Enemy")
             {
-                Damage(col.transform);
+                Damage(col.gameObject);
             }
         }
     }
 
-    public virtual void Damage(Transform enemy)
+    public virtual void Damage(GameObject enemyGO)
     {
-        enemy.GetComponent<Enemy>().TakeDamage(damageValue);
+        Enemy enemy = enemyGO.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damageValue); 
+        }
         //Debug.Log($"{enemy.GetInstanceID()} : {enemy.GetComponent<Enemy>().HitPoints}");
         //Destroy(enemy.gameObject);
     }

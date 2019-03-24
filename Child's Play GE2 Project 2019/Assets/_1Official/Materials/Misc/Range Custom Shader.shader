@@ -15,7 +15,6 @@ Shader "Custom/Intersection Additive" {
 		_Displace("Diplace Factor", Range(0.1,100.0)) = 0.5
 		_BumpDirection("Bump Direction & Speed", Vector) = (1.0 ,1.0, -1.0, 1.0)
 	}
-
 	Category{
 		Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
 			Blend SrcAlpha OneMinusSrcAlpha

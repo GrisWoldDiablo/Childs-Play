@@ -17,9 +17,13 @@ public class Laser : Projectile
     //}
 
 
-    public override void Damage(Transform enemy)
+    public override void Damage(GameObject enemyGO)
     {
-        enemy.GetComponent<Enemy>().DamageOverTime(damageValue, secondPerTick, secondItLast);
+        Enemy enemy = enemyGO.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.DamageOverTime(damageValue, secondPerTick, secondItLast);
+        }
     }
 
 }

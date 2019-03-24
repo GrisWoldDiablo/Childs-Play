@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,11 +43,12 @@ public class Tower : MonoBehaviour
     public Transform GetTowerTarget
     { get { return towerTarget; } }
 
+    public Tower_SO Tower_SO { get => tower_SO; }
+
     private void Start()
     {
-        GetComponent<Item>().RangeGO.transform.localScale = Vector3.one * tower_SO.range * 2.0f;
-        GetComponent<Item>().RangeGO.transform.localScale = new Vector3(GetComponent<Item>().RangeGO.transform.localScale.x,
-            GetComponent<Item>().RangeGO.transform.localScale.y * 0.33f, GetComponent<Item>().RangeGO.transform.localScale.z);
+        
+        BroadcastMessage("SetRangeScale", tower_SO.range);
         if (tower_SO.towerType == ProjectTileType.LASER)
         {
             _lightEffect = GetComponentInChildren<Light>();
