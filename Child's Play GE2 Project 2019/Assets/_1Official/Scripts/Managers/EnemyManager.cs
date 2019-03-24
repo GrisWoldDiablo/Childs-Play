@@ -39,6 +39,7 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         //ChangePlayerFocusWithButton();
+        Debug.Log("NUmber of enemies: " + listOfEnemies.Count);
     }
     #endregion
 

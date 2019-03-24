@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7555477435329626641}
   - component: {fileID: 7555477435329626640}
   - component: {fileID: 7555477435329626646}
-  - component: {fileID: 7555477435329626645}
   - component: {fileID: 7555477435329626647}
   - component: {fileID: 1724487181036833287}
+  - component: {fileID: 3599055922658591057}
   m_Layer: 0
   m_Name: NodeRandom
   m_TagString: Untagged
@@ -93,20 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3501d18c693304e80e6bc9c423bfc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7555477435329626645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7555477435329626651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b5e4d458d5b01f4480f1bdc0eea4494, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listOfNodes:
-  - {fileID: 0}
 --- !u!135 &7555477435329626647
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -133,3 +119,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.82, z: 1.97}
   m_Center: {x: -0.87, y: 0.06, z: 0}
+--- !u!114 &3599055922658591057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7555477435329626651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508711b62d8305743a64fad023f30c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfNodes:
+  - {fileID: 0}
+  - {fileID: 0}
