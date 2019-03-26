@@ -24,32 +24,7 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Destroy(this.gameObject, 5.0f);
     }
-
-    protected void Update()
-    {
-        MoveProjectile();
-        //if (_target != null)
-        //{
-        //    UpdatTargetLocation();
-        //}
-        //else
-        //{
-        //    Destroy(_target.gameObject);
-        //    Destroy(this.gameObject);
-        //}
-    }
-
-    private void MoveProjectile()
-    {
-        
-    }
-
-    //public void UpdatTargetLocation()
-    //{
-    //    targetLocation = _target.position;
-    //    
-    //}
-
+    
     public virtual void AssignTarget(Transform target)
     {
         _target = target;
@@ -58,36 +33,7 @@ public class Projectile : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(rb.velocity);
         Debug.DrawRay(this.transform.position, rb.velocity, Color.red, 0.5f);
     }
-
-    //public virtual void HittingTarget()
-    //{
-    //    rb.AddForce(direction * projectileSpeed * Time.deltaTime, ForceMode.VelocityChange);
-
-    //    //if (_target == null && this.GetType() != typeof(Laser))
-    //    //{
-    //    //    _target = new GameObject().transform;
-    //    //    _target.transform.position = targetLocation;
-    //    //    return;
-    //    //}
-    //    //direction = _target.position - this.transform.position;
-    //    //float currentDistance = projectileSpeed * Time.deltaTime;
-
-
-    //    // Retired,  using OnTriggerEnter
-    //    //if (direction.magnitude <= currentDistance) 
-    //    //{            
-    //    //    this.HitTarget();
-    //    //    return;
-    //    //}
-
-    //    //this.transform.Translate(direction.normalized * currentDistance, Space.World);
-    //    //if (Vector3.Distance(this.transform.position,_target.position) < 0.1f)
-    //    //{
-    //    //    Destroy(this.gameObject);
-    //    //}
-    //    //this.transform.LookAt(direction); // UNCOMMENT IF you want missiles that seek target
-    //}
-
+    
     public virtual void HitTarget(Collider other)
     {
         //TODO: spawn effect
@@ -104,10 +50,7 @@ public class Projectile : MonoBehaviour
                 Damage(other.gameObject);
             }
         }
-        //if (!_target.CompareTag("Enemy"))
-        //{
-        //    Destroy(_target.gameObject);
-        //}
+
         Destroy(this.gameObject);
     }
 
@@ -130,8 +73,6 @@ public class Projectile : MonoBehaviour
         {
             enemy.TakeDamage(damageValue); 
         }
-        //Debug.Log($"{enemy.GetInstanceID()} : {enemy.GetComponent<Enemy>().HitPoints}");
-        //Destroy(enemy.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

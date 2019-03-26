@@ -10,13 +10,6 @@ public class Laser : Projectile
     [SerializeField] private float secondPerTick;
     [SerializeField] private float secondItLast;
 
-    //new void Update()
-    //{
-    //    base.Update();
-    //    HittingTarget();
-    //}
-
-
     public override void Damage(GameObject enemyGO)
     {
         Enemy enemy = enemyGO.GetComponent<Enemy>();
