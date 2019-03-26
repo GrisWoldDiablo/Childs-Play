@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class Missile : Projectile
 {
-
-   //public override void AssignTarget(Transform tar)
-   //{
-   //    //_target = tar;
-   //    //direction = _target.position - this.transform.position;
-   //    //UpdatTargetLocation();
-   //    //_target = new GameObject().transform;
-   //    //_target.transform.position = targetLocation;
-   //    base.AssignTarget(tar);
-   //    this.transform.LookAt(_target);
-   //}    
+    public override void AssignTarget(Transform target)
+    {
+        _target = target;
+        this.transform.LookAt(_target);
+        rb.velocity = this.transform.forward * projectileSpeed;
+        transform.rotation = Quaternion.LookRotation(rb.velocity);
+        Debug.DrawRay(this.transform.position, rb.velocity, Color.red, 0.5f);
+    }
+    //public override void AssignTarget(Transform tar)
+    //{
+    //    //_target = tar;
+    //    //direction = _target.position - this.transform.position;
+    //    //UpdatTargetLocation();
+    //    //_target = new GameObject().transform;
+    //    //_target.transform.position = targetLocation;
+    //    base.AssignTarget(tar);
+    //    this.transform.LookAt(_target);
+    //}    
 
     // Update is called once per frame
     //new void Update()

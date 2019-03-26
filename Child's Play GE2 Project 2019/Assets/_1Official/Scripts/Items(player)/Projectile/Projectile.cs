@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Projectile : MonoBehaviour
 {
@@ -15,10 +16,10 @@ public class Projectile : MonoBehaviour
     [SerializeField] protected Transform _target;
     protected Vector3 direction;
     [SerializeField] protected int damageValue = 10;
-    private Rigidbody rb;
+    protected Rigidbody rb;
     public int DamageValue { get => damageValue; set => damageValue = value; }
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         Destroy(this.gameObject, 5.0f);
@@ -40,7 +41,7 @@ public class Projectile : MonoBehaviour
 
     private void MoveProjectile()
     {
-        rb.AddForce(direction * projectileSpeed * Time.deltaTime, ForceMode.VelocityChange);
+        
     }
 
     //public void UpdatTargetLocation()
@@ -52,9 +53,10 @@ public class Projectile : MonoBehaviour
     public virtual void AssignTarget(Transform target)
     {
         _target = target;
-        direction = _target.position + _target.forward - this.transform.position;
         this.transform.LookAt(_target);
-        //UpdatTargetLocation();
+        rb.velocity = this.transform.forward * projectileSpeed + _target.GetComponent<NavMeshAgent>().velocity;
+        transform.rotation = Quaternion.LookRotation(rb.velocity);
+        Debug.DrawRay(this.transform.position, rb.velocity, Color.red, 0.5f);
     }
 
     //public virtual void HittingTarget()
