@@ -3961,6 +3961,21 @@ PrefabInstance:
       propertyPath: itemName
       value: Brick Gun Level 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
+        type: 3}
+      propertyPath: upgradeVersion
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
+        type: 3}
+      propertyPath: rangeGO
+      value: 
+      objectReference: {fileID: 2560850720114641860}
+    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
+        type: 3}
+      propertyPath: value
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 1140563546444235329, guid: 7b27dbe332062c54c836a499d36e8116,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -4104,15 +4119,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2875603529492276677}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &8459458144189319716 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5948756410623832033, guid: 7b27dbe332062c54c836a499d36e8116,
+    type: 3}
+  m_PrefabInstance: {fileID: 2875603529492276677}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1073635606400039449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2958411723986460636, guid: 7b27dbe332062c54c836a499d36e8116,
     type: 3}
   m_PrefabInstance: {fileID: 2875603529492276677}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &8459458144189319716 stripped
+--- !u!4 &2899239178605602692 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5948756410623832033, guid: 7b27dbe332062c54c836a499d36e8116,
+  m_CorrespondingSourceObject: {fileID: 1140563546444235329, guid: 7b27dbe332062c54c836a499d36e8116,
     type: 3}
   m_PrefabInstance: {fileID: 2875603529492276677}
   m_PrefabAsset: {fileID: 0}
@@ -4122,9 +4143,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2875603529492276677}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2899239178605602692 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1140563546444235329, guid: 7b27dbe332062c54c836a499d36e8116,
+--- !u!1 &2560850720114641860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 315755575424298497, guid: 7b27dbe332062c54c836a499d36e8116,
     type: 3}
   m_PrefabInstance: {fileID: 2875603529492276677}
   m_PrefabAsset: {fileID: 0}

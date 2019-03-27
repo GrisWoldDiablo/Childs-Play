@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,8 +43,12 @@ public class Tower : MonoBehaviour
     public Transform GetTowerTarget
     { get { return towerTarget; } }
 
+    public Tower_SO Tower_SO { get => tower_SO; }
+
     private void Start()
     {
+        
+        BroadcastMessage("SetRangeScale", tower_SO.range);
         if (tower_SO.towerType == ProjectTileType.LASER)
         {
             _lightEffect = GetComponentInChildren<Light>();
