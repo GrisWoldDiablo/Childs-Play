@@ -14,7 +14,7 @@ public class EnemyBaseClass : MonoBehaviour
     [SerializeField] private int damage = 1;
     [SerializeField] private float attackSpeed = 0.5f;
     [SerializeField] private int foodBites = 5;
-    [SerializeField] private int value = 10;
+    [SerializeField] protected int value = 10;
 
     protected bool hasFocus = false;
     private EnemyAnimation _enemyAnimation;
@@ -23,10 +23,10 @@ public class EnemyBaseClass : MonoBehaviour
     protected bool isAttacking = false;
 
     private float attackCountDown = 0;
-    private bool isDying = false;
+    protected bool isDying = false;
     private bool asEaten = false;
 
-    private EnemyMovementMechanics eMMCode;
+    protected EnemyMovementMechanics eMMCode;
 
     public int HitPoints { get => hitPoints; set => hitPoints = value; }
     public bool IsDying { get => isDying; }
@@ -40,6 +40,7 @@ public class EnemyBaseClass : MonoBehaviour
     private Image healthBar;
     private float ogHP;
     public Image HealthBar { get => healthBar; set => healthBar = value; }
+    public EnemyMovementMechanics EMMCode { get => eMMCode; }
 
     private void Awake()
     {
@@ -97,7 +98,7 @@ public class EnemyBaseClass : MonoBehaviour
         _enemyAnimation.SetRetreating();
     }
 
-    public void Die()
+    public virtual void Die()
     {
         if (isDying)
         {
