@@ -36,7 +36,7 @@ public class Shop : MonoBehaviour
     private int upgradeSellPanel = 2;
     private int barrierPanel = 3;
     private int currentPanel = 1;
-    private bool move = false;
+    //private bool move = false;
 
     public GameObject[] Panels { get => panels; set => panels = value; }
     public int Placeholder { get => placeholder; set => placeholder = value; }
@@ -44,21 +44,21 @@ public class Shop : MonoBehaviour
     public int UpgradeSellPanel { get => upgradeSellPanel; set => upgradeSellPanel = value; }
     public int BarrierPanel { get => barrierPanel; set => barrierPanel = value; }
     public int CurrentPanel { get => currentPanel; set => currentPanel = value; }
-    public bool Move { get => move; set => move = value; }
+    //public bool Move { get => move; set => move = value; }
 
     void Start()
     {
         toolTipText.gameObject.SetActive(false);
     }
 
-    void Update()
-    {
-        if (move)
-        {
-            MoveToClick(currentPanel);
-            move = false;
-        }
-    }
+    //void Update()
+    //{
+    //    if (move)
+    //    {
+    //        MoveToClick(currentPanel);
+    //        move = false;
+    //    }
+    //}
 
     public void SetPanelActive(int panelIndex)
     {
@@ -70,10 +70,12 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void MoveToClick(int index)
+    public void MoveToClick(/*int index*/)
     {
         var pos = Input.mousePosition;
-        Panels[index].transform.position = pos;
+        //Panels[index].transform.position = pos;
+        Panels[currentPanel].transform.position = pos;
+
     }
 
     public void SetActiveToolTip(bool value)
