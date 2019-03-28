@@ -98,10 +98,10 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2557512320319996496}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: 1479372276
   m_Radius: 0.5
   m_Speed: 2.5
-  m_Acceleration: 8
+  m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackAvoidanceRadious: 0.5
   attackStopingDistance: 5
-  agentAvoidanceRadious: 1
+  agentAvoidanceRadious: 0.5
 --- !u!54 &6573137401401493811
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -163,6 +163,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6215998467395988463}
     m_Modifications:
+    - target: {fileID: 100000, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
+      propertyPath: m_Name
+      value: Ant
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -218,38 +250,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.15337947
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
-      propertyPath: m_Name
-      value: Ant
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100012, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2300008, guid: 9151f0a300598124ab9cb8cbf63c51be, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -314,6 +314,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6215998467395988463}
     m_Modifications:
+    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
+        type: 3}
+      propertyPath: m_Name
+      value: Health Bar Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2088253631508828838, guid: 192580244026acc4f9986fa201558c41,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -418,16 +428,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
-        type: 3}
-      propertyPath: m_Name
-      value: Health Bar Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3694754323599095440, guid: 192580244026acc4f9986fa201558c41,
         type: 3}

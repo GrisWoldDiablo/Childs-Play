@@ -82,6 +82,31 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -21.43
       objectReference: {fileID: 0}
+    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3104638497583686586, guid: a77632932c49fe74387da79e3f262226,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -218,6 +243,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 23800000, guid: 3bdf7a9b068fbf146b9bdc970df598b8,
         type: 2}
+    - target: {fileID: 2051964743774176691, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_AgentTypeID
+      value: 1479372276
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051964743774176691, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_VoxelSize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051964743774176691, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_OverrideVoxelSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051964743774176691, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_OverrideTileSize
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2282374351599088178, guid: a77632932c49fe74387da79e3f262226,
         type: 3}
       propertyPath: listOfNodes.Array.data[0]
@@ -242,13 +287,13 @@ PrefabInstance:
         type: 3}
       propertyPath: _waveSetup.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 4b8524f1d15be4341a1191ab72bdaa78,
+      objectReference: {fileID: 11400000, guid: 03b0c92c11bfed048924a488a1650116,
         type: 2}
     - target: {fileID: 2663660574073245057, guid: a77632932c49fe74387da79e3f262226,
         type: 3}
       propertyPath: _waveSetup.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: b14aeca21e3b9dc4bb12c31fb087ca86,
+      objectReference: {fileID: 11400000, guid: dadbfbf47bfd5c14fa7523736a6b26e4,
         type: 2}
     - target: {fileID: 2663660574073245057, guid: a77632932c49fe74387da79e3f262226,
         type: 3}
@@ -306,7 +351,7 @@ PrefabInstance:
     - target: {fileID: 2663660574073245057, guid: a77632932c49fe74387da79e3f262226,
         type: 3}
       propertyPath: warmUpSeconds
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4197240179963117039, guid: a77632932c49fe74387da79e3f262226,
         type: 3}

@@ -95,8 +95,8 @@ public class GameManager : MonoBehaviour
         ShowRange(false);
         selectedTile = null;
         //UpdateSelectedTileText();
-
-        PanelSelection(MenuInteraction.GetInstance().defaultIndex);
+        Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
+        //PanelSelection(MenuInteraction.GetInstance().defaultIndex);
     }
 
     private void ShowRange(bool show = true)
@@ -136,7 +136,9 @@ public class GameManager : MonoBehaviour
         }
 
         HidePlaceHolders();
-        PanelSelection(MenuInteraction.GetInstance().defaultIndex); //Daniel temporary testing
+        Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
+        //Shop.GetInstance().SetActiveToolTip(false);
+        //PanelSelection(MenuInteraction.GetInstance().defaultIndex); //Daniel temporary testing
         tileSelectionCursor.SetActive(false);
         tileSelectedCursor.SetActive(false);
     }
@@ -154,9 +156,10 @@ public class GameManager : MonoBehaviour
         //UpdateSelectedTileText();
         if (tile.CurrentItem != null)
         {
-             PanelSelection(MenuInteraction.GetInstance().storeIndex);  //Daniel temporary testing
+            //PanelSelection(MenuInteraction.GetInstance().storeIndex);  //Daniel temporary testing
             //_hudManagerRef.Display(listOfTower[SelectedTowerIndex]);  //Daniel Temporary testing
-            HudManager.GetInstance().Display(tile.CurrentItem);  //Daniel Temporary testing
+            //HudManager.GetInstance().Display(tile.CurrentItem);  //Daniel Temporary testing
+            Shop.GetInstance().SetPanelActive(Shop.GetInstance().UpgradeSellPanel);
             ShowRange(true);
             return;
         }
@@ -164,13 +167,15 @@ public class GameManager : MonoBehaviour
         switch (tile.TileType)
         {
             case TileType.Tower:
-                 PanelSelection(MenuInteraction.GetInstance().storeIndex);  //Daniel temporary testing
-                HudManager.GetInstance().Display(listOfTower[selectedTowerIndex]);  //Daniel Temporary testing
+                //PanelSelection(MenuInteraction.GetInstance().storeIndex);  //Daniel temporary testing
+                //HudManager.GetInstance().Display(listOfTower[selectedTowerIndex]);  //Daniel Temporary testing
+                Shop.GetInstance().SetPanelActive(Shop.GetInstance().ShopPanel);
                 ShowItemOnTile(listOfTowerPlaceHolder[selectedTowerIndex], tile);
                 break;
             case TileType.Barrier:
-                PanelSelection(MenuInteraction.GetInstance().storeIndex); //Daniel temporary testing
-                HudManager.GetInstance().Display(listOfBarrier[selectedBarrierIndex]);
+                //PanelSelection(MenuInteraction.GetInstance().storeIndex); //Daniel temporary testing
+                //HudManager.GetInstance().Display(listOfBarrier[selectedBarrierIndex]);
+                Shop.GetInstance().SetPanelActive(Shop.GetInstance().BarrierPanel);
                 ShowItemOnTile(listOfBarrierPlaceHolder[selectedBarrierIndex], tile);
                 break;
             default:
@@ -240,6 +245,7 @@ public class GameManager : MonoBehaviour
                     return;
                 }
                 InstantiateItemOnTile(listOfTower[selectedTowerIndex]);
+                Shop.GetInstance().SetActiveToolTip(false);
                 break;
             case TileType.Barrier:
                 if (!myMoney.TryToBuy(listOfBarrier[selectedBarrierIndex].GetComponent<Item>().Value))
@@ -247,6 +253,7 @@ public class GameManager : MonoBehaviour
                     return;
                 }
                 InstantiateItemOnTile(listOfBarrier[selectedBarrierIndex]);
+                Shop.GetInstance().SetActiveToolTip(false);
                 break;
             default:
                 break;
@@ -278,6 +285,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("No upgrade version, available.");
         }
         DeselectTile();
+        //TileSelection(selectedTile);
     }
 
     /// <summary>
@@ -299,7 +307,9 @@ public class GameManager : MonoBehaviour
         PlayerManager.GetInstance().RemovePlayer(selectedTile.CurrentItem.GetComponent<Item>());
         Destroy(selectedTile.CurrentItem.gameObject);
         selectedTile.CurrentItem = null;
-        TileSelection(selectedTile);
+        Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
+        //TileSelection(selectedTile);
+        DeselectTile();
     }
     
     public void InstantiateItemOnTile(GameObject item)
@@ -322,7 +332,6 @@ public class GameManager : MonoBehaviour
         HidePlaceHolders();
         ShowItemOnTile(listOfTowerPlaceHolder[selectedTowerIndex], selectedTile);
         TileSelection(selectedTile);
-
     }
 
     public void SetTowerSelectionIndex(int index)
