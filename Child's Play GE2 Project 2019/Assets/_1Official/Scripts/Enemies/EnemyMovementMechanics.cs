@@ -20,9 +20,9 @@ public class EnemyMovementMechanics : MonoBehaviour
     //Game Object Components
     private NavMeshAgent _navMeshAgent;
     //private Rigidbody _myRigidBody;
-   
+
     //Node & Position
-    protected Node currentDestination;
+    private Node currentDestination;
     protected Vector3 nextDestination;
 
     //Other
@@ -30,6 +30,7 @@ public class EnemyMovementMechanics : MonoBehaviour
     //private bool attacking;
     public float InitialMovementSpeed { get => initialMovementSpeed; }
     public NavMeshAgent NavMeshAgent { get => _navMeshAgent; set => _navMeshAgent = value; }
+    public Node CurrentDestination { get => currentDestination; }
 
     //public bool Attacking { get => attacking; }
 
@@ -40,7 +41,7 @@ public class EnemyMovementMechanics : MonoBehaviour
     [SerializeField] private float attackStopingDistance = 5f;
     [SerializeField] private float agentAvoidanceRadious = 0.15f;
 
-    void Start()
+    void Awake()
     {
         //currentDestination = GameObject.FindGameObjectWithTag("Spawn").GetComponent<Node>();
         currentDestination = NewSpawnManager.GetInstance().spawnPoint.GetComponent<Node>();
@@ -69,8 +70,8 @@ public class EnemyMovementMechanics : MonoBehaviour
             //_myRigidBody.isKinematic = true;
             //this._navMeshAgent.speed = 5;
             //this._navMeshAgent.velocity = new Vector3 (0, 0, 0);
-            this._navMeshAgent.angularSpeed = 1200;
-            this._navMeshAgent.acceleration = 20;
+            //this._navMeshAgent.angularSpeed = 1200;
+            //this._navMeshAgent.acceleration = 20;
             this._navMeshAgent.radius = agentAvoidanceRadious; //THIS CONTROLS THE AGENT AVOIDANCE RADIUS.
 
             initialMovementSpeed = _navMeshAgent.speed;
