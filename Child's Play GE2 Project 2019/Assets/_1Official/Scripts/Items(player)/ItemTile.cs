@@ -140,6 +140,7 @@ public class ItemTile : MonoBehaviour
         {
             if (tileType != TileType.Unavailable)
             {
+                Shop.GetInstance().Move = true;
                 GameManager.GetInstance().TileSelection(this);
             }
             else

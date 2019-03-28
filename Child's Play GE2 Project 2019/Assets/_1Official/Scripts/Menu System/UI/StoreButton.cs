@@ -31,7 +31,7 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         Shop.GetInstance().SetToolTipText(typeOfButton);
         Shop.GetInstance().SetActiveToolTip(true);
         Shop.GetInstance().MoveToolTip(this.transform.position);
-        Shop.GetInstance().ChangePrice(itemScript.Value.ToString());
+        Shop.GetInstance().ChangePrice(itemScript, typeOfButton);
     }
 
     public void OnPointerExit(PointerEventData eventData)
