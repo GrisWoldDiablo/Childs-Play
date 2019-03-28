@@ -147,7 +147,7 @@ public class ItemTile : MonoBehaviour
                 GameManager.GetInstance().DeselectTile();
             }
 
-            clickCounter++;
+            //clickCounter++;
         }
         if (currentItem != null)
         {
