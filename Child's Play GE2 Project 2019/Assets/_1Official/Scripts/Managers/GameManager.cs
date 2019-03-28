@@ -96,6 +96,7 @@ public class GameManager : MonoBehaviour
         selectedTile = null;
         //UpdateSelectedTileText();
         Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
+        Shop.GetInstance().SetActiveToolTip(false);
         //PanelSelection(MenuInteraction.GetInstance().defaultIndex);
     }
 
