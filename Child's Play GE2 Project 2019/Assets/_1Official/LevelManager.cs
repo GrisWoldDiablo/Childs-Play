@@ -19,12 +19,12 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] GameObject[] levels;
     private GameObject currLvlObj;
-    private static int currentLvl = 0;
+    private int currentLvl = 0;
     private bool currLvlCompleted = false;
     private Transform root;
     private bool finishSpawn;
 
-    public static int CurrentLvl { get => currentLvl; set => currentLvl = value; }
+    public int CurrentLvl { get => currentLvl; set => currentLvl = value; }
     public GameObject CurrLvlObj { get => currLvlObj; set => currLvlObj = value; }
 
     void Start()
