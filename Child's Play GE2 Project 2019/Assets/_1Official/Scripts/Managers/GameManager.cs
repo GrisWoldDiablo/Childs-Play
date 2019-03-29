@@ -56,9 +56,8 @@ public class GameManager : MonoBehaviour
     public int SelectedBarrierIndex { get => selectedBarrierIndex; set => selectedBarrierIndex = value; }
     public Money MyMoney { get => myMoney; private set => myMoney = value; }
     public bool ShowHealthBars { get => showHealthBars; set => showHealthBars = value; }
+    
 
-    //All Managers
-    //private PlayerManager PlayerManager.GetInstance();
 
     // Start is called before the first frame update
     void Start()
@@ -68,7 +67,7 @@ public class GameManager : MonoBehaviour
         //UpdateSelectedTileText();
         //Debug.Log("Tower index" +SelectedTowerIndex);
         myMoney = gameObject.AddComponent<Money>();
-        myMoney.CurrentMoney = initialMoney; // This value changes at the beginning of new level.
+        myMoney.ResetMoney(initialMoney); // This value changes at the beginning of new level.
         //UpdateCashText(); // to be place in UI management script
     }
 

@@ -48,13 +48,13 @@ public class NewSpawnManager : MonoBehaviour
         if (!warmedUp)
         {
             //Debug.Log($"Countdown warmup : {WarmupCounter}");
-            HudManager.GetInstance().WarmUpText.text = $"Ants Incoming \n{WarmupCounter.ToString()}s";
+            HudManager.GetInstance().UpdateWarmUpText(WarmupCounter);
         }
         if (!warmedUp && warmuUpCounter <= Time.time)
         {
             warmedUp = true;
             _startNewWave = true;
-            HudManager.GetInstance().WarmUpText.gameObject.SetActive(false);
+            HudManager.GetInstance().ShowWarmUpText(false);
         }
 
         if (_startNewWave)

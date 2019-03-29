@@ -5,7 +5,7 @@ using UnityEngine;
 public class Money : MonoBehaviour
 {
     private int currentMoney;
-    public int CurrentMoney { get => currentMoney; set => currentMoney = value; }
+    //public int CurrentMoney { get => currentMoney; set => currentMoney = value; }
 
 
     public void Start()
@@ -13,20 +13,28 @@ public class Money : MonoBehaviour
         UpdateMoneyText();
     }
 
-    public void ResetMoney()
+    public void ResetMoney(int setMoney = 0)
     {
-        currentMoney = 0;
+        currentMoney = setMoney;
     }
 
     public void MoneyChange(int change)
     {
-        CurrentMoney += change;
+        if (change > 0)
+        {
+
+        }
+        else
+        {
+            ScoreManager.GetInstance().MoneySpent += change;
+        }
+        currentMoney += change;
         UpdateMoneyText();
     }
 
     public void UpdateMoneyText()
     {
-        HudManager.GetInstance().MoneyTxt.text = $"{currentMoney}";
+        HudManager.GetInstance().UpdateMoneyAmount(currentMoney);
     }
 
     public bool TryToBuy(int cost)

@@ -39,7 +39,7 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         //ChangePlayerFocusWithButton();
-        Debug.Log("NUmber of enemies: " + listOfEnemies.Count);
+        //Debug.Log("NUmber of enemies: " + listOfEnemies.Count);
     }
     #endregion
 
@@ -96,6 +96,7 @@ public class EnemyManager : MonoBehaviour
     public void AddEnemyToList(Enemy enemy)
     {
         listOfEnemies.Add(enemy);
+        ScoreManager.GetInstance().EnemyCounts++;
     }
 
     public void RemoveEnemyFromList(Enemy enemy)
