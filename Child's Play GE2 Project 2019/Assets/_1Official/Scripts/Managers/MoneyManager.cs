@@ -2,8 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Money : MonoBehaviour
+public class MoneyManager : MonoBehaviour
 {
+    #region Singleton
+    private static MoneyManager instance = null;
+
+    public static MoneyManager GetInstance()
+    {
+        if (instance == null)
+        {
+            instance = GameManager.GetInstance().gameObject.AddComponent<MoneyManager>();
+        }
+        return instance;
+    }
+    #endregion
+    
     private int currentMoney;
     //public int CurrentMoney { get => currentMoney; set => currentMoney = value; }
 
@@ -20,13 +33,9 @@ public class Money : MonoBehaviour
 
     public void MoneyChange(int change)
     {
-        if (change > 0)
+        if (change < 0)
         {
-
-        }
-        else
-        {
-            ScoreManager.GetInstance().MoneySpent += change;
+            ScoreManager.GetInstance().MoneySpent += Mathf.Abs(change);
         }
         currentMoney += change;
         UpdateMoneyText();

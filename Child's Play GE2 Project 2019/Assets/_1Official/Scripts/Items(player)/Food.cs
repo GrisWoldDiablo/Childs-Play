@@ -38,7 +38,7 @@ public class Food : Player
 
         
         HudManager.GetInstance().UpdateFoodPercentage(currentPercentage);
-        ScoreManager.GetInstance().FoodPercentage = currentPercentage;
+        ScoreManager.GetInstance().FoodPercentage = 100 - currentPercentage;
         ScoreManager.GetInstance().FoodEaten += damageValue;
     }
 

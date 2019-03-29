@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     public static bool gameCompleted;
 
     [SerializeField] private int initialMoney = 100;
-    private Money myMoney;
+    //private Money myMoney;
     [SerializeField, Header("GameOver Panel")] private int gameOverIndex = 7;
 
     
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
 
     public int SelectedTowerIndex { get => selectedTowerIndex; set => selectedTowerIndex = value; }
     public int SelectedBarrierIndex { get => selectedBarrierIndex; set => selectedBarrierIndex = value; }
-    public Money MyMoney { get => myMoney; private set => myMoney = value; }
+    //public Money MyMoney { get => myMoney; private set => myMoney = value; }
     public bool ShowHealthBars { get => showHealthBars; set => showHealthBars = value; }
     
 
@@ -66,8 +66,8 @@ public class GameManager : MonoBehaviour
         ItemSelectionReset(); // for testing
         //UpdateSelectedTileText();
         //Debug.Log("Tower index" +SelectedTowerIndex);
-        myMoney = gameObject.AddComponent<Money>();
-        myMoney.ResetMoney(initialMoney); // This value changes at the beginning of new level.
+        //myMoney = gameObject.AddComponent<Money>();
+        MoneyManager.GetInstance().ResetMoney(initialMoney); // This value changes at the beginning of new level.
         //UpdateCashText(); // to be place in UI management script
     }
 
@@ -240,7 +240,7 @@ public class GameManager : MonoBehaviour
         switch (selectedTile.TileType)
         {
             case TileType.Tower:
-                if (!myMoney.TryToBuy(listOfTower[selectedTowerIndex].GetComponent<Item>().Value))
+                if (!MoneyManager.GetInstance().TryToBuy(listOfTower[selectedTowerIndex].GetComponent<Item>().Value))
                 {
                     return;
                 }
@@ -248,7 +248,7 @@ public class GameManager : MonoBehaviour
                 Shop.GetInstance().SetActiveToolTip(false);
                 break;
             case TileType.Barrier:
-                if (!myMoney.TryToBuy(listOfBarrier[selectedBarrierIndex].GetComponent<Item>().Value))
+                if (!MoneyManager.GetInstance().TryToBuy(listOfBarrier[selectedBarrierIndex].GetComponent<Item>().Value))
                 {
                     return;
                 }
@@ -268,7 +268,7 @@ public class GameManager : MonoBehaviour
         Item upgradeVersion = selectedTile.CurrentItem.GetComponent<Item>().UpgradeVersion;
         if (upgradeVersion != null)
         {
-            if (!myMoney.TryToBuy(upgradeVersion.Value))
+            if (!MoneyManager.GetInstance().TryToBuy(upgradeVersion.Value))
             {
                 Debug.Log("Not enough money for Upgrade!");
                 return;
@@ -303,7 +303,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("No Item on the current selected Tile.");
             return;
         }
-        myMoney.MoneyChange(selectedTile.CurrentItem.GetComponent<Item>().Value); //Sell item
+        MoneyManager.GetInstance().MoneyChange(selectedTile.CurrentItem.GetComponent<Item>().Value); //Sell item
         PlayerManager.GetInstance().RemovePlayer(selectedTile.CurrentItem.GetComponent<Item>());
         Destroy(selectedTile.CurrentItem.gameObject);
         selectedTile.CurrentItem = null;

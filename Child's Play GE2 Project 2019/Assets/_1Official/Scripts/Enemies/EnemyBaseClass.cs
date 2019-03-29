@@ -111,7 +111,7 @@ public class EnemyBaseClass : MonoBehaviour
         SetAnimRetreating();
 
         EnemyManager.GetInstance().RemoveEnemyFromList(this as Enemy);
-        GameManager.GetInstance().MyMoney.MoneyChange(value);
+        MoneyManager.GetInstance().MoneyChange(value);
 
         ScoreManager.GetInstance().EnemyKilled++;
         ScoreManager.GetInstance().MoneyEarned += value;
