@@ -92,18 +92,6 @@ public class Settings : MonoBehaviour {
         GetLeaderboard();
     }
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void SaveChanges()
     {
         PlayerPrefs.SetFloat(masterVolParam, masterVol.Slider.value);

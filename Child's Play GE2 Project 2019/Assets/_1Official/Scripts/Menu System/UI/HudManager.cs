@@ -107,6 +107,6 @@ public class HudManager : MonoBehaviour
     
     public void ShowWarmUpText(bool active)
     {
-        warmUpText.gameObject.SetActive(false);
+        warmUpText.gameObject.SetActive(active);
     }
 }

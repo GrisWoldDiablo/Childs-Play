@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
-    private bool paused;
-
-    public bool Paused { get => paused;}
-
+    #region Singleton
     public static Pause instance = null;
 
     public static Pause GetInstance()
@@ -18,18 +15,11 @@ public class Pause : MonoBehaviour
         }
         return instance;
     }
+    #endregion
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        paused = false;
-    }
+    private bool paused = false;
+    public bool Paused { get => paused;}
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void PauseGame()
     {

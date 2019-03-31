@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4284695540638597293}
   - component: {fileID: 498272010}
   - component: {fileID: 6247724266759218749}
+  - component: {fileID: 1841120528766658429}
   - component: {fileID: 6059745747956222850}
   m_Layer: 0
   m_Name: GameManager
@@ -63,8 +64,9 @@ MonoBehaviour:
   - {fileID: 7940086708241864223, guid: d2c717fb959001848b906263c9461fd9, type: 3}
   selectedTowerIndex: 0
   selectedBarrierIndex: 0
-  initialMoney: 200
-  gameOverIndex: 7
+  gameOverPanelIndex: 7
+  scorePanelIndex: 8
+  winPanelIndex: 9
 --- !u!114 &6247724266759218749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,10 +76,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 4284695540638597299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a20cae84bddc11b489eaf25c9139862c, type: 3}
+  m_Script: {fileID: 11500000, guid: 49859639421e79f40bf2909943012ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   levels: []
+--- !u!114 &1841120528766658429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4284695540638597299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b18d821642f5a4b8d161c1bff4e394, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  scoreDescriptionText: {fileID: 0}
 --- !u!114 &6059745747956222850
 MonoBehaviour:
   m_ObjectHideFlags: 0

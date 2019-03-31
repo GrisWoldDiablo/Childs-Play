@@ -12,8 +12,4 @@ public class Music : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

@@ -20,15 +20,10 @@ public class MoneyManager : MonoBehaviour
     private int currentMoney;
     //public int CurrentMoney { get => currentMoney; set => currentMoney = value; }
 
-
-    public void Start()
-    {
-        UpdateMoneyText();
-    }
-
     public void ResetMoney(int setMoney = 0)
     {
         currentMoney = setMoney;
+        UpdateMoneyText();
     }
 
     public void MoneyChange(int change)

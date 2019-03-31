@@ -33,9 +33,5 @@ public class SetGFX : MonoBehaviour {
         gfxNames = QualitySettings.names;
         slider.value = prefValue;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }

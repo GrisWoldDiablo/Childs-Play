@@ -37,12 +37,18 @@ public class GameManager : MonoBehaviour
     //[SerializeField] private HudManager _hudManagerRef;
     //private int legoTowerIndex = 1;
     //private int soldierTowerIndex = 0;
-    public static bool gameOver;
-    public static bool gameCompleted;
+    //public static bool gameOver;
+    //public static bool gameCompleted;
 
-    [SerializeField] private int initialMoney = 100;
+    //[SerializeField] private int initialMoney = 100;
     //private Money myMoney;
-    [SerializeField, Header("GameOver Panel")] private int gameOverIndex = 7;
+
+    [Header("Panels Indexes")]
+    [SerializeField] private int gameOverPanelIndex = 7;
+    [SerializeField] private int scorePanelIndex = 8;
+    [SerializeField] private int winPanelIndex = 9;
+    public int ScorePanelIndex { get => scorePanelIndex; }
+    public int WinPanelIndex { get => winPanelIndex; }
 
     
     private bool showHealthBars = true;
@@ -56,18 +62,18 @@ public class GameManager : MonoBehaviour
     public int SelectedBarrierIndex { get => selectedBarrierIndex; set => selectedBarrierIndex = value; }
     //public Money MyMoney { get => myMoney; private set => myMoney = value; }
     public bool ShowHealthBars { get => showHealthBars; set => showHealthBars = value; }
-    
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        gameOver = false;
+        //gameOver = false;
         ItemSelectionReset(); // for testing
         //UpdateSelectedTileText();
         //Debug.Log("Tower index" +SelectedTowerIndex);
         //myMoney = gameObject.AddComponent<Money>();
-        MoneyManager.GetInstance().ResetMoney(initialMoney); // This value changes at the beginning of new level.
+        //MoneyManager.GetInstance().ResetMoney(initialMoney); // This value changes at the beginning of new level.
         //UpdateCashText(); // to be place in UI management script
     }
 
@@ -202,6 +208,11 @@ public class GameManager : MonoBehaviour
     /// <param name="tile">Tile to show cursor on</param>
     public void ShowCursorOnTile(GameObject cursor, ItemTile tile)
     {
+        if (tile == null)
+        {
+            //Debug.LogError("TILE IS NULL");
+            return;
+        }
         cursor.SetActive(true);
         cursor.transform.position = tile.transform.position;
         cursor.transform.rotation = tile.transform.rotation;
@@ -215,6 +226,11 @@ public class GameManager : MonoBehaviour
     /// <param name="tile">Selected Tile</param>
     private void ShowItemOnTile(GameObject item, ItemTile tile)
     {
+        if (tile == null)
+        {
+            //Debug.LogError("TILE IS NULL");
+            return;
+        }
         item.SetActive(true);
         item.transform.position = tile.transform.position;
         item.transform.rotation = tile.transform.rotation;
@@ -319,7 +335,8 @@ public class GameManager : MonoBehaviour
                         item,
                         selectedTile.transform.position + Vector3.up * 3.0f,
                         selectedTile.transform.rotation,
-                        LevelManager.GetInstance().CurrLvlObj.transform
+                        //LevelManager.GetInstance().CurrLvlObj.transform
+                        selectedTile.gameObject.transform
                         );
         Item newItem = selectedTile.CurrentItem.GetComponent<Item>();
         newItem.Value /= 2;
@@ -347,7 +364,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Pause.GetInstance().PauseGame();
-        PanelSelection(gameOverIndex);
+        PanelSelection(gameOverPanelIndex);
     }
 
     public void ToggleHealthBars()
@@ -358,4 +375,6 @@ public class GameManager : MonoBehaviour
             item.HealthBar.gameObject.SetActive(showHealthBars);
         }
     }
+    
+
 }

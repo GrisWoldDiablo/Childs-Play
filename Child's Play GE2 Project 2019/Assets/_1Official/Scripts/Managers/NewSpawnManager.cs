@@ -40,6 +40,7 @@ public class NewSpawnManager : MonoBehaviour
     {
         //_startNewWave = true;       
         warmuUpCounter = Time.time + warmUpSeconds;
+        HudManager.GetInstance().ShowWarmUpText(true);
     }
 
     // Update is called once per frame
@@ -95,9 +96,9 @@ public class NewSpawnManager : MonoBehaviour
         if(_waveIndex == _waveSetup.Length)
         {
             //LevelManager.CurrentLvl++;
-            LevelManager.GetInstance().FinishedSpawn();
+            LevelManager.GetInstance().LevelCompleted();
             //TODO: LEVEL FINISHED! GOTO NEXT LEVEL
-            Debug.Log("Level Finished!");
+            Debug.Log("Level Spawning Completed!");
             this.enabled = false;
         }
 

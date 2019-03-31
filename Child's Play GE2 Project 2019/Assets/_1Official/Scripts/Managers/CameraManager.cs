@@ -75,11 +75,6 @@ public class CameraManager : MonoBehaviour
         CameraZoomAndRotationFreeMode();
     }
 
-    private void Start()
-    {
-        
-    }
-
     private void Update()
     {
         YawCorrection();
