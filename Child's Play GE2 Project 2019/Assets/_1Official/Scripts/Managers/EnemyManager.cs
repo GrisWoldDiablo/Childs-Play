@@ -29,37 +29,37 @@ public class EnemyManager : MonoBehaviour
 
     #region Unity API Methods
     // Start is called before the first frame update
-    void Start()
-    {
-        //cameraLocker = Camera.main.GetComponent<CameraController>();
-        UpdateEnemyList();
-    }
+    //void Start()
+    //{
+    //    //cameraLocker = Camera.main.GetComponent<CameraController>();
+    //    UpdateEnemyList();
+    //}
 
     // Update is called once per frame
-    void Update()
-    {
-        //ChangePlayerFocusWithButton();
-        Debug.Log("NUmber of enemies: " + listOfEnemies.Count);
-    }
+    //void Update()
+    //{
+    //    //ChangePlayerFocusWithButton();
+    //    //Debug.Log("NUmber of enemies: " + listOfEnemies.Count);
+    //}
     #endregion
 
-    #region Class Methods
     /// <summary>
     /// Populates the list of Enemies
     /// </summary>
-    public void UpdateEnemyList()
-    {
-        //_enemyArray = GameObject.FindObjectsOfType<Enemy>();
-        //foreach (Enemy e in _enemyArray)
-        //{
-        //    listOfEnemies.Add(e);
-        //    if (e.HasFocus)
-        //    {
-        //        enemyWithFocus = e;
-        //    }
-        //}
-    }
+    //public void UpdateEnemyList()
+    //{
+    //    //_enemyArray = GameObject.FindObjectsOfType<Enemy>();
+    //    //foreach (Enemy e in _enemyArray)
+    //    //{
+    //    //    listOfEnemies.Add(e);
+    //    //    if (e.HasFocus)
+    //    //    {
+    //    //        enemyWithFocus = e;
+    //    //    }
+    //    //}
+    //}
 
+    #region Class Methods
     /// <summary>
     /// Takes out focus on ALL enemies
     /// </summary>
@@ -96,12 +96,23 @@ public class EnemyManager : MonoBehaviour
     public void AddEnemyToList(Enemy enemy)
     {
         listOfEnemies.Add(enemy);
+        ScoreManager.GetInstance().EnemyCounts++;
     }
 
     public void RemoveEnemyFromList(Enemy enemy)
     {
         listOfEnemies.Remove(enemy);
+        if (listOfEnemies.Count == 0 && LevelManager.GetInstance().LevelSpawningCompleted)
+        {
+            ScoreManager.GetInstance().CompileScore();
+        }
     }
 
-
+    public void DestroyAllEnemies()
+    {
+        foreach (var item in GameObject.FindObjectsOfType<Enemy>())
+        {
+            Destroy(item.gameObject);
+        }
+    }
 }

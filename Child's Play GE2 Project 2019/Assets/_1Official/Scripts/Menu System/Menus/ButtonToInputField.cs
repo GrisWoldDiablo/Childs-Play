@@ -16,8 +16,4 @@ public class ButtonToInputField : MonoBehaviour {
         letter = this.name[0].ToString();
 	}
 
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

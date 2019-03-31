@@ -113,18 +113,6 @@ public class ItemTile : MonoBehaviour
     private int clickCounter = 0;
     //private GameManager alexGMTestCode;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //alexGMTestCode = GameObject.Find("AlexGMTest").GetComponent<GameManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /// <summary>
     /// Called every frame when the cursor is above the tile.
     /// </summary>

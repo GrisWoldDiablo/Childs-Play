@@ -20,12 +20,6 @@ public class EnemyAnimation : MonoBehaviour
         _animator.SetFloat("Speed", Random.Range(animSpeedRandom - randSpeedBound, animSpeedRandom + randSpeedBound));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetWalking()
     {
         _animator.SetTrigger("Walking");

@@ -10,14 +10,4 @@ public class ClearFieldInput : MonoBehaviour {
         inputField.text = string.Empty;
     }
 
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

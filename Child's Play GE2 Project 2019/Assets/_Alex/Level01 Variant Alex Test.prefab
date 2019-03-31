@@ -12,6 +12,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level01 Variant Alex Test
       objectReference: {fileID: 0}
+    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1621549258153122421, guid: a77632932c49fe74387da79e3f262226,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -81,31 +106,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -21.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3104638497583686586, guid: a77632932c49fe74387da79e3f262226,
         type: 3}
@@ -276,7 +276,7 @@ PrefabInstance:
     - target: {fileID: 2663660574073245057, guid: a77632932c49fe74387da79e3f262226,
         type: 3}
       propertyPath: _waveSetup.Array.size
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2663660574073245057, guid: a77632932c49fe74387da79e3f262226,
         type: 3}
@@ -287,13 +287,13 @@ PrefabInstance:
         type: 3}
       propertyPath: _waveSetup.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 03b0c92c11bfed048924a488a1650116,
+      objectReference: {fileID: 11400000, guid: b14aeca21e3b9dc4bb12c31fb087ca86,
         type: 2}
     - target: {fileID: 2663660574073245057, guid: a77632932c49fe74387da79e3f262226,
         type: 3}
       propertyPath: _waveSetup.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: dadbfbf47bfd5c14fa7523736a6b26e4,
+      objectReference: {fileID: 11400000, guid: 72966324081acd74fbcd909babb3ed9d,
         type: 2}
     - target: {fileID: 2663660574073245057, guid: a77632932c49fe74387da79e3f262226,
         type: 3}
@@ -571,16 +571,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6211483265253054600}
     m_Modifications:
-    - target: {fileID: 485635620355334029, guid: 8e3758f269f284b44b453ab3d3379113,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Path Variant (38)
-      objectReference: {fileID: 0}
-    - target: {fileID: 485635620355334029, guid: 8e3758f269f284b44b453ab3d3379113,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 3477663376844879041, guid: 8e3758f269f284b44b453ab3d3379113,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -630,6 +620,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.5897274
+      objectReference: {fileID: 0}
+    - target: {fileID: 485635620355334029, guid: 8e3758f269f284b44b453ab3d3379113,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Path Variant (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 485635620355334029, guid: 8e3758f269f284b44b453ab3d3379113,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7558133383788404356, guid: 8e3758f269f284b44b453ab3d3379113,
         type: 3}
