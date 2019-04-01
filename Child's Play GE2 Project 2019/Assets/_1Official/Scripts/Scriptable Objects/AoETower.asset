@@ -14,8 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerType: 0
   description: Missile Tower
+  towerLevel: 1
   range: 20
   bulletPerSecond: 0.5
   innerRadius: 0
   projectilePrefab: {fileID: 6888162193381485623, guid: bf6d70a1f56422a4c8fc4ce96ccad7d5,
     type: 3}
+  TowerLevelsArray:
+  - range: 0
+    bulletPerSecond: 0
+    projectilePrefab: {fileID: 0}
+  - range: 0
+    bulletPerSecond: 0
+    projectilePrefab: {fileID: 0}
+  - range: 0
+    bulletPerSecond: 0
+    projectilePrefab: {fileID: 0}

@@ -62,7 +62,7 @@ public class Tower : MonoBehaviour
     }
 
     void SO_Reference()
-    {         
+    {        
          range = tower_SO.range;
          rateOfFire = tower_SO.bulletPerSecond;
          innerRadius = tower_SO.innerRadius;
