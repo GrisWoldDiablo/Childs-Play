@@ -52,12 +52,6 @@ public class EnemyMovementMechanics : MonoBehaviour
         //attacking = false;
     }
 
-    void Update()
-    {
-        
-        
-    }
-
     /// <summary>
     /// Basic setup for navmesh agent
     /// </summary>

@@ -89,25 +89,11 @@ public class EnemyQueen : Enemy
 
     }
 
-    public override void Die()
+    protected override void Die()
     {
-        if (isDying)
-        {
-            return;
-        }
-        var cols = GetComponents<Collider>();
-        foreach (Collider col in cols)
-        {
-            col.enabled = false;
-        }
+        base.Die();
 
-        eMMCode.NavMeshAgent.enabled = false;
-        isDying = true;
-        SetAnimRetreating();
         Destroy(this.gameObject, 15);
-
-        EnemyManager.GetInstance().RemoveEnemyFromList(this as Enemy);
-        GameManager.GetInstance().MyMoney.MoneyChange(value);
         CancelInvoke("SpawningChildren");
     }
 }

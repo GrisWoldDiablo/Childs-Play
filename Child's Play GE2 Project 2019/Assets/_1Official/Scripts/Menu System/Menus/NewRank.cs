@@ -7,12 +7,6 @@ public class NewRank : MonoBehaviour
     [SerializeField] private InputField inputField;
     //private Settings settingsCode;
 
-    // Use this for initialization
-    void Start()
-    {
-        //settingsCode = GameObject.Find("EventSystem").GetComponent<Settings>();
-    }
-
     // Update is called once per frame
     void Update()
     {

@@ -23,9 +23,5 @@ public class ReturnSettings : MonoBehaviour {
 	void Start () {
         applyButton = GameObject.Find("ApplyButton").GetComponent<Button>();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }

@@ -37,13 +37,13 @@ public class HudManager : MonoBehaviour
     [SerializeField] private Text moneyTxt;
     [SerializeField] private Text foodPercentageTxt;
     [SerializeField] private Text warmUpText;
-    private float foodRemaining;
+    //private float foodRemaining;
 
-    public Text MoneyTxt { get => moneyTxt; set => moneyTxt = value; }
-    public Text FoodPercentageTxt { get => foodPercentageTxt; set => foodPercentageTxt = value; }
+    //public Text MoneyTxt { get => moneyTxt; set => moneyTxt = value; }
+    //public Text FoodPercentageTxt { get => foodPercentageTxt; set => foodPercentageTxt = value; }
     //public float FoodRemaining { get => foodRemaining; set => foodRemaining = value; }
-    public Text WarmUpText { get => warmUpText; set => warmUpText = value; }
-    public Image FillerImage { get => fillerImage; set => fillerImage = value; }
+    //public Text WarmUpText { get => warmUpText; set => warmUpText = value; }
+    //public Image FillerImage { get => fillerImage; set => fillerImage = value; }
 
     //private int gameOverIndex;
 
@@ -65,10 +65,10 @@ public class HudManager : MonoBehaviour
         //GameOver();
     }
 
-    public void HudUpdate()
-    {
-        moneyTxt.text = $"{GameManager.GetInstance().MyMoney.CurrentMoney}";
-    }
+    //public void HudUpdate()
+    //{
+    //    moneyTxt.text = $"{GameManager.GetInstance().MyMoney.CurrentMoney}";
+    //}
 
     public void TowerSelect(StoreButton pressed)
     {
@@ -84,6 +84,29 @@ public class HudManager : MonoBehaviour
         infoPanelScript._cost.text = _obj.Value.ToString();
     }
 
+    public void UpdateFoodPercentage(float percentage)
+    {
+        float fill = 1.0f - percentage / 100.0f;
+        if (fill < 0)
+        {
+            fill = 0;
+        }
+        foodPercentageTxt.text = $"{fill.ToString("P0")}";
+        fillerImage.fillAmount = fill;
+    }
     
+    public void UpdateMoneyAmount(int moneyAmount)
+    {
+        moneyTxt.text = $"{moneyAmount}";
+    }
+
+    public void UpdateWarmUpText(float time)
+    {
+        warmUpText.text = $"Ants Incoming \n{time.ToString()}s";
+    }
     
+    public void ShowWarmUpText(bool active)
+    {
+        warmUpText.gameObject.SetActive(active);
+    }
 }

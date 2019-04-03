@@ -98,25 +98,23 @@ public class EnemyBaseClass : MonoBehaviour
         _enemyAnimation.SetRetreating();
     }
 
-    public virtual void Die()
+    protected virtual void Die()
     {
-        if (isDying)
-        {
-            return;
-        }
-        var cols = GetComponents<Collider>();
-        foreach (Collider col in cols)
+        isDying = true;
+
+        foreach (Collider col in GetComponents<Collider>())
         {
             col.enabled = false;
         }
-        //eMMCode.StopAndGo();
+
         eMMCode.NavMeshAgent.enabled = false;
-        isDying = true;
         SetAnimRetreating();
-        Destroy(this.gameObject, 5);
-        transform.Rotate(Vector3.up * Random.Range(-180, 180));
+
         EnemyManager.GetInstance().RemoveEnemyFromList(this as Enemy);
-        GameManager.GetInstance().MyMoney.MoneyChange(value);
+        MoneyManager.GetInstance().MoneyChange(value);
+
+        ScoreManager.GetInstance().EnemyKilled++;
+        ScoreManager.GetInstance().MoneyEarned += value;
     }
 
     public virtual void SetAttacking(Item target)
@@ -184,6 +182,7 @@ public class EnemyBaseClass : MonoBehaviour
 
     public void LeaveWithFood()
     {
+        ScoreManager.GetInstance().EnemyEscaped++;
         EnemyManager.GetInstance().RemoveEnemyFromList(this as Enemy);
         Destroy(this.gameObject);
     }

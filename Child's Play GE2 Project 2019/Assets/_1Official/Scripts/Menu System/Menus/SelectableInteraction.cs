@@ -20,21 +20,11 @@ public class SelectableInteraction : MonoBehaviour,IPointerEnterHandler,IDeselec
 		GetComponent<Selectable>().Select();
 	}
 
-	public void OnDeselect(BaseEventData eventData)
-	{
-		GetComponent<Selectable>().OnPointerExit(null);
-		selected = false;
-	}
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void OnDeselect(BaseEventData eventData)
+    {
+        GetComponent<Selectable>().OnPointerExit(null);
+        selected = false;
+    }
 
 	public void OnSelect(BaseEventData eventData)
 	{

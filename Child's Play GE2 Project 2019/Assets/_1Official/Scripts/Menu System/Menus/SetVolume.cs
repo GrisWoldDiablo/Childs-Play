@@ -56,9 +56,5 @@ public class SetVolume : MonoBehaviour {
         
         slider.value = prefValue;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }
