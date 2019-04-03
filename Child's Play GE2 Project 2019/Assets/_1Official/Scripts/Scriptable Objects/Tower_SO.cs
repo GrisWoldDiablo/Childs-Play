@@ -30,4 +30,14 @@ public class Tower_SO : ScriptableObject
     [Header("Tower Levels")]
     public TowerLevels[] TowerLevelsArray;
 
+
+    public void SetTowerLevel(int lvl)
+    {
+        towerLevel = lvl;
+
+        int levelIndex = lvl - 1;
+
+        range = TowerLevelsArray[levelIndex].range;
+        bulletPerSecond = TowerLevelsArray[levelIndex].bulletPerSecond;
+    }
 }
