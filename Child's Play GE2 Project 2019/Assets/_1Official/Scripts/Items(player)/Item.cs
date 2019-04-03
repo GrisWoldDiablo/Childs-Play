@@ -45,7 +45,8 @@ public class Item : Player
             rangeGOUpgrade.SetActive(false);
             if (upgradeVersion != null)
             {
-                SetRangeUPScale(upgradeVersion.GetComponent<Tower>().Tower_SO.range);
+                //SetRangeUPScale(upgradeVersion.GetComponent<Tower>().Tower_SO.range);
+                SetRangeUPScale(upgradeVersion.GetComponent<Tower>().Range);
             }
         }
     }
