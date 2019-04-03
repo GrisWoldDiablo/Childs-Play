@@ -31,11 +31,13 @@ public class Shop : MonoBehaviour
     [SerializeField] private Text priceT;
     [SerializeField] private Text priceB;
     [SerializeField] private Text priceU;
+   
     private int placeholder = 0;
     private int shopPanel = 1;
     private int upgradeSellPanel = 2;
     private int barrierPanel = 3;
     private int currentPanel = 1;
+    private bool onButton;
     //private bool move = false;
 
     public GameObject[] Panels { get => panels; set => panels = value; }
@@ -44,6 +46,8 @@ public class Shop : MonoBehaviour
     public int UpgradeSellPanel { get => upgradeSellPanel; set => upgradeSellPanel = value; }
     public int BarrierPanel { get => barrierPanel; set => barrierPanel = value; }
     public int CurrentPanel { get => currentPanel; set => currentPanel = value; }
+    public bool OnButton { get => onButton; set => onButton = value; }
+
     //public bool Move { get => move; set => move = value; }
 
     void Start()
@@ -51,19 +55,14 @@ public class Shop : MonoBehaviour
         toolTipText.gameObject.SetActive(false);
     }
 
-    //void Update()
-    //{
-    //    if (move)
-    //    {
-    //        MoveToClick(currentPanel);
-    //        move = false;
-    //    }
-    //}
+    void Update()
+    {
+       
+    }
 
     public void SetPanelActive(int panelIndex)
     {
         currentPanel = panelIndex;
-        Input.ResetInputAxes();
         for (int i = 0; i < panels.Length; i++)
         {
             panels[i].SetActive(panelIndex == i);
@@ -75,7 +74,6 @@ public class Shop : MonoBehaviour
         var pos = Input.mousePosition;
         //Panels[index].transform.position = pos;
         Panels[currentPanel].transform.position = pos;
-
     }
 
     public void SetActiveToolTip(bool value)
