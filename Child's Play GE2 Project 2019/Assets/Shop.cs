@@ -38,6 +38,7 @@ public class Shop : MonoBehaviour
     private int barrierPanel = 3;
     private int currentPanel = 1;
     private bool onButton;
+    private Vector3 rootPos;
     //private bool move = false;
 
     public GameObject[] Panels { get => panels; set => panels = value; }
@@ -71,9 +72,9 @@ public class Shop : MonoBehaviour
 
     public void MoveToClick(/*int index*/)
     {
-        var pos = Input.mousePosition;
+        rootPos = Input.mousePosition;
         //Panels[index].transform.position = pos;
-        Panels[currentPanel].transform.position = pos;
+        Panels[currentPanel].transform.position = rootPos;
     }
 
     /*public void SetActiveToolTip(bool value)
