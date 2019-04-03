@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warmUpSeconds: 5
   _waveSetup:
-  - {fileID: 11400000, guid: 059a0ad8ac3dfa64183a794d6494a65c, type: 2}
+  - {fileID: 11400000, guid: 03b0c92c11bfed048924a488a1650116, type: 2}
   spawnPoint: {fileID: 1025991831965103669}
   timeBetweenWaves: 2
 --- !u!1001 &4662203543055404434
@@ -24,6 +24,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1621549258153122422, guid: a77632932c49fe74387da79e3f262226,
         type: 3}
       propertyPath: m_Name
@@ -82,31 +107,6 @@ PrefabInstance:
     - target: {fileID: 1621549258153122421, guid: a77632932c49fe74387da79e3f262226,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660592938558290855, guid: a77632932c49fe74387da79e3f262226,
-        type: 3}
-      propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 270261089517518404, guid: a77632932c49fe74387da79e3f262226,
@@ -595,16 +595,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6211483265253054600}
     m_Modifications:
-    - target: {fileID: 485635620355334029, guid: 8e3758f269f284b44b453ab3d3379113,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Path Variant (38)
-      objectReference: {fileID: 0}
-    - target: {fileID: 485635620355334029, guid: 8e3758f269f284b44b453ab3d3379113,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 3477663376844879041, guid: 8e3758f269f284b44b453ab3d3379113,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -654,6 +644,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.5897274
+      objectReference: {fileID: 0}
+    - target: {fileID: 485635620355334029, guid: 8e3758f269f284b44b453ab3d3379113,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Path Variant (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 485635620355334029, guid: 8e3758f269f284b44b453ab3d3379113,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7558133383788404356, guid: 8e3758f269f284b44b453ab3d3379113,
         type: 3}
