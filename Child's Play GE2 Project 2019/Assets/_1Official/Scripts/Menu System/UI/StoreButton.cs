@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
+public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
     [SerializeField] public GameObject itemType;
