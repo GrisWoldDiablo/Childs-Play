@@ -83,10 +83,17 @@ public class Tower : MonoBehaviour
             }
             float distanceToEnemy = Vector3.Distance(this.transform.position, enemy.transform.position);
 
-            if(distanceToEnemy < shortestDistance && distanceToEnemy >= innerRadius)
+            //if(distanceToEnemy < shortestDistance && distanceToEnemy >= innerRadius)
+            //{
+            //    shortestDistance = distanceToEnemy;
+            //    nearestEnemy = enemy;                
+            //}
+            
+            if (distanceToEnemy < range)
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
+                break;
             }
         }
 
