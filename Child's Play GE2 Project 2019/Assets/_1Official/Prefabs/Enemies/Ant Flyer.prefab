@@ -87,7 +87,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 957335173045611274}
   m_Enabled: 1
   m_AgentTypeID: 1479372276
-  m_Radius: 0.04
+  m_Radius: 0.15
   m_Speed: 10
   m_Acceleration: 45
   avoidancePriority: 50
@@ -112,9 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24e14b832fe0ec4bb000daa5305a2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAvoidanceRadious: 0.04
+  attackAvoidanceRadious: 0.09375
   attackStopingDistance: 1
-  agentAvoidanceRadious: 0.04
+  agentAvoidanceRadious: 0.15
 --- !u!114 &1258019723663596742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,16 +208,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1780970144456142922}
     m_Modifications:
-    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
-        type: 3}
-      propertyPath: m_Name
-      value: Health Bar Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2088253631508828838, guid: 192580244026acc4f9986fa201558c41,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -322,6 +312,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
+        type: 3}
+      propertyPath: m_Name
+      value: Health Bar Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3694754323599095440, guid: 192580244026acc4f9986fa201558c41,
         type: 3}
