@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         selectedTile = null;
         //UpdateSelectedTileText();
         Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
-        Shop.GetInstance().SetActiveToolTip(false);
+        //Shop.GetInstance().SetActiveToolTip(false);
         //PanelSelection(MenuInteraction.GetInstance().defaultIndex);
     }
 
@@ -261,7 +261,7 @@ public class GameManager : MonoBehaviour
                     return;
                 }
                 InstantiateItemOnTile(listOfTower[selectedTowerIndex]);
-                Shop.GetInstance().SetActiveToolTip(false);
+                //Shop.GetInstance().SetActiveToolTip(false);
                 break;
             case TileType.Barrier:
                 if (!MoneyManager.GetInstance().TryToBuy(listOfBarrier[selectedBarrierIndex].GetComponent<Item>().Value))
@@ -269,7 +269,7 @@ public class GameManager : MonoBehaviour
                     return;
                 }
                 InstantiateItemOnTile(listOfBarrier[selectedBarrierIndex]);
-                Shop.GetInstance().SetActiveToolTip(false);
+                //Shop.GetInstance().SetActiveToolTip(false);
                 break;
             default:
                 break;

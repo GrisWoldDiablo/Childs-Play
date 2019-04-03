@@ -26,7 +26,7 @@ public class Shop : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] private Text toolTipText;
+    //[SerializeField] private Text toolTipText;
     [SerializeField] private GameObject[] panels;
     [SerializeField] private Text priceT;
     [SerializeField] private Text priceB;
@@ -38,6 +38,7 @@ public class Shop : MonoBehaviour
     private int barrierPanel = 3;
     private int currentPanel = 1;
     private bool onButton;
+    private Vector3 rootPos;
     //private bool move = false;
 
     public GameObject[] Panels { get => panels; set => panels = value; }
@@ -52,7 +53,7 @@ public class Shop : MonoBehaviour
 
     void Start()
     {
-        toolTipText.gameObject.SetActive(false);
+        //toolTipText.gameObject.SetActive(false);
     }
 
     void Update()
@@ -71,12 +72,12 @@ public class Shop : MonoBehaviour
 
     public void MoveToClick(/*int index*/)
     {
-        var pos = Input.mousePosition;
+        rootPos = Input.mousePosition;
         //Panels[index].transform.position = pos;
-        Panels[currentPanel].transform.position = pos;
+        Panels[currentPanel].transform.position = rootPos;
     }
 
-    public void SetActiveToolTip(bool value)
+    /*public void SetActiveToolTip(bool value)
     {
         if (value)
         {
@@ -96,7 +97,7 @@ public class Shop : MonoBehaviour
             }
             return;
         }
-    }
+    }*/
 
     public void TowerSelect(int index)
     {
@@ -104,7 +105,7 @@ public class Shop : MonoBehaviour
         GameManager.GetInstance().StoreButtonPressed();
     }
 
-    public void SetToolTipText(ButtonType button)
+    /*public void SetToolTipText(ButtonType button)
     {
         if (button == ButtonType.Buy)
         {
@@ -118,13 +119,13 @@ public class Shop : MonoBehaviour
         }
         toolTipText.text = "SELL";
         return;
-    }
+    }*/
 
-    public void MoveToolTip(Vector3 t)
+    /*public void MoveToolTip(Vector3 t)
     {
         toolTipText.transform.position = new Vector3(t.x, t.y + 70, t.z);
         //Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-    }
+    }*/
 
     public void ChangePrice(Item item, ButtonType buttonType)
     {
