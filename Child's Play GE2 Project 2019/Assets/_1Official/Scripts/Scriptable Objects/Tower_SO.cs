@@ -21,7 +21,8 @@ public class Tower_SO : ScriptableObject
     public class TowerLevels
     {
         //public string description;    >>> IS IT NECESSARY? MAYBE, MAYBE NOT     
-        public float range;
+        public string name;
+        public float range; // = 0;
         public float bulletPerSecond;
         //public float innerRadius;
         public GameObject projectilePrefab;
@@ -30,4 +31,14 @@ public class Tower_SO : ScriptableObject
     [Header("Tower Levels")]
     public TowerLevels[] TowerLevelsArray;
 
+
+    public void SetTowerLevel(int lvl)
+    {
+        towerLevel = lvl;
+
+        int levelIndex = lvl - 1;
+
+        range = TowerLevelsArray[levelIndex].range;
+        bulletPerSecond = TowerLevelsArray[levelIndex].bulletPerSecond;
+    }
 }

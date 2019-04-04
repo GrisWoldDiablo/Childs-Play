@@ -14,8 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerType: 0
   description: Standard Shooter Tower
+  towerLevel: 1
   range: 10
   bulletPerSecond: 25
   innerRadius: 0
   projectilePrefab: {fileID: 2436979658458845343, guid: 62549f5041872e44f9cadf1eb2745b16,
     type: 3}
+  TowerLevelsArray:
+  - name: Level 1
+    range: 10
+    bulletPerSecond: 25
+    projectilePrefab: {fileID: 2436979658458845343, guid: 62549f5041872e44f9cadf1eb2745b16,
+      type: 3}
+  - name: Level 2
+    range: 20
+    bulletPerSecond: 25
+    projectilePrefab: {fileID: 2436979658458845343, guid: 62549f5041872e44f9cadf1eb2745b16,
+      type: 3}
+  - name: Level 3
+    range: 30
+    bulletPerSecond: 25
+    projectilePrefab: {fileID: 2436979658458845343, guid: 62549f5041872e44f9cadf1eb2745b16,
+      type: 3}
