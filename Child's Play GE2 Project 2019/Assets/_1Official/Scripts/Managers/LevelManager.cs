@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
     private int currentLevel = 0;
     private bool currLvlCompleted = false;
     private Transform root;
-    private bool levelSpawningCompleted;
+    private bool levelSpawningCompleted = false;
 
     public int CurrentLevel { get => currentLevel; set => currentLevel = value; }
     public bool LevelSpawningCompleted { get => levelSpawningCompleted; }
@@ -82,6 +82,7 @@ public class LevelManager : MonoBehaviour
         currentLevelGO = Instantiate(levels[levelNumber].LevelPrefab, root.position, root.rotation, null);
         MoneyManager.GetInstance().ResetMoney(levels[levelNumber].InitialMoney);
         EnemyManager.GetInstance().DestroyAllEnemies();
+        levelSpawningCompleted = false;
         //if (currentLvl >= levels.Length)
         //{
         //    //GameManager.gameCompleted = true;

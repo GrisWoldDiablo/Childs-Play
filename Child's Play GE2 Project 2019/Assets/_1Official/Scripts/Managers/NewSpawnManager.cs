@@ -87,8 +87,8 @@ public class NewSpawnManager : MonoBehaviour
     {        
         for (int i = 0; i < _waveSetup[_waveIndex].count; i++)
         {
-            SpawnEnemy(_waveSetup[_waveIndex].enemy);
             yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave
+            SpawnEnemy(_waveSetup[_waveIndex].enemy);
         }
         
         _waveIndex++;
