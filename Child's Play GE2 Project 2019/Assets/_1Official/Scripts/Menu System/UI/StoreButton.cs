@@ -33,9 +33,6 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         myToolTip.SetActive(true);
         Shop.GetInstance().TowerSelect(_myIndex);
-        //Shop.GetInstance().SetToolTipText(typeOfButton);
-        //Shop.GetInstance().SetActiveToolTip(true);
-        //Shop.GetInstance().MoveToolTip(this.transform.position);
         Shop.GetInstance().ChangePrice(itemScript, typeOfButton);
         Shop.GetInstance().OnButton = true;
     }
@@ -44,6 +41,5 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         myToolTip.SetActive(false);
         Shop.GetInstance().OnButton = false;
-        //Shop.GetInstance().SetActiveToolTip(false);
     }
 }
