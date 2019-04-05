@@ -22,8 +22,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    //[SerializeField] private float currentcash = 5;
-    //[SerializeField] private MenuInteraction _menuInteractionRef;
+
     [SerializeField] private GameObject tileSelectionCursor;
     [SerializeField] private GameObject tileSelectedCursor;
     [SerializeField] private GameObject[] listOfTower;
@@ -32,16 +31,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] listOfBarrierPlaceHolder;
     [SerializeField] private int selectedTowerIndex = 0;
     [SerializeField] private int selectedBarrierIndex = 0;
-
-    //Daniel Temporary
-    //[SerializeField] private HudManager _hudManagerRef;
-    //private int legoTowerIndex = 1;
-    //private int soldierTowerIndex = 0;
-    //public static bool gameOver;
-    //public static bool gameCompleted;
-
-    //[SerializeField] private int initialMoney = 100;
-    //private Money myMoney;
 
     [Header("Panels Indexes")]
     [SerializeField] private int gameOverPanelIndex = 7;
@@ -60,7 +49,6 @@ public class GameManager : MonoBehaviour
 
     public int SelectedTowerIndex { get => selectedTowerIndex; set => selectedTowerIndex = value; }
     public int SelectedBarrierIndex { get => selectedBarrierIndex; set => selectedBarrierIndex = value; }
-    //public Money MyMoney { get => myMoney; private set => myMoney = value; }
     public bool ShowHealthBars { get => showHealthBars; set => showHealthBars = value; }
 
 
@@ -84,7 +72,6 @@ public class GameManager : MonoBehaviour
         {
             DeselectTile();
         }
-        //Debug.Log("My game over value:" + gameOver);
     }
 
     /// <summary>
@@ -99,10 +86,7 @@ public class GameManager : MonoBehaviour
         HidePlaceHolders();
         ShowRange(false);
         selectedTile = null;
-        //UpdateSelectedTileText();
         Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
-        //Shop.GetInstance().SetActiveToolTip(false);
-        //PanelSelection(MenuInteraction.GetInstance().defaultIndex);
     }
 
     private void ShowRange(bool show = true)
@@ -143,8 +127,6 @@ public class GameManager : MonoBehaviour
 
         HidePlaceHolders();
         Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
-        //Shop.GetInstance().SetActiveToolTip(false);
-        //PanelSelection(MenuInteraction.GetInstance().defaultIndex); //Daniel temporary testing
         tileSelectionCursor.SetActive(false);
         tileSelectedCursor.SetActive(false);
     }
@@ -159,12 +141,8 @@ public class GameManager : MonoBehaviour
         ShowCursorOnTile(tileSelectedCursor, tile);
         ShowRange(false);
         selectedTile = tile;
-        //UpdateSelectedTileText();
         if (tile.CurrentItem != null)
         {
-            //PanelSelection(MenuInteraction.GetInstance().storeIndex);  //Daniel temporary testing
-            //_hudManagerRef.Display(listOfTower[SelectedTowerIndex]);  //Daniel Temporary testing
-            //HudManager.GetInstance().Display(tile.CurrentItem);  //Daniel Temporary testing
             Shop.GetInstance().SetPanelActive(Shop.GetInstance().UpgradeSellPanel);
             ShowRange(true);
             return;
@@ -173,14 +151,10 @@ public class GameManager : MonoBehaviour
         switch (tile.TileType)
         {
             case TileType.Tower:
-                //PanelSelection(MenuInteraction.GetInstance().storeIndex);  //Daniel temporary testing
-                //HudManager.GetInstance().Display(listOfTower[selectedTowerIndex]);  //Daniel Temporary testing
                 Shop.GetInstance().SetPanelActive(Shop.GetInstance().ShopPanel);
                 ShowItemOnTile(listOfTowerPlaceHolder[selectedTowerIndex], tile);
                 break;
             case TileType.Barrier:
-                //PanelSelection(MenuInteraction.GetInstance().storeIndex); //Daniel temporary testing
-                //HudManager.GetInstance().Display(listOfBarrier[selectedBarrierIndex]);
                 Shop.GetInstance().SetPanelActive(Shop.GetInstance().BarrierPanel);
                 ShowItemOnTile(listOfBarrierPlaceHolder[selectedBarrierIndex], tile);
                 break;
@@ -261,7 +235,6 @@ public class GameManager : MonoBehaviour
                     return;
                 }
                 InstantiateItemOnTile(listOfTower[selectedTowerIndex]);
-                //Shop.GetInstance().SetActiveToolTip(false);
                 break;
             case TileType.Barrier:
                 if (!MoneyManager.GetInstance().TryToBuy(listOfBarrier[selectedBarrierIndex].GetComponent<Item>().Value))
@@ -269,7 +242,6 @@ public class GameManager : MonoBehaviour
                     return;
                 }
                 InstantiateItemOnTile(listOfBarrier[selectedBarrierIndex]);
-                //Shop.GetInstance().SetActiveToolTip(false);
                 break;
             default:
                 break;

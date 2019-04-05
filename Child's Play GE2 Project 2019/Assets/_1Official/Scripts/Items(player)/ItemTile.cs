@@ -34,7 +34,6 @@ public class ObjectBuilderEditor : Editor
         if (myScripts.Count > 1)
         {
             MeshRot90Multiple();
-
         }
         else
         {
