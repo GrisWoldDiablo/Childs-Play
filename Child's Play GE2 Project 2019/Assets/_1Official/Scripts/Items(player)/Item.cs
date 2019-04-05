@@ -22,30 +22,33 @@ public class Item : Player
     public int Value { get => value; set => this.value = value; }
     public string ItemName { get => itemName; }
     public string ItemDescription { get => itemDescription; }
-    public int IndexInGM { get => indexInGM;}
+    public int IndexInGM { get => indexInGM; }
     public Item UpgradeVersion { get => upgradeVersion; }
     public GameObject RangeGOUpgrade { get => rangeGOUpgrade; set => rangeGOUpgrade = value; }
 
     // Start is called before the first frame update
-    void Awake()
-    {
-        //if (rangeGO != null)
-        //{
-        //    rangeGO.SetActive(false);
-        //}
-
-        //indexInGM = 0;
-        //itemDescription = "This is a placeholder description";
-    }
+    //void Awake()
+    //{
+    //    //if (rangeGO != null)
+    //    //{
+    //    //    rangeGO.SetActive(false);
+    //    //}
+    //
+    //    //indexInGM = 0;
+    //    //itemDescription = "This is a placeholder description";
+    //}
 
     private void Start()
     {
+        if (rangeGO != null)
+        {
+            SetRangeScale(GetComponent<Tower>().Range);
+        }
         if (rangeGOUpgrade != null)
         {
             rangeGOUpgrade.SetActive(false);
             if (upgradeVersion != null)
             {
-                //SetRangeUPScale(upgradeVersion.GetComponent<Tower>().Tower_SO.range);
                 SetRangeUPScale(upgradeVersion.GetComponent<Tower>().Range);
             }
         }
@@ -53,15 +56,15 @@ public class Item : Player
 
     public void SetRangeScale(float scaleV3)
     {
-        RangeGO.transform.localScale = Vector3.one * scaleV3 * 2.0f;
-        RangeGO.transform.localScale = new Vector3(RangeGO.transform.localScale.x,
-            RangeGO.transform.localScale.y * 0.33f, RangeGO.transform.localScale.z);
+        rangeGO.transform.localScale = Vector3.one * scaleV3 * 2.0f;
+        rangeGO.transform.localScale = new Vector3(rangeGO.transform.localScale.x,
+            Mathf.Clamp(rangeGO.transform.localScale.y * 0.33f, 0.0f, 10.0f), rangeGO.transform.localScale.z);
     }
 
     public void SetRangeUPScale(float scaleV3)
     {
         rangeGOUpgrade.transform.localScale = Vector3.one * scaleV3 * 2.0f;
         rangeGOUpgrade.transform.localScale = new Vector3(rangeGOUpgrade.transform.localScale.x,
-            rangeGOUpgrade.transform.localScale.y * 0.33f, rangeGOUpgrade.transform.localScale.z);
+            Mathf.Clamp(rangeGOUpgrade.transform.localScale.y * 0.33f, 0.0f, 10.0f), rangeGOUpgrade.transform.localScale.z);
     }
 }
