@@ -39,6 +39,7 @@ public class Shop : MonoBehaviour
     private int barrierPanel = 3;
     private int currentPanel = 1;
     private bool onButton;
+    private Vector3 compareV;
     private Vector3 rootPos;
 
     public GameObject[] Panels { get => panels; set => panels = value; }
@@ -48,6 +49,7 @@ public class Shop : MonoBehaviour
     public int BarrierPanel { get => barrierPanel; set => barrierPanel = value; }
     public int CurrentPanel { get => currentPanel; set => currentPanel = value; }
     public bool OnButton { get => onButton; set => onButton = value; }
+    public Vector3 CompareV { get => compareV; set => compareV = value; }
 
     //public bool Move { get => move; set => move = value; }
 
