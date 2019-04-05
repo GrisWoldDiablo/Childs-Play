@@ -71,7 +71,7 @@ public class EnemyQueen : Enemy
         Vector3 spawnPosition = this.transform.position - offset + (this.transform.right * randomPosition) - this.transform.forward;
         Quaternion spawnRotation = this.transform.rotation;
 
-        GameObject egg = Instantiate(eggGO, spawnPosition , spawnRotation, null);
+        GameObject egg = Instantiate(eggGO, spawnPosition , spawnRotation, LevelManager.GetInstance().CurrentLevelGO.transform);
         egg.GetComponent<Animator>().SetFloat("Speed", Random.Range(1 - 0.2f, 1 + 0.2f));
         egg.transform.Rotate(Vector3.up * Random.Range(-180.0f, 180.0f));
         float randomHatching = Random.Range(0, eggHatchTime) + eggHatchTime;

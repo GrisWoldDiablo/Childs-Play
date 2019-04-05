@@ -39,6 +39,7 @@ public class LevelManager : MonoBehaviour
 
     public int CurrentLevel { get => currentLevel; set => currentLevel = value; }
     public bool LevelSpawningCompleted { get => levelSpawningCompleted; }
+    public GameObject CurrentLevelGO { get => currentLevelGO; }
 
     //public GameObject CurrLvlObj { get => currLvlObj; set => currLvlObj = value; }
 

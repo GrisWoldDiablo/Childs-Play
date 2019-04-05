@@ -116,15 +116,6 @@ public class GameManager : MonoBehaviour
                 {
                     rangeGO.SetActive(show);
                 }
-
-                //if (!show)
-                //{
-                //    GameObject rangeGOUP = selectedTile.CurrentItem.GetComponent<Item>().RangeGOUpgrade;
-                //    if (rangeGOUP != null)
-                //    {
-                //        rangeGOUP.SetActive(show);
-                //    } 
-                //}
             }
         }
     }

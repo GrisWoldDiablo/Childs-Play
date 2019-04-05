@@ -43,21 +43,23 @@ public class MoneyManager : MonoBehaviour
 
     public bool TryToBuy(int cost)
     {
-        if (!CanBuy(cost))
-        {
-            Debug.Log("Not Enough Cash.");
-            return false;
-        }
-        MoneyChange(-cost);
-        return true;
-    }
-
-    public bool CanBuy(int cost)
-    {
+        //if (!CanBuy(cost))
         if (currentMoney >= cost)
         {
+            MoneyChange(-cost);
             return true;
         }
+
+        Debug.Log("Not Enough Cash.");
         return false;
     }
+
+    //public bool CanBuy(int cost)
+    //{
+    //    if (currentMoney >= cost)
+    //    {
+    //        return true;
+    //    }
+    //    return false;
+    //}
 }
