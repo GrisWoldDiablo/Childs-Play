@@ -102,7 +102,7 @@ public class EnemyManager : MonoBehaviour
     public void RemoveEnemyFromList(Enemy enemy)
     {
         listOfEnemies.Remove(enemy);
-        if (listOfEnemies.Count == 0 && LevelManager.GetInstance().LevelSpawningCompleted)
+        if (LevelManager.GetInstance().LevelSpawningCompleted && listOfEnemies.Count == 0)
         {
             ScoreManager.GetInstance().CompileScore();
         }
