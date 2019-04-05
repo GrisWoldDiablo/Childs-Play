@@ -2,21 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ItemType
+{
+    Normal,
+    Placeholder
+}
+
 public class Item : Player
 {
-    [SerializeField] private GameObject rangeGO;
-    [SerializeField] private GameObject rangeGOUpgrade;
+    [Header("Item Option")]
+    [SerializeField] private ItemType _itemType = ItemType.Normal;
     [SerializeField] private string itemName;
     [SerializeField, Multiline] private string itemDescription;
-    [SerializeField] private int indexInGM;
     /// <summary>
     /// this is the base value of the Item, when the players buys this item the value is reduce 
     /// but it will go up as this item is upgraded in order to increase its resell value.
     /// </summary>
     [SerializeField] private int value = 1;
+    [SerializeField] private int indexInGM;
+    [SerializeField] private GameObject rangeGO;
+    [SerializeField] private GameObject rangeGOUpgrade;
     [SerializeField] private Item upgradeVersion;
-
-
 
     public GameObject RangeGO { get => rangeGO; set => rangeGO = value; }
     public int Value { get => value; set => this.value = value; }
@@ -51,6 +57,11 @@ public class Item : Player
             {
                 SetRangeUPScale(upgradeVersion.GetComponent<Tower>().Range);
             }
+        }
+        if (_itemType == ItemType.Placeholder)
+        {
+            Destroy(GetComponent<Tower>());
+            Destroy(this);
         }
     }
 
