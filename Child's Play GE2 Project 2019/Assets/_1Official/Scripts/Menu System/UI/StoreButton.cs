@@ -41,5 +41,6 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         myToolTip.SetActive(false);
         Shop.GetInstance().OnButton = false;
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }
