@@ -31,6 +31,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private Text priceT;
     [SerializeField] private Text priceB;
     [SerializeField] private Text priceU;
+    [SerializeField] private GameObject boundary;
    
     private int placeholder = 0;
     private int shopPanel = 1;
@@ -39,7 +40,6 @@ public class Shop : MonoBehaviour
     private int currentPanel = 1;
     private bool onButton;
     private Vector3 rootPos;
-    //private bool move = false;
 
     public GameObject[] Panels { get => panels; set => panels = value; }
     public int Placeholder { get => placeholder; set => placeholder = value; }
@@ -53,12 +53,12 @@ public class Shop : MonoBehaviour
 
     void Start()
     {
-        //toolTipText.gameObject.SetActive(false);
+   
     }
 
     void Update()
     {
-       
+ 
     }
 
     public void SetPanelActive(int panelIndex)
@@ -70,62 +70,17 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void MoveToClick(/*int index*/)
+    public void MoveToClick()
     {
         rootPos = Input.mousePosition;
-        //Panels[index].transform.position = pos;
         Panels[currentPanel].transform.position = rootPos;
     }
-
-    /*public void SetActiveToolTip(bool value)
-    {
-        if (value)
-        {
-            if (!toolTipText.IsActive())
-            {
-                toolTipText.gameObject.SetActive(true);
-                return;
-            }
-            return;
-        }
-        else
-        {
-            if (toolTipText.IsActive())
-            {
-                toolTipText.gameObject.SetActive(false);
-                return;
-            }
-            return;
-        }
-    }*/
 
     public void TowerSelect(int index)
     {
         GameManager.GetInstance().SetTowerSelectionIndex(index);
         GameManager.GetInstance().StoreButtonPressed();
     }
-
-    /*public void SetToolTipText(ButtonType button)
-    {
-        if (button == ButtonType.Buy)
-        {
-            toolTipText.text = "BUY";
-            return;
-        }
-        else if (button == ButtonType.Upgrade)
-        {
-            toolTipText.text = "UPGRADE";
-            return;
-        }
-        toolTipText.text = "SELL";
-        return;
-    }*/
-
-    /*public void MoveToolTip(Vector3 t)
-    {
-        toolTipText.transform.position = new Vector3(t.x, t.y + 70, t.z);
-        //Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-    }*/
 
     public void ChangePrice(Item item, ButtonType buttonType)
     {
