@@ -31,6 +31,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private Text priceT;
     [SerializeField] private Text priceB;
     [SerializeField] private Text priceU;
+    [SerializeField] private GameObject boundary;
    
     private int placeholder = 0;
     private int shopPanel = 1;
@@ -53,12 +54,12 @@ public class Shop : MonoBehaviour
 
     void Start()
     {
-        //toolTipText.gameObject.SetActive(false);
+   
     }
 
     void Update()
     {
-       
+ 
     }
 
     public void SetPanelActive(int panelIndex)
