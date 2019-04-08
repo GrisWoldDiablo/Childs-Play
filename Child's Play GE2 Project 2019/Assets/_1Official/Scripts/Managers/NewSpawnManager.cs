@@ -35,7 +35,11 @@ public class NewSpawnManager : MonoBehaviour
 
     private bool _startNewWave = false;
     private bool _startCounter = false;
+    private int enemyLeftToSpawn = 0;
+
     public float WarmupCounter { get => (int)(warmuUpCounter - Time.time); }
+    public int EnemyLeftToSpawn { get => enemyLeftToSpawn; }
+
     void Start()
     {
         //_startNewWave = true;       
@@ -84,24 +88,28 @@ public class NewSpawnManager : MonoBehaviour
 
 
     IEnumerator WaveSpawner()
-    {        
+    {
+        enemyLeftToSpawn = _waveSetup[_waveIndex].count;
         for (int i = 0; i < _waveSetup[_waveIndex].count; i++)
         {
-            yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave
             SpawnEnemy(_waveSetup[_waveIndex].enemy);
+            enemyLeftToSpawn--;
+            if (enemyLeftToSpawn <= 0)
+            {
+                _waveIndex++;
+
+                if (_waveIndex == _waveSetup.Length)
+                {
+                    LevelManager.GetInstance().LevelCompleted();
+                    Debug.Log("Level Spawning Completed!");
+                    this.enabled = false;
+                }
+                yield return new WaitForSeconds(_waveSetup[_waveIndex - 1].rate); // wait one more rate to start next wave
+                break;
+            }
+            yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave
         }
         
-        _waveIndex++;
-
-        if(_waveIndex == _waveSetup.Length)
-        {
-            //LevelManager.CurrentLvl++;
-            LevelManager.GetInstance().LevelCompleted();
-            //TODO: LEVEL FINISHED! GOTO NEXT LEVEL
-            Debug.Log("Level Spawning Completed!");
-            this.enabled = false;
-        }
-
         //_counterToNextWave = 0f;
         _counterToNextWave = timeBetweenWaves;
         _startCounter = true;        
