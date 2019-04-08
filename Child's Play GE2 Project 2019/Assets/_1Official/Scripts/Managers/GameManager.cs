@@ -298,8 +298,8 @@ public class GameManager : MonoBehaviour
                         item,
                         selectedTile.transform.position + Vector3.up * 3.0f,
                         selectedTile.transform.rotation,
-                        //LevelManager.GetInstance().CurrLvlObj.transform
-                        selectedTile.gameObject.transform
+                        LevelManager.GetInstance().CurrentLevelGO.transform
+                        //selectedTile.gameObject.transform
                         );
         Item newItem = selectedTile.CurrentItem.GetComponent<Item>();
         newItem.Value /= 2;
