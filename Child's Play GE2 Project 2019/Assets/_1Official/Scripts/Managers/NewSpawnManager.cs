@@ -104,7 +104,6 @@ public class NewSpawnManager : MonoBehaviour
                     Debug.Log("Level Spawning Completed!");
                     this.enabled = false;
                 }
-                yield return new WaitForSeconds(_waveSetup[_waveIndex - 1].rate); // wait one more rate to start next wave
                 break;
             }
             yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave

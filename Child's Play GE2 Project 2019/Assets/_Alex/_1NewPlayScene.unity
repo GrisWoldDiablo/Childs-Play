@@ -1240,7 +1240,7 @@ PrefabInstance:
         type: 3}
       propertyPath: levels.Array.data[0].levelPrefab
       value: 
-      objectReference: {fileID: 4929910129380861825, guid: 9742b2a0488ffad489504ab3bfb51ba8,
+      objectReference: {fileID: 6929506207878271859, guid: 9f758fccc186f5846b51b52e4e08eabe,
         type: 3}
     - target: {fileID: 6247724266759218749, guid: ddcd9eeb45bf2674bb528d5bec671dcd,
         type: 3}
@@ -3145,7 +3145,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 28}
-  m_SizeDelta: {x: 91.984, y: 88.8}
+  m_SizeDelta: {x: 231.3, y: 202.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1228692162
 MonoBehaviour:
@@ -3600,6 +3600,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2145900432153428791, guid: 44b720c58489a204495d660ea9e42b32,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Tower Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145900432153428791, guid: 44b720c58489a204495d660ea9e42b32,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3114716874582780027, guid: 44b720c58489a204495d660ea9e42b32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3655,16 +3665,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2145900432153428791, guid: 44b720c58489a204495d660ea9e42b32,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Tower Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145900432153428791, guid: 44b720c58489a204495d660ea9e42b32,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8904997051544692747, guid: 44b720c58489a204495d660ea9e42b32,
         type: 3}
       propertyPath: m_Mesh
@@ -3708,7 +3708,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 28.00001}
-  m_SizeDelta: {x: 91.984, y: 88.8}
+  m_SizeDelta: {x: 33.2, y: 45.321}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1377585134
 MonoBehaviour:
