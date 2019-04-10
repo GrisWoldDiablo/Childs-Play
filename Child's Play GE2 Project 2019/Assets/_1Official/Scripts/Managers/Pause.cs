@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pause : MonoBehaviour
 {
     #region Singleton
-    public static Pause instance = null;
+    private static Pause instance = null;
 
     public static Pause GetInstance()
     {
@@ -17,20 +17,36 @@ public class Pause : MonoBehaviour
     }
     #endregion
 
-    private bool paused = false;
-    public bool Paused { get => paused;}
-
-
+    /// <summary>
+    /// Pause the application, set the TimeScale to 0
+    /// </summary>
     public void PauseGame()
     {
-        paused = true;
         Time.timeScale = 0;
     }
 
+    /// <summary>
+    /// Unpause the application, Set the TimeScale to the value it was before pausing.
+    /// </summary>
     public void UnPauseGame()
     {
-        paused = false;
-        Time.timeScale = 1;
+        Time.timeScale = GameManager.GetInstance().CurrentGameSpeed;
     }
 
+    /// <summary>
+    /// Toggle the MainMenu, Pause the game and Unpause accordingly.
+    /// </summary>
+    public void ToggleMainMenu()
+    {
+        if (Time.timeScale == GameManager.GetInstance().CurrentGameSpeed)
+        {
+            PauseGame();
+            MenuInteraction.GetInstance().PanelToggle(0);
+        }
+        else
+        {
+            UnPauseGame();
+            MenuInteraction.GetInstance().PanelToggle();
+        }
+    }
 }

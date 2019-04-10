@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,7 +40,10 @@ public class NewSpawnManager : MonoBehaviour
     public float WarmupCounter { get => (int)(warmuUpCounter - Time.time); }
     public int EnemyLeftToSpawn { get => enemyLeftToSpawn; }
 
-    void Start()
+    /// <summary>
+    /// Called as soon as the GameObject is instanticated
+    /// </summary>
+    void Awake()
     {
         //_startNewWave = true;       
         warmuUpCounter = Time.time + warmUpSeconds;

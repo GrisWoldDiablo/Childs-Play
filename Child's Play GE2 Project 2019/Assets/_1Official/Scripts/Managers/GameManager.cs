@@ -22,15 +22,17 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-
+    [Header("Selection Cursor Objects")]
     [SerializeField] private GameObject tileSelectionCursor;
     [SerializeField] private GameObject tileSelectedCursor;
+    [Header("Item Prefabs")]
     [SerializeField] private GameObject[] listOfTower;
     [SerializeField] private GameObject[] listOfTowerPlaceHolder;
     [SerializeField] private GameObject[] listOfBarrier;
     [SerializeField] private GameObject[] listOfBarrierPlaceHolder;
-    [SerializeField] private int selectedTowerIndex = 0;
-    [SerializeField] private int selectedBarrierIndex = 0;
+    
+    private int selectedTowerIndex = 0;
+    private int selectedBarrierIndex = 0;
 
     [Header("Panels Indexes")]
     [SerializeField] private int gameOverPanelIndex = 7;
@@ -39,38 +41,49 @@ public class GameManager : MonoBehaviour
     public int ScorePanelIndex { get => scorePanelIndex; }
     public int WinPanelIndex { get => winPanelIndex; }
 
-    
+    [Header("Game Options")]
+    [Header("What are the two Timescale multiplier ")]
+    [SerializeField] private float _speedMulOne;
+    [SerializeField] private float _speedMulTwo;
+    public float SpeedMulOne { get => _speedMulOne; }
+    public float SpeedMulTwo { get => _speedMulTwo; }
+    private FastForwardButton _fastForwardButton;
+    public FastForwardButton FastForwardButton { get => _fastForwardButton; }
+    private float currentGameSpeed = 1.0f; 
+    public float CurrentGameSpeed { get => currentGameSpeed; set => currentGameSpeed = value; }
+
     private bool showHealthBars = true;
+    public bool ShowHealthBars { get => showHealthBars; }
 
     private ItemTile selectedTile;
-
     public ItemTile SelectedTile { get => selectedTile; }
     public GameObject TileSelectionCursor { get => tileSelectionCursor; }
 
-    public int SelectedTowerIndex { get => selectedTowerIndex; set => selectedTowerIndex = value; }
-    public int SelectedBarrierIndex { get => selectedBarrierIndex; set => selectedBarrierIndex = value; }
-    public bool ShowHealthBars { get => showHealthBars; set => showHealthBars = value; }
+    //public int SelectedTowerIndex { get => selectedTowerIndex; set => selectedTowerIndex = value; }
+    //public int SelectedBarrierIndex { get => selectedBarrierIndex; set => selectedBarrierIndex = value; }
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //gameOver = false;
-        ItemSelectionReset(); // for testing
-        //UpdateSelectedTileText();
-        //Debug.Log("Tower index" +SelectedTowerIndex);
-        //myMoney = gameObject.AddComponent<Money>();
-        //MoneyManager.GetInstance().ResetMoney(initialMoney); // This value changes at the beginning of new level.
-        //UpdateCashText(); // to be place in UI management script
+        _fastForwardButton = GameObject.FindObjectOfType<FastForwardButton>();
+        PlaceHoldersAndCursorsInit();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Cancel"))
+        if (Input.GetButtonDown("Cancel") && selectedTile != null)
         {
             DeselectTile();
+        }
+        else if (Input.GetButtonDown("Cancel"))
+        {
+            if (MenuInteraction.GetInstance().AtDefaultOrRootPanel)
+            {
+                Pause.GetInstance().ToggleMainMenu();
+            }
         }
     }
 
@@ -89,6 +102,10 @@ public class GameManager : MonoBehaviour
         Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
     }
 
+    /// <summary>
+    /// Hide or show the range of the currently select item as it selects or deselect the tiles
+    /// </summary>
+    /// <param name="show">showing</param>
     private void ShowRange(bool show = true)
     {
         if (selectedTile != null)
@@ -100,11 +117,23 @@ public class GameManager : MonoBehaviour
                 {
                     rangeGO.SetActive(show);
                 }
+                if (!show)
+                {
+                    GameObject rangeGOUpgrade = selectedTile.CurrentItem.GetComponent<Item>().RangeGOUpgrade;
+                    if (rangeGOUpgrade != null)
+                    {
+                        rangeGOUpgrade.SetActive(show);
+                    }
+                }
+                
             }
         }
     }
 
-    void ItemSelectionReset()
+    /// <summary>
+    /// Initialize the prefabs needed for the game.
+    /// </summary>
+    void PlaceHoldersAndCursorsInit()
     {
         for (int i = 0; i < listOfBarrierPlaceHolder.Length; i++)
         {
@@ -154,6 +183,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Hides all the item's place holders
+    /// </summary>
     private void HidePlaceHolders()
     {
         foreach (var item in listOfBarrierPlaceHolder)
@@ -237,11 +269,13 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
-        //selectedTile.CurrentItem.name = selectedTile.CurrentItem.GetComponent<Item>().ItemName;
-        //TileSelection(selectedTile);
+
         DeselectTile();
     }
 
+    /// <summary>
+    /// Tries to upgrade the select Item.
+    /// </summary>
     private void UpgradeItem()
     {
         Item upgradeVersion = selectedTile.CurrentItem.GetComponent<Item>().UpgradeVersion;
@@ -264,7 +298,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("No upgrade version, available.");
         }
         DeselectTile();
-        //TileSelection(selectedTile);
+
     }
 
     /// <summary>
@@ -287,10 +321,14 @@ public class GameManager : MonoBehaviour
         Destroy(selectedTile.CurrentItem.gameObject);
         selectedTile.CurrentItem = null;
         Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
-        //TileSelection(selectedTile);
+
         DeselectTile();
     }
     
+    /// <summary>
+    /// Instantiate the Item passed as a param on the currently selected tile.
+    /// </summary>
+    /// <param name="item">Item to instantiace</param>
     public void InstantiateItemOnTile(GameObject item)
     {
         selectedTile.CurrentItem =
@@ -298,8 +336,7 @@ public class GameManager : MonoBehaviour
                         item,
                         selectedTile.transform.position + Vector3.up * 3.0f,
                         selectedTile.transform.rotation,
-                        LevelManager.GetInstance().CurrentLevelGO.transform
-                        //selectedTile.gameObject.transform
+                        LevelManager.GetInstance().CurrentLevelGO.transform // Childd of the Level
                         );
         Item newItem = selectedTile.CurrentItem.GetComponent<Item>();
         newItem.Value /= 2;
@@ -307,6 +344,9 @@ public class GameManager : MonoBehaviour
         HidePlaceHolders();
     }
 
+    /// <summary>
+    /// When a store Button is Pressed this method works its magic
+    /// </summary>
     public void StoreButtonPressed()
     {
         HidePlaceHolders();
@@ -314,22 +354,36 @@ public class GameManager : MonoBehaviour
         TileSelection(selectedTile);
     }
 
+    /// <summary>
+    /// Change the selected tower index
+    /// </summary>
+    /// <param name="index">Index of the tower</param>
     public void SetTowerSelectionIndex(int index)
     {
         selectedTowerIndex = index;
     }
 
+    /// <summary>
+    /// Toggles the Cavas panels as per incoming index
+    /// </summary>
+    /// <param name="index">Panel index to display</param>
     public void PanelSelection(int index)
     {
         MenuInteraction.GetInstance().PanelToggle(index);
     }
 
+    /// <summary>
+    /// Display the Game Over screen
+    /// </summary>
     public void GameOver()
     {
         Pause.GetInstance().PauseGame();
         PanelSelection(gameOverPanelIndex);
     }
 
+    /// <summary>
+    /// Show or Hide the enemies health bars.
+    /// </summary>
     public void ToggleHealthBars()
     {
         showHealthBars = !showHealthBars;

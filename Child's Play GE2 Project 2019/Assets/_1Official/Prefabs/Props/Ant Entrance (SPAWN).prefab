@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 52083793}
   - component: {fileID: 52083792}
   - component: {fileID: 2566838013390438452}
-  - component: {fileID: 7672249634627652212}
   - component: {fileID: 1738881603286128637}
   - component: {fileID: 4489509179048153639}
   m_Layer: 0
@@ -95,22 +94,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.906109
   m_Center: {x: -0.063080564, y: 0.11871934, z: 0.04428501}
---- !u!114 &7672249634627652212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52083791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eda94f3d632cc3b45add6c1c90bb9b0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  warmUpSeconds: 10
-  _waveSetup: []
-  spawnPoint: {fileID: 52083794}
-  timeBetweenWaves: 5
 --- !u!114 &1738881603286128637
 MonoBehaviour:
   m_ObjectHideFlags: 0
