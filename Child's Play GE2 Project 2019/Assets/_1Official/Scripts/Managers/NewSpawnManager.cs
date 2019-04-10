@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,7 +40,10 @@ public class NewSpawnManager : MonoBehaviour
     public float WarmupCounter { get => (int)(warmuUpCounter - Time.time); }
     public int EnemyLeftToSpawn { get => enemyLeftToSpawn; }
 
-    void Start()
+    /// <summary>
+    /// Called as soon as the GameObject is instanticated
+    /// </summary>
+    void Awake()
     {
         //_startNewWave = true;       
         warmuUpCounter = Time.time + warmUpSeconds;
@@ -104,7 +107,6 @@ public class NewSpawnManager : MonoBehaviour
                     Debug.Log("Level Spawning Completed!");
                     this.enabled = false;
                 }
-                yield return new WaitForSeconds(_waveSetup[_waveIndex - 1].rate); // wait one more rate to start next wave
                 break;
             }
             yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave

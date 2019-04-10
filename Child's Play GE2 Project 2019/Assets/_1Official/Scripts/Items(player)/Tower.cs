@@ -50,7 +50,7 @@ public class Tower : MonoBehaviour
     private void Start()
     {
         
-        BroadcastMessage("SetRangeScale", tower_SO.range);
+        //BroadcastMessage("SetRangeScale", tower_SO.range);
         if (tower_SO.towerType == ProjectTileType.LASER)
         {
             _lightEffect = GetComponentInChildren<Light>();

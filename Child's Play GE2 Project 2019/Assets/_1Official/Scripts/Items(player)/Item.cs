@@ -24,7 +24,7 @@ public class Item : Player
     [SerializeField] private GameObject rangeGOUpgrade;
     [SerializeField] private Item upgradeVersion;
 
-    public GameObject RangeGO { get => rangeGO; set => rangeGO = value; }
+    public GameObject RangeGO { get => rangeGO; }
     public int Value { get => value; set => this.value = value; }
     public string ItemName { get => itemName; }
     public string ItemDescription { get => itemDescription; }
