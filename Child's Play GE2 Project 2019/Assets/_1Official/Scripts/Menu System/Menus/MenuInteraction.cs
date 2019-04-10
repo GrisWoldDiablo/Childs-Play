@@ -24,24 +24,21 @@ public class MenuInteraction : MonoBehaviour {
     #endregion
 
     [Header("Menus")]
+    [SerializeField] private int sceneDefaultIndex = 0;
     [SerializeField] private GameObject[] panels;
     public GameObject[] Panels { get { return panels; } }
     [SerializeField] private Selectable[] defaultSelections;
     public Selectable[] DefaultSelections { get { return defaultSelections; } }
 
-
-    //placeholder testing variables
-    public int defaultIndex = 5;
-    public readonly int storeIndex = 6;
-
-
     private int currentPanel;
+    public bool AtDefaultOrRootPanel { get => currentPanel == sceneDefaultIndex || currentPanel == 0; }
+
     List<Selectable> selectables;
 
     // Use this for initialization
     void Start () {
         selectables = Selectable.allSelectables;
-        PanelToggle(defaultIndex);
+        PanelToggle(sceneDefaultIndex);
         //GetLeaderboard();
     }
 	
@@ -62,7 +59,18 @@ public class MenuInteraction : MonoBehaviour {
             defaultSelections[currentPanel].Select();
         }
 	}
+    /// <summary>
+    /// Toggle to the scene's default panel.
+    /// </summary>
+    public void PanelToggle()
+    {
+        PanelToggle(sceneDefaultIndex);
+    }
 
+    /// <summary>
+    /// Show or hide canvas panels as per index param.
+    /// </summary>
+    /// <param name="panelIndex">Panel index</param>
     public void PanelToggle(int panelIndex)
     {
         currentPanel = panelIndex;
@@ -78,6 +86,10 @@ public class MenuInteraction : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Call the application to quit, (exit the game) 
+    /// Or stop playing in editor.
+    /// </summary>
     public void ExitGame()
     {
 #if UNITY_EDITOR
