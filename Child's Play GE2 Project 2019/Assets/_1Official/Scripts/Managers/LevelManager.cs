@@ -3,16 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [Serializable]
 public class Level
 {
     [SerializeField] private string name;
     [SerializeField] private GameObject levelPrefab;
     [SerializeField] private int initialMoney;
+    [Header("Set item available, Including upgrades")]
+    [SerializeField] private Item[] itemsAvailable;
 
     public GameObject LevelPrefab { get => levelPrefab; }
     public int InitialMoney { get => initialMoney; }
-    public string Name { get => name; set => name = value; }
+    public string Name { get => name; }
+    public Item[] ItemsAvailable { get => itemsAvailable; }
 }
 
 public class LevelManager : MonoBehaviour
@@ -40,6 +44,7 @@ public class LevelManager : MonoBehaviour
     public int CurrentLevel { get => currentLevel; set => currentLevel = value; }
     public bool LevelSpawningCompleted { get => levelSpawningCompleted; }
     public GameObject CurrentLevelGO { get => currentLevelGO; }
+    public Level CurrentLevelInfo { get => levels[currentLevel]; }
 
     //public GameObject CurrLvlObj { get => currLvlObj; set => currLvlObj = value; }
 
@@ -81,6 +86,7 @@ public class LevelManager : MonoBehaviour
         levelSpawningCompleted = false;
 
         GameManager.GetInstance().FastForwardButton.Init();
+        GameManager.GetInstance().DeselectTile();
     }
 
 

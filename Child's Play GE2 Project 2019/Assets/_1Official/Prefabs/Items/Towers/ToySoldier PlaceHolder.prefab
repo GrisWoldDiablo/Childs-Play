@@ -7,10 +7,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb,
+        type: 3}
+      propertyPath: rangeGO
+      value: 
+      objectReference: {fileID: 4726142268215500429}
+    - target: {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb,
+        type: 3}
+      propertyPath: upgradeVersion
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb,
+        type: 3}
+      propertyPath: rangeGOUpgrade
+      value: 
+      objectReference: {fileID: 8093998603433539988}
+    - target: {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb,
+        type: 3}
+      propertyPath: _itemType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6341123844494633285, guid: b9ad39a5173a14943baec10f299399bb,
         type: 3}
       propertyPath: m_Name
       value: ToySoldier PlaceHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341123844494633285, guid: b9ad39a5173a14943baec10f299399bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5643377522959975575, guid: b9ad39a5173a14943baec10f299399bb,
         type: 3}
@@ -77,26 +102,6 @@ PrefabInstance:
       propertyPath: projectileSpawnPoint
       value: 
       objectReference: {fileID: 7890437249348240849}
-    - target: {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb,
-        type: 3}
-      propertyPath: rangeGO
-      value: 
-      objectReference: {fileID: 4726142268215500429}
-    - target: {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb,
-        type: 3}
-      propertyPath: upgradeVersion
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb,
-        type: 3}
-      propertyPath: rangeGOUpgrade
-      value: 
-      objectReference: {fileID: 8093998603433539988}
-    - target: {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb,
-        type: 3}
-      propertyPath: _itemType
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7190343100632235486, guid: b9ad39a5173a14943baec10f299399bb,
         type: 3}
       propertyPath: m_Enabled
