@@ -30,12 +30,10 @@ public class ObjectBuilderEditor : Editor
     }
 
     public void UpdateObject()
-    {
-        
+    {      
         if (myScripts.Count > 1)
         {
             MeshRot90Multiple();
-
         }
         else
         {
@@ -73,7 +71,6 @@ public class ObjectBuilderEditor : Editor
             myScript.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
-
 }
 #endif
 

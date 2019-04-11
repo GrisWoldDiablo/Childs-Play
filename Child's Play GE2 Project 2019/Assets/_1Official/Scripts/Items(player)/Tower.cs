@@ -36,6 +36,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private ParticleSystem _vfxLaser;
     [SerializeField] private LineRenderer _lineRendererComponent;
 
+    [SerializeField] private int levelUpgradeIndex = 0;
 
     public Transform GetProjectileSpawnPoint
     { get { return projectileSpawnPoint; } }
@@ -43,12 +44,13 @@ public class Tower : MonoBehaviour
     public Transform GetTowerTarget
     { get { return towerTarget; } }
 
-    public Tower_SO Tower_SO { get => tower_SO; }
+    //public Tower_SO Tower_SO { get => tower_SO.TowerLevelsArray[levelUpgradeIndex]; }
+    public float Range { get => tower_SO.TowerLevelsArray[levelUpgradeIndex].range; }
 
     private void Start()
     {
         
-        BroadcastMessage("SetRangeScale", tower_SO.range);
+        //BroadcastMessage("SetRangeScale", tower_SO.range);
         if (tower_SO.towerType == ProjectTileType.LASER)
         {
             _lightEffect = GetComponentInChildren<Light>();
@@ -63,10 +65,10 @@ public class Tower : MonoBehaviour
 
     void SO_Reference()
     {        
-         range = tower_SO.range;
-         rateOfFire = tower_SO.bulletPerSecond;
-         innerRadius = tower_SO.innerRadius;
-         projectilePrefab = tower_SO.projectilePrefab;
+         range = tower_SO.TowerLevelsArray[levelUpgradeIndex].range;
+         rateOfFire = tower_SO.TowerLevelsArray[levelUpgradeIndex].bulletPerSecond;
+         //innerRadius = tower_SO.TowerLevelsArray[levelUpgradeIndex].innerRadius;
+         projectilePrefab = tower_SO.TowerLevelsArray[levelUpgradeIndex].projectilePrefab;
     }
 
     void UpdateTarget()
@@ -176,7 +178,7 @@ public class Tower : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(this.transform.position, tower_SO.range);
+        Gizmos.DrawWireSphere(this.transform.position, tower_SO.TowerLevelsArray[levelUpgradeIndex].range);
         Gizmos.DrawWireSphere(this.transform.position, innerRadius);        
     }
 

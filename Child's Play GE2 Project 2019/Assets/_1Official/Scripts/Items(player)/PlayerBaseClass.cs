@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerBaseClass : MonoBehaviour
 {
+    [Header("Player Option")]
     [SerializeField] private int hitPoints = 100;
     
     public int HitPoints { get => hitPoints; set => hitPoints = value; }

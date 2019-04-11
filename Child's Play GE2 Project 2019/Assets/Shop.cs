@@ -26,17 +26,21 @@ public class Shop : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] private Text toolTipText;
+    //[SerializeField] private Text toolTipText;
     [SerializeField] private GameObject[] panels;
     [SerializeField] private Text priceT;
     [SerializeField] private Text priceB;
     [SerializeField] private Text priceU;
+    [SerializeField] private GameObject boundary;
+   
     private int placeholder = 0;
     private int shopPanel = 1;
     private int upgradeSellPanel = 2;
     private int barrierPanel = 3;
     private int currentPanel = 1;
-    //private bool move = false;
+    private bool onButton;
+    private Vector3 compareV;
+    private Vector3 rootPos;
 
     public GameObject[] Panels { get => panels; set => panels = value; }
     public int Placeholder { get => placeholder; set => placeholder = value; }
@@ -44,88 +48,40 @@ public class Shop : MonoBehaviour
     public int UpgradeSellPanel { get => upgradeSellPanel; set => upgradeSellPanel = value; }
     public int BarrierPanel { get => barrierPanel; set => barrierPanel = value; }
     public int CurrentPanel { get => currentPanel; set => currentPanel = value; }
+    public bool OnButton { get => onButton; set => onButton = value; }
+    public Vector3 CompareV { get => compareV; set => compareV = value; }
+
     //public bool Move { get => move; set => move = value; }
 
     void Start()
     {
-        toolTipText.gameObject.SetActive(false);
+   
     }
 
-    //void Update()
-    //{
-    //    if (move)
-    //    {
-    //        MoveToClick(currentPanel);
-    //        move = false;
-    //    }
-    //}
+    void Update()
+    {
+ 
+    }
 
     public void SetPanelActive(int panelIndex)
     {
         currentPanel = panelIndex;
-        Input.ResetInputAxes();
         for (int i = 0; i < panels.Length; i++)
         {
             panels[i].SetActive(panelIndex == i);
         }
     }
 
-    public void MoveToClick(/*int index*/)
+    public void MoveToClick()
     {
-        var pos = Input.mousePosition;
-        //Panels[index].transform.position = pos;
-        Panels[currentPanel].transform.position = pos;
-
-    }
-
-    public void SetActiveToolTip(bool value)
-    {
-        if (value)
-        {
-            if (!toolTipText.IsActive())
-            {
-                toolTipText.gameObject.SetActive(true);
-                return;
-            }
-            return;
-        }
-        else
-        {
-            if (toolTipText.IsActive())
-            {
-                toolTipText.gameObject.SetActive(false);
-                return;
-            }
-            return;
-        }
+        rootPos = Input.mousePosition;
+        Panels[currentPanel].transform.position = rootPos;
     }
 
     public void TowerSelect(int index)
     {
         GameManager.GetInstance().SetTowerSelectionIndex(index);
         GameManager.GetInstance().StoreButtonPressed();
-    }
-
-    public void SetToolTipText(ButtonType button)
-    {
-        if (button == ButtonType.Buy)
-        {
-            toolTipText.text = "BUY";
-            return;
-        }
-        else if (button == ButtonType.Upgrade)
-        {
-            toolTipText.text = "UPGRADE";
-            return;
-        }
-        toolTipText.text = "SELL";
-        return;
-    }
-
-    public void MoveToolTip(Vector3 t)
-    {
-        toolTipText.transform.position = new Vector3(t.x, t.y + 70, t.z);
-        //Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     }
 
     public void ChangePrice(Item item, ButtonType buttonType)

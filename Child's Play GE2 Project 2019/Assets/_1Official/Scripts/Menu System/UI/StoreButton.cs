@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
     [SerializeField] public GameObject itemType;
     [SerializeField] private ButtonType typeOfButton;
+    [SerializeField] private GameObject myToolTip;
+
     private Item itemScript;
 
     private int _myIndex;
@@ -16,6 +19,7 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     void Start()
     {
+        myToolTip.SetActive(false);
         itemScript = itemType.gameObject.GetComponent<Item>();
         _myIndex = itemScript.IndexInGM;
     }
@@ -27,15 +31,16 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        myToolTip.SetActive(true);
         Shop.GetInstance().TowerSelect(_myIndex);
-        Shop.GetInstance().SetToolTipText(typeOfButton);
-        Shop.GetInstance().SetActiveToolTip(true);
-        Shop.GetInstance().MoveToolTip(this.transform.position);
         Shop.GetInstance().ChangePrice(itemScript, typeOfButton);
+        Shop.GetInstance().OnButton = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Shop.GetInstance().SetActiveToolTip(false);
+        myToolTip.SetActive(false);
+        Shop.GetInstance().OnButton = false;
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

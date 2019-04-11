@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,10 +35,11 @@ public class LevelManager : MonoBehaviour
     private int currentLevel = 0;
     private bool currLvlCompleted = false;
     private Transform root;
-    private bool levelSpawningCompleted;
+    private bool levelSpawningCompleted = false;
 
     public int CurrentLevel { get => currentLevel; set => currentLevel = value; }
     public bool LevelSpawningCompleted { get => levelSpawningCompleted; }
+    public GameObject CurrentLevelGO { get => currentLevelGO; }
 
     //public GameObject CurrLvlObj { get => currLvlObj; set => currLvlObj = value; }
 
@@ -48,22 +49,18 @@ public class LevelManager : MonoBehaviour
         LoadLevel();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if (finishSpawn && EnemyManager.GetInstance().ListOfEnemies.Count <= 0)
-        //{
-        //    currentLvl++;
-        //    LoadLvl();
-        //    finishSpawn = false;
-        //}
-    }
-
+    /// <summary>
+    /// Load the next level in line
+    /// </summary>
     public void LoadNextLevel()
     {
         LoadLevel(++currentLevel);
     }
 
+    /// <summary>
+    /// Load the level as per index
+    /// </summary>
+    /// <param name="levelNumber">Level to load</param>
     public void LoadLevel(int levelNumber = 0)
     {
         if (levelNumber >= levels.Length)
@@ -75,34 +72,30 @@ public class LevelManager : MonoBehaviour
         ScoreManager.GetInstance().Reset();
         if (currentLevelGO != null)
         {
-            Destroy(currentLevelGO);
+            DestroyImmediate(currentLevelGO);
         }
 
         currentLevelGO = Instantiate(levels[levelNumber].LevelPrefab, root.position, root.rotation, null);
         MoneyManager.GetInstance().ResetMoney(levels[levelNumber].InitialMoney);
         EnemyManager.GetInstance().DestroyAllEnemies();
-        //if (currentLvl >= levels.Length)
-        //{
-        //    //GameManager.gameCompleted = true;
-        //    Debug.Log("YOU WON");
-        //    Destroy(currentLevelGO);
-        //}
-        //else
-        //{
-        //    if (currentLevelGO)
-        //    {
-        //        Destroy(currentLevelGO);
-        //    }
-        //    currentLevelGO = Instantiate(levels[currentLvl], root);
-        //}
+        levelSpawningCompleted = false;
+
+        GameManager.GetInstance().FastForwardButton.Init();
     }
 
 
+    /// <summary>
+    /// Set the Level to completed mode, reference used by enemy manager 
+    /// to call score compile when last enemy dies after.
+    /// </summary>
     public void LevelCompleted()
     {
         levelSpawningCompleted = true;
     }
 
+    /// <summary>
+    /// Call the wining panel, when last level is completed.
+    /// </summary>
     public void GameCompleted()
     {
         GameManager.GetInstance().PanelSelection(GameManager.GetInstance().WinPanelIndex);
