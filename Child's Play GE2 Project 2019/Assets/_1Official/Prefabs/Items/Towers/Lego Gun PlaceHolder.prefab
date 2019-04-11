@@ -7,10 +7,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
+        type: 3}
+      propertyPath: upgradeVersion
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
+        type: 3}
+      propertyPath: rangeGO
+      value: 
+      objectReference: {fileID: 6938545130707800198}
+    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
+        type: 3}
+      propertyPath: rangeGOUpgrade
+      value: 
+      objectReference: {fileID: 9008261068202989039}
+    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
+        type: 3}
+      propertyPath: _itemType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2958411723986945016, guid: 7b27dbe332062c54c836a499d36e8116,
         type: 3}
       propertyPath: m_Name
       value: Lego Gun PlaceHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958411723986945016, guid: 7b27dbe332062c54c836a499d36e8116,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2958411723986460632, guid: 7b27dbe332062c54c836a499d36e8116,
         type: 3}
@@ -77,26 +102,6 @@ PrefabInstance:
       propertyPath: projectileSpawnPoint
       value: 
       objectReference: {fileID: 3937652942497567078}
-    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
-        type: 3}
-      propertyPath: upgradeVersion
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
-        type: 3}
-      propertyPath: rangeGO
-      value: 
-      objectReference: {fileID: 6938545130707800198}
-    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
-        type: 3}
-      propertyPath: rangeGOUpgrade
-      value: 
-      objectReference: {fileID: 9008261068202989039}
-    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
-        type: 3}
-      propertyPath: _itemType
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2958411723988884942, guid: 7b27dbe332062c54c836a499d36e8116,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

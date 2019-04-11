@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UpgradeItemInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
     private GameObject rangeGOUpgrade;
-    
+    private Button thisButton;
+
+    private void Start()
+    {
+        thisButton = GetComponent<Button>();
+    }
     /// <summary>
     /// When the pointer (mouse cursor) enters the button field, 
     /// it shows the range for the upgrade version of the currently select item.
@@ -15,14 +21,17 @@ public class UpgradeItemInfo : MonoBehaviour, IPointerEnterHandler, IPointerExit
     /// <param name="eventData">Pointer Data</param>
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (GameManager.GetInstance().SelectedTile != null &&
-            GameManager.GetInstance().SelectedTile.CurrentItem != null &&
-            GameManager.GetInstance().SelectedTile.CurrentItem.GetComponent<Item>().UpgradeVersion != null)
+        if (thisButton.interactable)
         {
-            // Insert Code here when mouse is over button and there is upgrade available.
-            
-            rangeGOUpgrade = GameManager.GetInstance().SelectedTile.CurrentItem.GetComponent<Item>().RangeGOUpgrade;
-            rangeGOUpgrade.SetActive(true);
+            if (GameManager.GetInstance().SelectedTile != null &&
+               GameManager.GetInstance().SelectedTile.CurrentItem != null &&
+               GameManager.GetInstance().SelectedTile.CurrentItem.GetComponent<Item>().UpgradeVersion != null)
+            {
+                // Insert Code here when mouse is over button and there is upgrade available.
+
+                rangeGOUpgrade = GameManager.GetInstance().SelectedTile.CurrentItem.GetComponent<Item>().RangeGOUpgrade;
+                rangeGOUpgrade.SetActive(true);
+            } 
         }
     }
 

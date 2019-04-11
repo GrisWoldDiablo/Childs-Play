@@ -3298,7 +3298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &272286927491628183
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16355,6 +16355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875c388c7a82d514cac9ae72da6f93bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneDefaultIndex: 0
   panels:
   - {fileID: 272286927491628182}
   - {fileID: 272286928089430219}
@@ -16369,7 +16370,6 @@ MonoBehaviour:
   - {fileID: 272286927268177519}
   - {fileID: 272286928942869986}
   - {fileID: 272286928472384195}
-  defaultIndex: 5
 --- !u!114 &272286928829123865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20446,7 +20446,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3190843898981700284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 424.53284, y: 134.65579, z: 8.068398}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 272286928982479534}

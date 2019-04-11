@@ -48,7 +48,17 @@ public class GameManager : MonoBehaviour
     public float SpeedMulOne { get => _speedMulOne; }
     public float SpeedMulTwo { get => _speedMulTwo; }
     private FastForwardButton _fastForwardButton;
-    public FastForwardButton FastForwardButton { get => _fastForwardButton; }
+    public FastForwardButton FastForwardButton
+    {
+        get
+        {
+            if (_fastForwardButton == null)
+            {
+                _fastForwardButton = GameObject.FindObjectOfType<FastForwardButton>();
+            }
+            return _fastForwardButton;
+        }
+    }
     private float currentGameSpeed = 1.0f; 
     public float CurrentGameSpeed { get => currentGameSpeed; set => currentGameSpeed = value; }
 
@@ -59,15 +69,24 @@ public class GameManager : MonoBehaviour
     public ItemTile SelectedTile { get => selectedTile; }
     public GameObject TileSelectionCursor { get => tileSelectionCursor; }
 
+    public Item SelectedItem
+    {
+        get
+        {
+            if (SelectedTile.CurrentItem != null)
+            {
+                return SelectedTile.CurrentItem.GetComponent<Item>();
+            }
+            return null;
+        }
+    }
+
     //public int SelectedTowerIndex { get => selectedTowerIndex; set => selectedTowerIndex = value; }
     //public int SelectedBarrierIndex { get => selectedBarrierIndex; set => selectedBarrierIndex = value; }
-
-
 
     // Start is called before the first frame update
     void Start()
     {
-        _fastForwardButton = GameObject.FindObjectOfType<FastForwardButton>();
         PlaceHoldersAndCursorsInit();
     }
 
