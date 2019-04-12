@@ -43,7 +43,6 @@ Shader "Custom/Intersection Additive" {
 								
 				#pragma vertex vert
 				#pragma fragment frag
-				#pragma multi_compile_particles
 
 				sampler2D _MainTex;
 				float4 _MainTex_ST;
