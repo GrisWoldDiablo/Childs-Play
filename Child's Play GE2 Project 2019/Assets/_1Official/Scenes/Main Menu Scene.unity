@@ -124,6 +124,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Lego Gun '
       objectReference: {fileID: 0}
+    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2958411723986460632, guid: 7b27dbe332062c54c836a499d36e8116,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -195,11 +200,6 @@ PrefabInstance:
       value: 4.9618673
       objectReference: {fileID: 0}
     - target: {fileID: 1510726684041952626, guid: 7b27dbe332062c54c836a499d36e8116,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
         type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -716,16 +716,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1610301385574456934, guid: fb44c2740277ecc448288d4d0be8a4ff,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.00024414062
-      objectReference: {fileID: 0}
-    - target: {fileID: 272286928982479534, guid: fb44c2740277ecc448288d4d0be8a4ff,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 301947947915643941, guid: fb44c2740277ecc448288d4d0be8a4ff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -781,6 +771,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 272286928982479534, guid: fb44c2740277ecc448288d4d0be8a4ff,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610301385574456934, guid: fb44c2740277ecc448288d4d0be8a4ff,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00024414062
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315525308, guid: fb44c2740277ecc448288d4d0be8a4ff, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 272286927491628182, guid: fb44c2740277ecc448288d4d0be8a4ff,
         type: 3}
       propertyPath: m_IsActive
@@ -800,6 +804,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 172.7002
+      objectReference: {fileID: 0}
+    - target: {fileID: 272286928829123866, guid: fb44c2740277ecc448288d4d0be8a4ff,
+        type: 3}
+      propertyPath: defaultIndex
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 272286928735414091, guid: fb44c2740277ecc448288d4d0be8a4ff,
         type: 3}
@@ -939,21 +948,6 @@ PrefabInstance:
     - target: {fileID: 272286928542200731, guid: fb44c2740277ecc448288d4d0be8a4ff,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 272286928829123866, guid: fb44c2740277ecc448288d4d0be8a4ff,
-        type: 3}
-      propertyPath: panels.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 272286928829123866, guid: fb44c2740277ecc448288d4d0be8a4ff,
-        type: 3}
-      propertyPath: defaultSelections.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 272286928829123866, guid: fb44c2740277ecc448288d4d0be8a4ff,
-        type: 3}
-      propertyPath: defaultIndex
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 272286928846814263, guid: fb44c2740277ecc448288d4d0be8a4ff,
