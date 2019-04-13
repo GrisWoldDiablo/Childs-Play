@@ -74,12 +74,20 @@ public class CameraManager : MonoBehaviour
     #region UNITY methods
     private void LateUpdate()
     {
+        if (Time.timeScale <= 0)
+        {
+            return;
+        }
         CameraFollowPlayer();
         CameraZoomAndRotationFreeMode();
     }
 
     private void Update()
     {
+        if (Time.timeScale <= 0)
+        {
+            return;
+        }
         YawCorrection();
         CameraZoomAndRotationWhenLocked();
         CameraMovementFreeModeWithKeyboard();
