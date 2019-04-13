@@ -92,7 +92,7 @@ public class NewSpawnManager : MonoBehaviour
 
 
     IEnumerator WaveSpawner()
-    {        
+    {
         //for (int i = 0; i < _waveSetup[_waveIndex].count; i++)
         //{
         //    SpawnEnemy(_waveSetup[_waveIndex].enemy);
@@ -101,12 +101,15 @@ public class NewSpawnManager : MonoBehaviour
 
         //for (int i = 0; i < _waveSetup[_waveIndex].count; i++)
         //{
+        //if (_waveSetup[_waveIndex].waveMixArray[_waveMixIndex] != null)
+        //{
             for (int j = 0; j < _waveSetup[_waveIndex].waveMixArray[_waveMixIndex].count; j++)
             {
                 SpawnEnemy(_waveSetup[_waveIndex].waveMixArray[_waveMixIndex].enemy);
                 //_waveMixIndex++;
                 yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave
             }
+        //}
         _waveMixIndex++;
         //if (_waveMixIndex == _waveSetup[_waveIndex].waveMixArray.Length)
         //{
@@ -120,6 +123,7 @@ public class NewSpawnManager : MonoBehaviour
         {
             _waveMixIndex = 0;
             _waveIndex++;
+            
         }
 
         //_waveIndex++;

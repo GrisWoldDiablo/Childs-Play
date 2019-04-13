@@ -21,21 +21,21 @@ public class WaveSetup_SO : ScriptableObject
         ////public float innerRadius;
         //public GameObject projectilePrefab;
 
-        public string description;
+        //public string description;
         public GameObject enemy;
         public int count;
-        public float rate;
-        public bool isMixedWave = false;
+        //public float rate;
+       // public bool isMixedWave = false;
     }
 
-    [Header("Wave Mix Configurator")]
+    [Header("Wave Setup")]
     public WaveMix[] waveMixArray;
 
-    public string description;
-    public GameObject enemy;
-    public int count;
+    //public string description;
+    //public GameObject enemy;
+    //public int count;
     public float rate;
-    public bool isMixedWave = false;
+    //public bool isMixedWave = false;
     
 
 }
