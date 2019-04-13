@@ -89,6 +89,9 @@ public class LevelManager : MonoBehaviour
 
         GameManager.GetInstance().FastForwardButton.Init();
         GameManager.GetInstance().DeselectTile();
+
+        PlayerManager.GetInstance().CreatePlayerList();
+        CameraManager.GetInstance().CameraLockerButton();
     }
 
 

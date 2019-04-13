@@ -44,7 +44,7 @@ public class Item : Player
     //    //itemDescription = "This is a placeholder description";
     //}
 
-    private void Start()
+    private void Awake()
     {
         if (rangeGO != null)
         {

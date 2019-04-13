@@ -73,9 +73,12 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            if (SelectedTile.CurrentItem != null)
+            if (selectedTile != null)
             {
-                return SelectedTile.CurrentItem.GetComponent<Item>();
+                if (selectedTile.CurrentItem != null)
+                {
+                    return selectedTile.CurrentItem.GetComponent<Item>();
+                } 
             }
             return null;
         }
@@ -157,11 +160,13 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < listOfBarrierPlaceHolder.Length; i++)
         {
             listOfBarrierPlaceHolder[i] = Instantiate(listOfBarrierPlaceHolder[i]);
+            listOfBarrierPlaceHolder[i].SetActive(false);
         }
 
         for (int i = 0; i < listOfTowerPlaceHolder.Length; i++)
         {
             listOfTowerPlaceHolder[i] = Instantiate(listOfTowerPlaceHolder[i]);
+            listOfTowerPlaceHolder[i].SetActive(false);
         }
 
         HidePlaceHolders();
@@ -224,6 +229,8 @@ public class GameManager : MonoBehaviour
     /// <param name="tile">Tile to show cursor on</param>
     public void ShowCursorOnTile(GameObject cursor, ItemTile tile)
     {
+        tileSelectedCursor.SetActive(false);
+        tileSelectionCursor.SetActive(false);
         if (tile == null)
         {
             //Debug.LogError("TILE IS NULL");
@@ -357,9 +364,9 @@ public class GameManager : MonoBehaviour
                         selectedTile.transform.rotation,
                         LevelManager.GetInstance().CurrentLevelGO.transform // Childd of the Level
                         );
-        Item newItem = selectedTile.CurrentItem.GetComponent<Item>();
-        newItem.Value /= 2;
-        PlayerManager.GetInstance().AddPlayer(newItem);
+        //Item newItem = selectedTile.CurrentItem.GetComponent<Item>();
+        //newItem.Value /= 2;
+        //PlayerManager.GetInstance().AddPlayer(newItem);
         HidePlaceHolders();
     }
 

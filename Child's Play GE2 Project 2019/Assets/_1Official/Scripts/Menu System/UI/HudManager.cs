@@ -102,7 +102,7 @@ public class HudManager : MonoBehaviour
 
     public void UpdateWarmUpText(float time)
     {
-        warmUpText.text = $"Ants Incoming \n{time.ToString()}s";
+        warmUpText.text = $"Protect your food!\nAnts Incoming \n{time.ToString()}s";
     }
     
     public void ShowWarmUpText(bool active)
