@@ -32,6 +32,7 @@ public class NewSpawnManager : MonoBehaviour
 
 
     private int _waveIndex = 0;
+    private int _waveMixIndex = 0;
 
     private bool _startNewWave = false;
     private bool _startCounter = false;
@@ -91,27 +92,47 @@ public class NewSpawnManager : MonoBehaviour
 
 
     IEnumerator WaveSpawner()
-    {
-        enemyLeftToSpawn = _waveSetup[_waveIndex].count;
-        for (int i = 0; i < _waveSetup[_waveIndex].count; i++)
-        {
-            SpawnEnemy(_waveSetup[_waveIndex].enemy);
-            enemyLeftToSpawn--;
-            if (enemyLeftToSpawn <= 0)
-            {
-                _waveIndex++;
+    {        
+        //for (int i = 0; i < _waveSetup[_waveIndex].count; i++)
+        //{
+        //    SpawnEnemy(_waveSetup[_waveIndex].enemy);
+        //    yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave
+        //}
 
-                if (_waveIndex == _waveSetup.Length)
-                {
-                    LevelManager.GetInstance().LevelCompleted();
-                    Debug.Log("Level Spawning Completed!");
-                    this.enabled = false;
-                }
-                break;
+        //for (int i = 0; i < _waveSetup[_waveIndex].count; i++)
+        //{
+            for (int j = 0; j < _waveSetup[_waveIndex].waveMixArray[_waveMixIndex].count; j++)
+            {
+                SpawnEnemy(_waveSetup[_waveIndex].waveMixArray[_waveMixIndex].enemy);
+                //_waveMixIndex++;
+                yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave
             }
-            yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave
+        _waveMixIndex++;
+        //if (_waveMixIndex == _waveSetup[_waveIndex].waveMixArray.Length)
+        //{
+        //    _waveMixIndex = 0;
+
+        //}
+        //yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave
+        //}
+
+        if (_waveMixIndex == _waveSetup[_waveIndex].waveMixArray.Length)
+        {
+            _waveMixIndex = 0;
+            _waveIndex++;
         }
-        
+
+        //_waveIndex++;
+
+        if(_waveIndex == _waveSetup.Length)
+        {
+            //LevelManager.CurrentLvl++;
+            LevelManager.GetInstance().LevelCompleted();
+            //TODO: LEVEL FINISHED! GOTO NEXT LEVEL
+            Debug.Log("Level Spawning Completed!");
+            this.enabled = false;
+        }
+
         //_counterToNextWave = 0f;
         _counterToNextWave = timeBetweenWaves;
         _startCounter = true;        
