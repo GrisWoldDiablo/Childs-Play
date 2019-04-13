@@ -35,11 +35,15 @@ public class MenuInteraction : MonoBehaviour {
 
     List<Selectable> selectables;
 
+
+    // Level Selection
+    [Header("Level Selection Specific")]
+    [SerializeField] private Button[] levelButton;
+
     // Use this for initialization
     void Start () {
         selectables = Selectable.allSelectables;
         PanelToggle(sceneDefaultIndex);
-        //GetLeaderboard();
     }
 	
 	// Update is called once per frame
@@ -84,6 +88,7 @@ public class MenuInteraction : MonoBehaviour {
                 defaultSelections[i].Select();
             }
         }
+        UnlockedLevelsCheck();
     }
 
     /// <summary>
@@ -97,6 +102,16 @@ public class MenuInteraction : MonoBehaviour {
 #else
         Application.Quit();
 #endif
+    }
+
+    // Level Selection
+    public void UnlockedLevelsCheck()
+    {
+        int count = 0;
+        foreach (Button button in levelButton)
+        {
+            button.interactable = count++ <= Settings.GetInstance().LevelsUnlocked;
+        }
     }
 
 }
