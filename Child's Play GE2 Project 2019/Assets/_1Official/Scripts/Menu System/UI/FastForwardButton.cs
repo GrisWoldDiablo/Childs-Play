@@ -52,7 +52,8 @@ public class FastForwardButton : MonoBehaviour
         else
         {
             //Insert the SpawnManager Method to skip warmup
-
+            NewSpawnManager.GetInstance().SkipWarmUp();
+            //skipArrow.enabled = false;
         }
     }
 
