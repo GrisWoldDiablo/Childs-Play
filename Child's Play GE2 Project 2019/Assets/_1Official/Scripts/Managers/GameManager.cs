@@ -48,7 +48,17 @@ public class GameManager : MonoBehaviour
     public float SpeedMulOne { get => _speedMulOne; }
     public float SpeedMulTwo { get => _speedMulTwo; }
     private FastForwardButton _fastForwardButton;
-    public FastForwardButton FastForwardButton { get => _fastForwardButton; }
+    public FastForwardButton FastForwardButton
+    {
+        get
+        {
+            if (_fastForwardButton == null)
+            {
+                _fastForwardButton = GameObject.FindObjectOfType<FastForwardButton>();
+            }
+            return _fastForwardButton;
+        }
+    }
     private float currentGameSpeed = 1.0f; 
     public float CurrentGameSpeed { get => currentGameSpeed; set => currentGameSpeed = value; }
 
@@ -59,15 +69,27 @@ public class GameManager : MonoBehaviour
     public ItemTile SelectedTile { get => selectedTile; }
     public GameObject TileSelectionCursor { get => tileSelectionCursor; }
 
+    public Item SelectedItem
+    {
+        get
+        {
+            if (selectedTile != null)
+            {
+                if (selectedTile.CurrentItem != null)
+                {
+                    return selectedTile.CurrentItem.GetComponent<Item>();
+                } 
+            }
+            return null;
+        }
+    }
+
     //public int SelectedTowerIndex { get => selectedTowerIndex; set => selectedTowerIndex = value; }
     //public int SelectedBarrierIndex { get => selectedBarrierIndex; set => selectedBarrierIndex = value; }
-
-
 
     // Start is called before the first frame update
     void Start()
     {
-        _fastForwardButton = GameObject.FindObjectOfType<FastForwardButton>();
         PlaceHoldersAndCursorsInit();
     }
 
@@ -138,11 +160,13 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < listOfBarrierPlaceHolder.Length; i++)
         {
             listOfBarrierPlaceHolder[i] = Instantiate(listOfBarrierPlaceHolder[i]);
+            listOfBarrierPlaceHolder[i].SetActive(false);
         }
 
         for (int i = 0; i < listOfTowerPlaceHolder.Length; i++)
         {
             listOfTowerPlaceHolder[i] = Instantiate(listOfTowerPlaceHolder[i]);
+            listOfTowerPlaceHolder[i].SetActive(false);
         }
 
         HidePlaceHolders();
@@ -205,6 +229,8 @@ public class GameManager : MonoBehaviour
     /// <param name="tile">Tile to show cursor on</param>
     public void ShowCursorOnTile(GameObject cursor, ItemTile tile)
     {
+        tileSelectedCursor.SetActive(false);
+        tileSelectionCursor.SetActive(false);
         if (tile == null)
         {
             //Debug.LogError("TILE IS NULL");
@@ -338,9 +364,9 @@ public class GameManager : MonoBehaviour
                         selectedTile.transform.rotation,
                         LevelManager.GetInstance().CurrentLevelGO.transform // Childd of the Level
                         );
-        Item newItem = selectedTile.CurrentItem.GetComponent<Item>();
-        newItem.Value /= 2;
-        PlayerManager.GetInstance().AddPlayer(newItem);
+        //Item newItem = selectedTile.CurrentItem.GetComponent<Item>();
+        //newItem.Value /= 2;
+        //PlayerManager.GetInstance().AddPlayer(newItem);
         HidePlaceHolders();
     }
 

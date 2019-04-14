@@ -42,7 +42,7 @@ public class FastForwardButton : MonoBehaviour
             }
             else
             {
-                Time.timeScale = 1.0f;
+                Time.timeScale = GameManager.GetInstance().CurrentGameSpeed = 1.0f;
                 for (int i = 1; i < 3; i++)
                 {
                     arrows[i].enabled = false;

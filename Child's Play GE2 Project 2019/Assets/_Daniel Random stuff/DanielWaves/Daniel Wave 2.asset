@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f551deedb519884fa19ae1c11465077, type: 3}
   m_Name: Daniel Wave 2
   m_EditorClassIdentifier: 
+  waveMixArray:
+  - description: 
+    enemy: {fileID: 8072516212597103562, guid: 0983274d557859b469b347d04b2824e4, type: 3}
+    count: 20
+    rate: 0
+    isMixedWave: 0
   description: Standard Enemies
   enemy: {fileID: 8072516212597103562, guid: 0983274d557859b469b347d04b2824e4, type: 3}
   count: 100
-  rate: 1
+  rate: 10
+  isMixedWave: 0

@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
-    [SerializeField] public GameObject itemType;
+    [SerializeField] private Item itemScript;
     [SerializeField] private ButtonType typeOfButton;
     [SerializeField] private GameObject myToolTip;
-
-    private Item itemScript;
+    private Button thisButton;
+    //private Item itemScript;
 
     private int _myIndex;
     public int MyIndex { get => _myIndex; set => _myIndex = value; }
@@ -19,27 +19,84 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     void Start()
     {
+        if (thisButton == null)
+        {
+            thisButton = GetComponent<Button>();
+        }
         myToolTip.SetActive(false);
-        itemScript = itemType.gameObject.GetComponent<Item>();
-        _myIndex = itemScript.IndexInGM;
+        Shop.GetInstance().TogglePrice(false);
+        //itemScript = itemType.gameObject.GetComponent<Item>();
+        if (itemScript != null)
+        {
+            _myIndex = itemScript.IndexInGM; 
+        }
     }
 
-    void Update()
+    private void OnEnable()
     {
-        
+        if (thisButton == null)
+        {
+            thisButton = GetComponent<Button>();
+        }
+        Shop.GetInstance().TogglePrice(false);
+        myToolTip.SetActive(false);
+        thisButton.interactable = true;
+        if (typeOfButton == ButtonType.Buy)
+        {
+            bool found = false;
+            foreach (Item item in LevelManager.GetInstance().CurrentLevelInfo.ItemsAvailable)
+            {
+                if (item == itemScript)
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                thisButton.interactable = false;
+            }
+        }
+
+        if (typeOfButton == ButtonType.Upgrade)
+        {
+            bool found = false;
+            foreach (Item item in LevelManager.GetInstance().CurrentLevelInfo.ItemsAvailable)
+            {
+                Item itemSelected = GameManager.GetInstance().SelectedItem;
+                if (itemSelected != null)
+                {
+                    Item itemUP = itemSelected.UpgradeVersion;
+                    if (itemUP != null && item == itemUP)
+                    {
+                        found = true;
+                        break;
+                    }
+                }                
+            }
+            if (!found)
+            {
+                thisButton.interactable = false;
+            }
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        myToolTip.SetActive(true);
-        Shop.GetInstance().TowerSelect(_myIndex);
-        Shop.GetInstance().ChangePrice(itemScript, typeOfButton);
-        Shop.GetInstance().OnButton = true;
+        if (thisButton.interactable)
+        {
+            myToolTip.SetActive(true);
+            Shop.GetInstance().TogglePrice();
+            Shop.GetInstance().TowerSelect(_myIndex);
+            Shop.GetInstance().ChangePrice(itemScript, typeOfButton);
+            Shop.GetInstance().OnButton = true;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         myToolTip.SetActive(false);
+        Shop.GetInstance().TogglePrice(false);
         Shop.GetInstance().OnButton = false;
         EventSystem.current.SetSelectedGameObject(null);
     }

@@ -126,13 +126,18 @@ public class NewSpawnManager : MonoBehaviour
         //{
         //if (_waveSetup[_waveIndex].waveMixArray[_waveMixIndex] != null)
         //{
-            for (int j = 0; j < _waveSetup[_waveIndex].waveMixArray[_waveMixIndex].count; j++)
+        for (int j = 0; j < _waveSetup[_waveIndex].waveMixArray[_waveMixIndex].count; j++)
+        {
+            SpawnEnemy(_waveSetup[_waveIndex].waveMixArray[_waveMixIndex].enemy);
+            //_waveMixIndex++;
+            enemyLeftToSpawn--;
+            if (enemyLeftToSpawn <= 0)
             {
-                SpawnEnemy(_waveSetup[_waveIndex].waveMixArray[_waveMixIndex].enemy);
-                //_waveMixIndex++;
-                enemyLeftToSpawn--;
-                yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave
+                break;
             }
+
+            yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave
+        }
         //}
 
         //if (_waveIndex == _waveSetup.Length)
