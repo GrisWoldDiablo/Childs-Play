@@ -236,9 +236,16 @@ public class CameraManager : MonoBehaviour
         return 0f;
     }
 
-    public void CameraLockerButton()
-    {        
-        this.isLocked = !this.isLocked;
+    public void CameraLockerButton(bool toggle = true, bool setOn = true)
+    {
+        if (toggle)
+        {
+            this.isLocked = !this.isLocked; 
+        }
+        else
+        {
+            this.isLocked = setOn;
+        }
     }
 
     #endregion
