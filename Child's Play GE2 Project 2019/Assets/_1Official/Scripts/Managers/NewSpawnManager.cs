@@ -30,9 +30,13 @@ public class NewSpawnManager : MonoBehaviour
         
     private float _counterToNextWave;
 
+    private int _wavesLeft = 0;
+    private int _currentWave = 1;
+
 
     private int _waveIndex = 0;
     private int _waveMixIndex = 0;
+    private int _waveCounter = 0;
 
     private bool _startNewWave = false;
     private bool _startCounter = false;
@@ -40,6 +44,9 @@ public class NewSpawnManager : MonoBehaviour
 
     public float WarmupCounter { get => (int)(warmuUpCounter - Time.time); }
     public int EnemyLeftToSpawn { get => enemyLeftToSpawn; }
+    public int GetWavesLeft { get => _wavesLeft; }
+    public int GetCurrentWave { get => _currentWave; }
+    
 
     /// <summary>
     /// Called as soon as the GameObject is instanticated
@@ -49,6 +56,20 @@ public class NewSpawnManager : MonoBehaviour
         //_startNewWave = true;       
         warmuUpCounter = Time.time + warmUpSeconds;
         HudManager.GetInstance().ShowWarmUpText(true);
+
+        _wavesLeft = _waveSetup.Length;
+
+        GetEnemiesLeftToSpawn();
+
+        //for (int i = 0; i < _waveSetup[_waveIndex].waveMixArray.Length; i++)
+        //{
+        //    for (int j = 0; j < _waveSetup[_waveIndex].waveMixArray[_waveCounter].count; j++)
+        //    {
+        //        enemyLeftToSpawn++;
+        //    }
+        //    //_waveMixIndex++;
+        //    _waveCounter++;
+        //}
     }
 
     // Update is called once per frame
@@ -62,8 +83,10 @@ public class NewSpawnManager : MonoBehaviour
         if (!warmedUp && warmuUpCounter <= Time.time)
         {
             warmedUp = true;
-            _startNewWave = true;
+            _startNewWave = true;            
             HudManager.GetInstance().ShowWarmUpText(false);
+
+            _wavesLeft--;
         }
 
         if (_startNewWave)
@@ -107,9 +130,20 @@ public class NewSpawnManager : MonoBehaviour
             {
                 SpawnEnemy(_waveSetup[_waveIndex].waveMixArray[_waveMixIndex].enemy);
                 //_waveMixIndex++;
+                enemyLeftToSpawn--;
                 yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave
             }
         //}
+
+        //if (_waveIndex == _waveSetup.Length)
+        //{
+        //    //LevelManager.CurrentLvl++;
+        //    LevelManager.GetInstance().LevelCompleted();
+        //    //TODO: LEVEL FINISHED!GOTO NEXT LEVEL
+        //    Debug.Log("Level Spawning Completed!");
+        //    this.enabled = false;
+        //}
+
         _waveMixIndex++;
         //if (_waveMixIndex == _waveSetup[_waveIndex].waveMixArray.Length)
         //{
@@ -119,32 +153,92 @@ public class NewSpawnManager : MonoBehaviour
         //yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave
         //}
 
+        if (_waveMixIndex < _waveSetup[_waveIndex].waveMixArray.Length)
+            _startNewWave = true;
+
         if (_waveMixIndex == _waveSetup[_waveIndex].waveMixArray.Length)
         {
+            //if (_waveIndex == _waveSetup.Length)
+            //{
+            //    //LevelManager.CurrentLvl++;
+            //    LevelManager.GetInstance().LevelCompleted();
+            //    //TODO: LEVEL FINISHED! GOTO NEXT LEVEL
+            //    Debug.Log("Level Spawning Completed!");
+            //    this.enabled = false;
+            //}
+
             _waveMixIndex = 0;
             _waveIndex++;
-            
+            //_currentWave = _waveIndex + 1;
+            _wavesLeft--;
+            if (_wavesLeft < 0)
+            {
+                _wavesLeft = 0;
+            }
+            _waveCounter = _waveMixIndex;
+            //GetEnemiesLeftToSpawn();
+
+            if (_waveIndex == _waveSetup.Length)
+            {
+                //LevelManager.CurrentLvl++;
+                LevelManager.GetInstance().LevelCompleted();
+                //TODO: LEVEL FINISHED! GOTO NEXT LEVEL
+                Debug.Log("Level Spawning Completed!");
+                this.enabled = false;
+            }
+            //else
+            if (_waveIndex < _waveSetup.Length)
+            {
+                GetEnemiesLeftToSpawn();
+            }
+            _currentWave = _waveIndex + 1;
+            _counterToNextWave = timeBetweenWaves;
+            _startCounter = true;
         }
 
         //_waveIndex++;
 
-        if(_waveIndex == _waveSetup.Length)
-        {
-            //LevelManager.CurrentLvl++;
-            LevelManager.GetInstance().LevelCompleted();
-            //TODO: LEVEL FINISHED! GOTO NEXT LEVEL
-            Debug.Log("Level Spawning Completed!");
-            this.enabled = false;
-        }
+        //if(_waveIndex == _waveSetup.Length)
+        //{
+        //    //LevelManager.CurrentLvl++;
+        //    LevelManager.GetInstance().LevelCompleted();
+        //    //TODO: LEVEL FINISHED! GOTO NEXT LEVEL
+        //    Debug.Log("Level Spawning Completed!");
+        //    this.enabled = false;
+        //}
 
         //_counterToNextWave = 0f;
-        _counterToNextWave = timeBetweenWaves;
-        _startCounter = true;        
+
+        //_counterToNextWave = timeBetweenWaves;
+        //_startCounter = true;        
     }
 
     void SpawnEnemy(GameObject enemyToSpawn)
     {
         Instantiate(enemyToSpawn, spawnPoint.position, spawnPoint.rotation);
+    }
+
+    public void SkipWarmUp()
+    {
+        warmedUp = true;
+        _startNewWave = true;
+        HudManager.GetInstance().ShowWarmUpText(false);
+        warmuUpCounter = 0;
+
+        _wavesLeft--;
+    }
+
+    public void GetEnemiesLeftToSpawn()
+    {
+        for (int i = 0; i < _waveSetup[_waveIndex].waveMixArray.Length; i++)
+        {
+            for (int j = 0; j < _waveSetup[_waveIndex].waveMixArray[_waveCounter].count; j++)
+            {
+                enemyLeftToSpawn++;
+            }
+            //_waveMixIndex++;
+            _waveCounter++;
+        }
     }
 
     private void OnDestroy()
