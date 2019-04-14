@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -161,18 +162,13 @@ public class Tower : MonoBehaviour
 
         Projectile projectile = projectileGameObject.GetComponent<Projectile>();
         projectile.AssignTarget(towerTarget);
-        //if (projectile is Missile)
-        //{
-        //    projectile.GetComponent<Missile>().AssignTarget(towerTarget);
-        //}
-        //else if(projectile is Bullet)
-        //{
-        //    projectile.GetComponent<Bullet>().AssignTarget(towerTarget);
-        //}
-        //else if (projectile is Laser)
-        //{
-        //    projectile.GetComponent<Laser>().AssignTarget(towerTarget);
-        //}
+
+        PlayVFX();
+    }
+
+    private void PlayVFX()
+    {
+        //Do vfx 
     }
 
     private void OnDrawGizmos()

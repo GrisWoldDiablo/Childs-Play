@@ -79,7 +79,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49859639421e79f40bf2909943012ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels: []
+  levels:
+  - name: Level 1
+    levelPrefab: {fileID: 6235485704495650997, guid: ed6f41a967ccfd44285bce0b26fd9878,
+      type: 3}
+    initialMoney: 10000
+    itemsAvailable:
+    - {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116, type: 3}
+    - {fileID: 5715736335120211671, guid: a87911ef91a7ab943ab9001c250e0427, type: 3}
+    - {fileID: 5715736335120211671, guid: 1f4ac9beedd837b41958f1fc68577752, type: 3}
+    - {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb, type: 3}
+    - {fileID: 3900594165254421110, guid: 1c0aff608c504204299fae348237fa40, type: 3}
+    - {fileID: 982231281318659434, guid: 28c410f03eb869f438e78b03b80356f0, type: 3}
+    - {fileID: 3900594165254421110, guid: 1c0aff608c504204299fae348237fa40, type: 3}
+    - {fileID: 1468471134, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
+    - {fileID: 6364165809080989529, guid: e1f49a9569752f84398b203fa7ea1c89, type: 3}
+  - name: Level 2
+    levelPrefab: {fileID: 432107835797570942, guid: 890df456ba6b6844ba9ae75884ab85f1,
+      type: 3}
+    initialMoney: 10000
+    itemsAvailable:
+    - {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb, type: 3}
+    - {fileID: 3900594165254421110, guid: 1c0aff608c504204299fae348237fa40, type: 3}
+    - {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116, type: 3}
+  - name: Level 3
+    levelPrefab: {fileID: 3606852394212557704, guid: 4cb5715960cd3d34c95cecd380988bdc,
+      type: 3}
+    initialMoney: 10000
+    itemsAvailable:
+    - {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb, type: 3}
+    - {fileID: 3900594165254421110, guid: 1c0aff608c504204299fae348237fa40, type: 3}
+    - {fileID: 982231281318659434, guid: 28c410f03eb869f438e78b03b80356f0, type: 3}
+    - {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116, type: 3}
+    - {fileID: 5715736335120211671, guid: a87911ef91a7ab943ab9001c250e0427, type: 3}
+    - {fileID: 1800239817095121850, guid: 81f152383e2a7c74e8457718080ce084, type: 3}
+  - name: Level 4
+    levelPrefab: {fileID: 6929506207878271859, guid: 9f758fccc186f5846b51b52e4e08eabe,
+      type: 3}
+    initialMoney: 10000
+    itemsAvailable:
+    - {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb, type: 3}
+    - {fileID: 3900594165254421110, guid: 1c0aff608c504204299fae348237fa40, type: 3}
+    - {fileID: 982231281318659434, guid: 28c410f03eb869f438e78b03b80356f0, type: 3}
+    - {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116, type: 3}
+    - {fileID: 5715736335120211671, guid: a87911ef91a7ab943ab9001c250e0427, type: 3}
+    - {fileID: 5715736335120211671, guid: 1f4ac9beedd837b41958f1fc68577752, type: 3}
+    - {fileID: 1468471134, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
+    - {fileID: 1800239817095121850, guid: 81f152383e2a7c74e8457718080ce084, type: 3}
+  - name: Level 5
+    levelPrefab: {fileID: 5428867926121916330, guid: ea11590c568b52b428ae6ae29f577189,
+      type: 3}
+    initialMoney: 10000
+    itemsAvailable:
+    - {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb, type: 3}
+    - {fileID: 3900594165254421110, guid: 1c0aff608c504204299fae348237fa40, type: 3}
+    - {fileID: 982231281318659434, guid: 28c410f03eb869f438e78b03b80356f0, type: 3}
+    - {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116, type: 3}
+    - {fileID: 5715736335120211671, guid: a87911ef91a7ab943ab9001c250e0427, type: 3}
+    - {fileID: 5715736335120211671, guid: 1f4ac9beedd837b41958f1fc68577752, type: 3}
+    - {fileID: 1468471134, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
+    - {fileID: 6364165809080989529, guid: e1f49a9569752f84398b203fa7ea1c89, type: 3}
+    - {fileID: 1800239817095121850, guid: 81f152383e2a7c74e8457718080ce084, type: 3}
 --- !u!114 &1841120528766658429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +254,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4284695540638597293}
     m_Modifications:
+    - target: {fileID: 2195496701596001010, guid: 6c3fc108dfa529e4a8f4d386708341c5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Cursor Variant Selection
+      objectReference: {fileID: 0}
     - target: {fileID: 1025553299904021355, guid: 6c3fc108dfa529e4a8f4d386708341c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -248,11 +313,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2195496701596001010, guid: 6c3fc108dfa529e4a8f4d386708341c5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Cursor Variant Selection
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c3fc108dfa529e4a8f4d386708341c5, type: 3}
