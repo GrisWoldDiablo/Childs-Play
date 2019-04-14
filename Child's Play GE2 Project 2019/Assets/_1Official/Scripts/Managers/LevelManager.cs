@@ -91,7 +91,7 @@ public class LevelManager : MonoBehaviour
         GameManager.GetInstance().DeselectTile();
 
         PlayerManager.GetInstance().CreatePlayerList();
-        CameraManager.GetInstance().CameraLockerButton();
+        CameraManager.GetInstance().CameraLockerButton(false);
     }
 
 
