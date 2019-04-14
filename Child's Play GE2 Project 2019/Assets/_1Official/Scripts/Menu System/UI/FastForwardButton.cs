@@ -21,7 +21,7 @@ public class FastForwardButton : MonoBehaviour
     /// </summary>
     public void ChangeSpeed()
     {
-        if (NewSpawnManager.GetInstance().WarmupCounter <= 0)
+        if (SpawnManager.GetInstance().WarmupCounter <= 0)
         {
 
             if (Time.timeScale == 1.0f)
@@ -52,7 +52,7 @@ public class FastForwardButton : MonoBehaviour
         else
         {
             //Insert the SpawnManager Method to skip warmup
-            NewSpawnManager.GetInstance().SkipWarmUp();
+            SpawnManager.GetInstance().SkipWarmUp();
             //skipArrow.enabled = false;
         }
     }
@@ -78,7 +78,7 @@ public class FastForwardButton : MonoBehaviour
             arrow.enabled = false;
         }
         skipArrow.enabled = true;
-        while (NewSpawnManager.GetInstance().WarmupCounter > 0)
+        while (SpawnManager.GetInstance().WarmupCounter > 0)
         {
             yield return null;
         }
