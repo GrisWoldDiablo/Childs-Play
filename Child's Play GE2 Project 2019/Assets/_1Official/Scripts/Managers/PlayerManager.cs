@@ -18,28 +18,23 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
 
-    private void Awake()
-    {
-        //instance = this;
-        CreatePlayerList();
-    }
+
 
     //Variables
-    public List<Player> listOfPlayers = new List<Player>();
+    [SerializeField] private List<Player> listOfPlayers;
 
     //References for Cashing
     public Player playerWithFocus;
-    //public CameraController cameraLocker;
 
-    //private CameraController _cameraController;
+    public List<Player> ListOfPlayers { get => listOfPlayers; }
+
 
     #region Unity API Methods
-    // Start is called before the first frame update
-    //void Start()
-    //{
-    //    //cameraLocker = Camera.main.GetComponent<CameraController>();
-    //}
 
+    private void Awake()
+    {
+        CreatePlayerList();
+    }
     // Update is called once per frame
     public void Update()
     {
@@ -51,8 +46,9 @@ public class PlayerManager : MonoBehaviour
     /// <summary>
     /// Populates the list of Player's Objects (Towers and Food)
     /// </summary>
-    private void CreatePlayerList()
+    public void CreatePlayerList()
     {
+        listOfPlayers = new List<Player>();
         foreach (Player p in GameObject.FindObjectsOfType<Player>())
         {
             listOfPlayers.Add(p);

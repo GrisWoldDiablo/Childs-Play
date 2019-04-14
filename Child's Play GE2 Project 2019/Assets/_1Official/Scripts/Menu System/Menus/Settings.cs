@@ -20,6 +20,9 @@ public class Settings : MonoBehaviour {
     }
     #endregion
 
+    
+
+
     [Header("Settings")]
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioMixerSnapshot inMenuSS;
@@ -72,9 +75,15 @@ public class Settings : MonoBehaviour {
     private float sensitivityV;
     public float SensitivityV { get { return sensitivityV; } set { sensitivityV = value; } }
 
-    [Header("Game Specific")]
-    [SerializeField] private int MAXLEVEL = 10;
+    public int StartingLevel { get => startingLevel; set => startingLevel = value; }
+    public int LevelsUnlocked { get => levelsUnlocked; set => levelsUnlocked = value; }
 
+    [Header("Game Specific")]
+    [SerializeField] private int startingLevel = 0;
+    [SerializeField] private string startingLevelParam;
+    [SerializeField] private int levelsUnlocked = 0;
+    [SerializeField] private string levelsUnlockedParam;
+    [SerializeField] private int MAXLEVEL = 5;
 
     private void Awake()
     {
@@ -90,6 +99,8 @@ public class Settings : MonoBehaviour {
         sensitivityH = PlayerPrefs.GetFloat(sensitivityHParam, 2);
         sensitivityV = PlayerPrefs.GetFloat(sensitivityVParam, 2);
         GetLeaderboard();
+
+        LoadLevelParams();
     }
 
     public void SaveChanges()
@@ -209,5 +220,42 @@ public class Settings : MonoBehaviour {
 
     }
 
+    // Level Selection
+    public void LoadLevelParams()
+    {
+        levelsUnlocked = PlayerPrefs.GetInt(levelsUnlockedParam, 0);
+        startingLevel = PlayerPrefs.GetInt(startingLevelParam, 0);
+    }
+    public void SaveLevelParams()
+    {
+        PlayerPrefs.SetInt(levelsUnlockedParam, levelsUnlocked);
+        PlayerPrefs.Save();
+    }
 
+    public void ResetLevelParams()
+    {
+        PlayerPrefs.SetInt(levelsUnlockedParam, 0);
+        levelsUnlocked = 0;
+        PlayerPrefs.Save();
+    }
+
+    public void UnlockAllLevelParams()
+    {
+        levelsUnlocked = MAXLEVEL;
+        PlayerPrefs.SetInt(levelsUnlockedParam, levelsUnlocked);
+        PlayerPrefs.Save();
+    }
+
+    public void ResetUnlockedProgression()
+    {
+        levelsUnlocked = 0;
+        PlayerPrefs.SetInt(levelsUnlockedParam, levelsUnlocked);
+        PlayerPrefs.Save();
+    }
+
+    public void SetStartingLevel(int levelNumber = 0)
+    {
+        startingLevel = levelNumber - 1; // Index is 0, so -1 is important
+        PlayerPrefs.SetInt(startingLevelParam, startingLevel);
+    }
 }
