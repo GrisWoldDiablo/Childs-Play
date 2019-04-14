@@ -44,7 +44,7 @@ public class EnemyMovementMechanics : MonoBehaviour
     void Awake()
     {
         //currentDestination = GameObject.FindGameObjectWithTag("Spawn").GetComponent<Node>();
-        currentDestination = NewSpawnManager.GetInstance().spawnPoint.GetComponent<Node>();
+        currentDestination = SpawnManager.GetInstance().SpawnPoint;
         EnemyAgentNaveMeshSetup();
         SetNode(currentDestination);
         //_myRigidBody = gameObject.GetComponent<Rigidbody>();
