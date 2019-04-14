@@ -158,15 +158,6 @@ public class NewSpawnManager : MonoBehaviour
 
         if (_waveMixIndex == _waveSetup[_waveIndex].waveMixArray.Length)
         {
-            //if (_waveIndex == _waveSetup.Length)
-            //{
-            //    //LevelManager.CurrentLvl++;
-            //    LevelManager.GetInstance().LevelCompleted();
-            //    //TODO: LEVEL FINISHED! GOTO NEXT LEVEL
-            //    Debug.Log("Level Spawning Completed!");
-            //    this.enabled = false;
-            //}
-
             _waveMixIndex = 0;
             _waveIndex++;
             //_currentWave = _waveIndex + 1;
@@ -190,8 +181,9 @@ public class NewSpawnManager : MonoBehaviour
             if (_waveIndex < _waveSetup.Length)
             {
                 GetEnemiesLeftToSpawn();
+                _currentWave = _waveIndex + 1;
             }
-            _currentWave = _waveIndex + 1;
+            //_currentWave = _waveIndex + 1;
             _counterToNextWave = timeBetweenWaves;
             _startCounter = true;
         }
