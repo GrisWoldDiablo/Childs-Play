@@ -119,11 +119,16 @@ public class NewSpawnManager : MonoBehaviour
         //yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave
         //}
 
+        if (_waveMixIndex < _waveSetup[_waveIndex].waveMixArray.Length)
+            _startNewWave = true;
+
         if (_waveMixIndex == _waveSetup[_waveIndex].waveMixArray.Length)
         {
             _waveMixIndex = 0;
             _waveIndex++;
-            
+
+            _counterToNextWave = timeBetweenWaves;
+            _startCounter = true;
         }
 
         //_waveIndex++;
@@ -138,8 +143,9 @@ public class NewSpawnManager : MonoBehaviour
         }
 
         //_counterToNextWave = 0f;
-        _counterToNextWave = timeBetweenWaves;
-        _startCounter = true;        
+
+        //_counterToNextWave = timeBetweenWaves;
+        //_startCounter = true;        
     }
 
     void SpawnEnemy(GameObject enemyToSpawn)
