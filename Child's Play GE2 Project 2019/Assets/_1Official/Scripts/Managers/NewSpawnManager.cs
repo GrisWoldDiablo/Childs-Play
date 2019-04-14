@@ -110,6 +110,16 @@ public class NewSpawnManager : MonoBehaviour
                 yield return new WaitForSeconds(_waveSetup[_waveIndex].rate); //how long to spawn an enemy during the wave
             }
         //}
+
+        //if (_waveIndex == _waveSetup.Length)
+        //{
+        //    //LevelManager.CurrentLvl++;
+        //    LevelManager.GetInstance().LevelCompleted();
+        //    //TODO: LEVEL FINISHED! GOTO NEXT LEVEL
+        //    Debug.Log("Level Spawning Completed!");
+        //    this.enabled = false;
+        //}
+
         _waveMixIndex++;
         //if (_waveMixIndex == _waveSetup[_waveIndex].waveMixArray.Length)
         //{
@@ -127,20 +137,29 @@ public class NewSpawnManager : MonoBehaviour
             _waveMixIndex = 0;
             _waveIndex++;
 
+            if (_waveIndex == _waveSetup.Length)
+            {
+                //LevelManager.CurrentLvl++;
+                LevelManager.GetInstance().LevelCompleted();
+                //TODO: LEVEL FINISHED! GOTO NEXT LEVEL
+                Debug.Log("Level Spawning Completed!");
+                this.enabled = false;
+            }
+
             _counterToNextWave = timeBetweenWaves;
             _startCounter = true;
         }
 
         //_waveIndex++;
 
-        if(_waveIndex == _waveSetup.Length)
-        {
-            //LevelManager.CurrentLvl++;
-            LevelManager.GetInstance().LevelCompleted();
-            //TODO: LEVEL FINISHED! GOTO NEXT LEVEL
-            Debug.Log("Level Spawning Completed!");
-            this.enabled = false;
-        }
+        //if(_waveIndex == _waveSetup.Length)
+        //{
+        //    //LevelManager.CurrentLvl++;
+        //    LevelManager.GetInstance().LevelCompleted();
+        //    //TODO: LEVEL FINISHED! GOTO NEXT LEVEL
+        //    Debug.Log("Level Spawning Completed!");
+        //    this.enabled = false;
+        //}
 
         //_counterToNextWave = 0f;
 
