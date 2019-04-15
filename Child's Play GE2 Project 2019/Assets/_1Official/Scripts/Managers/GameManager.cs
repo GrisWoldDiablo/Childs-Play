@@ -295,7 +295,7 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
-
+        SoundManager.GetInstance().PlaySoundOneShot(Sound.placeTower);
         DeselectTile();
     }
 
@@ -403,6 +403,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GameOver()
     {
+        SoundManager.GetInstance().PlaySoundOneShot(Sound.gameOver);
         Pause.GetInstance().PauseGame();
         PanelSelection(gameOverPanelIndex);
     }

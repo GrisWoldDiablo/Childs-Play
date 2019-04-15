@@ -41,7 +41,8 @@ public class Tower : MonoBehaviour
     private ParticleSystem firingVFX;
 
     [SerializeField] private int levelUpgradeIndex = 0;
-
+    private AudioSource myAudioSource;
+ 
     public Transform GetProjectileSpawnPoint
     { get { return projectileSpawnPoint; } }
 
@@ -53,7 +54,7 @@ public class Tower : MonoBehaviour
 
     private void Start()
     {
-        
+        myAudioSource = GetComponent<AudioSource>();
         //BroadcastMessage("SetRangeScale", tower_SO.range);
         if (tower_SO.towerType == ProjectTileType.LASER)
         {
@@ -165,8 +166,19 @@ public class Tower : MonoBehaviour
 
         Projectile projectile = projectileGameObject.GetComponent<Projectile>();
         projectile.AssignTarget(towerTarget);
-
+        PlaySound();
         PlayVFX();
+    }
+
+    private void PlaySound()
+    {
+        if (myAudioSource.clip != null)
+        {
+            if (!myAudioSource.isPlaying)
+            {
+                myAudioSource.PlayOneShot(myAudioSource.clip);
+            }
+        }
     }
 
     private void PlayVFX()
@@ -225,6 +237,5 @@ public class Tower : MonoBehaviour
             this._vfxLaser.Stop();
             this._lightEffect.enabled = false; 
         }
-
     }
 }

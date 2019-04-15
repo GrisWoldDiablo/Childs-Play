@@ -121,7 +121,7 @@ public class EnemyBaseClass : MonoBehaviour
 
         EnemyManager.GetInstance().RemoveEnemyFromList(this as Enemy);
         MoneyManager.GetInstance().MoneyChange(value);
-
+        SoundManager.GetInstance().PlaySoundOneShot(Sound.moneyIncome);
         ScoreManager.GetInstance().EnemyKilled++;
         ScoreManager.GetInstance().MoneyEarned += value;
     }

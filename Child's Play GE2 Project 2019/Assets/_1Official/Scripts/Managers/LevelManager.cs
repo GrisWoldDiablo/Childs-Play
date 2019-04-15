@@ -112,6 +112,7 @@ public class LevelManager : MonoBehaviour
     public void GameCompleted()
     {
         GameManager.GetInstance().PanelSelection(GameManager.GetInstance().WinPanelIndex);
+        SoundManager.GetInstance().PlaySoundOneShot(Sound.winCopleted);
     }
 
     public void UpdateSettings()

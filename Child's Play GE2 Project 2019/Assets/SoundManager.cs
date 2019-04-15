@@ -5,15 +5,18 @@ using UnityEngine;
 
 public enum Sound
 {
+    missileSfx,
+    moneyIncome,
     onButtonClick,
     onButtonOver,
     placeTower,
+    //placeBarrier,
     removeTower,
     upgrade,
     selectTile,
     gameOver,
-    winGame,
-    scoreScreen,
+    winCopleted,
+    levelCompleted,
     warmupPhase,
     _levels1_2,
     _levels3_4,
@@ -57,7 +60,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySoundButton()
     {
-        uiSfx.PlayOneShot(GetAudioClip(Sound.onButtonClick), 0.1f);
+        uiSfx.PlayOneShot(GetAudioClip(Sound.onButtonClick), 0.3f);
     }
 
     public AudioClip GetAudioClip(Sound s)
@@ -72,9 +75,6 @@ public class SoundManager : MonoBehaviour
         Debug.LogError("Sound " + s + " not found");
         return null;
     }
-
-
-
 }
 
 
