@@ -16,6 +16,13 @@ public class EnemyBaseClass : MonoBehaviour
     [SerializeField] private int foodBites = 5;
     [SerializeField] protected int value = 10;
 
+    [SerializeField]
+    private ParticleSystem _spawnVFX;
+    [SerializeField]
+    private ParticleSystem _dieVFX;
+    [SerializeField]
+    private ParticleSystem _eatVFX;
+
     protected bool hasFocus = false;
     private EnemyAnimation _enemyAnimation;
     private Item target;
@@ -74,7 +81,9 @@ public class EnemyBaseClass : MonoBehaviour
         UpdateHealthBar();
         if (hitPoints <= 0)
         {
+            _dieVFX.Play();
             Die();
+            
         }
     }
 
@@ -176,6 +185,7 @@ public class EnemyBaseClass : MonoBehaviour
 
     private void EatFood(Food _food)
     {
+        _eatVFX.Play();
         asEaten = true;
         _food.TakeDamage(foodBites);
     }
