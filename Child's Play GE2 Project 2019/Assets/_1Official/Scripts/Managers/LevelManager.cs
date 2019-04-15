@@ -51,7 +51,8 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         root = GameObject.FindGameObjectWithTag("Root").transform;
-        LoadLevel();
+        currentLevel = Settings.GetInstance().StartingLevel;
+        LoadLevel(currentLevel);
     }
 
     /// <summary>
@@ -73,6 +74,7 @@ public class LevelManager : MonoBehaviour
             GameCompleted();
             return;
         }
+        UpdateSettings();
 
         ScoreManager.GetInstance().Reset();
         if (currentLevelGO != null)
@@ -87,6 +89,10 @@ public class LevelManager : MonoBehaviour
 
         GameManager.GetInstance().FastForwardButton.Init();
         GameManager.GetInstance().DeselectTile();
+
+        PlayerManager.GetInstance().CreatePlayerList();
+        CameraManager.GetInstance().CameraLockerButton(false);
+        HudManager.GetInstance().UpdateLevelNumberText(levelNumber + 1); // plus one since level are base on indexes
     }
 
 
@@ -97,6 +103,7 @@ public class LevelManager : MonoBehaviour
     public void LevelCompleted()
     {
         levelSpawningCompleted = true;
+        
     }
 
     /// <summary>
@@ -105,5 +112,14 @@ public class LevelManager : MonoBehaviour
     public void GameCompleted()
     {
         GameManager.GetInstance().PanelSelection(GameManager.GetInstance().WinPanelIndex);
+    }
+
+    public void UpdateSettings()
+    {
+        if (Settings.GetInstance().LevelsUnlocked < currentLevel)
+        {
+            Settings.GetInstance().LevelsUnlocked = currentLevel;
+            Settings.GetInstance().SaveLevelParams();
+        }
     }
 }
