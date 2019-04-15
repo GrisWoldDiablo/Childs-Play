@@ -37,6 +37,7 @@ public class Projectile : MonoBehaviour
     public virtual void HitTarget(Collider other)
     {
         //TODO: spawn effect
+        PlayVFX();
         //TODO: destroy effect
 
         if (AoERadius > 0f)
@@ -87,5 +88,16 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    public void PlayVFX()
+    {
+        if (impactVFX == null)
+        {
+            return;
+        }
+        impactVFX.transform.parent = null;
+        impactVFX.transform.position += Vector3.up;
+        impactVFX.Play();
+        Destroy(impactVFX.gameObject , impactVFX.main.duration);
+    }
 }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class Tower : MonoBehaviour
     private float rotationSpeed = 10f;
     //[SerializeField]
     //private string enemyTag = "Enemy";
+    
 
 
     //FIRING PART
@@ -35,6 +37,8 @@ public class Tower : MonoBehaviour
     [SerializeField] private Light _lightEffect;
     [SerializeField] private ParticleSystem _vfxLaser;
     [SerializeField] private LineRenderer _lineRendererComponent;
+    [SerializeField]
+    private ParticleSystem firingVFX;
 
     [SerializeField] private int levelUpgradeIndex = 0;
 
@@ -161,18 +165,22 @@ public class Tower : MonoBehaviour
 
         Projectile projectile = projectileGameObject.GetComponent<Projectile>();
         projectile.AssignTarget(towerTarget);
-        //if (projectile is Missile)
-        //{
-        //    projectile.GetComponent<Missile>().AssignTarget(towerTarget);
-        //}
-        //else if(projectile is Bullet)
-        //{
-        //    projectile.GetComponent<Bullet>().AssignTarget(towerTarget);
-        //}
-        //else if (projectile is Laser)
-        //{
-        //    projectile.GetComponent<Laser>().AssignTarget(towerTarget);
-        //}
+
+        PlayVFX();
+    }
+
+    private void PlayVFX()
+    {
+        //Do vfx 
+        if (firingVFX == null)
+        {
+            return;
+        }
+        //firingVFX.transform.parent = null;
+        firingVFX.transform.position = projectileSpawnPoint.transform.position;
+        firingVFX.Play();
+        //Destroy(firingVFX.gameObject, firingVFX.main.duration);
+
     }
 
     private void OnDrawGizmos()

@@ -8,11 +8,12 @@ public class PlayerBaseClass : MonoBehaviour
     [SerializeField] private int hitPoints = 100;
     
     public int HitPoints { get => hitPoints; set => hitPoints = value; }
-
-    // Update is called once per frame
-    protected void Update()
+    
+    protected void Start()
     {
-        
+        Item newItem = GetComponent<Item>();
+        newItem.Value /= 2;
+        PlayerManager.GetInstance().AddPlayer(newItem);
     }
 
     protected virtual void Die()

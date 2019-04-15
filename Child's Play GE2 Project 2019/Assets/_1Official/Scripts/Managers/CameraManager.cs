@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+
 #if UNITY_EDITOR
     [Header("DEBUG")]
     public bool disableMouseMovement = false;
@@ -60,7 +61,10 @@ public class CameraManager : MonoBehaviour
     //Getters
     public Vector2 GetKeyboardInput
     {
-        get { return new Vector2(Input.GetAxis("LateralCameraMovement"), Input.GetAxis("ForwardBackCameraMovement")); }
+        get { return new Vector2(
+            Input.GetAxis("LateralCameraMovement") * Settings.GetInstance().SensitivityH,
+            Input.GetAxis("ForwardBackCameraMovement") * Settings.GetInstance().SensitivityV
+            ); }
     }
 
     public Vector2 GetMousePosition
@@ -71,12 +75,20 @@ public class CameraManager : MonoBehaviour
     #region UNITY methods
     private void LateUpdate()
     {
+        if (Time.timeScale <= 0)
+        {
+            return;
+        }
         CameraFollowPlayer();
         CameraZoomAndRotationFreeMode();
     }
 
     private void Update()
     {
+        if (Time.timeScale <= 0)
+        {
+            return;
+        }
         YawCorrection();
         CameraZoomAndRotationWhenLocked();
         CameraMovementFreeModeWithKeyboard();
@@ -165,6 +177,8 @@ public class CameraManager : MonoBehaviour
 
             _cameraFreeMovement.x = leftRect.Contains(Input.mousePosition) ? -1 : rightRect.Contains(Input.mousePosition) ? 1 : 0;
             _cameraFreeMovement.z = upperRect.Contains(Input.mousePosition) ? 1 : lowerRect.Contains(Input.mousePosition) ? -1 : 0;
+            _cameraFreeMovement.x *= Settings.GetInstance().SensitivityH;
+            _cameraFreeMovement.z *= Settings.GetInstance().SensitivityV;
 
             _cameraFreeMovement *= _cameraTranslationSpeed * Time.fixedDeltaTime;
             _cameraFreeMovement = Quaternion.Euler(new Vector3(0f, this.transform.eulerAngles.y, 0f)) * _cameraFreeMovement;
@@ -223,14 +237,16 @@ public class CameraManager : MonoBehaviour
         return 0f;
     }
 
-    public void CameraLockerButton()
-    {        
-        this.isLocked = !this.isLocked;
+    public void CameraLockerButton(bool toggle = true, bool setOn = true)
+    {
+        if (toggle)
+        {
+            this.isLocked = !this.isLocked; 
+        }
+        else
+        {
+            this.isLocked = setOn;
+        }
     }
-
     #endregion
-
-
-
-
 }
