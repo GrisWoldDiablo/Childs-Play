@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+
 #if UNITY_EDITOR
     [Header("DEBUG")]
     public bool disableMouseMovement = false;
@@ -247,10 +248,5 @@ public class CameraManager : MonoBehaviour
             this.isLocked = setOn;
         }
     }
-
     #endregion
-
-
-
-
 }

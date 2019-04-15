@@ -92,6 +92,7 @@ public class LevelManager : MonoBehaviour
 
         PlayerManager.GetInstance().CreatePlayerList();
         CameraManager.GetInstance().CameraLockerButton(false);
+        HudManager.GetInstance().UpdateLevelNumberText(levelNumber + 1); // plus one since level are base on indexes
     }
 
 
