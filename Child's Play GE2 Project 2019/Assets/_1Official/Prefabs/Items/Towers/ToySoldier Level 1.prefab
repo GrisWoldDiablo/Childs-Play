@@ -93,6 +93,7 @@ Transform:
   - {fileID: 5044917573942952230}
   - {fileID: 5912156996664367865}
   - {fileID: 7190343100632235488}
+  - {fileID: 6758830353708659036}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -117,6 +118,8 @@ MonoBehaviour:
   _lightEffect: {fileID: 0}
   _vfxLaser: {fileID: 0}
   _lineRendererComponent: {fileID: 0}
+  firingVFX: {fileID: 6758830353708659034}
+  levelUpgradeIndex: 0
 --- !u!114 &6589336874733247523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,14 +133,96 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 100
-  rangeGO: {fileID: 5912156996664367813}
-  rangeGOUpgrade: {fileID: 7190343100632235484}
+  _itemType: 0
   itemName: Toy Soldier Level 1
   itemDescription: This is a shooter tower.
-  indexInGM: 0
   value: 80
+  indexInGM: 0
+  rangeGO: {fileID: 5912156996664367813}
+  rangeGOUpgrade: {fileID: 7190343100632235484}
   upgradeVersion: {fileID: 3900594165254421110, guid: 1c0aff608c504204299fae348237fa40,
     type: 3}
+--- !u!1001 &2518439411650227819
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5643377522959975575}
+    m_Modifications:
+    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_Name
+      value: TraTraTra1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.511757
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.376482
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 68.662636
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ed7d70aa7e8db6d429e1cf527aee8be6, type: 3}
+--- !u!4 &6758830353708659036 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2518439411650227819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6758830353708659034 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9169182781000900401, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2518439411650227819}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5627137814356796409
 PrefabInstance:
   m_ObjectHideFlags: 0
