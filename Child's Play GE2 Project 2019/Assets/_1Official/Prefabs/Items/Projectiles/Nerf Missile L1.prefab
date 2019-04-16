@@ -251,7 +251,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 243181926754801646, guid: 6c4dda455ac1a4d489d7327586f16ba6,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 1aae18a107176f4488b35a29a603db1c, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -348,6 +348,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BooM! Particle
       objectReference: {fileID: 0}
+    - target: {fileID: 7263342152694277976, guid: b4d8c2cd05e6a424cac7d1f950ed4619,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7263342152694277982, guid: b4d8c2cd05e6a424cac7d1f950ed4619,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -401,11 +406,6 @@ PrefabInstance:
     - target: {fileID: 7263342152694277982, guid: b4d8c2cd05e6a424cac7d1f950ed4619,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7263342152694277976, guid: b4d8c2cd05e6a424cac7d1f950ed4619,
-        type: 3}
-      propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
