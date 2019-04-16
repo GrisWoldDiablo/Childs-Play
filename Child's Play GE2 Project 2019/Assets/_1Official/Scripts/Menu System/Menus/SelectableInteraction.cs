@@ -18,7 +18,8 @@ public class SelectableInteraction : MonoBehaviour,IPointerEnterHandler,IDeselec
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		GetComponent<Selectable>().Select();
-	}
+        SoundManager.GetInstance().PlaySoundOneShot(Sound.onButtonOver,0.5f);
+    }
 
     public void OnDeselect(BaseEventData eventData)
     {
@@ -30,4 +31,4 @@ public class SelectableInteraction : MonoBehaviour,IPointerEnterHandler,IDeselec
 	{
 		selected = true;
 	}
-}
+}   
