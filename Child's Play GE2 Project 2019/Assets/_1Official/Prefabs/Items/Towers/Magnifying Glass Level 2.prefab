@@ -951,8 +951,9 @@ AudioSource:
   m_GameObject: {fileID: 3515772133747028138}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243181926754801646, guid: 6c4dda455ac1a4d489d7327586f16ba6,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: b2afbad7f491f3d499e913f322b79ac9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -962,10 +963,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 12
+  MaxDistance: 50
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -998,7 +999,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1413,6 +1414,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5961824344110199108}
     m_Modifications:
+    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+        type: 3}
+      propertyPath: m_Name
+      value: VFX_Laser
+      objectReference: {fileID: 0}
     - target: {fileID: 5886706566434731798, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1467,11 +1473,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
-        type: 3}
-      propertyPath: m_Name
-      value: VFX_Laser
       objectReference: {fileID: 0}
     - target: {fileID: 5886706566434731880, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
