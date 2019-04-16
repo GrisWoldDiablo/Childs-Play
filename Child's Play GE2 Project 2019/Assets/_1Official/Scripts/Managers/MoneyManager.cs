@@ -18,7 +18,7 @@ public class MoneyManager : MonoBehaviour
     #endregion
     
     private int currentMoney;
-    //public int CurrentMoney { get => currentMoney; set => currentMoney = value; }
+    public int CurrentMoney { get => currentMoney; }
 
     public void ResetMoney(int setMoney = 0)
     {

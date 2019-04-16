@@ -35,9 +35,11 @@ public class GameManager : MonoBehaviour
     private int selectedBarrierIndex = 0;
 
     [Header("Panels Indexes")]
+    [SerializeField] private int newRankPanelIndex = 4;
     [SerializeField] private int gameOverPanelIndex = 7;
     [SerializeField] private int scorePanelIndex = 8;
     [SerializeField] private int winPanelIndex = 9;
+    public int NewRankPanelIndex { get => newRankPanelIndex; }
     public int ScorePanelIndex { get => scorePanelIndex; }
     public int WinPanelIndex { get => winPanelIndex; }
 
@@ -345,6 +347,7 @@ public class GameManager : MonoBehaviour
         if (selectedTile.CurrentItem == null)
         {
             Debug.Log("No Item on the current selected Tile.");
+            DeselectTile();
             return;
         }
         MoneyManager.GetInstance().MoneyChange(selectedTile.CurrentItem.GetComponent<Item>().Value); //Sell item

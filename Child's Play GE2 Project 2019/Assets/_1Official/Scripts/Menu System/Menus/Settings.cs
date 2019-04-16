@@ -57,17 +57,17 @@ public class Settings : MonoBehaviour {
     [SerializeField] private Text lbScoreText;
     [SerializeField] private Text lbNameText;
     private List<int> leaderboardScores;
-    public List<int> LeaderboardScores { get { return leaderboardScores; } set { leaderboardScores = value; } }
+    public List<int> LeaderboardScores { get => leaderboardScores; set { leaderboardScores = value; } }
     private List<string> leaderboardNames;
-    public List<string> LeaderboardNames { get { return leaderboardNames; } set { leaderboardNames = value; } }
+    public List<string> LeaderboardNames { get => leaderboardNames; set { leaderboardNames = value; } }
     private int score;
     private int currentLevel;
-    public int CurrentLevel { get { return currentLevel; } set { currentLevel = value; } }
+    public int CurrentLevel { get => currentLevel; set { currentLevel = value; } }
 
     private float masterVolValue;
-    public float MasterVolValue { get { return masterVolValue; } set { masterVolValue = value; } }
+    public float MasterVolValue { get => masterVolValue; set { masterVolValue = value; } }
     private float musicVolValue;
-    public float MusicVolValue { get { return musicVolValue; } set { musicVolValue = value; } }
+    public float MusicVolValue { get => musicVolValue; set { musicVolValue = value; } }
     private float sFXVolValue;
     public float SFXVolValue { get { return sFXVolValue; } set { sFXVolValue = value; } }
     private float sensitivityH;
@@ -179,7 +179,7 @@ public class Settings : MonoBehaviour {
             else
             {
                 lbScoreText.text += leaderboardScores[i].ToString("D8");
-                lbNameText.text += "- " + leaderboardNames[i]; ;
+                lbNameText.text += "- " + leaderboardNames[i];
             }
         }
 
@@ -217,7 +217,6 @@ public class Settings : MonoBehaviour {
         }
         PlayerPrefs.Save();
         GetLeaderboard();
-
     }
 
     // Level Selection

@@ -5378,7 +5378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.88235295, g: 0.8980392, b: 0.14117648, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -8542,7 +8542,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -68.3, y: 115}
+  m_AnchoredPosition: {x: -119.85002, y: 115.000015}
   m_SizeDelta: {x: 50, y: 260}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &272286927807801077
@@ -8586,7 +8586,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "1 - \n2 - \n3 - \n4 - \n5 - \n6 - \n7 - \n8 - \n9 - \n10 - "
+  m_Text: "LEVEL 1 - \n2 - \n3 - \n4 - \n5 - "
 --- !u!1 &272286927809140097
 GameObject:
   m_ObjectHideFlags: 0
@@ -8936,7 +8936,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 45.500004, y: 115}
+  m_AnchoredPosition: {x: 151.54996, y: 115.000015}
   m_SizeDelta: {x: 106.05, y: 260}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &272286927853072496
@@ -8981,16 +8981,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '- AAA
-
-    - AAA
-
-    - AAA
-
-    - AAA
-
-    - AAA
-
-    - AAA
 
     - AAA
 
@@ -9502,8 +9492,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -68.3, y: 115}
-  m_SizeDelta: {x: 113.8, y: 260}
+  m_AnchoredPosition: {x: -119.85002, y: 115.000015}
+  m_SizeDelta: {x: 219.85, y: 260}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &272286927893553825
 CanvasRenderer:
@@ -9526,7 +9516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.12958351, g: 0.13207549, b: 0.011836951, a: 1}
+  m_Color: {r: 0.88235295, g: 0.8980392, b: 0.14117648, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -9547,16 +9537,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '00000000
-
-    00000000
-
-    00000000
-
-    00000000
-
-    00000000
-
-    00000000
 
     00000000
 
@@ -13486,7 +13466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &272286928314341016
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14038,7 +14018,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &272286928401639041
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16936,9 +16916,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'You ranked #10.
+  m_Text: 'You got Highscore!
 
-    Enter your initial.'
+    Enter your initials.'
 --- !u!1 &272286928622924953
 GameObject:
   m_ObjectHideFlags: 0
@@ -17154,7 +17134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.88235295, g: 0.8980392, b: 0.14117648, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -18770,7 +18750,7 @@ MonoBehaviour:
   lbScoreText: {fileID: 272286927893553824}
   lbNameText: {fileID: 272286927853072503}
   startingLevel: 0
-  startingLevelParam: SartingLevel
+  startingLevelParam: StartingLevel
   levelsUnlocked: 0
   levelsUnlockedParam: UnlockedLevel
   MAXLEVEL: 5
