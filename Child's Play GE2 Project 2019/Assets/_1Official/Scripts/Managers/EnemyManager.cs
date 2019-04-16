@@ -11,7 +11,10 @@ public class EnemyManager : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = GameManager.GetInstance().gameObject.AddComponent<EnemyManager>();
+            if (GameManager.GetInstance() != null)
+            {
+                instance = GameManager.GetInstance().gameObject.AddComponent<EnemyManager>(); 
+            }
         }
         return instance;
     }
@@ -59,39 +62,84 @@ public class EnemyManager : MonoBehaviour
     //    //}
     //}
 
-    #region Class Methods
+    //#region Class Methods
     /// <summary>
     /// Takes out focus on ALL enemies
     /// </summary>
-    public void ClearEnemyFocus()
-    {        
-        enemyWithFocus = null;
-        foreach (Enemy e in listOfEnemies)
+    //public void ClearEnemyFocus()
+    //{        
+    //    enemyWithFocus = null;
+    //    foreach (Enemy e in listOfEnemies)
+    //    {
+    //        //listOfEnemies.Add(e);
+    //        if (e.HasFocus)
+    //        {
+    //            //enemyWithFocus = e;
+    //            e.HasFocus = false;
+    //        }
+    //    }
+    //}
+    //public void ClearEnemyFocus()
+    //{
+    //    enemyWithFocus = null;
+    //}
+    ///// <summary>
+    ///// Updates "enemyWithFocus" reference
+    ///// </summary>
+    //public void UpdateEnemyWithFocus()
+    //{
+    //    enemyWithFocus = null;
+    //    foreach (Enemy e in listOfEnemies)
+    //    {
+    //        if (e.HasFocus)
+    //        {
+    //            enemyWithFocus = e;                
+    //        }
+    //    }
+    //}
+    //#endregion
+
+    private void Update()
+    {
+        ChangeEnemyFocusWithButton();
+    }
+
+    public void ChangeEnemyFocusWithButton()
+    {
+        if (Input.GetButtonDown("SwitchEnemy"))
         {
-            //listOfEnemies.Add(e);
-            if (e.HasFocus)
-            {
-                //enemyWithFocus = e;
-                e.HasFocus = false;
-            }
+            CameraManager.GetInstance().EnemyWithFocus = NextEnemyInList(CameraManager.GetInstance().EnemyWithFocus);
+            CameraManager.GetInstance().isLocked = true;
         }
     }
 
-    /// <summary>
-    /// Updates "enemyWithFocus" reference
-    /// </summary>
-    public void UpdateEnemyWithFocus()
+    public Enemy NextEnemyInList(Enemy enemy)
     {
-        enemyWithFocus = null;
-        foreach (Enemy e in listOfEnemies)
+        if (enemy == null)
         {
-            if (e.HasFocus)
+            if (listOfEnemies.Count > 0)
             {
-                enemyWithFocus = e;                
+                return listOfEnemies[0];
             }
         }
+        else
+        {
+            int indexOfEnemy = listOfEnemies.IndexOf(enemy);
+            if (indexOfEnemy < 0)
+            {
+                return NextEnemyInList(null); ;
+            }
+            else
+            {
+                indexOfEnemy++;
+                if (indexOfEnemy < listOfEnemies.Count)
+                {
+                    return listOfEnemies[indexOfEnemy];
+                }
+            }
+        }
+        return null;
     }
-    #endregion
 
     public void AddEnemyToList(Enemy enemy)
     {

@@ -93,12 +93,9 @@ public class ItemTile : MonoBehaviour
     [Header("Tile Options")]
     [SerializeField] private bool rot90Degree;
     [SerializeField] private Mesh arrowMesh;
-    [SerializeField] private GameObject barrierHintGO;
     public bool Rot90Degree { get => rot90Degree; set => rot90Degree = value; }
-
-
-
 #endif
+    [SerializeField] private GameObject barrierHintGO;
 
     private void Start()
     {
