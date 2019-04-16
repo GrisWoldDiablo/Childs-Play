@@ -180,20 +180,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3907962139650666905, guid: c87d0a6ad9a3a024d88294bd586ca54d,
+        type: 3}
+      propertyPath: mySounds.Array.data[10].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 12f1a5cc53c0f6a4ea699679e7cdf414, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c87d0a6ad9a3a024d88294bd586ca54d, type: 3}
---- !u!4 &40976132 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3088195730621398305, guid: fb4d8bdd4cd40a245abeeccc4a0576b5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1751217326}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &71096714 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3088195730621398305, guid: fb4d8bdd4cd40a245abeeccc4a0576b5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1641392497}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &102002319 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6059745747956222850, guid: ddcd9eeb45bf2674bb528d5bec671dcd,
@@ -3980,6 +3973,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 102002319}
+    - target: {fileID: 1654738516556103866, guid: 0cb8b41ea90f4784a8d825f0a44eb84e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cb8b41ea90f4784a8d825f0a44eb84e, type: 3}
 --- !u!114 &1121444026 stripped
