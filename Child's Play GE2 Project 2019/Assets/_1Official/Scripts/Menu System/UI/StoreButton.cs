@@ -87,7 +87,10 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             myToolTip.SetActive(true);
             Shop.GetInstance().TogglePrice();
-            Shop.GetInstance().TowerSelect(_myIndex);
+            if (typeOfButton == ButtonType.Buy)
+            {
+                Shop.GetInstance().TowerSelect(_myIndex); 
+            }
             if (!Shop.GetInstance().ChangePrice(itemScript, typeOfButton))
             {
                 GameManager.GetInstance().DeselectTile();

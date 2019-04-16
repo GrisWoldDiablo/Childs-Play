@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    
     /// <summary>
     /// Deselect the current selected tile,
     /// hide all placeholder items
@@ -381,11 +381,11 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// When a store Button is Pressed this method works its magic
     /// </summary>
-    public void StoreButtonPressed()
+    public void SwapPlaceHoldersOnTile()
     {
         HidePlaceHolders();
         ShowItemOnTile(listOfTowerPlaceHolder[selectedTowerIndex], selectedTile);
-        TileSelection(selectedTile);
+        //TileSelection(selectedTile);
     }
 
     /// <summary>
