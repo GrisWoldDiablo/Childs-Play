@@ -62,10 +62,10 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySoundButton()
     {
-        uiSfx.PlayOneShot(GetAudioClip(Sound.onButtonClick), 0.3f);
+        uiSfx.PlayOneShot(GetAudioClip(Sound.onButtonClick));
     }
 
-     public void PlaySoundOneShotShop(Sound s, float vol = 1f)
+     public void PlaySoundOneShotShopOnly(Sound s, float vol = 1f)
      {
             if (!uiSfx.isPlaying)
             {
