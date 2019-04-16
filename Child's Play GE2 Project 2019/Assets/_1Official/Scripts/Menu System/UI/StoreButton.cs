@@ -19,7 +19,10 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     void Start()
     {
-        thisButton = GetComponent<Button>();
+        if (thisButton == null)
+        {
+            thisButton = GetComponent<Button>();
+        }
         myToolTip.SetActive(false);
         Shop.GetInstance().TogglePrice(false);
         //itemScript = itemType.gameObject.GetComponent<Item>();
@@ -33,7 +36,7 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if (thisButton == null)
         {
-            return;
+            thisButton = GetComponent<Button>();
         }
         Shop.GetInstance().TogglePrice(false);
         myToolTip.SetActive(false);
@@ -52,7 +55,7 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             if (!found)
             {
                 thisButton.interactable = false;
-            } 
+            }
         }
 
         if (typeOfButton == ButtonType.Upgrade)
@@ -60,12 +63,16 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             bool found = false;
             foreach (Item item in LevelManager.GetInstance().CurrentLevelInfo.ItemsAvailable)
             {
-                Item itemUP = GameManager.GetInstance().SelectedItem.UpgradeVersion;
-                if (itemUP != null && item == itemUP)
+                Item itemSelected = GameManager.GetInstance().SelectedItem;
+                if (itemSelected != null)
                 {
-                    found = true;
-                    break;
-                }
+                    Item itemUP = itemSelected.UpgradeVersion;
+                    if (itemUP != null && item == itemUP)
+                    {
+                        found = true;
+                        break;
+                    }
+                }                
             }
             if (!found)
             {
@@ -82,7 +89,7 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             Shop.GetInstance().TogglePrice();
             Shop.GetInstance().TowerSelect(_myIndex);
             Shop.GetInstance().ChangePrice(itemScript, typeOfButton);
-            Shop.GetInstance().OnButton = true;
+            SoundManager.GetInstance().PlaySoundOneShot(Sound.onButtonOver, 0.05f);
         }
     }
 
@@ -90,7 +97,6 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         myToolTip.SetActive(false);
         Shop.GetInstance().TogglePrice(false);
-        Shop.GetInstance().OnButton = false;
         EventSystem.current.SetSelectedGameObject(null);
     }
 }

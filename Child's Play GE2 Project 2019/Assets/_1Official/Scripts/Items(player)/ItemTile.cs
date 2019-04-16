@@ -107,7 +107,7 @@ public class ItemTile : MonoBehaviour
     
 
 #endif
-    private int clickCounter = 0;
+    //private int clickCounter = 0;
     //private GameManager alexGMTestCode;
 
     /// <summary>
@@ -135,16 +135,16 @@ public class ItemTile : MonoBehaviour
 
             //clickCounter++;
         }
-        if (currentItem != null)
-        {
-            if (clickCounter >= 2)
-            {
-                PlayerManager.GetInstance().ClearEnemyFocusOnListAndCamera();
-                PlayerManager.GetInstance().playerWithFocus = currentItem.GetComponent<Item>();
-                CameraManager.GetInstance().isLocked = true;
-                clickCounter = 0;
-            } 
-        }
+        //if (currentItem != null)
+        //{
+        //    if (clickCounter >= 2)
+        //    {
+        //        PlayerManager.GetInstance().ClearEnemyFocusOnListAndCamera();
+        //        PlayerManager.GetInstance().playerWithFocus = currentItem.GetComponent<Item>();
+        //        CameraManager.GetInstance().isLocked = true;
+        //        clickCounter = 0;
+        //    } 
+        //}
     }
 
     /// <summary>
@@ -153,9 +153,9 @@ public class ItemTile : MonoBehaviour
     private void OnMouseExit()
     {
         GameManager.GetInstance().TileSelectionCursor.SetActive(false);
-        clickCounter = 0;
+        //clickCounter = 0;
     }
-
+    
     /// <summary>
     /// Called once when the cursor enter the tile.
     /// </summary>

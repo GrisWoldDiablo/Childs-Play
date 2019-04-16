@@ -71,6 +71,8 @@ public class ScoreManager : MonoBehaviour
                          $"{enemyKilled}\n" +
                          $"{enemyEscaped}";
 
+        SoundManager.GetInstance().StopMusic();
+        SoundManager.GetInstance().PlaySoundOneShot(Sound.levelCompleted);
         GameManager.GetInstance().PanelSelection(GameManager.GetInstance().ScorePanelIndex);
     }
 }

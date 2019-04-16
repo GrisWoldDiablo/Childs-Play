@@ -1,41 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Wave", menuName = "Wave Setup")]
 public class WaveSetup_SO : ScriptableObject
 {
-    //public string description;
-    //public GameObject enemy;
-    //public int count;
-    //public float rate;
-    //public bool isMixedWave = false;
-    //public WaveSetup_SO waveArray;
-
     [System.Serializable]
-    public class WaveMix
+    public class Wave
     {
-        //public string description;    >>> IS IT NECESSARY? MAYBE, MAYBE NOT     
-        //public float range;
-        //public float bulletPerSecond;
-        ////public float innerRadius;
-        //public GameObject projectilePrefab;
+        [SerializeField] private GameObject _enemy;
+        [SerializeField] private int _count;
 
-        public string description;
-        public GameObject enemy;
-        public int count;
-        public float rate;
-        public bool isMixedWave = false;
+        public GameObject Enemy { get => _enemy; set => _enemy = value; }
+        public int Count { get => _count; set => _count = value; }
     }
 
-    [Header("Wave Mix Configurator")]
-    public WaveMix[] waveMixArray;
+    [Header("Waves Setup")]
+    [SerializeField] private Wave[] _subWaves;
+    [Header("Time between enemies")]
+    [SerializeField] private float _rate;
 
-    public string description;
-    public GameObject enemy;
-    public int count;
-    public float rate;
-    public bool isMixedWave = false;
-    
-
+    public Wave[] SubWaves { get => _subWaves; set => _subWaves = value; }
+    public float Rate { get => _rate; set => _rate = value; }
 }
