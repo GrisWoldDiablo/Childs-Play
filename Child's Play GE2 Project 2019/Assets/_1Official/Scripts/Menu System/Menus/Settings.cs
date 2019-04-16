@@ -88,11 +88,11 @@ public class Settings : MonoBehaviour {
     private void Awake()
     {
         // Load settings
-        masterVolValue = PlayerPrefs.GetFloat(masterVolParam, 0);
+        masterVolValue = PlayerPrefs.GetFloat(masterVolParam, -10);
         audioMixer.SetFloat(masterVolParam, masterVolValue);
-        musicVolValue = PlayerPrefs.GetFloat(musicVolParam, 0);
+        musicVolValue = PlayerPrefs.GetFloat(musicVolParam, -10);
         audioMixer.SetFloat(musicVolParam, musicVolValue);
-        sFXVolValue = PlayerPrefs.GetFloat(sFXVolParam, 0);
+        sFXVolValue = PlayerPrefs.GetFloat(sFXVolParam, -10);
         audioMixer.SetFloat(sFXVolParam, sFXVolValue);
 
         qualitySetting.PrefValue = QualitySettings.GetQualityLevel();
@@ -142,13 +142,13 @@ public class Settings : MonoBehaviour {
 
     public void ResetSettings()
     {
-        if (masterVol.Slider.value != 0 || musicVol.Slider.value != 0
-            || sfxVol.Slider.value != 0 || qualitySetting.Slider.value != 3
+        if (masterVol.Slider.value != -10 || musicVol.Slider.value != -10
+            || sfxVol.Slider.value != -10 || qualitySetting.Slider.value != 3
             || sensitivityHLevel.Slider.value != 2)
         {
-            masterVol.SetVol(0);
-            musicVol.SetVol(0);
-            sfxVol.SetVol(0);
+            masterVol.SetVol(-10);
+            musicVol.SetVol(-10);
+            sfxVol.SetVol(-10);
             qualitySetting.SetQuality(3);
             sensitivityHLevel.SetSens(2);
             sensitivityVLevel.SetSens(2);
