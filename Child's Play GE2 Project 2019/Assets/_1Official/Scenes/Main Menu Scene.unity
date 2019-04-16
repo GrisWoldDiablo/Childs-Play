@@ -2205,7 +2205,6 @@ GameObject:
   - component: {fileID: 1776790300}
   - component: {fileID: 1776790299}
   - component: {fileID: 1776790298}
-  - component: {fileID: 1776790301}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2277,35 +2276,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -2.8190002, y: 73.94, z: 0}
---- !u!114 &1776790301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776790297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97fa0556ceb35ed468960db890782836, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disableMouseMovement: 1
-  zoomSpeed: 4
-  maxZoom: 15
-  minZoom: 5
-  pitch: 0
-  _currentZoom: 14.6
-  yawSpeed: 100
-  cameraArm: {x: 2.36, y: -1.76, z: 0}
-  _currentYaw: 275.96844
-  isLocked: 0
-  _cameraTranslationSpeed: 12.7
-  inferiorLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  lerpHeight: 14.6
-  actorWithFocus: {fileID: 0}
-  enemyWithFocus: {fileID: 0}
 --- !u!1001 &1954635483
 PrefabInstance:
   m_ObjectHideFlags: 0

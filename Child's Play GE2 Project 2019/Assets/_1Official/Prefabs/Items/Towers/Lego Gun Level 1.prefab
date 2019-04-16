@@ -704,7 +704,7 @@ GameObject:
   - component: {fileID: 2958411723987754910}
   - component: {fileID: 2958411723988884958}
   m_Layer: 0
-  m_Name: Piece 2x2.003
+  m_Name: Piece 2x2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1640,7 +1640,7 @@ GameObject:
   - component: {fileID: 2958411723987755006}
   - component: {fileID: 2958411723988884798}
   m_Layer: 0
-  m_Name: Cube.001
+  m_Name: Piece 4x1 Flat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2030,11 +2030,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2958411723986460632}
     m_Modifications:
-    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
-        type: 3}
-      propertyPath: m_Name
-      value: TraTraTra1
-      objectReference: {fileID: 0}
     - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2089,6 +2084,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_Name
+      value: TraTraTra1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed7d70aa7e8db6d429e1cf527aee8be6, type: 3}
