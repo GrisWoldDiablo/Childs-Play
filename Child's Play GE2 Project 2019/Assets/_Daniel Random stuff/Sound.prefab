@@ -46,26 +46,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySounds:
-  - sound: 3
-    audioClip: {fileID: 8300000, guid: 19ee23220d478354ca29f732069ff0d0, type: 3}
-  - sound: 2
-    audioClip: {fileID: 8300000, guid: 70e02441ad3cd8f488092b6a4933e446, type: 3}
-  - sound: 12
-    audioClip: {fileID: 8300000, guid: 7056efe661d44584dafd164cebbe10aa, type: 3}
-  - sound: 12
-    audioClip: {fileID: 8300000, guid: 04f95ddf886752448bbf6f6e35fa756f, type: 3}
-  - sound: 1
+  - sound: 0
     audioClip: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
-  - sound: 11
-    audioClip: {fileID: 8300000, guid: 04f95ddf886752448bbf6f6e35fa756f, type: 3}
+  - sound: 1
+    audioClip: {fileID: 8300000, guid: 70e02441ad3cd8f488092b6a4933e446, type: 3}
+  - sound: 2
+    audioClip: {fileID: 8300000, guid: 4fb135d3c45ee7343ba34122f8adc35f, type: 3}
+  - sound: 3
+    audioClip: {fileID: 8300000, guid: ef22e29119f593d448034b5ec7ec0033, type: 3}
+  - sound: 4
+    audioClip: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+  - sound: 5
+    audioClip: {fileID: 8300000, guid: 7bef0064f8567430cac22499c6b93d4f, type: 3}
+  - sound: 6
+    audioClip: {fileID: 8300000, guid: 0c008ee3ee72a4362a35be25fa5de043, type: 3}
+  - sound: 7
+    audioClip: {fileID: 8300000, guid: 5ed9970e17bfee943a6dff056dc3a9d0, type: 3}
   - sound: 8
     audioClip: {fileID: 8300000, guid: cf3291b7346dd604dbfa69186adc9540, type: 3}
   - sound: 9
     audioClip: {fileID: 8300000, guid: 63354c465446f964d822e667fe255f02, type: 3}
-  - sound: 0
+  - sound: 10
+    audioClip: {fileID: 8300000, guid: 63354c465446f964d822e667fe255f02, type: 3}
+  - sound: 17
     audioClip: {fileID: 8300000, guid: 1aae18a107176f4488b35a29a603db1c, type: 3}
-  - sound: 11
+  - sound: 12
+    audioClip: {fileID: 8300000, guid: 7056efe661d44584dafd164cebbe10aa, type: 3}
+  - sound: 13
     audioClip: {fileID: 8300000, guid: 04f95ddf886752448bbf6f6e35fa756f, type: 3}
+  - sound: 14
+    audioClip: {fileID: 8300000, guid: 080063285cbebc54c889476ded654183, type: 3}
+  - sound: 15
+    audioClip: {fileID: 8300000, guid: e2b8e48b56586054a88cc64ed099a61f, type: 3}
+  - sound: 16
+    audioClip: {fileID: 8300000, guid: e2b8e48b56586054a88cc64ed099a61f, type: 3}
   ambientMusic: {fileID: 3907962139650666911}
   uiSfx: {fileID: 3907962139650666906}
 --- !u!82 &3907962139650666911
@@ -77,12 +91,13 @@ AudioSource:
   m_GameObject: {fileID: 3907962139650666907}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243560377972114504, guid: 6c4dda455ac1a4d489d7327586f16ba6,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.519
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -173,7 +188,8 @@ AudioSource:
   m_GameObject: {fileID: 3907962139650666907}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243181926754801646, guid: 6c4dda455ac1a4d489d7327586f16ba6,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1

@@ -5,12 +5,11 @@ using UnityEngine;
 
 public enum Sound
 {
-    missileSfx,
     moneyIncome,
     onButtonClick,
     onButtonOver,
     placeTower,
-    //placeBarrier,
+    placeBarrier,
     removeTower,
     upgrade,
     selectTile,
@@ -18,9 +17,12 @@ public enum Sound
     winCopleted,
     levelCompleted,
     warmupPhase,
-    _levels1_2,
-    _levels3_4,
-    _level5
+    _level01,
+    _level02,
+    _level03,
+    _level04,
+    _level05,
+    missileSfx
 }
 
 [Serializable]
@@ -62,6 +64,49 @@ public class SoundManager : MonoBehaviour
     {
         uiSfx.PlayOneShot(GetAudioClip(Sound.onButtonClick), 0.3f);
     }
+
+     public void PlaySoundOneShotShop(Sound s, float vol = 1f)
+     {
+            if (!uiSfx.isPlaying)
+            {
+                uiSfx.PlayOneShot(GetAudioClip(s), vol);
+            }
+     }
+
+    public void PlayMusic(int level)
+    {
+        switch (level)
+        {
+            case 0:
+                ambientMusic.clip = GetAudioClip(Sound._level01);
+                ambientMusic.Play();
+                break;
+            case 1:
+                ambientMusic.clip = GetAudioClip(Sound._level02);
+                ambientMusic.Play();
+                break;
+            case 2:
+                ambientMusic.clip = GetAudioClip(Sound._level03);
+                ambientMusic.Play();
+                break;
+            case 3:
+                ambientMusic.clip = GetAudioClip(Sound._level04);
+                ambientMusic.Play();
+                break;
+            case 4:
+                ambientMusic.clip = GetAudioClip(Sound._level05);
+                ambientMusic.Play();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void StopMusic()
+    {
+        ambientMusic.Stop();
+    }
+
 
     public AudioClip GetAudioClip(Sound s)
     {
