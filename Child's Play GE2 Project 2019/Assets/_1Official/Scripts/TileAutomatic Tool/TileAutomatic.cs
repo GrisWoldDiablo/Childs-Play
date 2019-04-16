@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -47,7 +48,7 @@ public class TileAutomatic : EditorWindow
             tileList.Add(tile);
         }
     }
-    
+
     [MenuItem("TileAutomatic/Refresh Tiles", false, 0)]
     private static void RefreshTiles()
     {
@@ -56,7 +57,7 @@ public class TileAutomatic : EditorWindow
         {
             if (!tileObject.CompareTag("TilePath"))
             {
-                UpdateObject(tileObject); 
+                UpdateObject(tileObject);
             }
         }
     }
@@ -120,7 +121,7 @@ public class TileAutomatic : EditorWindow
                 pos.z = Mathf.Round(pos.z / 5) * 5;
                 tile.transform.position = new Vector3(pos.x, pos.y, pos.z);
 
-                
+
             }
         }
     }
@@ -158,7 +159,7 @@ public class TileAutomatic : EditorWindow
 
         GUILayout.EndScrollView();
     }
-    
+
     private static void UpdateObject(ItemTile myScriptInc)
     {
         myScript = myScriptInc;
@@ -239,7 +240,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsEast() && IsNorth() && IsNorthEast() && !IsSouth() && !IsWest())
         {
-            
+
             _meshFilter.mesh = tiles.Meshes[2];
         }
 
@@ -327,7 +328,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsWest() && !IsNorth() && !IsSouth() && !IsEast())
         {
-            
+
             _meshFilter.mesh = tiles.Meshes[4];
             MeshFlipX();
         }
@@ -778,4 +779,5 @@ public class TileAutomatic : EditorWindow
     {
 
     }
-}
+} 
+#endif
