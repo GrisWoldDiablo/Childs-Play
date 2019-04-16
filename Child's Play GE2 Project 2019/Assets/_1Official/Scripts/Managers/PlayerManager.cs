@@ -11,7 +11,10 @@ public class PlayerManager : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = GameManager.GetInstance().gameObject.AddComponent<PlayerManager>();
+            if (GameManager.GetInstance() != null)
+            {
+                instance = GameManager.GetInstance().gameObject.AddComponent<PlayerManager>(); 
+            }
         }
         return instance;
     }
@@ -80,17 +83,17 @@ public class PlayerManager : MonoBehaviour
             CameraManager.GetInstance().isLocked = true;
         }
     }
-
+    
     public void ClearEnemyFocusOnListAndCamera()
     {
-        EnemyManager.GetInstance().ClearEnemyFocus();
-        CameraManager.GetInstance().enemyWithFocus = null;
+        //EnemyManager.GetInstance().ClearEnemyFocus();
+        CameraManager.GetInstance().EnemyWithFocus = null;
     }
 
     private void ChangePlayerFocusWithMouse()
     {
-        EnemyManager.GetInstance().ClearEnemyFocus();
-        CameraManager.GetInstance().enemyWithFocus = null;
+        //EnemyManager.GetInstance().ClearEnemyFocus();
+        CameraManager.GetInstance().EnemyWithFocus = null;
 
         int index = listOfPlayers.IndexOf(playerWithFocus);
         index++;

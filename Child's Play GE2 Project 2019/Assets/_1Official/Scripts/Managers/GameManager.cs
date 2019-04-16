@@ -351,7 +351,6 @@ public class GameManager : MonoBehaviour
             return;
         }
         MoneyManager.GetInstance().MoneyChange(selectedTile.CurrentItem.GetComponent<Item>().Value); //Sell item
-        PlayerManager.GetInstance().RemovePlayer(selectedTile.CurrentItem.GetComponent<Item>());
         SoundManager.GetInstance().PlaySoundOneShot(Sound.removeTower, 1f);
         Destroy(selectedTile.CurrentItem.gameObject);
         selectedTile.CurrentItem = null;

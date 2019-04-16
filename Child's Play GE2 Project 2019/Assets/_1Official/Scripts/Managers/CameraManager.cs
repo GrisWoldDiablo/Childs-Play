@@ -53,7 +53,7 @@ public class CameraManager : MonoBehaviour
 
     //Camera Target
     public Transform actorWithFocus;
-    public Transform enemyWithFocus;
+    private Transform enemyWithFocus;
 
     private Transform _playerWithFocus;
     
@@ -70,6 +70,29 @@ public class CameraManager : MonoBehaviour
     public Vector2 GetMousePosition
     {
         get { return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")); }
+    }
+
+    public Enemy EnemyWithFocus
+    {
+        get
+        {
+            if (enemyWithFocus == null)
+            {
+                return null;
+            }
+            return enemyWithFocus.GetComponent<Enemy>();
+        }
+        set
+        {
+            if (value != null)
+            {
+                enemyWithFocus = value.transform;
+            }
+            else
+            {
+                enemyWithFocus = null;
+            }
+        }
     }
 
     #region UNITY methods
@@ -105,6 +128,7 @@ public class CameraManager : MonoBehaviour
             CameraLockerButton();
         }
     }
+
     #endregion
 
     #region Class methods
@@ -125,14 +149,15 @@ public class CameraManager : MonoBehaviour
         {
             return;
         }
-        //if (enemyWithFocus != null)
-        //{            
-        //    actorWithFocus = enemyWithFocus;
-        //}
-        //else
-        //{
-        actorWithFocus = _playerWithFocus;
-        //}
+
+        if (enemyWithFocus != null)
+        {            
+            actorWithFocus = enemyWithFocus;
+        }
+        else
+        {
+            actorWithFocus = _playerWithFocus;
+        }
 
         this.transform.position = actorWithFocus.position - (cameraArm * _currentZoom);
         this.transform.LookAt(actorWithFocus.position + (Vector3.up * pitch));
