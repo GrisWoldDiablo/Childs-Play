@@ -55,7 +55,7 @@ public class Shop : MonoBehaviour
 
     public void SetPanelActive(int panelIndex)
     {
-        SoundManager.GetInstance().PlaySoundOneShotShop(Sound.selectTile, 0.5f);
+        SoundManager.GetInstance().PlaySoundOneShotShopOnly(Sound.selectTile, 0.5f);
         currentPanel = panelIndex;
         for (int i = 0; i < panels.Length; i++)
         {
