@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -55,6 +55,7 @@ public class Shop : MonoBehaviour
 
     public void SetPanelActive(int panelIndex)
     {
+        SoundManager.GetInstance().PlaySoundOneShotShop(Sound.selectTile, 0.5f);
         currentPanel = panelIndex;
         for (int i = 0; i < panels.Length; i++)
         {
@@ -85,7 +86,7 @@ public class Shop : MonoBehaviour
         GameManager.GetInstance().StoreButtonPressed();
     }
 
-    public void ChangePrice(Item item, ButtonType buttonType)
+    public bool ChangePrice(Item item, ButtonType buttonType)
     {
         if (buttonType == ButtonType.Buy)
         {
@@ -103,8 +104,13 @@ public class Shop : MonoBehaviour
         else
         {
             Item itemOnTile = GameManager.GetInstance().SelectedItem;
+            if (itemOnTile == null)
+            {
+                return false;
+            }
             priceU.text = $"Value\n{itemOnTile.Value.ToString()}";
         }
+        return true;
     }
 
     public void TogglePrice(bool show = true)

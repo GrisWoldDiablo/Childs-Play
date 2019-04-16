@@ -22,24 +22,28 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private Text scoreText;
     [SerializeField] private Text scoreDescriptionText;
     // Enemy
-    private float enemyCount;
-    private float enemyKilled;
-    private float enemyEscaped;
-    public float EnemyCounts { get => enemyCount; set => enemyCount = value; }
-    public float EnemyKilled { get => enemyKilled; set => enemyKilled = value; }
-    public float EnemyEscaped { get => enemyEscaped; set => enemyEscaped = value; }
+    private int enemyCount;
+    private int enemyKilled;
+    private int enemyEscaped;
+    public int EnemyCounts { get => enemyCount; set => enemyCount = value; }
+    public int EnemyKilled { get => enemyKilled; set => enemyKilled = value; }
+    public int EnemyEscaped { get => enemyEscaped; set => enemyEscaped = value; }
 
     // Food
     private float foodPercentage;
-    private float foodEaten;
+    private int foodEaten;
     public float FoodPercentage { get => foodPercentage; set => foodPercentage = value; }
-    public float FoodEaten { get => foodEaten; set => foodEaten = value; }
+    public int FoodEaten { get => foodEaten; set => foodEaten = value; }
 
     // Money
-    private float moneySpent;
-    private float moneyEarned;
-    public float MoneySpent { get => moneySpent; set => moneySpent = value; }
-    public float MoneyEarned { get => moneyEarned; set => moneyEarned = value; }
+    private int moneySpent;
+    private int moneyEarned;
+    public int MoneySpent { get => moneySpent; set => moneySpent = value; }
+    public int MoneyEarned { get => moneyEarned; set => moneyEarned = value; }
+
+    // Score
+    private int score;
+    public int Score { get => score; }
 
     public void Reset()
     {
@@ -50,27 +54,48 @@ public class ScoreManager : MonoBehaviour
         enemyCount = 0;
         enemyKilled = 0;
         enemyEscaped = 0;
+        score = 0;
     }
 
     public void CompileScore()
     {
-        //Pause.GetInstance().PauseGame();
+        score -= 10 * moneySpent;
+        score += (MoneyManager.GetInstance().CurrentMoney - moneyEarned);
+        score += 100 * enemyKilled;
+        score -= 10 * foodEaten;
+        score -= 10 * enemyEscaped;
+        score += 10 * 100 * (int)FoodPercentage;
+
         scoreDescriptionText.text = $"Money Spent:\n" +
                                     $"Money Earned:\n" +
-                                    $"Food Percentage Left:\n" +
-                                    $"Food Eaten:\n" +
-                                    $"Enemy Count:\n" +
                                     $"Enemy Killed:\n" +
-                                    $"Enemy Escaped:";
+                                    $"Food Eaten:\n" +
+                                    $"Enemy Escaped:\n" +
+                                    $"Food Percentage Left:\n" +
+                                    $"Enemy Count:\n" +
+                                    $"Total Score:";
 
-        scoreText.text = $"{moneySpent}\n" +
-                         $"{moneyEarned}\n" +
-                         $"{foodPercentage}\n" +
-                         $"{foodEaten}\n" +
+        scoreText.text = $"(-) {moneySpent}\n" +
+                         $"(+) {moneyEarned}\n" +
+                         $"(+) {enemyKilled}\n" +
+                         $"(-) {foodEaten}\n" +
+                         $"(-) {enemyEscaped}\n" +
+                         $"(x) {foodPercentage}\n" +
                          $"{enemyCount}\n" +
-                         $"{enemyKilled}\n" +
-                         $"{enemyEscaped}";
+                         $"{score}\n";
+        SoundManager.GetInstance().StopMusic();
+        SoundManager.GetInstance().PlaySoundOneShot(Sound.levelCompleted);
 
-        GameManager.GetInstance().PanelSelection(GameManager.GetInstance().ScorePanelIndex);
+        if (Settings.GetInstance().CheckLeaderboard(score,LevelManager.GetInstance().CurrentLevel))
+        {
+            GameManager.GetInstance().PanelSelection(GameManager.GetInstance().NewRankPanelIndex);
+            scoreDescriptionText.text += $"\nNEW HIGHSCORE!";
+        }
+        else
+        {
+            GameManager.GetInstance().PanelSelection(GameManager.GetInstance().ScorePanelIndex);
+            scoreDescriptionText.text += $"\nHighScore: {Settings.GetInstance().LeaderboardScores[LevelManager.GetInstance().CurrentLevel]} by {Settings.GetInstance().LeaderboardNames[LevelManager.GetInstance().CurrentLevel]} ";
+        }
+
     }
 }

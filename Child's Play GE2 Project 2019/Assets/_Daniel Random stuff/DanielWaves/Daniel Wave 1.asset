@@ -12,34 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f551deedb519884fa19ae1c11465077, type: 3}
   m_Name: Daniel Wave 1
   m_EditorClassIdentifier: 
-  waveMixArray:
-  - description: 
-    enemy: {fileID: 8072516212597103562, guid: 0983274d557859b469b347d04b2824e4, type: 3}
-    count: 2
-    rate: 0
-    isMixedWave: 0
-  - description: 
-    enemy: {fileID: 2557512320319996496, guid: 46673439733e2cd4096625dc7921700b, type: 3}
-    count: 3
-    rate: 0
-    isMixedWave: 0
-  - description: 
-    enemy: {fileID: 5740055950189144267, guid: d4bb47c0ccbd79e4f851668533353446, type: 3}
-    count: 5
-    rate: 0
-    isMixedWave: 0
-  - description: 
-    enemy: {fileID: 8072516212597103562, guid: 0983274d557859b469b347d04b2824e4, type: 3}
-    count: 5
-    rate: 0
-    isMixedWave: 0
-  - description: 
-    enemy: {fileID: 3623884885599960578, guid: 9d6aee239bc0b2041bfa2e8d55e391ea, type: 3}
-    count: 1
-    rate: 0
-    isMixedWave: 0
-  description: Standard Enemies
-  enemy: {fileID: 8072516212597103562, guid: 0983274d557859b469b347d04b2824e4, type: 3}
-  count: 50
-  rate: 1
-  isMixedWave: 0
+  _subWaves:
+  - _enemy: {fileID: 5740055950189144267, guid: d4bb47c0ccbd79e4f851668533353446,
+      type: 3}
+    _count: 2
+  _rate: 1

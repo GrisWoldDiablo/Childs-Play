@@ -83,6 +83,7 @@ public class LevelManager : MonoBehaviour
         }
 
         currentLevelGO = Instantiate(levels[levelNumber].LevelPrefab, root.position, root.rotation, null);
+        SoundManager.GetInstance().PlayMusic(currentLevel);
         MoneyManager.GetInstance().ResetMoney(levels[levelNumber].InitialMoney);
         EnemyManager.GetInstance().DestroyAllEnemies();
         levelSpawningCompleted = false;
@@ -112,6 +113,8 @@ public class LevelManager : MonoBehaviour
     public void GameCompleted()
     {
         GameManager.GetInstance().PanelSelection(GameManager.GetInstance().WinPanelIndex);
+        SoundManager.GetInstance().StopMusic();
+        SoundManager.GetInstance().PlaySoundOneShot(Sound.winCopleted);
     }
 
     public void UpdateSettings()

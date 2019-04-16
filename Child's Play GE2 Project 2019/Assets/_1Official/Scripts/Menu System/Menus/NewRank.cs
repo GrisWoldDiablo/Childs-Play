@@ -10,7 +10,7 @@ public class NewRank : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        newRankText.text = "You got the highscore!\nEnter your initial";
+        newRankText.text = "You got the highscore!\nEnter your initials";
     }
 
     public void SetNewRank()
