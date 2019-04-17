@@ -177,7 +177,7 @@ public class Tower : MonoBehaviour
             return;
         }
         //firingVFX.transform.parent = null;
-        firingVFX.transform.position = projectileSpawnPoint.transform.position;
+        //firingVFX.transform.position = projectileSpawnPoint.transform.position;
         firingVFX.Play();
         //Destroy(firingVFX.gameObject, firingVFX.main.duration);
 

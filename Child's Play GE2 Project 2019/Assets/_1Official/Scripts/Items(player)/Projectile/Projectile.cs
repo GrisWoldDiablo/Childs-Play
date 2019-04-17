@@ -19,6 +19,10 @@ public class Projectile : MonoBehaviour
     protected Rigidbody rb;
     public int DamageValue { get => damageValue; set => damageValue = value; }
 
+
+    [SerializeField]
+    private ParticleSystem _projectileFX;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -98,6 +102,7 @@ public class Projectile : MonoBehaviour
         impactVFX.transform.position += Vector3.up;
         impactVFX.Play();
         Destroy(impactVFX.gameObject , impactVFX.main.duration);
+        _projectileFX.Play();
     }
 }
 
