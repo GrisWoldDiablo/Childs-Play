@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1468471132, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
+      propertyPath: m_Name
+      value: Magnifying Glass Laser PlaceHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 1468471132, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1468471134, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
       propertyPath: rangeGO
       value: 
@@ -18,19 +26,6 @@ PrefabInstance:
     - target: {fileID: 1468471134, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
       propertyPath: _itemType
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1468471132, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
-      propertyPath: m_Name
-      value: Magnifying Glass Laser PlaceHolder
-      objectReference: {fileID: 0}
-    - target: {fileID: 1468471132, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6382485320010282491, guid: 0efb2eb5f3c048f46af239297cf56969,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1468471133, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
       propertyPath: m_LocalPosition.x
@@ -90,6 +85,16 @@ PrefabInstance:
       propertyPath: projectileSpawnPoint
       value: 
       objectReference: {fileID: 7407140276205092981}
+    - target: {fileID: 7387378540488469875, guid: 0efb2eb5f3c048f46af239297cf56969,
+        type: 3}
+      propertyPath: firingVFX
+      value: 
+      objectReference: {fileID: 2021292768634509828}
+    - target: {fileID: 6382485320010282491, guid: 0efb2eb5f3c048f46af239297cf56969,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3517636026106482780, guid: 0efb2eb5f3c048f46af239297cf56969,
         type: 3}
       propertyPath: m_IsActive
@@ -120,6 +125,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 82627b022cb6b0f4d8f582a16fc579fc, type: 2}
+    - target: {fileID: 3601098238900819886, guid: 0efb2eb5f3c048f46af239297cf56969,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4077671991766885834, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
     - {fileID: 3517636026106482722, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
@@ -153,6 +163,12 @@ GameObject:
 --- !u!1 &147039118455033064 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6382485320010282491, guid: 0efb2eb5f3c048f46af239297cf56969,
+    type: 3}
+  m_PrefabInstance: {fileID: 6528328135350614291}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2021292768634509828 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5085783105386865431, guid: 0efb2eb5f3c048f46af239297cf56969,
     type: 3}
   m_PrefabInstance: {fileID: 6528328135350614291}
   m_PrefabAsset: {fileID: 0}
