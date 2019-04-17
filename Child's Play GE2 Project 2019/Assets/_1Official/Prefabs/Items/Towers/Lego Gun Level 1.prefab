@@ -1523,7 +1523,7 @@ MonoBehaviour:
   _lightEffect: {fileID: 0}
   _vfxLaser: {fileID: 0}
   _lineRendererComponent: {fileID: 0}
-  firingVFX: {fileID: 7940642300229550708}
+  firingVFX: {fileID: 0}
   levelUpgradeIndex: 0
 --- !u!114 &7546464820478688018
 MonoBehaviour:
@@ -1990,6 +1990,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3653085144851188623}
     m_Modifications:
+    - target: {fileID: 2166881075972116301, guid: 608a44467417bcf4aa45ede3e005d2fb,
+        type: 3}
+      propertyPath: m_Name
+      value: Lego Light Variant Red
+      objectReference: {fileID: 0}
     - target: {fileID: 2166881075971887981, guid: 608a44467417bcf4aa45ede3e005d2fb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2045,11 +2050,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2166881075972116301, guid: 608a44467417bcf4aa45ede3e005d2fb,
-        type: 3}
-      propertyPath: m_Name
-      value: Lego Light Variant Red
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 608a44467417bcf4aa45ede3e005d2fb, type: 3}
 --- !u!4 &2134768798396881300 stripped
@@ -2065,11 +2065,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2958411723986460632}
     m_Modifications:
-    - target: {fileID: 1932021031358381873, guid: 86d1292a44d61d540a9106267992782d,
-        type: 3}
-      propertyPath: m_Name
-      value: Range Upgrade Variant
-      objectReference: {fileID: 0}
     - target: {fileID: 1932021031358381837, guid: 86d1292a44d61d540a9106267992782d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2124,6 +2119,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1932021031358381873, guid: 86d1292a44d61d540a9106267992782d,
+        type: 3}
+      propertyPath: m_Name
+      value: Range Upgrade Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86d1292a44d61d540a9106267992782d, type: 3}
@@ -2206,17 +2206,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: TraTraTra1
       objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed7d70aa7e8db6d429e1cf527aee8be6, type: 3}
 --- !u!4 &7940642300229550706 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1228830900069883205}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &7940642300229550708 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 9169182781000900401, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
     type: 3}
   m_PrefabInstance: {fileID: 1228830900069883205}
   m_PrefabAsset: {fileID: 0}
@@ -2227,6 +2226,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3653085144851188623}
     m_Modifications:
+    - target: {fileID: 4560894947288252641, guid: 2e8a6e45dfc56294eafea7cc29d04846,
+        type: 3}
+      propertyPath: m_Name
+      value: Lego Light Variant Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 4560894947288030401, guid: 2e8a6e45dfc56294eafea7cc29d04846,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2297,11 +2301,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.6
       objectReference: {fileID: 0}
-    - target: {fileID: 4560894947288252641, guid: 2e8a6e45dfc56294eafea7cc29d04846,
-        type: 3}
-      propertyPath: m_Name
-      value: Lego Light Variant Blue
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e8a6e45dfc56294eafea7cc29d04846, type: 3}
 --- !u!4 &2172250829076101698 stripped
@@ -2317,6 +2316,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2958411723986460636}
     m_Modifications:
+    - target: {fileID: 2166881075972116301, guid: 608a44467417bcf4aa45ede3e005d2fb,
+        type: 3}
+      propertyPath: m_Name
+      value: Lego Light Variant Red (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 2166881075971887981, guid: 608a44467417bcf4aa45ede3e005d2fb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2387,11 +2391,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 100.00004
       objectReference: {fileID: 0}
-    - target: {fileID: 2166881075972116301, guid: 608a44467417bcf4aa45ede3e005d2fb,
-        type: 3}
-      propertyPath: m_Name
-      value: Lego Light Variant Red (1)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 608a44467417bcf4aa45ede3e005d2fb, type: 3}
 --- !u!4 &2853083115757626047 stripped
@@ -2407,6 +2406,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2958411723986460636}
     m_Modifications:
+    - target: {fileID: 4560894947288252641, guid: 2e8a6e45dfc56294eafea7cc29d04846,
+        type: 3}
+      propertyPath: m_Name
+      value: Lego Light Variant Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 4560894947288030401, guid: 2e8a6e45dfc56294eafea7cc29d04846,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2477,11 +2481,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 4560894947288252641, guid: 2e8a6e45dfc56294eafea7cc29d04846,
-        type: 3}
-      propertyPath: m_Name
-      value: Lego Light Variant Blue
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e8a6e45dfc56294eafea7cc29d04846, type: 3}
 --- !u!4 &411083318835084144 stripped
@@ -2497,6 +2496,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3653085144851188623}
     m_Modifications:
+    - target: {fileID: 4560894947288252641, guid: 2e8a6e45dfc56294eafea7cc29d04846,
+        type: 3}
+      propertyPath: m_Name
+      value: Lego Light Variant Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 4560894947288030401, guid: 2e8a6e45dfc56294eafea7cc29d04846,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2567,11 +2571,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.6
       objectReference: {fileID: 0}
-    - target: {fileID: 4560894947288252641, guid: 2e8a6e45dfc56294eafea7cc29d04846,
-        type: 3}
-      propertyPath: m_Name
-      value: Lego Light Variant Blue
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e8a6e45dfc56294eafea7cc29d04846, type: 3}
 --- !u!4 &7741302862908383775 stripped
@@ -2587,6 +2586,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3653085144851188623}
     m_Modifications:
+    - target: {fileID: 4560894947288252641, guid: 2e8a6e45dfc56294eafea7cc29d04846,
+        type: 3}
+      propertyPath: m_Name
+      value: Lego Light Variant Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 4560894947288030401, guid: 2e8a6e45dfc56294eafea7cc29d04846,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2642,11 +2646,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4560894947288252641, guid: 2e8a6e45dfc56294eafea7cc29d04846,
-        type: 3}
-      propertyPath: m_Name
-      value: Lego Light Variant Blue
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e8a6e45dfc56294eafea7cc29d04846, type: 3}
 --- !u!4 &5739917088011175944 stripped
@@ -2662,6 +2661,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3653085144851188623}
     m_Modifications:
+    - target: {fileID: 2166881075972116301, guid: 608a44467417bcf4aa45ede3e005d2fb,
+        type: 3}
+      propertyPath: m_Name
+      value: Lego Light Variant Red
+      objectReference: {fileID: 0}
     - target: {fileID: 2166881075971887981, guid: 608a44467417bcf4aa45ede3e005d2fb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2731,11 +2735,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2166881075972116301, guid: 608a44467417bcf4aa45ede3e005d2fb,
-        type: 3}
-      propertyPath: m_Name
-      value: Lego Light Variant Red
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 608a44467417bcf4aa45ede3e005d2fb, type: 3}
