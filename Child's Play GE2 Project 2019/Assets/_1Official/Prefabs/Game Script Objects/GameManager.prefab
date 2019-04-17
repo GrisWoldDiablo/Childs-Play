@@ -120,7 +120,7 @@ MonoBehaviour:
   - name: Level 5
     levelPrefab: {fileID: 5428867926121916330, guid: ea11590c568b52b428ae6ae29f577189,
       type: 3}
-    initialMoney: 10000
+    initialMoney: 5000
     itemsAvailable:
     - {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb, type: 3}
     - {fileID: 3900594165254421110, guid: 1c0aff608c504204299fae348237fa40, type: 3}
@@ -245,11 +245,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4284695540638597293}
     m_Modifications:
-    - target: {fileID: 2195496701596001010, guid: 6c3fc108dfa529e4a8f4d386708341c5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Cursor Variant Selection
-      objectReference: {fileID: 0}
     - target: {fileID: 1025553299904021355, guid: 6c3fc108dfa529e4a8f4d386708341c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -304,6 +299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195496701596001010, guid: 6c3fc108dfa529e4a8f4d386708341c5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Cursor Variant Selection
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c3fc108dfa529e4a8f4d386708341c5, type: 3}
