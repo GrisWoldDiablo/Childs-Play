@@ -11,7 +11,10 @@ public class MoneyManager : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = GameManager.GetInstance().gameObject.AddComponent<MoneyManager>();
+            if (GameManager.GetInstance() != null)
+            {
+                instance = GameManager.GetInstance().gameObject.AddComponent<MoneyManager>(); 
+            }
         }
         return instance;
     }

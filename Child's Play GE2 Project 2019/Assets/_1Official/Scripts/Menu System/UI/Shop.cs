@@ -86,7 +86,7 @@ public class Shop : MonoBehaviour
     public void TowerSelect(int index)
     {
         GameManager.GetInstance().SetTowerSelectionIndex(index);
-        GameManager.GetInstance().StoreButtonPressed();
+        GameManager.GetInstance().SwapPlaceHoldersOnTile();
     }
 
     public bool ChangePrice(Item item, ButtonType buttonType)

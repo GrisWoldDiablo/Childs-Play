@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    
     /// <summary>
     /// Deselect the current selected tile,
     /// hide all placeholder items
@@ -351,7 +351,6 @@ public class GameManager : MonoBehaviour
             return;
         }
         MoneyManager.GetInstance().MoneyChange(selectedTile.CurrentItem.GetComponent<Item>().Value); //Sell item
-        PlayerManager.GetInstance().RemovePlayer(selectedTile.CurrentItem.GetComponent<Item>());
         SoundManager.GetInstance().PlaySoundOneShot(Sound.removeTower, 1f);
         Destroy(selectedTile.CurrentItem.gameObject);
         selectedTile.CurrentItem = null;
@@ -382,11 +381,11 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// When a store Button is Pressed this method works its magic
     /// </summary>
-    public void StoreButtonPressed()
+    public void SwapPlaceHoldersOnTile()
     {
         HidePlaceHolders();
         ShowItemOnTile(listOfTowerPlaceHolder[selectedTowerIndex], selectedTile);
-        TileSelection(selectedTile);
+        //TileSelection(selectedTile);
     }
 
     /// <summary>
