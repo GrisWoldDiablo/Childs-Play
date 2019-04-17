@@ -259,7 +259,7 @@ MonoBehaviour:
   _itemType: 0
   itemName: Laser Tower
   itemDescription: 'This will burn them. '
-  value: 200
+  value: 1000
   indexInGM: 2
   rangeGO: {fileID: 4304949804053329914}
   rangeGOUpgrade: {fileID: 6382485320010282491}
@@ -778,11 +778,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1468471133}
     m_Modifications:
-    - target: {fileID: 955810444901623946, guid: e83f6eafa3ec64140a35b0a4a487143b,
-        type: 3}
-      propertyPath: m_Name
-      value: FIZZ_particleFX
-      objectReference: {fileID: 0}
     - target: {fileID: 6267141753832816058, guid: e83f6eafa3ec64140a35b0a4a487143b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -837,6 +832,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 955810444901623946, guid: e83f6eafa3ec64140a35b0a4a487143b,
+        type: 3}
+      propertyPath: m_Name
+      value: FIZZ_particleFX
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e83f6eafa3ec64140a35b0a4a487143b, type: 3}
@@ -955,16 +955,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1468471133}
     m_Modifications:
-    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
-        type: 3}
-      propertyPath: m_Name
-      value: TraTraTra1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1018,6 +1008,16 @@ PrefabInstance:
     - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_Name
+      value: TraTraTra1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
