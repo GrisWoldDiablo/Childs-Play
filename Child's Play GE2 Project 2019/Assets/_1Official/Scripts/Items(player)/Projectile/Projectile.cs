@@ -21,6 +21,10 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] private AudioSource myAudioSource;
 
+
+    [SerializeField]
+    private ParticleSystem _projectileFX;
+
     [SerializeField] private bool hasHitOnce = false;
 
     private void Awake()
@@ -109,6 +113,7 @@ public class Projectile : MonoBehaviour
         impactVFX.transform.position += Vector3.up;
         impactVFX.Play();
         Destroy(impactVFX.gameObject , impactVFX.main.duration);
+        _projectileFX.Play();
     }
 }
 
