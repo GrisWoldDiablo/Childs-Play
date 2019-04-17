@@ -9,11 +9,13 @@ public class Food : Player
 
     private int initialHP;
     private int currentPercentage = 100;
+    private AudioSource myAudioSource;
 
     public int CurrentPercentage { get => currentPercentage; private set => currentPercentage = value; } 
 
     void Start()
     {
+        myAudioSource = GetComponent<AudioSource>();
         initialHP = HitPoints;
         pieces = GameObject.FindGameObjectsWithTag("FoodPieces");
     }
@@ -36,7 +38,7 @@ public class Food : Player
             }
         }
 
-        
+        myAudioSource.Play();
         HudManager.GetInstance().UpdateFoodPercentage(currentPercentage);
         ScoreManager.GetInstance().FoodPercentage = 100 - currentPercentage;
         ScoreManager.GetInstance().FoodEaten += damageValue;

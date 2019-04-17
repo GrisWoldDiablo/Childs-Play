@@ -31,6 +31,7 @@ public class FastForwardButton : MonoBehaviour
                 {
                     arrows[i].enabled = true;
                 }
+                //sound
             }
             else if (Time.timeScale == GameManager.GetInstance().SpeedMulOne)
             {
@@ -39,6 +40,7 @@ public class FastForwardButton : MonoBehaviour
                 {
                     arrows[i].enabled = true;
                 }
+                //sound
             }
             else
             {
@@ -47,6 +49,7 @@ public class FastForwardButton : MonoBehaviour
                 {
                     arrows[i].enabled = false;
                 }
+                //sound
             } 
         }
         else
