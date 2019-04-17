@@ -45,7 +45,7 @@ public class EnemyBaseClass : MonoBehaviour
     [SerializeField] private Color startingHealthColor;
     [SerializeField] private Color endHealthColor;
     private Image healthBar;
-    private float ogHP;
+    protected float ogHP;
     public Image HealthBar { get => healthBar; set => healthBar = value; }
     public EnemyMovementMechanics EMMCode { get => eMMCode; }
 
@@ -56,7 +56,7 @@ public class EnemyBaseClass : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    protected void Start()
+    protected virtual void Start()
     {
         SetAnimWalking();
 
@@ -67,13 +67,13 @@ public class EnemyBaseClass : MonoBehaviour
     }
 
     // Update is called once per frame
-    protected void Update()
-    {
-        if (this.isAttacking)
-        {
-            Attack();
-        }
-    }
+    //protected void Update()
+    //{
+    //    //if (this.isAttacking)
+    //    //{
+    //    //    Attack();
+    //    //}
+    //}
 
     public void TakeDamage(int damageValue)
     {
@@ -121,7 +121,7 @@ public class EnemyBaseClass : MonoBehaviour
 
         EnemyManager.GetInstance().RemoveEnemyFromList(this as Enemy);
         MoneyManager.GetInstance().MoneyChange(value);
-
+        SoundManager.GetInstance().PlaySoundOneShot(Sound.moneyIncome, 0.05f);
         ScoreManager.GetInstance().EnemyKilled++;
         ScoreManager.GetInstance().MoneyEarned += value;
     }
@@ -133,30 +133,48 @@ public class EnemyBaseClass : MonoBehaviour
         this.target = target;
         SetAnimAttacking();
         eMMCode.AttackStance(target.transform.position);
+        StartCoroutine(AttackCo());
     }
 
-    public void Attack()
+    //public void Attack()
+    //{
+    //    if (targetGO == null)
+    //    {
+    //        target = null;
+    //        isAttacking = false;
+    //        ResumeWalking();
+    //        attackCountDown = 0f;
+    //        return;
+    //    }
+
+    //    #region Attack Counter
+    //    if (attackCountDown > 0f)
+    //    {
+    //        attackCountDown -= Time.deltaTime;
+    //        return;
+    //    }
+    //    attackCountDown = attackSpeed;
+    //    #endregion
+
+    //    target.TakeDamage(damage);
+
+    //}
+
+    IEnumerator AttackCo()
     {
-        if (targetGO == null)
+        while (isAttacking)
         {
-            target = null;
-            isAttacking = false;
-            ResumeWalking();
-            attackCountDown = 0f;
-            return;
+            if (targetGO == null)
+            {
+                target = null;
+                isAttacking = false;
+                ResumeWalking();
+                attackCountDown = 0f;
+                break;
+            }
+            target.TakeDamage(damage);
+            yield return new WaitForSeconds(attackSpeed);
         }
-
-        #region Attack Counter
-        if (attackCountDown > 0f)
-        {
-            attackCountDown -= Time.deltaTime;
-            return;
-        }
-        attackCountDown = attackSpeed;
-        #endregion
-
-        target.TakeDamage(damage);
-
     }
 
     private void ResumeWalking()
@@ -214,7 +232,7 @@ public class EnemyBaseClass : MonoBehaviour
         }
     }
 
-    private void UpdateHealthBar()
+    protected virtual void UpdateHealthBar()
     {
         if (healthBar == null)
         {

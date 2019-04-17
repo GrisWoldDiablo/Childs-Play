@@ -33,6 +33,8 @@ public class SpawnManager : MonoBehaviour
     private int _subWaveIndex = 0;
     private int _waveCounter = 0;
 
+
+
     private bool _warmedUp = false;
     private bool _startNewWave = false;
     private bool _startCounter = false;
@@ -59,7 +61,6 @@ public class SpawnManager : MonoBehaviour
         WarmingUp();
         StartWave();
         WaveCounter();
-
     }
 
     private void WaveCounter()

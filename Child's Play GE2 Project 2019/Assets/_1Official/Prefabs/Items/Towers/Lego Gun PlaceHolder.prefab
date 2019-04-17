@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 2958411723986945016, guid: 7b27dbe332062c54c836a499d36e8116,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
         type: 3}
@@ -102,6 +102,11 @@ PrefabInstance:
       propertyPath: projectileSpawnPoint
       value: 
       objectReference: {fileID: 3937652942497567078}
+    - target: {fileID: 1510726684041952626, guid: 7b27dbe332062c54c836a499d36e8116,
+        type: 3}
+      propertyPath: firingVFX
+      value: 
+      objectReference: {fileID: 727810816434699507}
     - target: {fileID: 2958411723988884942, guid: 7b27dbe332062c54c836a499d36e8116,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -239,6 +244,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1165966f87feb774cabd22b72ada313b, type: 2}
     m_RemovedComponents:
     - {fileID: 0}
+    - {fileID: 4821989874865171337, guid: 7b27dbe332062c54c836a499d36e8116, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7b27dbe332062c54c836a499d36e8116, type: 3}
 --- !u!4 &7782071231146687686 stripped
 Transform:
@@ -261,6 +267,12 @@ GameObject:
 --- !u!1 &9008261068202989039 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1812881075393866600, guid: 7b27dbe332062c54c836a499d36e8116,
+    type: 3}
+  m_PrefabInstance: {fileID: 7217968437024882311}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &727810816434699507 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7940642300229550708, guid: 7b27dbe332062c54c836a499d36e8116,
     type: 3}
   m_PrefabInstance: {fileID: 7217968437024882311}
   m_PrefabAsset: {fileID: 0}

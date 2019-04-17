@@ -57,17 +57,17 @@ public class Settings : MonoBehaviour {
     [SerializeField] private Text lbScoreText;
     [SerializeField] private Text lbNameText;
     private List<int> leaderboardScores;
-    public List<int> LeaderboardScores { get { return leaderboardScores; } set { leaderboardScores = value; } }
+    public List<int> LeaderboardScores { get => leaderboardScores; set { leaderboardScores = value; } }
     private List<string> leaderboardNames;
-    public List<string> LeaderboardNames { get { return leaderboardNames; } set { leaderboardNames = value; } }
+    public List<string> LeaderboardNames { get => leaderboardNames; set { leaderboardNames = value; } }
     private int score;
     private int currentLevel;
-    public int CurrentLevel { get { return currentLevel; } set { currentLevel = value; } }
+    public int CurrentLevel { get => currentLevel; set { currentLevel = value; } }
 
     private float masterVolValue;
-    public float MasterVolValue { get { return masterVolValue; } set { masterVolValue = value; } }
+    public float MasterVolValue { get => masterVolValue; set { masterVolValue = value; } }
     private float musicVolValue;
-    public float MusicVolValue { get { return musicVolValue; } set { musicVolValue = value; } }
+    public float MusicVolValue { get => musicVolValue; set { musicVolValue = value; } }
     private float sFXVolValue;
     public float SFXVolValue { get { return sFXVolValue; } set { sFXVolValue = value; } }
     private float sensitivityH;
@@ -88,11 +88,11 @@ public class Settings : MonoBehaviour {
     private void Awake()
     {
         // Load settings
-        masterVolValue = PlayerPrefs.GetFloat(masterVolParam, 0);
+        masterVolValue = PlayerPrefs.GetFloat(masterVolParam, -10);
         audioMixer.SetFloat(masterVolParam, masterVolValue);
-        musicVolValue = PlayerPrefs.GetFloat(musicVolParam, 0);
+        musicVolValue = PlayerPrefs.GetFloat(musicVolParam, -10);
         audioMixer.SetFloat(musicVolParam, musicVolValue);
-        sFXVolValue = PlayerPrefs.GetFloat(sFXVolParam, 0);
+        sFXVolValue = PlayerPrefs.GetFloat(sFXVolParam, -10);
         audioMixer.SetFloat(sFXVolParam, sFXVolValue);
 
         qualitySetting.PrefValue = QualitySettings.GetQualityLevel();
@@ -142,13 +142,13 @@ public class Settings : MonoBehaviour {
 
     public void ResetSettings()
     {
-        if (masterVol.Slider.value != 0 || musicVol.Slider.value != 0
-            || sfxVol.Slider.value != 0 || qualitySetting.Slider.value != 3
+        if (masterVol.Slider.value != -10 || musicVol.Slider.value != -10
+            || sfxVol.Slider.value != -10 || qualitySetting.Slider.value != 3
             || sensitivityHLevel.Slider.value != 2)
         {
-            masterVol.SetVol(0);
-            musicVol.SetVol(0);
-            sfxVol.SetVol(0);
+            masterVol.SetVol(-10);
+            musicVol.SetVol(-10);
+            sfxVol.SetVol(-10);
             qualitySetting.SetQuality(3);
             sensitivityHLevel.SetSens(2);
             sensitivityVLevel.SetSens(2);
@@ -179,7 +179,7 @@ public class Settings : MonoBehaviour {
             else
             {
                 lbScoreText.text += leaderboardScores[i].ToString("D8");
-                lbNameText.text += "- " + leaderboardNames[i]; ;
+                lbNameText.text += "- " + leaderboardNames[i];
             }
         }
 
@@ -217,7 +217,6 @@ public class Settings : MonoBehaviour {
         }
         PlayerPrefs.Save();
         GetLeaderboard();
-
     }
 
     // Level Selection

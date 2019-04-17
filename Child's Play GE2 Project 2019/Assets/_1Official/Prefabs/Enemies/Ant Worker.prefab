@@ -85,11 +85,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d0c85687095b14d9ea40be5aae2a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 2000
+  hitPoints: 2500
   damage: 5
   attackSpeed: 0.25
   foodBites: 1
-  value: 2
+  value: 15
   _spawnVFX: {fileID: 1341657394929920743}
   _dieVFX: {fileID: 1341657394929920743}
   _eatVFX: {fileID: 3355388407821735085}
@@ -177,6 +177,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2088253631508828838, guid: 192580244026acc4f9986fa201558c41,
         type: 3}

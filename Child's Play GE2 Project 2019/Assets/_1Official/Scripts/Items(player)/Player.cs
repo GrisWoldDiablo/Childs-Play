@@ -7,7 +7,7 @@ public class Player : PlayerBaseClass
     // Double Click is no longer used.
 
     ////private CameraController _cameraController;
-            
+
     //private int clickCounter;
 
     //private void OnMouseOver()
@@ -31,4 +31,12 @@ public class Player : PlayerBaseClass
     //{
     //    clickCounter = 0;
     //}
+
+    private void OnDestroy()
+    {
+        if (PlayerManager.GetInstance() != null)
+        {
+            PlayerManager.GetInstance().RemovePlayer(this);
+        }
+    }
 }

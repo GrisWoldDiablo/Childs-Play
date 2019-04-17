@@ -19,6 +19,8 @@ public class Projectile : MonoBehaviour
     protected Rigidbody rb;
     public int DamageValue { get => damageValue; set => damageValue = value; }
 
+    [SerializeField] private AudioSource myAudioSource;
+
 
     [SerializeField]
     private ParticleSystem _projectileFX;
@@ -61,6 +63,7 @@ public class Projectile : MonoBehaviour
 
     void Explode()
     {
+        AudioSource.PlayClipAtPoint(SoundManager.GetInstance().GetAudioClip(Sound.missileSfx), this.transform.position);
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, AoERadius);
         foreach (Collider col in colliders)
         {
@@ -98,6 +101,7 @@ public class Projectile : MonoBehaviour
         {
             return;
         }
+
         impactVFX.transform.parent = null;
         impactVFX.transform.position += Vector3.up;
         impactVFX.Play();

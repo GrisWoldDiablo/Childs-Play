@@ -24,6 +24,8 @@ public class Item : Player
     [SerializeField] private GameObject rangeGOUpgrade;
     [SerializeField] private Item upgradeVersion;
 
+    private AudioSource myAudioSource;
+
     public GameObject RangeGO { get => rangeGO; }
     public int Value { get => value; set => this.value = value; }
     public string ItemName { get => itemName; }
@@ -63,6 +65,7 @@ public class Item : Player
             Destroy(GetComponent<Tower>());
             Destroy(this);
         }
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     public void SetRangeScale(float scaleV3)
@@ -77,5 +80,19 @@ public class Item : Player
         rangeGOUpgrade.transform.localScale = Vector3.one * scaleV3 * 2.0f;
         rangeGOUpgrade.transform.localScale = new Vector3(rangeGOUpgrade.transform.localScale.x,
             Mathf.Clamp(rangeGOUpgrade.transform.localScale.y * 0.33f, 0.0f, 10.0f), rangeGOUpgrade.transform.localScale.z);
+    }
+
+    public override void TakeDamage(int damageValue)
+    {
+        base.TakeDamage(damageValue);
+        PlaySound();
+    }
+
+    private void PlaySound()
+    {
+        if (myAudioSource.clip != null && !myAudioSource.isPlaying)
+        {
+            myAudioSource.PlayOneShot(myAudioSource.clip);   
+        }
     }
 }
