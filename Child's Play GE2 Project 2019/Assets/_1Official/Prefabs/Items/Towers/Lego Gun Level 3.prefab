@@ -3921,6 +3921,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2958411723986945016, guid: 7b27dbe332062c54c836a499d36e8116,
+        type: 3}
+      propertyPath: m_Name
+      value: Lego Gun Level 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
         type: 3}
       propertyPath: itemName
@@ -3939,7 +3944,7 @@ PrefabInstance:
     - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
         type: 3}
       propertyPath: value
-      value: 600
+      value: 1600
       objectReference: {fileID: 0}
     - target: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
         type: 3}
@@ -3950,11 +3955,6 @@ PrefabInstance:
         type: 3}
       propertyPath: itemDescription
       value: "This is missile tower \nwith area of damage"
-      objectReference: {fileID: 0}
-    - target: {fileID: 2958411723986945016, guid: 7b27dbe332062c54c836a499d36e8116,
-        type: 3}
-      propertyPath: m_Name
-      value: Lego Gun Level 3
       objectReference: {fileID: 0}
     - target: {fileID: 2958411723986460632, guid: 7b27dbe332062c54c836a499d36e8116,
         type: 3}
@@ -3995,7 +3995,7 @@ PrefabInstance:
         type: 3}
       propertyPath: firingVFX
       value: 
-      objectReference: {fileID: 5321819026670790577}
+      objectReference: {fileID: 0}
     - target: {fileID: 4821989874865171337, guid: 7b27dbe332062c54c836a499d36e8116,
         type: 3}
       propertyPath: m_audioClip
@@ -4138,12 +4138,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f05b510f9a4c4ef4f853d408de2076eb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b27dbe332062c54c836a499d36e8116, type: 3}
---- !u!4 &5597758449918290124 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7658100180816563465, guid: 7b27dbe332062c54c836a499d36e8116,
-    type: 3}
-  m_PrefabInstance: {fileID: 2875603529492276677}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1073635606400039449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2958411723986460636, guid: 7b27dbe332062c54c836a499d36e8116,
@@ -4162,6 +4156,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2875603529492276677}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &5597758449918290124 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7658100180816563465, guid: 7b27dbe332062c54c836a499d36e8116,
+    type: 3}
+  m_PrefabInstance: {fileID: 2875603529492276677}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1538665063918054986 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3653085144851188623, guid: 7b27dbe332062c54c836a499d36e8116,
@@ -4177,12 +4177,6 @@ GameObject:
 --- !u!1 &4521780700891713197 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1812881075393866600, guid: 7b27dbe332062c54c836a499d36e8116,
-    type: 3}
-  m_PrefabInstance: {fileID: 2875603529492276677}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &5321819026670790577 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7940642300229550708, guid: 7b27dbe332062c54c836a499d36e8116,
     type: 3}
   m_PrefabInstance: {fileID: 2875603529492276677}
   m_PrefabAsset: {fileID: 0}
