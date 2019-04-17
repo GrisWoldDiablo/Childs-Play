@@ -257,7 +257,7 @@ MonoBehaviour:
   hitPoints: 100
   _itemType: 0
   itemName: Laser Tower
-  itemDescription: This will burn them.
+  itemDescription: 'This will burn them. '
   value: 200
   indexInGM: 2
   rangeGO: {fileID: 4304949804053329914}
@@ -777,11 +777,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1468471133}
     m_Modifications:
-    - target: {fileID: 370954403022743912, guid: b8310b3fa9c4cfa43b434f63f102a52e,
-        type: 3}
-      propertyPath: m_Name
-      value: Range
-      objectReference: {fileID: 0}
     - target: {fileID: 370954403022743892, guid: b8310b3fa9c4cfa43b434f63f102a52e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -852,6 +847,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 370954403022743912, guid: b8310b3fa9c4cfa43b434f63f102a52e,
+        type: 3}
+      propertyPath: m_Name
+      value: Range
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8310b3fa9c4cfa43b434f63f102a52e, type: 3}
 --- !u!1 &4304949804053329914 stripped
@@ -873,11 +873,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1468471133}
     m_Modifications:
-    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
-        type: 3}
-      propertyPath: m_Name
-      value: TraTraTra1
-      objectReference: {fileID: 0}
     - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -932,6 +927,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_Name
+      value: TraTraTra1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed7d70aa7e8db6d429e1cf527aee8be6, type: 3}
@@ -1035,11 +1035,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1468471133}
     m_Modifications:
-    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
-        type: 3}
-      propertyPath: m_Name
-      value: VFX_Laser
-      objectReference: {fileID: 0}
     - target: {fileID: 5886706566434731798, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1094,6 +1089,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+        type: 3}
+      propertyPath: m_Name
+      value: VFX_Laser
       objectReference: {fileID: 0}
     - target: {fileID: 5886706566434731880, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
