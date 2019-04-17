@@ -811,7 +811,7 @@ MonoBehaviour:
   _itemType: 0
   itemName: Laser Tower Level 2
   itemDescription: 'This will burn things more '
-  value: 1000
+  value: 2000
   indexInGM: 2
   rangeGO: {fileID: 4600092811340407383}
   rangeGOUpgrade: {fileID: 5533963864411503270}
@@ -1433,11 +1433,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5961824344110199108}
     m_Modifications:
-    - target: {fileID: 6197746006981787540, guid: ee4a61e0efdb3134798ee8beb37c5f7d,
-        type: 3}
-      propertyPath: m_Name
-      value: SIZZLE_particleFX
-      objectReference: {fileID: 0}
     - target: {fileID: 988599051349895844, guid: ee4a61e0efdb3134798ee8beb37c5f7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1492,6 +1487,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197746006981787540, guid: ee4a61e0efdb3134798ee8beb37c5f7d,
+        type: 3}
+      propertyPath: m_Name
+      value: SIZZLE_particleFX
       objectReference: {fileID: 0}
     - target: {fileID: 7245857901477012814, guid: ee4a61e0efdb3134798ee8beb37c5f7d,
         type: 3}
