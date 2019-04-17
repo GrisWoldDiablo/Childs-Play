@@ -704,7 +704,7 @@ GameObject:
   - component: {fileID: 2958411723987754910}
   - component: {fileID: 2958411723988884958}
   m_Layer: 0
-  m_Name: Piece 2x2.003
+  m_Name: Piece 2x2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1541,7 +1541,7 @@ MonoBehaviour:
   _itemType: 0
   itemName: Brick Gun Level 1
   itemDescription: "This is missile tower \nwith area of damage"
-  value: 160
+  value: 300
   indexInGM: 1
   rangeGO: {fileID: 315755575424298497}
   rangeGOUpgrade: {fileID: 1812881075393866600}
@@ -1558,7 +1558,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243181926754801646, guid: 6c4dda455ac1a4d489d7327586f16ba6,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 53a1a8c18087346d18a02d8a4e0c59ca, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9423065c1c0d64ea3a434687a804188b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1568,8 +1568,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 5
-  MaxDistance: 25
+  MinDistance: 12
+  MaxDistance: 55
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -1579,19 +1579,37 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.2
+      time: 0.21818182
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -4.585166
+      outSlope: -4.585166
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 0.051940918
-      inSlope: -1.25
-      outSlope: -1.25
+      time: 0.43636364
+      value: 0.5
+      inSlope: -1.1462915
+      outSlope: -1.1462915
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.67271507
+      value: 0.22853088
+      inSlope: -0.28657287
+      outSlope: -0.28657287
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9891052
+      value: 0
+      inSlope: -0.21826886
+      outSlope: -0.21826886
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -1738,7 +1756,7 @@ GameObject:
   - component: {fileID: 2958411723987755006}
   - component: {fileID: 2958411723988884798}
   m_Layer: 0
-  m_Name: Cube.001
+  m_Name: Piece 4x1 Flat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

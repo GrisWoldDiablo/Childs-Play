@@ -91,25 +91,22 @@ public class ItemTile : MonoBehaviour
 
 #if (UNITY_EDITOR)
     [Header("Tile Options")]
-    //[SerializeField] private bool meshFlipX;
-    //[SerializeField] private bool meshFlipZ;
     [SerializeField] private bool rot90Degree;
-    //[SerializeField] private TileMesh tileMeshSelected;
-    //[SerializeField] private Mesh[] tileMeshes;
     [SerializeField] private Mesh arrowMesh;
-
-    //public bool MeshFlipX { get => meshFlipX; set => meshFlipX = value; }
-    //public bool MeshFlipZ { get => meshFlipZ; set => meshFlipZ = value; }
     public bool Rot90Degree { get => rot90Degree; set => rot90Degree = value; }
-    //public TileMesh TileMeshSelected { get => tileMeshSelected; set => tileMeshSelected = value; }
-    //public Mesh[] TileMeshes { get => tileMeshes; set => tileMeshes = value; }
-
-    
-
 #endif
-    //private int clickCounter = 0;
-    //private GameManager alexGMTestCode;
+    [SerializeField] private GameObject barrierHintGO;
 
+    private void Start()
+    {
+        if (tileType == TileType.Barrier)
+        {
+            if (barrierHintGO != null)
+            {
+                Instantiate(barrierHintGO, this.transform.position + (Vector3.up * 3.0f), this.transform.rotation, this.transform);
+            }
+        }
+    }
     /// <summary>
     /// Called every frame when the cursor is above the tile.
     /// </summary>
@@ -121,30 +118,18 @@ public class ItemTile : MonoBehaviour
             return;
         }
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Select"))
         {
             if (tileType != TileType.Unavailable)
             {
                 GameManager.GetInstance().TileSelection(this);
                 Shop.GetInstance().MoveToClick();
             }
-            else
-            {
-                GameManager.GetInstance().DeselectTile();
-            }
-
-            //clickCounter++;
+            //else
+            //{
+            //    GameManager.GetInstance().DeselectTile();
+            //}
         }
-        //if (currentItem != null)
-        //{
-        //    if (clickCounter >= 2)
-        //    {
-        //        PlayerManager.GetInstance().ClearEnemyFocusOnListAndCamera();
-        //        PlayerManager.GetInstance().playerWithFocus = currentItem.GetComponent<Item>();
-        //        CameraManager.GetInstance().isLocked = true;
-        //        clickCounter = 0;
-        //    } 
-        //}
     }
 
     /// <summary>

@@ -114,7 +114,7 @@ public class LevelManager : MonoBehaviour
     {
         GameManager.GetInstance().PanelSelection(GameManager.GetInstance().WinPanelIndex);
         SoundManager.GetInstance().StopMusic();
-        SoundManager.GetInstance().PlaySoundOneShot(Sound.winCopleted);
+        SoundManager.GetInstance().PlaySoundOneShot(Sound.winCompleted);
     }
 
     public void UpdateSettings()

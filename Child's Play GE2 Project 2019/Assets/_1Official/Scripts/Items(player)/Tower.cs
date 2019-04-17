@@ -189,10 +189,9 @@ public class Tower : MonoBehaviour
             return;
         }
         //firingVFX.transform.parent = null;
-        firingVFX.transform.position = projectileSpawnPoint.transform.position;
+        //firingVFX.transform.position = projectileSpawnPoint.transform.position;
         firingVFX.Play();
         //Destroy(firingVFX.gameObject, firingVFX.main.duration);
-
     }
 
     private void OnDrawGizmos()
@@ -235,7 +234,8 @@ public class Tower : MonoBehaviour
         {
             _lineRendererComponent.enabled = false;
             this._vfxLaser.Stop();
-            this._lightEffect.enabled = false; 
+            this._lightEffect.enabled = false;
+            myAudioSource.Stop();
         }
     }
 }

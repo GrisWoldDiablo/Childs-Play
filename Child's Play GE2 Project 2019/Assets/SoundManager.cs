@@ -14,7 +14,7 @@ public enum Sound
     upgrade,
     selectTile,
     gameOver,
-    winCopleted,
+    winCompleted,
     levelCompleted,
     warmupPhase,
     _level01,
@@ -22,7 +22,9 @@ public enum Sound
     _level03,
     _level04,
     _level05,
-    missileSfx
+    missileSfx,
+    spawn,
+    food,
 }
 
 [Serializable]
@@ -62,10 +64,10 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySoundButton()
     {
-        uiSfx.PlayOneShot(GetAudioClip(Sound.onButtonClick), 0.3f);
+        uiSfx.PlayOneShot(GetAudioClip(Sound.onButtonClick));
     }
 
-     public void PlaySoundOneShotShop(Sound s, float vol = 1f)
+     public void PlaySoundOneShotShopOnly(Sound s, float vol = 1f)
      {
             if (!uiSfx.isPlaying)
             {
@@ -120,6 +122,8 @@ public class SoundManager : MonoBehaviour
         Debug.LogError("Sound " + s + " not found");
         return null;
     }
+
+  
 }
 
 

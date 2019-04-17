@@ -11,14 +11,17 @@ public class MoneyManager : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = GameManager.GetInstance().gameObject.AddComponent<MoneyManager>();
+            if (GameManager.GetInstance() != null)
+            {
+                instance = GameManager.GetInstance().gameObject.AddComponent<MoneyManager>(); 
+            }
         }
         return instance;
     }
     #endregion
     
     private int currentMoney;
-    //public int CurrentMoney { get => currentMoney; set => currentMoney = value; }
+    public int CurrentMoney { get => currentMoney; }
 
     public void ResetMoney(int setMoney = 0)
     {

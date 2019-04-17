@@ -35,9 +35,11 @@ public class GameManager : MonoBehaviour
     private int selectedBarrierIndex = 0;
 
     [Header("Panels Indexes")]
+    [SerializeField] private int newRankPanelIndex = 4;
     [SerializeField] private int gameOverPanelIndex = 7;
     [SerializeField] private int scorePanelIndex = 8;
     [SerializeField] private int winPanelIndex = 9;
+    public int NewRankPanelIndex { get => newRankPanelIndex; }
     public int ScorePanelIndex { get => scorePanelIndex; }
     public int WinPanelIndex { get => winPanelIndex; }
 
@@ -108,7 +110,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    
     /// <summary>
     /// Deselect the current selected tile,
     /// hide all placeholder items
@@ -170,7 +172,7 @@ public class GameManager : MonoBehaviour
         }
 
         HidePlaceHolders();
-        Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
+        //Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
         tileSelectionCursor.SetActive(false);
         tileSelectedCursor.SetActive(false);
     }
@@ -345,10 +347,10 @@ public class GameManager : MonoBehaviour
         if (selectedTile.CurrentItem == null)
         {
             Debug.Log("No Item on the current selected Tile.");
+            DeselectTile();
             return;
         }
         MoneyManager.GetInstance().MoneyChange(selectedTile.CurrentItem.GetComponent<Item>().Value); //Sell item
-        PlayerManager.GetInstance().RemovePlayer(selectedTile.CurrentItem.GetComponent<Item>());
         SoundManager.GetInstance().PlaySoundOneShot(Sound.removeTower, 1f);
         Destroy(selectedTile.CurrentItem.gameObject);
         selectedTile.CurrentItem = null;
@@ -379,11 +381,11 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// When a store Button is Pressed this method works its magic
     /// </summary>
-    public void StoreButtonPressed()
+    public void SwapPlaceHoldersOnTile()
     {
         HidePlaceHolders();
         ShowItemOnTile(listOfTowerPlaceHolder[selectedTowerIndex], selectedTile);
-        TileSelection(selectedTile);
+        //TileSelection(selectedTile);
     }
 
     /// <summary>
@@ -422,7 +424,10 @@ public class GameManager : MonoBehaviour
         showHealthBars = !showHealthBars;
         foreach (var item in EnemyManager.GetInstance().ListOfEnemies)
         {
-            item.HealthBar.gameObject.SetActive(showHealthBars);
+            if (!(item is EnemyWorker || item is EnemyFlyer))
+            {
+                item.HealthBar.gameObject.SetActive(showHealthBars);
+            }
         }
     }
     

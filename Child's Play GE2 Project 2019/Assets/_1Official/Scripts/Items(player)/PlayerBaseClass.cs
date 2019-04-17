@@ -18,6 +18,10 @@ public class PlayerBaseClass : MonoBehaviour
 
     protected virtual void Die()
     {
+        if (this == GameManager.GetInstance().SelectedItem)
+        {
+            GameManager.GetInstance().DeselectTile();
+        }
         Destroy(this.gameObject);
     }
 
@@ -30,4 +34,5 @@ public class PlayerBaseClass : MonoBehaviour
             Die();
         }
     }
+
 }
