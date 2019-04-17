@@ -136,7 +136,7 @@ MonoBehaviour:
   hitPoints: 100
   _itemType: 0
   itemName: Toy Soldier Level 1
-  itemDescription: This is a shooter tower.
+  itemDescription: 'This is a shooter tower. '
   value: 80
   indexInGM: 0
   rangeGO: {fileID: 5912156996664367813}
@@ -387,10 +387,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5044917573942952230}
     m_Modifications:
-    - target: {fileID: 100058, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
-      propertyPath: m_Name
-      value: ToySoldierM16
-      objectReference: {fileID: 0}
     - target: {fileID: 400058, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -434,6 +430,10 @@ PrefabInstance:
     - target: {fileID: 400058, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100058, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
+      propertyPath: m_Name
+      value: ToySoldierM16
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 2e597f1b4fa69d448895750d01de6042, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -546,7 +546,7 @@ PrefabInstance:
     - target: {fileID: 370954403022743912, guid: b8310b3fa9c4cfa43b434f63f102a52e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8310b3fa9c4cfa43b434f63f102a52e, type: 3}
@@ -569,6 +569,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5643377522959975575}
     m_Modifications:
+    - target: {fileID: 1932021031358381873, guid: 86d1292a44d61d540a9106267992782d,
+        type: 3}
+      propertyPath: m_Name
+      value: RangeUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 1932021031358381873, guid: 86d1292a44d61d540a9106267992782d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1932021031358381837, guid: 86d1292a44d61d540a9106267992782d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -622,16 +632,6 @@ PrefabInstance:
     - target: {fileID: 1932021031358381837, guid: 86d1292a44d61d540a9106267992782d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932021031358381873, guid: 86d1292a44d61d540a9106267992782d,
-        type: 3}
-      propertyPath: m_Name
-      value: RangeUpgrade
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932021031358381873, guid: 86d1292a44d61d540a9106267992782d,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

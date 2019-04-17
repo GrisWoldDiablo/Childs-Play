@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 2500
-  damage: 5
+  damage: 10
   attackSpeed: 0.25
   foodBites: 1
   value: 15
@@ -168,21 +168,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5740055950189144266}
     m_Modifications:
-    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
-        type: 3}
-      propertyPath: m_Name
-      value: Health Bar Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2088253631508828838, guid: 192580244026acc4f9986fa201558c41,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -288,6 +273,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
+        type: 3}
+      propertyPath: m_Name
+      value: Health Bar Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6034384495968454927, guid: 192580244026acc4f9986fa201558c41,
         type: 3}
       propertyPath: m_Layer
@@ -308,30 +308,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5740055950189144266}
     m_Modifications:
-    - target: {fileID: 100000, guid: 2abe82d70bd42b743b72e6fba01e339e, type: 3}
-      propertyPath: m_Name
-      value: Ant
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 2abe82d70bd42b743b72e6fba01e339e, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 2abe82d70bd42b743b72e6fba01e339e, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 2abe82d70bd42b743b72e6fba01e339e, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 2abe82d70bd42b743b72e6fba01e339e, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: 2abe82d70bd42b743b72e6fba01e339e, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2abe82d70bd42b743b72e6fba01e339e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -388,6 +364,30 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.12725914
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2abe82d70bd42b743b72e6fba01e339e, type: 3}
+      propertyPath: m_Name
+      value: Ant
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2abe82d70bd42b743b72e6fba01e339e, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 2abe82d70bd42b743b72e6fba01e339e, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 2abe82d70bd42b743b72e6fba01e339e, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 2abe82d70bd42b743b72e6fba01e339e, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 2abe82d70bd42b743b72e6fba01e339e, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 2abe82d70bd42b743b72e6fba01e339e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -435,11 +435,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5740055950189144266}
     m_Modifications:
-    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
-        type: 3}
-      propertyPath: m_Name
-      value: TraTraTra1
-      objectReference: {fileID: 0}
     - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -495,6 +490,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_Name
+      value: TraTraTra1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed7d70aa7e8db6d429e1cf527aee8be6, type: 3}
 --- !u!4 &3355388407821735083 stripped
@@ -516,11 +516,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5740055950189144266}
     m_Modifications:
-    - target: {fileID: 4047677504948021722, guid: 87bec7e992d09004087a7c9b29024df4,
-        type: 3}
-      propertyPath: m_Name
-      value: EnemySpawnEffectDebris
-      objectReference: {fileID: 0}
     - target: {fileID: 5161143551984232339, guid: 87bec7e992d09004087a7c9b29024df4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -575,6 +570,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4047677504948021722, guid: 87bec7e992d09004087a7c9b29024df4,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemySpawnEffectDebris
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87bec7e992d09004087a7c9b29024df4, type: 3}

@@ -385,7 +385,7 @@ public class GameManager : MonoBehaviour
     {
         HidePlaceHolders();
         ShowItemOnTile(listOfTowerPlaceHolder[selectedTowerIndex], selectedTile);
-        //TileSelection(selectedTile);
+        TileSelection(selectedTile);
     }
 
     /// <summary>
