@@ -25,6 +25,8 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private ParticleSystem _projectileFX;
 
+    [SerializeField] private bool hasHitOnce = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -85,9 +87,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (hasHitOnce)
+        {
+            return;
+        }
         if (other.gameObject.CompareTag("Enemy"))
         {
             HitTarget(other);
+            hasHitOnce = true;
         }
         else if (other.gameObject.CompareTag("TilePath") || other.gameObject.CompareTag("Terrain"))
         {

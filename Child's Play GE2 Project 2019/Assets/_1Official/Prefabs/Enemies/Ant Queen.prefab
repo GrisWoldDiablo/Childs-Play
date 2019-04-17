@@ -93,8 +93,8 @@ MonoBehaviour:
   _spawnVFX: {fileID: 4774465044180033770}
   _dieVFX: {fileID: 4774465044180033770}
   _eatVFX: {fileID: 4852205434580225283}
-  startingHealthColor: {r: 0.1390667, g: 1, b: 0, a: 1}
-  endHealthColor: {r: 1, g: 0, b: 0, a: 1}
+  startingHealthColor: {r: 0.13914493, g: 0.7924528, b: 0.03364185, a: 1}
+  endHealthColor: {r: 0.745283, g: 0.05273228, b: 0.05273228, a: 1}
   secBetweenEggLaying: 2
   eggHatchTime: 10
   antChildren:
@@ -178,11 +178,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5149604841744422845}
     m_Modifications:
-    - target: {fileID: 4047677504948021722, guid: 87bec7e992d09004087a7c9b29024df4,
-        type: 3}
-      propertyPath: m_Name
-      value: EnemySpawnEffectDebris
-      objectReference: {fileID: 0}
     - target: {fileID: 5161143551984232339, guid: 87bec7e992d09004087a7c9b29024df4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -238,6 +233,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4047677504948021722, guid: 87bec7e992d09004087a7c9b29024df4,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemySpawnEffectDebris
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87bec7e992d09004087a7c9b29024df4, type: 3}
 --- !u!4 &7197347108120199948 stripped
@@ -259,16 +259,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5149604841744422845}
     m_Modifications:
-    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
-        type: 3}
-      propertyPath: m_Name
-      value: Health Bar Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2088253631508828838, guid: 192580244026acc4f9986fa201558c41,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -389,6 +379,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.49
       objectReference: {fileID: 0}
+    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
+        type: 3}
+      propertyPath: m_Name
+      value: Health Bar Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096265003764079640, guid: 192580244026acc4f9986fa201558c41,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6034384495968454927, guid: 192580244026acc4f9986fa201558c41,
         type: 3}
       propertyPath: m_Layer
@@ -409,11 +409,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5149604841744422845}
     m_Modifications:
-    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
-        type: 3}
-      propertyPath: m_Name
-      value: TraTraTra1
-      objectReference: {fileID: 0}
     - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -469,6 +464,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_Name
+      value: TraTraTra1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed7d70aa7e8db6d429e1cf527aee8be6, type: 3}
 --- !u!4 &4852205434580225285 stripped
@@ -490,10 +490,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5149604841744422845}
     m_Modifications:
-    - target: {fileID: 100000, guid: fa5a855225a94d94faeab7f48836d5b6, type: 3}
-      propertyPath: m_Name
-      value: Ant
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fa5a855225a94d94faeab7f48836d5b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -549,6 +545,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: fa5a855225a94d94faeab7f48836d5b6, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.24263743
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: fa5a855225a94d94faeab7f48836d5b6, type: 3}
+      propertyPath: m_Name
+      value: Ant
       objectReference: {fileID: 0}
     - target: {fileID: 2300004, guid: fa5a855225a94d94faeab7f48836d5b6, type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -108,9 +108,7 @@ MonoBehaviour:
   hitPoints: 100
   _itemType: 0
   itemName: Toy Soldier Level 3
-  itemDescription: 'Toy Soldier with a machine gun
-
-'
+  itemDescription: "Toy Soldier with a machine gun \n"
   value: 200
   indexInGM: 0
   rangeGO: {fileID: 4339570848058458256}
@@ -4186,11 +4184,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1766217175081229790}
     m_Modifications:
-    - target: {fileID: 370954403022743912, guid: b8310b3fa9c4cfa43b434f63f102a52e,
-        type: 3}
-      propertyPath: m_Name
-      value: Range
-      objectReference: {fileID: 0}
     - target: {fileID: 370954403022743892, guid: b8310b3fa9c4cfa43b434f63f102a52e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4245,6 +4238,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 370954403022743912, guid: b8310b3fa9c4cfa43b434f63f102a52e,
+        type: 3}
+      propertyPath: m_Name
+      value: Range
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8310b3fa9c4cfa43b434f63f102a52e, type: 3}

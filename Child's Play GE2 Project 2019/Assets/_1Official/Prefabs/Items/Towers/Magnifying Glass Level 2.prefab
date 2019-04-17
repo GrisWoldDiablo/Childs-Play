@@ -810,7 +810,7 @@ MonoBehaviour:
   hitPoints: 100
   _itemType: 0
   itemName: Laser Tower Level 2
-  itemDescription: This will burn things more
+  itemDescription: 'This will burn things more '
   value: 1000
   indexInGM: 2
   rangeGO: {fileID: 4600092811340407383}
@@ -1524,11 +1524,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5961824344110199108}
     m_Modifications:
-    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
-        type: 3}
-      propertyPath: m_Name
-      value: VFX_Laser
-      objectReference: {fileID: 0}
     - target: {fileID: 5886706566434731798, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1583,6 +1578,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+        type: 3}
+      propertyPath: m_Name
+      value: VFX_Laser
       objectReference: {fileID: 0}
     - target: {fileID: 5886706566434731880, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
@@ -1665,11 +1665,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5961824344110199108}
     m_Modifications:
-    - target: {fileID: 370954403022743912, guid: b8310b3fa9c4cfa43b434f63f102a52e,
-        type: 3}
-      propertyPath: m_Name
-      value: Range
-      objectReference: {fileID: 0}
     - target: {fileID: 370954403022743892, guid: b8310b3fa9c4cfa43b434f63f102a52e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1724,6 +1719,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 370954403022743912, guid: b8310b3fa9c4cfa43b434f63f102a52e,
+        type: 3}
+      propertyPath: m_Name
+      value: Range
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8310b3fa9c4cfa43b434f63f102a52e, type: 3}
