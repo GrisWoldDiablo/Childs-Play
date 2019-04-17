@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
         }
 
         HidePlaceHolders();
-        Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
+        //Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
         tileSelectionCursor.SetActive(false);
         tileSelectedCursor.SetActive(false);
     }
@@ -424,7 +424,10 @@ public class GameManager : MonoBehaviour
         showHealthBars = !showHealthBars;
         foreach (var item in EnemyManager.GetInstance().ListOfEnemies)
         {
-            item.HealthBar.gameObject.SetActive(showHealthBars);
+            if (!(item is EnemyWorker || item is EnemyFlyer))
+            {
+                item.HealthBar.gameObject.SetActive(showHealthBars);
+            }
         }
     }
     

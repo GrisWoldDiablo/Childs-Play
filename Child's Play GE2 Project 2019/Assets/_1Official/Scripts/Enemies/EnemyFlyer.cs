@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class EnemyFlyer : Enemy
 {
-    new private void Start()
+    protected override void Start()
     {
-        base.Start();
+        
+        SetAnimWalking();
+
+        EnemyManager.GetInstance().AddEnemyToList(this as Enemy);
+        ogHP = HitPoints;
+        
         GameObject parent = this.transform.parent.gameObject;
         this.transform.SetParent(null);
         Destroy(parent);
 
     }
-
     public override void SetAttacking(Item target)
     {
         //Nothing happens here for now, this enemy dodge barriers.
@@ -25,5 +29,10 @@ public class EnemyFlyer : Enemy
 
         Destroy(this.gameObject, 5);
         transform.Rotate(Vector3.up * Random.Range(-180, 180));
+    }
+
+    protected override void UpdateHealthBar()
+    {
+        // No Health bars
     }
 }

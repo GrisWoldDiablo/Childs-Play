@@ -118,7 +118,7 @@ public class ItemTile : MonoBehaviour
             return;
         }
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Select"))
         {
             if (tileType != TileType.Unavailable)
             {

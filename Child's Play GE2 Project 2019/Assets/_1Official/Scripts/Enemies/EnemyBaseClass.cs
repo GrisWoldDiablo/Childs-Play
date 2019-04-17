@@ -45,7 +45,7 @@ public class EnemyBaseClass : MonoBehaviour
     [SerializeField] private Color startingHealthColor;
     [SerializeField] private Color endHealthColor;
     private Image healthBar;
-    private float ogHP;
+    protected float ogHP;
     public Image HealthBar { get => healthBar; set => healthBar = value; }
     public EnemyMovementMechanics EMMCode { get => eMMCode; }
 
@@ -56,7 +56,7 @@ public class EnemyBaseClass : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    protected void Start()
+    protected virtual void Start()
     {
         SetAnimWalking();
 
@@ -232,7 +232,7 @@ public class EnemyBaseClass : MonoBehaviour
         }
     }
 
-    private void UpdateHealthBar()
+    protected virtual void UpdateHealthBar()
     {
         if (healthBar == null)
         {
