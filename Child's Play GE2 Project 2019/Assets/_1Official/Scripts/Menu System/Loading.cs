@@ -77,7 +77,7 @@ public class Loading : MonoBehaviour {
         }
         else
         {
-            percentText.text = "Loading " + fillImage.fillAmount.ToString("P2");
+            percentText.text = fillImage.fillAmount.ToString("P2");
         }
     }
 
