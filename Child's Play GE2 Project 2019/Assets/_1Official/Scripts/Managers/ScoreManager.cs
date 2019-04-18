@@ -59,28 +59,38 @@ public class ScoreManager : MonoBehaviour
 
     public void CompileScore()
     {
-        score -= 10 * moneySpent;
-        score += (MoneyManager.GetInstance().CurrentMoney - moneyEarned);
-        score += 100 * enemyKilled;
+        // Reset timescale
+        GameManager.GetInstance().FastForwardButton.Init();
+
+        score += moneySpent;
+        score += moneyEarned;
+        score += 10 * enemyKilled;
         score -= 10 * foodEaten;
         score -= 10 * enemyEscaped;
+        if(score <= 0)
+        {
+            score = 0;
+        }
+        int levelValue = (LevelManager.GetInstance().CurrentLevel+1) * 1000;
         score += 10 * 100 * (int)FoodPercentage;
-
+        score += levelValue;
         scoreDescriptionText.text = $"Money Spent:\n" +
                                     $"Money Earned:\n" +
                                     $"Enemy Killed:\n" +
                                     $"Food Eaten:\n" +
                                     $"Enemy Escaped:\n" +
+                                    $"Level # bonus:\n" +
                                     $"Food Percentage Left:\n" +
                                     $"Enemy Count:\n" +
                                     $"Total Score:";
 
-        scoreText.text = $"(-) {moneySpent}\n" +
+        scoreText.text = $"(+) {moneySpent}\n" +
                          $"(+) {moneyEarned}\n" +
-                         $"(+) {enemyKilled}\n" +
-                         $"(-) {foodEaten}\n" +
-                         $"(-) {enemyEscaped}\n" +
-                         $"(x) {foodPercentage}\n" +
+                         $"(+) 10 x {enemyKilled}\n" +
+                         $"(-) 10 x {foodEaten}\n" +
+                         $"(-) 10 x {enemyEscaped}\n" +
+                         $"(+) {levelValue}\n" +
+                         $"(x) {foodPercentage}%\n" +
                          $"{enemyCount}\n" +
                          $"{score}\n";
         SoundManager.GetInstance().StopMusic();
