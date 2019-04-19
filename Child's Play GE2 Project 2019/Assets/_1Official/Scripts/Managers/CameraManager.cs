@@ -104,6 +104,7 @@ public class CameraManager : MonoBehaviour
         }
         CameraFollowPlayer();
         CameraZoomAndRotationFreeMode();
+        CameraZoomAndRotationLockMode();
     }
 
     private void Update()
@@ -213,9 +214,41 @@ public class CameraManager : MonoBehaviour
         }
     }
 
+    private void CameraZoomAndRotationLockMode()
+    {
+
+        if (Input.GetButton("CameraMouseRot"))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            this.isLocked = false;
+
+            this.transform.Rotate(Vector3.up, GetMousePosition.x * 2 * yawSpeed * Time.fixedDeltaTime * .3f, Space.World);
+            _currentYaw += GetMousePosition.x * yawSpeed * Time.fixedDeltaTime;
+
+
+            _currentZoom += GetMousePosition.y * zoomSpeed / 10.0f;
+            _currentZoom = Mathf.Clamp(_currentZoom, minZoom, maxZoom);
+
+            lerpHeight = _currentZoom;
+            float difference = 0f;
+
+            if (DistanceToTheGround() != lerpHeight)
+            {
+                difference = lerpHeight - DistanceToTheGround();
+            }
+
+            this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(this.transform.position.x, lerpHeight + difference, this.transform.position.z), Time.deltaTime * 5f);
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+    }
+
     private void CameraZoomAndRotationFreeMode()
     {
-        if (!this.isLocked)
+        if (!this.isLocked )
         {
             if (Input.GetButton("RotateCamera"))
             {
