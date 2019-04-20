@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The child of the queen.
+/// </summary>
 [System.Serializable]
 public class AntChild
 {
@@ -21,7 +24,10 @@ public class EnemyQueen : Enemy
     [SerializeField] private GameObject eggGO;
     private Vector3 offset;
 
-    new public void Start()
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
+    protected override void Start()
     {
         base.Start();
         offset = Vector3.up * eMMCode.NavMeshAgent.baseOffset;
@@ -51,6 +57,13 @@ public class EnemyQueen : Enemy
         
     }
 
+    /// <summary>
+    /// The coroutine called when the queen lays an egg. 
+    /// After a certain time it will hatch.
+    /// If the queen is killed before the egg hatch the egg will just disapear.
+    /// </summary>
+    /// <param name="spawnIndex">The index of the enemy to spawn</param>
+    /// <returns></returns>
     private IEnumerator SpawnAnt(int spawnIndex)
     {
         const float DISTANCE_CAST = 1.5f;
@@ -90,6 +103,9 @@ public class EnemyQueen : Enemy
 
     }
 
+    /// <summary>
+    /// Called when enemy dies.
+    /// </summary>
     protected override void Die()
     {
         base.Die();

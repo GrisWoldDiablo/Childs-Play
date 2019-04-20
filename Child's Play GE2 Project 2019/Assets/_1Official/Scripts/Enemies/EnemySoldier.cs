@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemySoldier : Enemy
 {
+    /// <summary>
+    /// Called when enemy dies.
+    /// </summary>
     protected override void Die()
     {
         base.Die();

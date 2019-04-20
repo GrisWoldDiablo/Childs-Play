@@ -13,6 +13,9 @@ public class Missile : Projectile
         Debug.DrawRay(this.transform.position, rb.velocity, Color.red, 0.5f);
     }
 
+    /// <summary>
+    /// Draw a gizmo, the range of the AOE damage.
+    /// </summary>
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

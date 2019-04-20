@@ -6,14 +6,13 @@ public class PlayerBaseClass : MonoBehaviour
 {
     [Header("Player Option")]
     [SerializeField] private int hitPoints = 100;
-    
     public int HitPoints { get => hitPoints; set => hitPoints = value; }
-    
+
+    protected AudioSource myAudioSource;
+
     protected void Start()
     {
-        Item newItem = GetComponent<Item>();
-        newItem.Value /= 2;
-        PlayerManager.GetInstance().AddPlayer(newItem);
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     protected virtual void Die()
@@ -32,6 +31,16 @@ public class PlayerBaseClass : MonoBehaviour
         if (this.HitPoints <= 0)
         {
             Die();
+            return;
+        }
+        PlaySound();
+    }
+
+    protected void PlaySound()
+    {
+        if (myAudioSource.clip != null && !myAudioSource.isPlaying)
+        {
+            myAudioSource.PlayOneShot(myAudioSource.clip);
         }
     }
 
