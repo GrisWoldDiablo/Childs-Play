@@ -10,76 +10,74 @@ using UnityEngine.UI;
 public class EnemyBaseClass : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private int hitPoints = 100;
-    [SerializeField] private int damage = 1;
-    [SerializeField] private float attackSpeed = 0.5f;
-    [SerializeField] private int foodBites = 5;
-    [SerializeField] protected int value = 10;
+    [SerializeField] private int _hitPoints = 100;
+    [SerializeField] private int _damage = 1;
+    [SerializeField] private float _attackSpeed = 0.5f;
+    [SerializeField] private int _foodBites = 5;
+    [SerializeField] protected int _value = 10;
 
-    [SerializeField]
-    private ParticleSystem _spawnVFX;
-    [SerializeField]
-    private ParticleSystem _dieVFX;
-    [SerializeField]
-    private ParticleSystem _eatVFX;
+    [Header("Particle effects")]
+    [SerializeField] private ParticleSystem _spawnVFX;
+    [SerializeField] private ParticleSystem _dieVFX;
+    [SerializeField] private ParticleSystem _eatVFX;
 
-    protected bool hasFocus = false;
+    protected bool hasFocus = false; //Used for camera focus
     private EnemyAnimation _enemyAnimation;
-    private Item target;
-    private GameObject targetGO;
-    protected bool isAttacking = false;
+    private Item _target;
+    private GameObject _targetGO;
+    protected bool _isAttacking = false;
 
-    private float attackCountDown = 0;
+    private float _attackCountDown = 0;
     protected bool isDying = false;
-    private bool asEaten = false;
+    private bool _asEaten = false;
 
     protected EnemyMovementMechanics eMMCode;
 
-    public int HitPoints { get => hitPoints; set => hitPoints = value; }
+    public int HitPoints { get => _hitPoints; set => _hitPoints = value; }
     public bool IsDying { get => isDying; }
     public bool HasFocus { get => hasFocus; set => hasFocus = value; }
 
-    private int currentDamageOvertime;
+    private int _currentDamageOvertime;
 
     [Header("Health Bar")]
     [SerializeField] private Color startingHealthColor;
     [SerializeField] private Color endHealthColor;
-    private Image healthBar;
+    private Image _healthBar;
     protected float ogHP;
-    public Image HealthBar { get => healthBar; set => healthBar = value; }
+    public Image HealthBar { get => _healthBar; set => _healthBar = value; }
     public EnemyMovementMechanics EMMCode { get => eMMCode; }
 
+    /// <summary>
+    /// Called immediately after the object is created
+    /// </summary>
     private void Awake()
     {
         _enemyAnimation = GetComponent<EnemyAnimation>();
         eMMCode = GetComponent<EnemyMovementMechanics>();
     }
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     protected virtual void Start()
     {
         SetAnimWalking();
 
         EnemyManager.GetInstance().AddEnemyToList(this as Enemy);
-        healthBar = GetComponentInChildren<Image>();
-        healthBar.gameObject.SetActive(GameManager.GetInstance().ShowHealthBars);
-        ogHP = hitPoints;
+        _healthBar = GetComponentInChildren<Image>();
+        _healthBar.gameObject.SetActive(GameManager.GetInstance().ShowHealthBars);
+        ogHP = _hitPoints;
     }
 
-    // Update is called once per frame
-    //protected void Update()
-    //{
-    //    //if (this.isAttacking)
-    //    //{
-    //    //    Attack();
-    //    //}
-    //}
-
+    /// <summary>
+    /// Called when enemy takes damage
+    /// </summary>
+    /// <param name="damageValue">Damage received</param>
     public void TakeDamage(int damageValue)
     {
-        this.hitPoints -= damageValue;
+        this._hitPoints -= damageValue;
         UpdateHealthBar();
-        if (hitPoints <= 0)
+        if (_hitPoints <= 0)
         {
             _dieVFX.Play();
             Die();
@@ -87,26 +85,41 @@ public class EnemyBaseClass : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Call animation script
+    /// </summary>
     public void SetAnimWalking()
     {
         _enemyAnimation.SetWalking();
     }
 
+    /// <summary>
+    /// Call animation script
+    /// </summary>
     public void SetAnimAttacking()
     {
         _enemyAnimation.SetAttacking();
     }
 
+    /// <summary>
+    /// Call animation script
+    /// </summary>
     public void SetAnimDizzy()
     {
         _enemyAnimation.SetDizzy();
     }
 
+    /// <summary>
+    /// Call animation script
+    /// </summary>
     public void SetAnimRetreating()
     {
         _enemyAnimation.SetRetreating();
     }
 
+    /// <summary>
+    /// Called when enemy dies.
+    /// </summary>
     protected virtual void Die()
     {
         isDying = true;
@@ -120,72 +133,63 @@ public class EnemyBaseClass : MonoBehaviour
         SetAnimRetreating();
 
         EnemyManager.GetInstance().RemoveEnemyFromList(this as Enemy);
-        MoneyManager.GetInstance().MoneyChange(value);
+        MoneyManager.GetInstance().MoneyChange(_value);
         SoundManager.GetInstance().PlaySoundOneShot(Sound.moneyIncome, 0.05f);
         ScoreManager.GetInstance().EnemyKilled++;
-        ScoreManager.GetInstance().MoneyEarned += value;
+        ScoreManager.GetInstance().MoneyEarned += _value;
     }
 
+    /// <summary>
+    /// Call when enemy start attacking
+    /// </summary>
+    /// <param name="target"></param>
     public virtual void SetAttacking(Item target)
     {
-        isAttacking = true;
-        this.targetGO = target.gameObject;
-        this.target = target;
+        _isAttacking = true;
+        this._targetGO = target.gameObject;
+        this._target = target;
         SetAnimAttacking();
         eMMCode.AttackStance(target.transform.position);
         StartCoroutine(AttackCo());
     }
 
-    //public void Attack()
-    //{
-    //    if (targetGO == null)
-    //    {
-    //        target = null;
-    //        isAttacking = false;
-    //        ResumeWalking();
-    //        attackCountDown = 0f;
-    //        return;
-    //    }
-
-    //    #region Attack Counter
-    //    if (attackCountDown > 0f)
-    //    {
-    //        attackCountDown -= Time.deltaTime;
-    //        return;
-    //    }
-    //    attackCountDown = attackSpeed;
-    //    #endregion
-
-    //    target.TakeDamage(damage);
-
-    //}
-
+    /// <summary>
+    /// Coroutine of the enemy attacking
+    /// </summary>
+    /// <returns></returns>
     IEnumerator AttackCo()
     {
-        while (isAttacking)
+        while (_isAttacking)
         {
-            if (targetGO == null)
+            if (_targetGO == null)
             {
-                target = null;
-                isAttacking = false;
+                _target = null;
+                _isAttacking = false;
                 ResumeWalking();
-                attackCountDown = 0f;
+                _attackCountDown = 0f;
                 break;
             }
-            target.TakeDamage(damage);
-            yield return new WaitForSeconds(attackSpeed);
+            _target.TakeDamage(_damage);
+            yield return new WaitForSeconds(_attackSpeed);
         }
     }
 
+    /// <summary>
+    /// Called after the enemy wants to resume walking
+    /// </summary>
     private void ResumeWalking()
     {
         SetAnimWalking();
         eMMCode.MoveOnStance();
     }
 
+    /// <summary>
+    /// Called when the enemy enters a trigger.
+    /// </summary>
+    /// <param name="other">The collider</param>
     private void OnTriggerEnter(Collider other)
     {
-        if (targetGO == null)
+        if (_targetGO == null)
         {
             if (other.CompareTag("Item"))
             {
@@ -194,20 +198,27 @@ public class EnemyBaseClass : MonoBehaviour
         }
         if (other.CompareTag("Food"))
         {
-            if (!asEaten)
+            if (!_asEaten)
             {
                 EatFood(other.GetComponent<Food>());
             } 
         }
     }
 
+    /// <summary>
+    /// Called when the enemy eat food.
+    /// </summary>
+    /// <param name="_food">food that enemy is eating</param>
     private void EatFood(Food _food)
     {
         _eatVFX.Play();
-        asEaten = true;
-        _food.TakeDamage(foodBites);
+        _asEaten = true;
+        _food.TakeDamage(_foodBites);
     }
 
+    /// <summary>
+    /// Called when the enemy escaped the level after eating.
+    /// </summary>
     public void LeaveWithFood()
     {
         ScoreManager.GetInstance().EnemyEscaped++;
@@ -215,16 +226,29 @@ public class EnemyBaseClass : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    /// <summary>
+    /// Used to start the damage over time coroutine.
+    /// </summary>
+    /// <param name="damageValue">Damage per tick</param>
+    /// <param name="tickSpeed">Time between ticks</param>
+    /// <param name="lastTime">The time the coroutine last</param>
     public void DamageOverTime(int damageValue, float tickSpeed, float lastTime)
     {
         StartCoroutine(DamageOverTimeRoutine(damageValue, tickSpeed, lastTime));
     }
 
+    /// <summary>
+    /// The coroutine that damages the enemy over time.
+    /// </summary>
+    /// <param name="damageValue">Damage per tick</param>
+    /// <param name="tickSpeed">Time between ticks</param>
+    /// <param name="lastTime">The time the coroutine last</param>
+    /// <returns></returns>
     private IEnumerator DamageOverTimeRoutine(int damageValue, float tickSpeed, float lastTime)
     {
         float currentTime = Time.time;
         float endTime = currentTime + lastTime;
-        while (currentTime <= endTime && this.hitPoints > 0)
+        while (currentTime <= endTime && this._hitPoints > 0)
         {
             this.TakeDamage(damageValue);
             yield return new WaitForSeconds(tickSpeed);
@@ -232,13 +256,16 @@ public class EnemyBaseClass : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the healthbar image.
+    /// </summary>
     protected virtual void UpdateHealthBar()
     {
-        if (healthBar == null)
+        if (_healthBar == null)
         {
             return;
         }
-        healthBar.fillAmount = hitPoints / ogHP;
-        healthBar.color = Color.Lerp(endHealthColor, startingHealthColor, healthBar.fillAmount);
+        _healthBar.fillAmount = _hitPoints / ogHP;
+        _healthBar.color = Color.Lerp(endHealthColor, startingHealthColor, _healthBar.fillAmount);
     }
 }

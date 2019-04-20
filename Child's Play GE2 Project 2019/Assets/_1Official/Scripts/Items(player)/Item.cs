@@ -24,8 +24,6 @@ public class Item : Player
     [SerializeField] private GameObject rangeGOUpgrade;
     [SerializeField] private Item upgradeVersion;
 
-    private AudioSource myAudioSource;
-
     public GameObject RangeGO { get => rangeGO; }
     public int Value { get => value; set => this.value = value; }
     public string ItemName { get => itemName; }
@@ -33,18 +31,6 @@ public class Item : Player
     public int IndexInGM { get => indexInGM; }
     public Item UpgradeVersion { get => upgradeVersion; }
     public GameObject RangeGOUpgrade { get => rangeGOUpgrade; set => rangeGOUpgrade = value; }
-
-    // Start is called before the first frame update
-    //void Awake()
-    //{
-    //    //if (rangeGO != null)
-    //    //{
-    //    //    rangeGO.SetActive(false);
-    //    //}
-    //
-    //    //indexInGM = 0;
-    //    //itemDescription = "This is a placeholder description";
-    //}
 
     private void Awake()
     {
@@ -65,7 +51,11 @@ public class Item : Player
             Destroy(GetComponent<Tower>());
             Destroy(this);
         }
-        myAudioSource = GetComponent<AudioSource>();
+        else
+        {
+            value /= 2;
+            PlayerManager.GetInstance().AddPlayer(this);
+        }
     }
 
     public void SetRangeScale(float scaleV3)
@@ -85,14 +75,6 @@ public class Item : Player
     public override void TakeDamage(int damageValue)
     {
         base.TakeDamage(damageValue);
-        PlaySound();
     }
 
-    private void PlaySound()
-    {
-        if (myAudioSource.clip != null && !myAudioSource.isPlaying)
-        {
-            myAudioSource.PlayOneShot(myAudioSource.clip);   
-        }
-    }
 }

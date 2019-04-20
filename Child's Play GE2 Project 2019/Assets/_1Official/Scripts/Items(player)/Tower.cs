@@ -13,10 +13,6 @@ public class Tower : MonoBehaviour
     private Transform pivot;
     [SerializeField]
     private float rotationSpeed = 10f;
-    //[SerializeField]
-    //private string enemyTag = "Enemy";
-    
-
 
     //FIRING PART
     [Header("Tower Option")]

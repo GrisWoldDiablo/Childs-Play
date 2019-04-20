@@ -11,45 +11,32 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMovementMechanics : MonoBehaviour
 {
-
-    //Events
-    //public delegate void DestinationReached();
-    //public event DestinationReached OnFood;
-    //public event DestinationReached OnFinalNode; 
-
     //Game Object Components
     private NavMeshAgent _navMeshAgent;
-    //private Rigidbody _myRigidBody;
 
     //Node & Position
-    private Node currentDestination;
+    private Node _currentDestination;
     protected Vector3 nextDestination;
 
     //Other
-    private float initialMovementSpeed;
-    //private bool attacking;
-    public float InitialMovementSpeed { get => initialMovementSpeed; }
+    private float _initialMovementSpeed;
+    public float InitialMovementSpeed { get => _initialMovementSpeed; }
     public NavMeshAgent NavMeshAgent { get => _navMeshAgent; set => _navMeshAgent = value; }
-    public Node CurrentDestination { get => currentDestination; }
+    public Node CurrentDestination { get => _currentDestination; }
 
-    //public bool Attacking { get => attacking; }
+    private float _inititalStoppingDistance;
+    [SerializeField] private float _attackAvoidanceRadious = 0.09375f;
+    [SerializeField] private float _attackStopingDistance = 5f;
+    [SerializeField] private float _agentAvoidanceRadious = 0.15f;
 
-    // [SerializeField] private float damage = 1; No Longer Used.
-
-    private float inititalStoppingDistance;
-    [SerializeField] private float attackAvoidanceRadious = 0.09375f;
-    [SerializeField] private float attackStopingDistance = 5f;
-    [SerializeField] private float agentAvoidanceRadious = 0.15f;
-
+    /// <summary>
+    /// Called immediately after the object is created
+    /// </summary>
     void Awake()
     {
-        //currentDestination = GameObject.FindGameObjectWithTag("Spawn").GetComponent<Node>();
-        currentDestination = SpawnManager.GetInstance().SpawnPoint;
+        _currentDestination = SpawnManager.GetInstance().SpawnPoint;
         EnemyAgentNaveMeshSetup();
-        SetNode(currentDestination);
-        //_myRigidBody = gameObject.GetComponent<Rigidbody>();
-        //_myRigidBody.isKinematic = false;
-        //attacking = false;
+        SetNode(_currentDestination);
     }
 
     /// <summary>
@@ -60,21 +47,14 @@ public class EnemyMovementMechanics : MonoBehaviour
         if (_navMeshAgent == null)
         {
             this._navMeshAgent = GetComponent<NavMeshAgent>();
-            //this._myRigidBody = GetComponent<Rigidbody>();
-            //_myRigidBody.isKinematic = true;
-            //this._navMeshAgent.speed = 5;
-            //this._navMeshAgent.velocity = new Vector3 (0, 0, 0);
-            //this._navMeshAgent.angularSpeed = 1200;
-            //this._navMeshAgent.acceleration = 20;
-            this._navMeshAgent.radius = agentAvoidanceRadious; //THIS CONTROLS THE AGENT AVOIDANCE RADIUS.
+            this._navMeshAgent.radius = _agentAvoidanceRadious; //THIS CONTROLS THE AGENT AVOIDANCE RADIUS.
 
-            initialMovementSpeed = _navMeshAgent.speed;
-            inititalStoppingDistance = _navMeshAgent.stoppingDistance;
+            _initialMovementSpeed = _navMeshAgent.speed;
+            _inititalStoppingDistance = _navMeshAgent.stoppingDistance;
         }
         
         this._navMeshAgent.enabled = true;
         this._navMeshAgent.isStopped = false;
-
     }
 
     /// <summary>
@@ -83,21 +63,18 @@ public class EnemyMovementMechanics : MonoBehaviour
     public void GetNextNode(Node currentlyEnteredNode)
     {
         //Don't do anything if the currentNode is not the same as the enteredNode.
-        if (currentDestination != currentlyEnteredNode)
+        if (_currentDestination != currentlyEnteredNode)
         {
-            //Debug.LogError("Error Getting Next Node");
             return;
         }
-        if (currentDestination == null)
+        if (_currentDestination == null)
         {
-            //Debug.LogError("Cannot find current node");
             return;
         }
 
-        Node nextNode = currentDestination.GetNextNode();
+        Node nextNode = _currentDestination.GetNextNode();
         if (nextNode == null)
         {
-            //Debug.LogError("Next node is NULL");
             if (_navMeshAgent.enabled)
             {
                 FinalNodeReached();
@@ -105,7 +82,7 @@ public class EnemyMovementMechanics : MonoBehaviour
             return;
         }
 
-        Debug.Assert(nextNode != currentDestination);
+        Debug.Assert(nextNode != _currentDestination);
         SetNode(nextNode);
         MoveToNode();
     }
@@ -116,8 +93,7 @@ public class EnemyMovementMechanics : MonoBehaviour
     /// <param name="node">The node that the enemy will navigate to</param>
     public void SetNode(Node node)
     {
-        //Debug.Log("We Are setting the node");
-        currentDestination = node;
+        _currentDestination = node;
     }
 
     /// <summary>
@@ -125,7 +101,7 @@ public class EnemyMovementMechanics : MonoBehaviour
     /// </summary>
     public void MoveToNode()
     {
-        NavigateTo(currentDestination.transform.position);
+        NavigateTo(_currentDestination.transform.position);
     }
 
     /// <summary>
@@ -135,7 +111,6 @@ public class EnemyMovementMechanics : MonoBehaviour
     {
         if (_navMeshAgent.isOnNavMesh)
         {
-            //Debug.Log("Its time to move");
             _navMeshAgent.SetDestination(nextPoint);
         }
     }
@@ -146,20 +121,8 @@ public class EnemyMovementMechanics : MonoBehaviour
     internal void FinalNodeReached()
     { 
         _navMeshAgent.isStopped = true;
-        //OnFinalNode(); //event
-        //Destroy(this.gameObject);
         BroadcastMessage("LeaveWithFood");
     }
-
-    /// <summary>
-    /// Damage Done to any wall.
-    /// </summary>
-    /// No Longer used.
-    //public float AttackDamage()
-    //{
-    //    return damage;
-    //}
-
 
     /// <summary>
     /// Movement behaviour when encountering a wall.
@@ -176,29 +139,43 @@ public class EnemyMovementMechanics : MonoBehaviour
         }
     }
 
-    private void SetStoppingDistance(float d)
+    /// <summary>
+    /// Set stoping distance of the nav agent
+    /// </summary>
+    /// <param name="distance">new distance</param>
+    private void SetStoppingDistance(float distance)
     {
-        _navMeshAgent.stoppingDistance = d;
-    }
-    private void SetAvoidanceRadious(float s)
-    {
-        _navMeshAgent.radius = s;
+        _navMeshAgent.stoppingDistance = distance;
     }
 
+    /// <summary>
+    /// Set avoidance radius of the nav agent
+    /// </summary>
+    /// <param name="radius">new radius</param>
+    private void SetAvoidanceRadius(float radius)
+    {
+        _navMeshAgent.radius = radius;
+    }
+
+    /// <summary>
+    /// Set the nav agent to attack mode
+    /// </summary>
+    /// <param name="target">Target to move to</param>
     public void AttackStance(Vector3 target)
     {
         this.NavigateTo(target);
-        this.SetStoppingDistance(attackStopingDistance);
-        this.SetAvoidanceRadious(attackAvoidanceRadious);
-        //this.attacking = true;
+        this.SetStoppingDistance(_attackStopingDistance);
+        this.SetAvoidanceRadius(_attackAvoidanceRadious);
     }
 
+    /// <summary>
+    /// Set the nav agent to moving mode
+    /// </summary>
     public void MoveOnStance()
     {
         this.MoveToNode();
-        this.SetStoppingDistance(inititalStoppingDistance);
-        this.SetAvoidanceRadious(agentAvoidanceRadious);
-        //this.attacking = false;
+        this.SetStoppingDistance(_inititalStoppingDistance);
+        this.SetAvoidanceRadius(_agentAvoidanceRadious);
     }
 
 }

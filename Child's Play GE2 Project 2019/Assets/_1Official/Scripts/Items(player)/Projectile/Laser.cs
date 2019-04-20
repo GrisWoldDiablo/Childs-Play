@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-
-//[RequireComponent(typeof(Tower))]
 public class Laser : Projectile
 {
     [SerializeField] private float secondPerTick;
