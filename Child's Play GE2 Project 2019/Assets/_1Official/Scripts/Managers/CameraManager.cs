@@ -141,9 +141,9 @@ public class CameraManager : MonoBehaviour
             return;
         }
         _playerWithFocus = PlayerManager.GetInstance().playerWithFocus.transform;
-        if (EnemyManager.GetInstance().enemyWithFocus != null)
+        if (EnemyManager.GetInstance().EnemyWithFocus != null)
         {
-            enemyWithFocus = EnemyManager.GetInstance().enemyWithFocus.transform;
+            enemyWithFocus = EnemyManager.GetInstance().EnemyWithFocus.transform;
         }
 
         if (!isLocked)
