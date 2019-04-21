@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyFlyer : Enemy
 {
+    /// <summary>
+    /// Called immediately after the object is created
+    /// </summary>
     protected override void Start()
     {
         

@@ -31,8 +31,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5572938901476570575}
   - {fileID: 6953232910162755227}
+  - {fileID: 5572938901476570575}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,24 +48,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4fa51e29145f842b3749b9d092c997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileSelectionCursor: {fileID: 8084629461441961730}
-  tileSelectedCursor: {fileID: 6709107474984522838}
-  listOfTower:
+  _tileSelectionCursor: {fileID: 8084629461441961730}
+  _tileSelectedCursor: {fileID: 6709107474984522838}
+  _listOfTower:
   - {fileID: 6341123844494633285, guid: b9ad39a5173a14943baec10f299399bb, type: 3}
   - {fileID: 2958411723986945016, guid: 7b27dbe332062c54c836a499d36e8116, type: 3}
   - {fileID: 1468471132, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
-  listOfTowerPlaceHolder:
+  _listOfTowerPlaceHolder:
   - {fileID: 5447843336627432717, guid: 699c8edbfcf692041837e733f477449c, type: 3}
   - {fileID: 5558853459489242495, guid: 5acffab977abe144b98058e16b7075ae, type: 3}
   - {fileID: 6528328136130948687, guid: 28b641e3ad88a9d43bc4df440061414d, type: 3}
-  listOfBarrier:
+  _listOfBarrier:
   - {fileID: 1601952980, guid: 81f152383e2a7c74e8457718080ce084, type: 3}
-  listOfBarrierPlaceHolder:
+  _listOfBarrierPlaceHolder:
   - {fileID: 7940086708241864223, guid: d2c717fb959001848b906263c9461fd9, type: 3}
-  newRankPanelIndex: 4
-  gameOverPanelIndex: 8
-  scorePanelIndex: 9
-  winPanelIndex: 10
+  _newRankPanelIndex: 4
+  _gameOverPanelIndex: 8
+  _scorePanelIndex: 9
+  _winPanelIndex: 10
   _speedMulOne: 2
   _speedMulTwo: 3
 --- !u!114 &6247724266759218749
@@ -207,7 +207,7 @@ PrefabInstance:
     - target: {fileID: 6152762881819279893, guid: 71f4628185c40a54d9f25c4aca2b1670,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6152762881819279893, guid: 71f4628185c40a54d9f25c4aca2b1670,
         type: 3}
@@ -245,6 +245,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4284695540638597293}
     m_Modifications:
+    - target: {fileID: 2195496701596001010, guid: 6c3fc108dfa529e4a8f4d386708341c5,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Cursor Variant Selection
+      objectReference: {fileID: 0}
     - target: {fileID: 1025553299904021355, guid: 6c3fc108dfa529e4a8f4d386708341c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -283,7 +288,7 @@ PrefabInstance:
     - target: {fileID: 1025553299904021355, guid: 6c3fc108dfa529e4a8f4d386708341c5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1025553299904021355, guid: 6c3fc108dfa529e4a8f4d386708341c5,
         type: 3}
@@ -299,11 +304,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2195496701596001010, guid: 6c3fc108dfa529e4a8f4d386708341c5,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Cursor Variant Selection
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c3fc108dfa529e4a8f4d386708341c5, type: 3}

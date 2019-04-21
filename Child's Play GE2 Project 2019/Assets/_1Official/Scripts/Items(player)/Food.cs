@@ -12,7 +12,7 @@ public class Food : Player
 
     public int CurrentPercentage { get => currentPercentage; private set => currentPercentage = value; } 
 
-    void Start()
+    new void Start()
     {
         base.Start();
         initialHP = HitPoints;
