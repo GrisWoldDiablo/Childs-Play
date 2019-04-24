@@ -7,52 +7,51 @@ using UnityEngine;
 [Serializable]
 public class Level
 {
-    [SerializeField] private string name;
-    [SerializeField] private GameObject levelPrefab;
-    [SerializeField] private int initialMoney;
+    [SerializeField] private string _name;
+    [SerializeField] private GameObject _levelPrefab;
+    [SerializeField] private int _initialMoney;
     [Header("Set item available, Including upgrades")]
-    [SerializeField] private Item[] itemsAvailable;
+    [SerializeField] private Item[] _itemsAvailable;
 
-    public GameObject LevelPrefab { get => levelPrefab; }
-    public int InitialMoney { get => initialMoney; }
-    public string Name { get => name; }
-    public Item[] ItemsAvailable { get => itemsAvailable; }
+    public GameObject LevelPrefab { get => _levelPrefab; }
+    public int InitialMoney { get => _initialMoney; }
+    public string Name { get => _name; }
+    public Item[] ItemsAvailable { get => _itemsAvailable; }
 }
 
 public class LevelManager : MonoBehaviour
 {
     #region Singleton
-    private static LevelManager instance = null;
+    private static LevelManager _instance = null;
 
     public static LevelManager GetInstance()
     {
-        if (instance == null)
+        if (_instance == null)
         {
-            instance = GameObject.FindObjectOfType<LevelManager>();
+            _instance = GameObject.FindObjectOfType<LevelManager>();
         }
-        return instance;
+        return _instance;
     }
     #endregion
 
-    [SerializeField] Level[] levels;
-    private GameObject currentLevelGO;
-    private int currentLevel = 0;
-    private bool currLvlCompleted = false;
-    private Transform root;
-    private bool levelSpawningCompleted = false;
+    [SerializeField] Level[] _levels;
+    private GameObject _currentLevelGO;
+    private int _currentLevel = 0;
+    private bool _currLvlCompleted = false;
+    private Transform _root;
+    private bool _levelSpawningCompleted = false;
 
-    public int CurrentLevel { get => currentLevel; set => currentLevel = value; }
-    public bool LevelSpawningCompleted { get => levelSpawningCompleted; }
-    public GameObject CurrentLevelGO { get => currentLevelGO; }
-    public Level CurrentLevelInfo { get => levels[currentLevel]; }
-
-    //public GameObject CurrLvlObj { get => currLvlObj; set => currLvlObj = value; }
+    public int CurrentLevel { get => _currentLevel; set => _currentLevel = value; }
+    public bool LevelSpawningCompleted { get => _levelSpawningCompleted; }
+    public GameObject CurrentLevelGO { get => _currentLevelGO; }
+    public Level CurrentLevelInfo { get => _levels[_currentLevel]; }
+    
 
     void Start()
     {
-        root = GameObject.FindGameObjectWithTag("Root").transform;
-        currentLevel = Settings.GetInstance().StartingLevel;
-        LoadLevel(currentLevel);
+        _root = GameObject.FindGameObjectWithTag("Root").transform;
+        _currentLevel = Settings.GetInstance().StartingLevel;
+        LoadLevel(_currentLevel);
     }
 
     /// <summary>
@@ -60,7 +59,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     public void LoadNextLevel()
     {
-        LoadLevel(++currentLevel);
+        LoadLevel(++_currentLevel);
     }
 
     /// <summary>
@@ -69,7 +68,7 @@ public class LevelManager : MonoBehaviour
     /// <param name="levelNumber">Level to load</param>
     public void LoadLevel(int levelNumber = 0)
     {
-        if (levelNumber >= levels.Length)
+        if (levelNumber >= _levels.Length)
         {
             GameCompleted();
             return;
@@ -77,16 +76,16 @@ public class LevelManager : MonoBehaviour
         UpdateSettings();
 
         ScoreManager.GetInstance().Reset();
-        if (currentLevelGO != null)
+        if (_currentLevelGO != null)
         {
-            DestroyImmediate(currentLevelGO);
+            DestroyImmediate(_currentLevelGO);
         }
 
-        currentLevelGO = Instantiate(levels[levelNumber].LevelPrefab, root.position, root.rotation, null);
-        SoundManager.GetInstance().PlayMusic(currentLevel);
-        MoneyManager.GetInstance().ResetMoney(levels[levelNumber].InitialMoney);
+        _currentLevelGO = Instantiate(_levels[levelNumber].LevelPrefab, _root.position, _root.rotation, null);
+        SoundManager.GetInstance().PlayMusic(_currentLevel);
+        MoneyManager.GetInstance().ResetMoney(_levels[levelNumber].InitialMoney);
         EnemyManager.GetInstance().DestroyAllEnemies();
-        levelSpawningCompleted = false;
+        _levelSpawningCompleted = false;
 
         GameManager.GetInstance().FastForwardButton.Init();
         GameManager.GetInstance().DeselectTile();
@@ -103,7 +102,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     public void LevelCompleted()
     {
-        levelSpawningCompleted = true;
+        _levelSpawningCompleted = true;
         
     }
 
@@ -117,11 +116,15 @@ public class LevelManager : MonoBehaviour
         SoundManager.GetInstance().PlaySoundOneShot(Sound.winCompleted);
     }
 
+    /// <summary>
+    /// Call to update Settings.
+    /// This will retreive the level to load when loading the scene.
+    /// </summary>
     public void UpdateSettings()
     {
-        if (Settings.GetInstance().LevelsUnlocked < currentLevel)
+        if (Settings.GetInstance().LevelsUnlocked < _currentLevel)
         {
-            Settings.GetInstance().LevelsUnlocked = currentLevel;
+            Settings.GetInstance().LevelsUnlocked = _currentLevel;
             Settings.GetInstance().SaveLevelParams();
         }
     }

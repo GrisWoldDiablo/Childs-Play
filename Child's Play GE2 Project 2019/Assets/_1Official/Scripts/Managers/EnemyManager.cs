@@ -5,18 +5,18 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     #region Singleton
-    private static EnemyManager instance = null;
+    private static EnemyManager _instance = null;
 
     public static EnemyManager GetInstance()
     {
-        if (instance == null)
+        if (_instance == null)
         {
             if (GameManager.GetInstance() != null)
             {
-                instance = GameManager.GetInstance().gameObject.AddComponent<EnemyManager>(); 
+                _instance = GameManager.GetInstance().gameObject.AddComponent<EnemyManager>(); 
             }
         }
-        return instance;
+        return _instance;
     }
     #endregion
 
@@ -38,7 +38,7 @@ public class EnemyManager : MonoBehaviour
         if (Input.GetButtonDown("SwitchEnemy"))
         {
             CameraManager.GetInstance().EnemyWithFocus = NextEnemyInList(CameraManager.GetInstance().EnemyWithFocus);
-            CameraManager.GetInstance().isLocked = true;
+            CameraManager.GetInstance().IsLocked = true;
         }
     }
 

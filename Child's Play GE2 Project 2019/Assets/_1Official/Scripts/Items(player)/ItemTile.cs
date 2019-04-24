@@ -10,28 +10,39 @@ using UnityEngine;
 [CanEditMultipleObjects]
 public class ObjectBuilderEditor : Editor
 {
-    private ItemTile myScript;
-    private List<ItemTile> myScripts;
+    private ItemTile _myScript;
+    private List<ItemTile> _myScripts;
+
+    /// <summary>
+    /// Called when the object is initialized, but only if the object is active.
+    /// Then called every time the object becomes active
+    /// </summary>
     private void OnEnable()
     {
-        myScript = (ItemTile)target;
+        _myScript = (ItemTile)target;
 
-        myScripts = new List<ItemTile>();
+        _myScripts = new List<ItemTile>();
         foreach (var item in targets)
         {
-            myScripts.Add((ItemTile)item);
+            _myScripts.Add((ItemTile)item);
         }
     }
 
+    /// <summary>
+    /// What shows in the inspector window for the object.
+    /// </summary>
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
         UpdateObject();
     }
 
+    /// <summary>
+    /// called when the object is select and the inspector shown.
+    /// </summary>
     public void UpdateObject()
     {      
-        if (myScripts.Count > 1)
+        if (_myScripts.Count > 1)
         {
             MeshRot90Multiple();
         }
@@ -41,69 +52,76 @@ public class ObjectBuilderEditor : Editor
         }
     }
 
+    /// <summary>
+    /// Check if the selected tiles needs to be rotated 90 degree on Y.
+    /// </summary>
     private void MeshRot90Multiple()
     {
-        foreach (var tiles in myScripts)
+        foreach (var tiles in _myScripts)
         {
             if (tiles.Rot90Degree)
             {
-                //Debug.Log("90 Rot");
                 tiles.transform.rotation = Quaternion.Euler(0, 90, 0);
             }
             else
             {
-                //Debug.Log("Zero Rot");
                 tiles.transform.rotation = Quaternion.Euler(0, 0, 0);
             }
         }
     }
 
+    /// <summary>
+    /// Check if the selected tile needs to be rotated 90 degree on Y.
+    /// </summary>
     private void MeshRot90()
     {
-        if (myScript.Rot90Degree)
+        if (_myScript.Rot90Degree)
         {
-            //Debug.Log("90 Rot");
-            myScript.transform.rotation = Quaternion.Euler(0, 90, 0);
+            _myScript.transform.rotation = Quaternion.Euler(0, 90, 0);
         }
         else
         {
-            //Debug.Log("Zero Rot");
-            myScript.transform.rotation = Quaternion.Euler(0, 0, 0);
+            _myScript.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 }
 #endif
 
+/// <summary>
+/// Type the tile is
+/// </summary>
 public enum TileType
 {
-    Tower,
-    Barrier,
-    Unavailable
+    Tower,      // Player can place a tower on the tile
+    Barrier,    // Player can place a barrier on the tile
+    Unavailable // Player cannot place anything on it
 }
 
-//[RequireComponent(typeof(TileAutomatic))]
 public class ItemTile : MonoBehaviour
 {
-    [SerializeField] private TileType tileType;
-    [SerializeField] private GameObject currentItem;
-    public GameObject CurrentItem { get => currentItem; set => currentItem = value; }
-    public TileType TileType { get => tileType; }
+    [SerializeField] private TileType _tileType;
+    [SerializeField] private GameObject _currentItem;
+    public GameObject CurrentItem { get => _currentItem; set => _currentItem = value; }
+    public TileType TileType { get => _tileType; }
 
 #if (UNITY_EDITOR)
     [Header("Tile Options")]
-    [SerializeField] private bool rot90Degree;
-    [SerializeField] private Mesh arrowMesh;
-    public bool Rot90Degree { get => rot90Degree; set => rot90Degree = value; }
+    [SerializeField] private bool _rot90Degree;
+    [SerializeField] private Mesh _arrowMesh;
+    public bool Rot90Degree { get => _rot90Degree; set => _rot90Degree = value; }
 #endif
-    [SerializeField] private GameObject barrierHintGO;
+    [SerializeField] private GameObject _barrierHintGO;
 
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     private void Start()
     {
-        if (tileType == TileType.Barrier)
+        if (_tileType == TileType.Barrier)
         {
-            if (barrierHintGO != null)
+            if (_barrierHintGO != null)
             {
-                Instantiate(barrierHintGO, this.transform.position + (Vector3.up * 3.0f), this.transform.rotation, this.transform);
+                Instantiate(_barrierHintGO, this.transform.position + (Vector3.up * 3.0f), this.transform.rotation, this.transform);
             }
         }
     }
@@ -120,15 +138,11 @@ public class ItemTile : MonoBehaviour
 
         if (Input.GetButton("Select"))
         {
-            if (tileType != TileType.Unavailable)
+            if (_tileType != TileType.Unavailable)
             {
                 GameManager.GetInstance().TileSelection(this);
                 Shop.GetInstance().MoveToClick();
             }
-            //else
-            //{
-            //    GameManager.GetInstance().DeselectTile();
-            //}
         }
     }
 
@@ -152,24 +166,31 @@ public class ItemTile : MonoBehaviour
             return;
         }
 
-        if (tileType != TileType.Unavailable)
+        if (_tileType != TileType.Unavailable)
         {
             GameManager.GetInstance().ShowCursorOnTile(GameManager.GetInstance().TileSelectionCursor, this); 
         }
     }
 
 #if(UNITY_EDITOR)
+    /// <summary>
+    /// Draw a gizmo in the scene view of unity.
+    /// </summary>
     void OnDrawGizmos()
     {
-        if (tileType == TileType.Barrier)
+        if (_tileType == TileType.Barrier)
         {
             // Draw a yellow sphere at the transform's position
             Gizmos.color = Color.yellow;
-            Gizmos.DrawMesh(arrowMesh, transform.position + (Vector3.up * 3.0f), transform.rotation); 
+            Gizmos.DrawMesh(_arrowMesh, transform.position + (Vector3.up * 3.0f), transform.rotation); 
         }
     }
 #endif
 
+    /// <summary>
+    /// Check if the cursor is above a UI object.
+    /// </summary>
+    /// <returns>True if the cursor is above a UI object.</returns>
     private bool IsPointerOverUI()
     {
         return UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();

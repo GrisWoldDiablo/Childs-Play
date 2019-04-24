@@ -1513,16 +1513,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c15a4ebcc89ae45883f13a42e29a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerTarget: {fileID: 0}
-  pivot: {fileID: 1140563546444235329}
-  rotationSpeed: 10
-  LookAtTarget: 1
-  projectileSpawnPoint: {fileID: 5948756410623832033}
-  tower_SO: {fileID: 11400000, guid: 72872e477f3f9a44b8cfb8f5fda5680a, type: 2}
+  _pivot: {fileID: 1140563546444235329}
+  _rotationSpeed: 10
+  _lookAtTarget: 0
+  _projectileSpawnPoint: {fileID: 5948756410623832033}
+  _tower_SO: {fileID: 11400000, guid: 72872e477f3f9a44b8cfb8f5fda5680a, type: 2}
   _lightEffect: {fileID: 0}
   _vfxLaser: {fileID: 0}
   _lineRendererComponent: {fileID: 0}
-  firingVFX: {fileID: 0}
+  _firingVFX: {fileID: 0}
   levelUpgradeIndex: 0
 --- !u!114 &7546464820478688018
 MonoBehaviour:
@@ -1536,7 +1535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d697b093a99166d47bb43bf7488525b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 100
+  _hitPoints: 100
   _itemType: 0
   itemName: Brick Gun Level 1
   itemDescription: "This is missile tower \nwith area of damage "

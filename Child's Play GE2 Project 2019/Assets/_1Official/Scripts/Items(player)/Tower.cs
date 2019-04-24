@@ -6,72 +6,66 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
 
-    [SerializeField]
-    private Transform towerTarget;
+    private Transform _towerTarget;
 
-    [SerializeField]
-    private Transform pivot;
-    [SerializeField]
-    private float rotationSpeed = 10f;
+    [SerializeField] private Transform _pivot;
+    [SerializeField] private float _rotationSpeed = 10f;
 
     //FIRING PART
     [Header("Tower Option")]
-    [SerializeField] private bool LookAtTarget = false;
-    private GameObject projectilePrefab;
-    [SerializeField]
-    private Transform projectileSpawnPoint;
+    [SerializeField] private bool _lookAtTarget = false;
+    private GameObject _projectilePrefab;
+    [SerializeField] private Transform _projectileSpawnPoint;
 
-    private float range;// = 15f;
-    private float rateOfFire;// = 1f;
-    private float CountdownToNextFire = 0f;
-    private float innerRadius;
+    private float _range;// = 15f;
+    private float _rateOfFire;// = 1f;
+    private float _countdownToNextFire = 0f;
+    private float _innerRadius;
 
-    [SerializeField]
-    private Tower_SO tower_SO;
+    [SerializeField] private Tower_SO _tower_SO;
 
     [Header("Tower VFX")]
     [SerializeField] private Light _lightEffect;
     [SerializeField] private ParticleSystem _vfxLaser;
     [SerializeField] private LineRenderer _lineRendererComponent;
-    [SerializeField]
-    private ParticleSystem firingVFX;
+    [SerializeField] private ParticleSystem _firingVFX;
 
     [SerializeField] private int levelUpgradeIndex = 0;
-    private AudioSource myAudioSource;
+    private AudioSource _myAudioSource;
  
-    public Transform GetProjectileSpawnPoint
-    { get { return projectileSpawnPoint; } }
+    public Transform ProjectileSpawnPoint { get { return _projectileSpawnPoint; } }
+    public Transform TowerTarget { get { return _towerTarget; } }
+    public float Range { get => _tower_SO.TowerLevelsArray[levelUpgradeIndex].range; }
 
-    public Transform GetTowerTarget
-    { get { return towerTarget; } }
-
-    //public Tower_SO Tower_SO { get => tower_SO.TowerLevelsArray[levelUpgradeIndex]; }
-    public float Range { get => tower_SO.TowerLevelsArray[levelUpgradeIndex].range; }
-
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     private void Start()
     {
-        myAudioSource = GetComponent<AudioSource>();
-        //BroadcastMessage("SetRangeScale", tower_SO.range);
-        if (tower_SO.towerType == ProjectTileType.LASER)
+        _myAudioSource = GetComponent<AudioSource>();
+        if (_tower_SO.towerType == ProjectTileType.LASER)
         {
             _lightEffect = GetComponentInChildren<Light>();
             _vfxLaser = GetComponentInChildren<ParticleSystem>();
             _lineRendererComponent = GetComponentInChildren<LineRenderer>();
         }
 
-        //InvokeRepeating("UpdateTarget", 0f, 0.5f);
-
         SO_Reference();
     }
 
+    /// <summary>
+    /// Get Scriptable object data
+    /// </summary>
     void SO_Reference()
     {        
-         range = tower_SO.TowerLevelsArray[levelUpgradeIndex].range;
-         rateOfFire = tower_SO.TowerLevelsArray[levelUpgradeIndex].bulletPerSecond;
-         //innerRadius = tower_SO.TowerLevelsArray[levelUpgradeIndex].innerRadius;
-         projectilePrefab = tower_SO.TowerLevelsArray[levelUpgradeIndex].projectilePrefab;
+         _range = _tower_SO.TowerLevelsArray[levelUpgradeIndex].range;
+         _rateOfFire = _tower_SO.TowerLevelsArray[levelUpgradeIndex].bulletPerSecond;
+         _projectilePrefab = _tower_SO.TowerLevelsArray[levelUpgradeIndex].projectilePrefab;
     }
 
+    /// <summary>
+    /// Update the target of the tower.
+    /// </summary>
     void UpdateTarget()
     {
         float shortestDistance = Mathf.Infinity;
@@ -85,14 +79,8 @@ public class Tower : MonoBehaviour
                 continue;
             }
             float distanceToEnemy = Vector3.Distance(this.transform.position, enemy.transform.position);
-
-            //if(distanceToEnemy < shortestDistance && distanceToEnemy >= innerRadius)
-            //{
-            //    shortestDistance = distanceToEnemy;
-            //    nearestEnemy = enemy;                
-            //}
-            
-            if (distanceToEnemy < range)
+                        
+            if (distanceToEnemy < _range)
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
@@ -100,55 +88,53 @@ public class Tower : MonoBehaviour
             }
         }
 
-        if(nearestEnemy != null && shortestDistance <= range && shortestDistance >= innerRadius)
+        if(nearestEnemy != null && shortestDistance <= _range && shortestDistance >= _innerRadius)
         {
-            towerTarget = nearestEnemy.transform;
+            _towerTarget = nearestEnemy.transform;
         }
         else
         {
-            towerTarget = null;
+            _towerTarget = null;
         }
     }
+
 
     private void Update()
     {
         UpdateTarget();
         ShootAndLookAtTarget();
-
-
-        //CountdownToNextFire -= Time.deltaTime; // move to top of method so the countdown continues even if the tower has no target.
     }
 
     private void ShootAndLookAtTarget()
     {
-        CountdownToNextFire -= Time.deltaTime;
-        if (towerTarget == null)
+        _countdownToNextFire -= Time.deltaTime;
+        if (_towerTarget == null)
         {
             StopLaser();
             return;
         }
 
         //Target Lock
-        if (LookAtTarget)
+        if (_lookAtTarget)
         {
-            pivot.LookAt(towerTarget);
+            _pivot.LookAt(_towerTarget);
         }
         else
         {
-            Vector3 direction = towerTarget.position - this.transform.position;
+            Vector3 direction = _towerTarget.position - this.transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
-            Vector3 rotation = Quaternion.Lerp(pivot.rotation, lookRotation, rotationSpeed * Time.deltaTime).eulerAngles;
-            pivot.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            Vector3 rotation = Quaternion.Lerp(_pivot.rotation, lookRotation, _rotationSpeed * Time.deltaTime).eulerAngles;
+            _pivot.rotation = Quaternion.Euler(0f, rotation.y, 0f);
         }
         //FIRING PART
 
 
-        if (CountdownToNextFire <= 0f)
+        if (_countdownToNextFire <= 0f)
         {
             Shoot();
-            CountdownToNextFire = 1f / rateOfFire;
+            _countdownToNextFire = 1f / _rateOfFire;
         }
-        if (tower_SO.towerType == ProjectTileType.LASER)
+        if (_tower_SO.towerType == ProjectTileType.LASER)
         {
             //ShootLaser();
             FireLaserBeam();
@@ -158,21 +144,21 @@ public class Tower : MonoBehaviour
     private void Shoot()
     {
 
-        GameObject projectileGameObject = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+        GameObject projectileGameObject = Instantiate(_projectilePrefab, _projectileSpawnPoint.position, _projectileSpawnPoint.rotation);
 
         Projectile projectile = projectileGameObject.GetComponent<Projectile>();
-        projectile.AssignTarget(towerTarget);
+        projectile.AssignTarget(_towerTarget);
         PlaySound();
         PlayVFX();
     }
 
     private void PlaySound()
     {
-        if (myAudioSource.clip != null)
+        if (_myAudioSource.clip != null)
         {
-            if (!myAudioSource.isPlaying)
+            if (!_myAudioSource.isPlaying)
             {
-                myAudioSource.PlayOneShot(myAudioSource.clip);
+                _myAudioSource.PlayOneShot(_myAudioSource.clip);
             }
         }
     }
@@ -180,21 +166,21 @@ public class Tower : MonoBehaviour
     private void PlayVFX()
     {
         //Do vfx 
-        if (firingVFX == null)
+        if (_firingVFX == null)
         {
             return;
         }
         //firingVFX.transform.parent = null;
         //firingVFX.transform.position = projectileSpawnPoint.transform.position;
-        firingVFX.Play();
+        _firingVFX.Play();
         //Destroy(firingVFX.gameObject, firingVFX.main.duration);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(this.transform.position, tower_SO.TowerLevelsArray[levelUpgradeIndex].range);
-        Gizmos.DrawWireSphere(this.transform.position, innerRadius);        
+        Gizmos.DrawWireSphere(this.transform.position, _tower_SO.TowerLevelsArray[levelUpgradeIndex].range);
+        Gizmos.DrawWireSphere(this.transform.position, _innerRadius);        
     }
 
     public void FireLaserBeam()
@@ -202,16 +188,16 @@ public class Tower : MonoBehaviour
         //GRAPHICS PART
         _lineRendererComponent.enabled = true;
 
-        _lineRendererComponent.SetPosition(0, this.GetProjectileSpawnPoint.position);
-        _lineRendererComponent.SetPosition(1, this.GetTowerTarget.position);
+        _lineRendererComponent.SetPosition(0, this.ProjectileSpawnPoint.position);
+        _lineRendererComponent.SetPosition(1, this.TowerTarget.position);
         
         if (!this._vfxLaser.isPlaying)
         {
             this._vfxLaser.Play();
         }    
         this._lightEffect.enabled = true;
-        Vector3 direction = this.GetProjectileSpawnPoint.position - this.GetTowerTarget.position;
-        this._vfxLaser.transform.position = this.GetTowerTarget.position + direction.normalized;
+        Vector3 direction = this.ProjectileSpawnPoint.position - this.TowerTarget.position;
+        this._vfxLaser.transform.position = this.TowerTarget.position + direction.normalized;
         this._vfxLaser.transform.rotation = Quaternion.LookRotation(direction);
 
 
@@ -226,12 +212,12 @@ public class Tower : MonoBehaviour
     {
         //_vfxLaser.Stop();
 
-        if (tower_SO.towerType == ProjectTileType.LASER)
+        if (_tower_SO.towerType == ProjectTileType.LASER)
         {
             _lineRendererComponent.enabled = false;
             this._vfxLaser.Stop();
             this._lightEffect.enabled = false;
-            myAudioSource.Stop();
+            _myAudioSource.Stop();
         }
     }
 }

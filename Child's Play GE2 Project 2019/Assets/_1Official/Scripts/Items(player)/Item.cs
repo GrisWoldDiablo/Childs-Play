@@ -32,6 +32,9 @@ public class Item : Player
     public Item UpgradeVersion { get => upgradeVersion; }
     public GameObject RangeGOUpgrade { get => rangeGOUpgrade; set => rangeGOUpgrade = value; }
 
+    /// <summary>
+    /// Called immediately after the object is created
+    /// </summary>
     private void Awake()
     {
         if (rangeGO != null)
@@ -58,6 +61,10 @@ public class Item : Player
         }
     }
 
+    /// <summary>
+    /// Used to scale the Range of the Item to the size set.
+    /// </summary>
+    /// <param name="scaleV3">The size of the Range</param>
     public void SetRangeScale(float scaleV3)
     {
         rangeGO.transform.localScale = Vector3.one * scaleV3 * 2.0f;
@@ -65,16 +72,15 @@ public class Item : Player
             Mathf.Clamp(rangeGO.transform.localScale.y * 0.33f, 0.0f, 10.0f), rangeGO.transform.localScale.z);
     }
 
+    /// <summary>
+    /// Used to scale the Range of the Item Upgraded version to the size set.
+    /// </summary>
+    /// <param name="scaleV3">The size of the Range</param>
     public void SetRangeUPScale(float scaleV3)
     {
         rangeGOUpgrade.transform.localScale = Vector3.one * scaleV3 * 2.0f;
         rangeGOUpgrade.transform.localScale = new Vector3(rangeGOUpgrade.transform.localScale.x,
             Mathf.Clamp(rangeGOUpgrade.transform.localScale.y * 0.33f, 0.0f, 10.0f), rangeGOUpgrade.transform.localScale.z);
-    }
-
-    public override void TakeDamage(int damageValue)
-    {
-        base.TakeDamage(damageValue);
     }
 
 }

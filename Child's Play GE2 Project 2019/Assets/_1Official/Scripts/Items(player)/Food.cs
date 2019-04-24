@@ -5,43 +5,53 @@ using UnityEngine;
 
 public class Food : Player
 {
-    [SerializeField] private GameObject[] pieces;
+    [SerializeField] private GameObject[] _pieces;
 
-    private int initialHP;
-    private int currentPercentage = 100;
+    private int _initialHP;
+    private int _currentPercentage = 100;
 
-    public int CurrentPercentage { get => currentPercentage; private set => currentPercentage = value; } 
+    public int CurrentPercentage { get => _currentPercentage; private set => _currentPercentage = value; }
 
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     new void Start()
     {
         base.Start();
-        initialHP = HitPoints;
-        pieces = GameObject.FindGameObjectsWithTag("FoodPieces");
+        _initialHP = HitPoints;
+        _pieces = GameObject.FindGameObjectsWithTag("FoodPieces");
     }
 
+    /// <summary>
+    /// Called to reduce hitPoints
+    /// </summary>
+    /// <param name="damageValue">Incoming Damage</param>
     public override void TakeDamage(int damageValue)
     {
         base.TakeDamage(damageValue);
 
-        currentPercentage = 100 - (HitPoints * 100 / initialHP);
-        int qtyToRemove = (int)Mathf.Floor(pieces.Length * (currentPercentage / 100.0f));
-        for (int i = pieces.Length - 1; i > pieces.Length - qtyToRemove; i--)
+        _currentPercentage = 100 - (HitPoints * 100 / _initialHP);
+        int qtyToRemove = (int)Mathf.Floor(_pieces.Length * (_currentPercentage / 100.0f));
+        for (int i = _pieces.Length - 1; i > _pieces.Length - qtyToRemove; i--)
         {
             if (i < 0)
             {
                 break;
             }
-            if (pieces[i] != null)
+            if (_pieces[i] != null)
             {
-                Destroy(pieces[i]);
+                Destroy(_pieces[i]);
             }
         }
 
-        HudManager.GetInstance().UpdateFoodPercentage(currentPercentage);
-        ScoreManager.GetInstance().FoodPercentage = 100 - currentPercentage;
+        HudManager.GetInstance().UpdateFoodPercentage(_currentPercentage);
+        ScoreManager.GetInstance().FoodPercentage = 100 - _currentPercentage;
         ScoreManager.GetInstance().FoodEaten += damageValue;
     }
 
+    /// <summary>
+    /// Called when the hitPoints drop to zero
+    /// </summary>
     protected override void Die()
     {
         GameManager.GetInstance().GameOver();

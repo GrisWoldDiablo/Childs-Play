@@ -20,25 +20,29 @@ public class PlayerManager : MonoBehaviour
     }
     #endregion
 
-
-
-
     //Variables
-    [SerializeField] private List<Player> listOfPlayers;
+    private List<Player> _listOfPlayers;
 
     //References for Cashing
-    public Player playerWithFocus;
+    private Player playerWithFocus;
 
-    public List<Player> ListOfPlayers { get => listOfPlayers; }
+    public List<Player> ListOfPlayers { get => _listOfPlayers; }
+    public Player PlayerWithFocus { get => playerWithFocus; set => playerWithFocus = value; }
 
 
     #region Unity API Methods
 
+    /// <summary>
+    /// Called immediately after the object is created
+    /// </summary>
     private void Awake()
     {
         CreatePlayerList();
     }
-    // Update is called once per frame
+
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     public void Update()
     {
         ChangePlayerFocusWithButton();
@@ -51,10 +55,10 @@ public class PlayerManager : MonoBehaviour
     /// </summary>
     public void CreatePlayerList()
     {
-        listOfPlayers = new List<Player>();
+        _listOfPlayers = new List<Player>();
         foreach (Player p in GameObject.FindObjectsOfType<Player>())
         {
-            listOfPlayers.Add(p);
+            _listOfPlayers.Add(p);
 
             playerWithFocus = p;
         }        
@@ -67,57 +71,68 @@ public class PlayerManager : MonoBehaviour
     {
         if (Input.GetButtonDown("SwitchPlayer"))
         {
-            if (listOfPlayers.Count == 0)
+            if (_listOfPlayers.Count == 0)
             {
                 return;
             }
             ClearEnemyFocusOnListAndCamera();
 
-            int index = listOfPlayers.IndexOf(playerWithFocus);
+            int index = _listOfPlayers.IndexOf(playerWithFocus);
             index++;
-            if (index >= listOfPlayers.Count)
+            if (index >= _listOfPlayers.Count)
             {
                 index = 0;
             }
-            playerWithFocus = listOfPlayers[index];
-            CameraManager.GetInstance().isLocked = true;
+            playerWithFocus = _listOfPlayers[index];
+            CameraManager.GetInstance().IsLocked = true;
         }
     }
     
+    /// <summary>
+    /// Clear the focus on the CameraManager
+    /// </summary>
     public void ClearEnemyFocusOnListAndCamera()
     {
-        //EnemyManager.GetInstance().ClearEnemyFocus();
         CameraManager.GetInstance().EnemyWithFocus = null;
     }
 
+    /// <summary>
+    /// Change the focus and tell it to the camera manager
+    /// </summary>
     private void ChangePlayerFocusWithMouse()
     {
-        //EnemyManager.GetInstance().ClearEnemyFocus();
         CameraManager.GetInstance().EnemyWithFocus = null;
 
-        int index = listOfPlayers.IndexOf(playerWithFocus);
+        int index = _listOfPlayers.IndexOf(playerWithFocus);
         index++;
-        if (index >= listOfPlayers.Count)
+        if (index >= _listOfPlayers.Count)
         {
             index = 0;
         }
-        playerWithFocus = listOfPlayers[index];
-        CameraManager.GetInstance().isLocked = true;
+        playerWithFocus = _listOfPlayers[index];
+        CameraManager.GetInstance().IsLocked = true;
     }
     #endregion
 
+    /// <summary>
+    /// Add a player to _listOfPlayers
+    /// </summary>
+    /// <param name="_player">The player to add</param>
     public void AddPlayer(Player _player)
     {
-        //Debug.Log($"PLayer added {_player}");
         if (playerWithFocus == null)
         {
             playerWithFocus = _player;
         }
-        listOfPlayers.Add(_player);
+        _listOfPlayers.Add(_player);
     }
 
+    /// <summary>
+    /// Remove a player from _listOfPlayers
+    /// </summary>
+    /// <param name="_player">The player to remove</param>
     public void RemovePlayer(Player _player)
     {
-        listOfPlayers.Remove(_player);
+        _listOfPlayers.Remove(_player);
     }
 }

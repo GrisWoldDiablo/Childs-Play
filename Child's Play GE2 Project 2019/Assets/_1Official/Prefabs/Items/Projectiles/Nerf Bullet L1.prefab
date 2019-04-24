@@ -109,13 +109,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6311fc4a1a9274196c7a6abe9e0d83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 50
-  AoERadius: 0
-  impactVFX: {fileID: 0}
-  targetLocation: {x: 0, y: 0, z: 0}
+  _projectileSpeed: 50
+  _aoeRadius: 0
+  _impactVFX: {fileID: 0}
   _target: {fileID: 0}
-  damageValue: 150
-  myAudioSource: {fileID: 0}
+  _damageValue: 150
+  _myAudioSource: {fileID: 0}
+  _projectileFX: {fileID: 0}
+  _hasHitOnce: 0
 --- !u!135 &4384572138594503677
 SphereCollider:
   m_ObjectHideFlags: 0
