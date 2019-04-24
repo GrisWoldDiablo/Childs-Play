@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
         {
             if (MenuInteraction.GetInstance().AtDefaultOrRootPanel)
             {
-                Pause.GetInstance().ToggleMainMenu();
+                PauseManager.GetInstance().ToggleMainMenu();
             }
         }
     }
@@ -418,7 +418,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         SoundManager.GetInstance().PlaySoundOneShot(Sound.gameOver);
-        Pause.GetInstance().PauseGame();
+        PauseManager.GetInstance().PauseGame();
         PanelSelection(_gameOverPanelIndex);
     }
 

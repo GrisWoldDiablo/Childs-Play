@@ -28,13 +28,13 @@ public class EnemyBaseClass : MonoBehaviour
     protected bool _isAttacking = false;
 
     private float _attackCountDown = 0;
-    protected bool isDying = false;
+    protected bool _isDying = false;
     private bool _asEaten = false;
 
     protected EnemyMovementMechanics eMMCode;
 
     public int HitPoints { get => _hitPoints; set => _hitPoints = value; }
-    public bool IsDying { get => isDying; }
+    public bool IsDying { get => _isDying; }
     public bool HasFocus { get => hasFocus; set => hasFocus = value; }
 
     private int _currentDamageOvertime;
@@ -43,7 +43,7 @@ public class EnemyBaseClass : MonoBehaviour
     [SerializeField] private Color startingHealthColor;
     [SerializeField] private Color endHealthColor;
     private Image _healthBar;
-    protected float ogHP;
+    protected float _ogHP;
     public Image HealthBar { get => _healthBar; set => _healthBar = value; }
     public EnemyMovementMechanics EMMCode { get => eMMCode; }
 
@@ -66,7 +66,7 @@ public class EnemyBaseClass : MonoBehaviour
         EnemyManager.GetInstance().AddEnemyToList(this as Enemy);
         _healthBar = GetComponentInChildren<Image>();
         _healthBar.gameObject.SetActive(GameManager.GetInstance().ShowHealthBars);
-        ogHP = _hitPoints;
+        _ogHP = _hitPoints;
     }
 
     /// <summary>
@@ -122,7 +122,7 @@ public class EnemyBaseClass : MonoBehaviour
     /// </summary>
     protected virtual void Die()
     {
-        isDying = true;
+        _isDying = true;
 
         foreach (Collider col in GetComponents<Collider>())
         {
@@ -265,7 +265,7 @@ public class EnemyBaseClass : MonoBehaviour
         {
             return;
         }
-        _healthBar.fillAmount = _hitPoints / ogHP;
+        _healthBar.fillAmount = _hitPoints / _ogHP;
         _healthBar.color = Color.Lerp(endHealthColor, startingHealthColor, _healthBar.fillAmount);
     }
 }

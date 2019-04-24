@@ -166,7 +166,6 @@ GameObject:
   - component: {fileID: 6646199835468626008}
   - component: {fileID: 735571412886468011}
   - component: {fileID: 239668790641261686}
-  - component: {fileID: 194286945869718081}
   m_Layer: 2
   m_Name: Nerf Missile L1
   m_TagString: Untagged
@@ -233,13 +232,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbac8c84f13b6544b9dbcdb8bf220a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 10
-  AoERadius: 2
-  impactVFX: {fileID: 4835578434176893497}
-  targetLocation: {x: 0, y: 0, z: 0}
+  _projectileSpeed: 10
+  _aoeRadius: 2
+  _impactVFX: {fileID: 4835578434176893497}
   _target: {fileID: 0}
-  damageValue: 500
+  _damageValue: 500
+  _myAudioSource: {fileID: 0}
   _projectileFX: {fileID: 6863217321519804464}
+  _hasHitOnce: 0
 --- !u!1001 &1149247798508404704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -347,6 +347,11 @@ PrefabInstance:
       propertyPath: m_MaxParticleSize
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1420991972047991707, guid: 27750031400c7dc43a25ebf0de98dd1f,
+        type: 3}
+      propertyPath: m_Time
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3942418272368253811, guid: 27750031400c7dc43a25ebf0de98dd1f,
         type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -362,11 +367,6 @@ PrefabInstance:
       propertyPath: InitialModule.startSizeZ.scalar
       value: 22
       objectReference: {fileID: 0}
-    - target: {fileID: 1420991972047991707, guid: 27750031400c7dc43a25ebf0de98dd1f,
-        type: 3}
-      propertyPath: m_Time
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27750031400c7dc43a25ebf0de98dd1f, type: 3}
 --- !u!4 &602688988090105608 stripped
@@ -381,104 +381,6 @@ ParticleSystem:
     type: 3}
   m_PrefabInstance: {fileID: 1149247798508404704}
   m_PrefabAsset: {fileID: 0}
-  myAudioSource: {fileID: 194286945869718081}
---- !u!82 &194286945869718081
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6888162193381485623}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243181926754801646, guid: 6c4dda455ac1a4d489d7327586f16ba6,
-    type: 2}
-  m_audioClip: {fileID: 8300000, guid: 1aae18a107176f4488b35a29a603db1c, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1001 &2871044501425743201
 PrefabInstance:
   m_ObjectHideFlags: 0

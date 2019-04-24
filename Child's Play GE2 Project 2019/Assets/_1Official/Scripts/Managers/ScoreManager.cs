@@ -19,62 +19,65 @@ public class ScoreManager : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] private Text scoreText;
-    [SerializeField] private Text scoreDescriptionText;
+    [SerializeField] private Text _scoreText;
+    [SerializeField] private Text _scoreDescriptionText;
     // Enemy
-    private int enemyCount;
-    private int enemyKilled;
-    private int enemyEscaped;
-    public int EnemyCounts { get => enemyCount; set => enemyCount = value; }
-    public int EnemyKilled { get => enemyKilled; set => enemyKilled = value; }
-    public int EnemyEscaped { get => enemyEscaped; set => enemyEscaped = value; }
+    private int _enemyCount;
+    private int _enemyKilled;
+    private int _enemyEscaped;
+    public int EnemyCounts { get => _enemyCount; set => _enemyCount = value; }
+    public int EnemyKilled { get => _enemyKilled; set => _enemyKilled = value; }
+    public int EnemyEscaped { get => _enemyEscaped; set => _enemyEscaped = value; }
 
     // Food
-    private float foodPercentage;
-    private int foodEaten;
-    public float FoodPercentage { get => foodPercentage; set => foodPercentage = value; }
-    public int FoodEaten { get => foodEaten; set => foodEaten = value; }
+    private float _foodPercentage;
+    private int _foodEaten;
+    public float FoodPercentage { get => _foodPercentage; set => _foodPercentage = value; }
+    public int FoodEaten { get => _foodEaten; set => _foodEaten = value; }
 
     // Money
-    private int moneySpent;
-    private int moneyEarned;
-    public int MoneySpent { get => moneySpent; set => moneySpent = value; }
-    public int MoneyEarned { get => moneyEarned; set => moneyEarned = value; }
+    private int _moneySpent;
+    private int _moneyEarned;
+    public int MoneySpent { get => _moneySpent; set => _moneySpent = value; }
+    public int MoneyEarned { get => _moneyEarned; set => _moneyEarned = value; }
 
     // Score
-    private int score;
-    public int Score { get => score; }
+    private int _score;
+    public int Score { get => _score; }
 
     public void Reset()
     {
-        moneySpent = 0;
-        moneyEarned = 0;
-        foodPercentage = 100;
-        foodEaten = 0;
-        enemyCount = 0;
-        enemyKilled = 0;
-        enemyEscaped = 0;
-        score = 0;
+        _moneySpent = 0;
+        _moneyEarned = 0;
+        _foodPercentage = 100;
+        _foodEaten = 0;
+        _enemyCount = 0;
+        _enemyKilled = 0;
+        _enemyEscaped = 0;
+        _score = 0;
     }
 
+    /// <summary>
+    /// Compile the score and set the textbox.
+    /// </summary>
     public void CompileScore()
     {
         // Reset timescale
         GameManager.GetInstance().FastForwardButton.Init();
 
-        score += moneySpent;
-        score += moneyEarned;
-        score += 10 * enemyKilled;
-        score -= 10 * foodEaten;
-        score -= 10 * enemyEscaped;
-        if(score <= 0)
+        _score += _moneySpent;
+        _score += _moneyEarned;
+        _score += 10 * _enemyKilled;
+        _score -= 10 * _foodEaten;
+        _score -= 10 * _enemyEscaped;
+        if(_score <= 0)
         {
-            score = 0;
+            _score = 0;
         }
         int levelValue = (LevelManager.GetInstance().CurrentLevel+1) * 1000;
-        score += 10 * 100 * (int)FoodPercentage;
-        score += levelValue;
-        scoreDescriptionText.text = $"Money Spent:\n" +
+        _score += 10 * 100 * (int)FoodPercentage;
+        _score += levelValue;
+        _scoreDescriptionText.text = $"Money Spent:\n" +
                                     $"Money Earned:\n" +
                                     $"Enemy Killed:\n" +
                                     $"Food Eaten:\n" +
@@ -84,27 +87,27 @@ public class ScoreManager : MonoBehaviour
                                     $"Enemy Count:\n" +
                                     $"Total Score:";
 
-        scoreText.text = $"(+) {moneySpent}\n" +
-                         $"(+) {moneyEarned}\n" +
-                         $"(+) 10 x {enemyKilled}\n" +
-                         $"(-) 10 x {foodEaten}\n" +
-                         $"(-) 10 x {enemyEscaped}\n" +
+        _scoreText.text = $"(+) {_moneySpent}\n" +
+                         $"(+) {_moneyEarned}\n" +
+                         $"(+) 10 x {_enemyKilled}\n" +
+                         $"(-) 10 x {_foodEaten}\n" +
+                         $"(-) 10 x {_enemyEscaped}\n" +
                          $"(+) {levelValue}\n" +
-                         $"(x) {foodPercentage}%\n" +
-                         $"{enemyCount}\n" +
-                         $"{score}\n";
+                         $"(x) {_foodPercentage}%\n" +
+                         $"{_enemyCount}\n" +
+                         $"{_score}\n";
         SoundManager.GetInstance().StopMusic();
         SoundManager.GetInstance().PlaySoundOneShot(Sound.levelCompleted);
 
-        if (Settings.GetInstance().CheckLeaderboard(score,LevelManager.GetInstance().CurrentLevel))
+        if (Settings.GetInstance().CheckLeaderboard(_score,LevelManager.GetInstance().CurrentLevel))
         {
             GameManager.GetInstance().PanelSelection(GameManager.GetInstance().NewRankPanelIndex);
-            scoreDescriptionText.text += $"\nNEW HIGHSCORE!";
+            _scoreDescriptionText.text += $"\nNEW HIGHSCORE!";
         }
         else
         {
             GameManager.GetInstance().PanelSelection(GameManager.GetInstance().ScorePanelIndex);
-            scoreDescriptionText.text += $"\nHighScore: {Settings.GetInstance().LeaderboardScores[LevelManager.GetInstance().CurrentLevel]} by {Settings.GetInstance().LeaderboardNames[LevelManager.GetInstance().CurrentLevel]} ";
+            _scoreDescriptionText.text += $"\nHighScore: {Settings.GetInstance().LeaderboardScores[LevelManager.GetInstance().CurrentLevel]} by {Settings.GetInstance().LeaderboardNames[LevelManager.GetInstance().CurrentLevel]} ";
         }
 
     }

@@ -16,7 +16,7 @@ public class EnemyMovementMechanics : MonoBehaviour
 
     //Node & Position
     private Node _currentDestination;
-    protected Vector3 nextDestination;
+    protected Vector3 _nextDestination;
 
     //Other
     private float _initialMovementSpeed;

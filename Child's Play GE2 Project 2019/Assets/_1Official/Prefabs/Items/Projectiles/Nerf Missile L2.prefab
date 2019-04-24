@@ -241,6 +241,21 @@ PrefabInstance:
       propertyPath: _projectileFX
       value: 
       objectReference: {fileID: 3458005070420645995}
+    - target: {fileID: 239668790641261686, guid: bf6d70a1f56422a4c8fc4ce96ccad7d5,
+        type: 3}
+      propertyPath: _aoeRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 239668790641261686, guid: bf6d70a1f56422a4c8fc4ce96ccad7d5,
+        type: 3}
+      propertyPath: _damageValue
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 239668790641261686, guid: bf6d70a1f56422a4c8fc4ce96ccad7d5,
+        type: 3}
+      propertyPath: _impactVFX
+      value: 
+      objectReference: {fileID: 3736064058755230306}
     - target: {fileID: 4835578434176893497, guid: bf6d70a1f56422a4c8fc4ce96ccad7d5,
         type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.r
@@ -363,6 +378,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5488572603729917585}
     m_Modifications:
+    - target: {fileID: 8888934241330583204, guid: 27750031400c7dc43a25ebf0de98dd1f,
+        type: 3}
+      propertyPath: m_Name
+      value: bullet trail (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 553903969032225000, guid: 27750031400c7dc43a25ebf0de98dd1f,
         type: 3}
       propertyPath: m_RootOrder
@@ -407,11 +427,6 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.size3D
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8888934241330583204, guid: 27750031400c7dc43a25ebf0de98dd1f,
-        type: 3}
-      propertyPath: m_Name
-      value: bullet trail (1)
       objectReference: {fileID: 0}
     - target: {fileID: 643101681070911742, guid: 27750031400c7dc43a25ebf0de98dd1f,
         type: 3}

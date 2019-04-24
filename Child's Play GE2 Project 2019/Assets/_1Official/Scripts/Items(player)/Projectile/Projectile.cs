@@ -5,50 +5,57 @@ using UnityEngine.AI;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField]
-    protected float projectileSpeed;
-    [SerializeField]
-    protected float AoERadius = 0.0f;
-    [SerializeField]
-    protected ParticleSystem impactVFX;
+    [SerializeField] protected float _projectileSpeed;
+    [SerializeField] protected float _aoeRadius = 0.0f;
+    [SerializeField] protected ParticleSystem _impactVFX;
 
-    [SerializeField] protected Vector3 targetLocation;
     [SerializeField] protected Transform _target;
-    protected Vector3 direction;
-    [SerializeField] protected int damageValue = 10;
-    protected Rigidbody rb;
-    public int DamageValue { get => damageValue; set => damageValue = value; }
+    protected Vector3 _direction;
+    [SerializeField] protected int _damageValue = 10;
+    protected Rigidbody _rigidboby;
+    public int DamageValue { get => _damageValue; set => _damageValue = value; }
 
-    [SerializeField] private AudioSource myAudioSource;
+    [SerializeField] private AudioSource _myAudioSource;
 
+    [SerializeField] private ParticleSystem _projectileFX;
 
-    [SerializeField]
-    private ParticleSystem _projectileFX;
+    [SerializeField] private bool _hasHitOnce = false;
 
-    [SerializeField] private bool hasHitOnce = false;
-
+    /// <summary>
+    /// Called immediately after the object is created
+    /// </summary>
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        _rigidboby = GetComponent<Rigidbody>();
         Destroy(this.gameObject, 5.0f);
+        if (_impactVFX != null)
+        {
+            _myAudioSource = _impactVFX.GetComponent<AudioSource>();
+        }
     }
-    
+
+    /// <summary>
+    /// Assign target
+    /// </summary>
+    /// <param name="target">GameObject's transform</param>
     public virtual void AssignTarget(Transform target)
     {
         _target = target;
         this.transform.LookAt(_target);
-        rb.velocity = this.transform.forward * projectileSpeed + _target.GetComponent<NavMeshAgent>().velocity;
-        transform.rotation = Quaternion.LookRotation(rb.velocity);
-        Debug.DrawRay(this.transform.position, rb.velocity, Color.red, 0.5f);
+        _rigidboby.velocity = this.transform.forward * _projectileSpeed + _target.GetComponent<NavMeshAgent>().velocity;
+        transform.rotation = Quaternion.LookRotation(_rigidboby.velocity);
+        Debug.DrawRay(this.transform.position, _rigidboby.velocity, Color.red, 0.5f);
     }
     
+    /// <summary>
+    /// Called when the object hits a collider.
+    /// </summary>
+    /// <param name="other">Collider hit</param>
     public virtual void HitTarget(Collider other)
     {
-        //TODO: spawn effect
         PlayVFX();
-        //TODO: destroy effect
 
-        if (AoERadius > 0f)
+        if (_aoeRadius > 0f)
         {
             Explode();
         }
@@ -56,45 +63,55 @@ public class Projectile : MonoBehaviour
         {
             if (other.CompareTag("Enemy"))
             {
-                Damage(other.gameObject);
+                Damage(other.GetComponent<Enemy>());
             }
         }
 
         Destroy(this.gameObject);
     }
 
+    /// <summary>
+    /// If the projectile has AOE damage
+    /// </summary>
     void Explode()
     {
-        AudioSource.PlayClipAtPoint(SoundManager.GetInstance().GetAudioClip(Sound.missileSfx), this.transform.position);
-        Collider[] colliders = Physics.OverlapSphere(this.transform.position, AoERadius);
+        PlaySound();
+        Collider[] colliders = Physics.OverlapSphere(this.transform.position, _aoeRadius);
         foreach (Collider col in colliders)
         {
             if (col.tag == "Enemy")
             {
-                Damage(col.gameObject);
+                Damage(col.GetComponent<Enemy>());
             }
         }
     }
 
-    public virtual void Damage(GameObject enemyGO)
+    /// <summary>
+    /// Transfer damage to enemy
+    /// </summary>
+    /// <param name="enemy"> Enemy to damage. </param>
+    public virtual void Damage(Enemy enemy)
     {
-        Enemy enemy = enemyGO.GetComponent<Enemy>();
         if (enemy != null)
         {
-            enemy.TakeDamage(damageValue); 
+            enemy.TakeDamage(_damageValue); 
         }
     }
 
+    /// <summary>
+    /// Called when the object collides with an other collider/trigger
+    /// </summary>
+    /// <param name="other">The collider contacted</param>
     private void OnTriggerEnter(Collider other)
     {
-        if (hasHitOnce)
+        if (_hasHitOnce)
         {
             return;
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
             HitTarget(other);
-            hasHitOnce = true;
+            _hasHitOnce = true;
         }
         else if (other.gameObject.CompareTag("TilePath") || other.gameObject.CompareTag("Terrain"))
         {
@@ -102,18 +119,39 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Play the Particle/VFX
+    /// </summary>
     public void PlayVFX()
     {
-        if (impactVFX == null)
+        if (_impactVFX == null)
         {
             return;
         }
 
-        impactVFX.transform.parent = null;
-        impactVFX.transform.position += Vector3.up;
-        impactVFX.Play();
-        Destroy(impactVFX.gameObject , impactVFX.main.duration);
+        _impactVFX.transform.parent = null;
+        _impactVFX.transform.position += Vector3.up;
+        _impactVFX.Play();
+        Destroy(_impactVFX.gameObject , _impactVFX.main.duration);
         _projectileFX.Play();
+    }
+
+    /// <summary>
+    /// Play the sound of the audiosource
+    /// </summary>
+    protected virtual void PlaySound()
+    {
+        if (_myAudioSource != null)
+        {
+            if (_myAudioSource.clip != null)
+            {
+                if (!_myAudioSource.isPlaying)
+                {
+                    _myAudioSource.PlayOneShot(_myAudioSource.clip);
+                }
+
+            }
+        }
     }
 }
 

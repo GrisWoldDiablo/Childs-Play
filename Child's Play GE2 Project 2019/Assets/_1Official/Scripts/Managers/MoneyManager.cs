@@ -5,49 +5,64 @@ using UnityEngine;
 public class MoneyManager : MonoBehaviour
 {
     #region Singleton
-    private static MoneyManager instance = null;
+    private static MoneyManager _instance = null;
 
     public static MoneyManager GetInstance()
     {
-        if (instance == null)
+        if (_instance == null)
         {
             if (GameManager.GetInstance() != null)
             {
-                instance = GameManager.GetInstance().gameObject.AddComponent<MoneyManager>(); 
+                _instance = GameManager.GetInstance().gameObject.AddComponent<MoneyManager>(); 
             }
         }
-        return instance;
+        return _instance;
     }
     #endregion
     
-    private int currentMoney;
-    public int CurrentMoney { get => currentMoney; }
+    private int _currentMoney;
+    public int CurrentMoney { get => _currentMoney; }
 
+    /// <summary>
+    /// Reset the money to 0 or to the incomming value
+    /// </summary>
+    /// <param name="setMoney">Value to set the money at.</param>
     public void ResetMoney(int setMoney = 0)
     {
-        currentMoney = setMoney;
+        _currentMoney = setMoney;
         UpdateMoneyText();
     }
 
+    /// <summary>
+    /// Change the money amount, positive or negative
+    /// </summary>
+    /// <param name="change">The amount to change by</param>
     public void MoneyChange(int change)
     {
         if (change < 0)
         {
             ScoreManager.GetInstance().MoneySpent += Mathf.Abs(change);
         }
-        currentMoney += change;
+        _currentMoney += change;
         UpdateMoneyText();
     }
 
+    /// <summary>
+    /// Update the hud.
+    /// </summary>
     public void UpdateMoneyText()
     {
-        HudManager.GetInstance().UpdateMoneyAmount(currentMoney);
+        HudManager.GetInstance().UpdateMoneyAmount(_currentMoney);
     }
 
+    /// <summary>
+    /// Check if the player has enough money to by said item.
+    /// </summary>
+    /// <param name="cost">the cost of the item</param>
+    /// <returns>True if enough money is available</returns>
     public bool TryToBuy(int cost)
     {
-        //if (!CanBuy(cost))
-        if (currentMoney >= cost)
+        if (_currentMoney >= cost)
         {
             MoneyChange(-cost);
             return true;
@@ -57,12 +72,4 @@ public class MoneyManager : MonoBehaviour
         return false;
     }
 
-    //public bool CanBuy(int cost)
-    //{
-    //    if (currentMoney >= cost)
-    //    {
-    //        return true;
-    //    }
-    //    return false;
-    //}
 }

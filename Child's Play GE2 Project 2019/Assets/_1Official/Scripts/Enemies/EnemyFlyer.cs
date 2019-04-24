@@ -13,7 +13,7 @@ public class EnemyFlyer : Enemy
         SetAnimWalking();
 
         EnemyManager.GetInstance().AddEnemyToList(this as Enemy);
-        ogHP = HitPoints;
+        _ogHP = HitPoints;
         
         GameObject parent = this.transform.parent.gameObject;
         this.transform.SetParent(null);

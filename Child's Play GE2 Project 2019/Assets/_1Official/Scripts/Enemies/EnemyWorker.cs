@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class EnemyWorker : Enemy
 {
-    // Start is called before the first frame update
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     protected override void Start()
     {
         SetAnimWalking();
 
         EnemyManager.GetInstance().AddEnemyToList(this as Enemy);
-        ogHP = HitPoints;
+        _ogHP = HitPoints;
     }
 
     /// <summary>

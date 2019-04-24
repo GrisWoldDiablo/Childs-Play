@@ -74,14 +74,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c073028d2040ea7438b5f42082ca6409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 50
-  AoERadius: 0
-  impactVFX: {fileID: 0}
-  targetLocation: {x: 0, y: 0, z: 0}
+  _projectileSpeed: 50
+  _aoeRadius: 0
+  _impactVFX: {fileID: 0}
   _target: {fileID: 0}
-  damageValue: 10
-  myAudioSource: {fileID: 0}
+  _damageValue: 10
+  _myAudioSource: {fileID: 0}
   _projectileFX: {fileID: 0}
-  hasHitOnce: 0
-  secondPerTick: 0.2
-  secondItLast: 5
+  _hasHitOnce: 0
+  _secondPerTick: 0.2
+  _secondItLast: 5

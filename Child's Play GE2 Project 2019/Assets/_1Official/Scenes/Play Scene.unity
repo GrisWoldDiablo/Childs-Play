@@ -202,6 +202,16 @@ PrefabInstance:
       propertyPath: scoreDescriptionText
       value: 
       objectReference: {fileID: 559416379}
+    - target: {fileID: 1841120528766658429, guid: ddcd9eeb45bf2674bb528d5bec671dcd,
+        type: 3}
+      propertyPath: _scoreText
+      value: 
+      objectReference: {fileID: 477375160}
+    - target: {fileID: 1841120528766658429, guid: ddcd9eeb45bf2674bb528d5bec671dcd,
+        type: 3}
+      propertyPath: _scoreDescriptionText
+      value: 
+      objectReference: {fileID: 559416379}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddcd9eeb45bf2674bb528d5bec671dcd, type: 3}
 --- !u!114 &120906270 stripped
@@ -599,6 +609,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 220349488, guid: 0cb8b41ea90f4784a8d825f0a44eb84e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -77.00012
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cb8b41ea90f4784a8d825f0a44eb84e, type: 3}
 --- !u!114 &1043409772 stripped
@@ -796,15 +810,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableMouseMovement: 0
-  zoomSpeed: 4
-  maxZoom: 15
-  minZoom: 5
-  pitch: 0
-  _currentZoom: 14.6
-  yawSpeed: 100
-  cameraArm: {x: 2.36, y: -1.76, z: 0}
-  _currentYaw: 275.96844
-  isLocked: 0
+  _zoomSpeed: 4
+  _maxZoom: 15
+  _minZoom: 5
+  _yawSpeed: 100
+  _cameraArm: {x: 2.36, y: -1.76, z: 0}
   _cameraTranslationSpeed: 12.7
   inferiorLayerMask:
     serializedVersion: 2

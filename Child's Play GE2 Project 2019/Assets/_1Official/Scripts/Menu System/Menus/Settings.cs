@@ -96,8 +96,8 @@ public class Settings : MonoBehaviour {
         audioMixer.SetFloat(sFXVolParam, sFXVolValue);
 
         qualitySetting.PrefValue = QualitySettings.GetQualityLevel();
-        sensitivityH = PlayerPrefs.GetFloat(sensitivityHParam, 2);
-        sensitivityV = PlayerPrefs.GetFloat(sensitivityVParam, 2);
+        sensitivityH = PlayerPrefs.GetFloat(sensitivityHParam, 25);
+        sensitivityV = PlayerPrefs.GetFloat(sensitivityVParam, 25);
         GetLeaderboard();
 
         LoadLevelParams();

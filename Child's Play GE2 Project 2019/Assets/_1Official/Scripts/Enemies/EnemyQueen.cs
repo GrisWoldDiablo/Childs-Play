@@ -8,10 +8,10 @@ using UnityEngine;
 [System.Serializable]
 public class AntChild
 {
-    [SerializeField] private GameObject antGO;
-    [SerializeField] private float spawnWeight;
-    public GameObject AntGO { get => antGO; }
-    public float SpawnWeight { get => spawnWeight; }
+    [SerializeField] private GameObject _antGO;
+    [SerializeField] private float _spawnWeight;
+    public GameObject AntGO { get => _antGO; }
+    public float SpawnWeight { get => _spawnWeight; }
 }
 
 public class EnemyQueen : Enemy
@@ -20,8 +20,8 @@ public class EnemyQueen : Enemy
     [SerializeField, Range(1, 5)] private float secBetweenEggLaying = 2.0f;
     [SerializeField, Range(5, 15)] private float eggHatchTime = 10.0f;
     [Header("Set weight in descending order, highest to lowest.")]
-    [SerializeField] private AntChild[] antChildren;
-    [SerializeField] private GameObject eggGO;
+    [SerializeField] private AntChild[] _antChildren;
+    [SerializeField] private GameObject _eggGO;
     private Vector3 offset;
 
     /// <summary>
@@ -34,15 +34,20 @@ public class EnemyQueen : Enemy
         InvokeRepeating("SpawningChildren", secBetweenEggLaying, secBetweenEggLaying);
     }
 
+    /// <summary>
+    /// Method that is invoked repeating when the Queen spawns.
+    /// It will repeats it self base on set variable secBetweenEggLaying
+    /// It will randomly choose an ant to spawn based on the setup.
+    /// </summary>
     public void SpawningChildren()
     {
         float randomNumber = Random.Range(0.0f, 100.0f);
         int spawnIndex = -1;
 
         float weightValue = 0;
-        for (int i = 0; i < antChildren.Length; i++)
+        for (int i = 0; i < _antChildren.Length; i++)
         {
-            weightValue += antChildren[i].SpawnWeight;
+            weightValue += _antChildren[i].SpawnWeight;
             if (randomNumber <= weightValue)
             {
                 spawnIndex = i;
@@ -84,19 +89,19 @@ public class EnemyQueen : Enemy
         Vector3 spawnPosition = this.transform.position - offset + (this.transform.right * randomPosition) - this.transform.forward;
         Quaternion spawnRotation = this.transform.rotation;
 
-        GameObject egg = Instantiate(eggGO, spawnPosition , spawnRotation, LevelManager.GetInstance().CurrentLevelGO.transform);
+        GameObject egg = Instantiate(_eggGO, spawnPosition , spawnRotation, LevelManager.GetInstance().CurrentLevelGO.transform);
         egg.GetComponent<Animator>().SetFloat("Speed", Random.Range(1 - 0.2f, 1 + 0.2f));
         egg.transform.Rotate(Vector3.up * Random.Range(-180.0f, 180.0f));
         float randomHatching = Random.Range(0, eggHatchTime) + eggHatchTime;
         Destroy(egg, randomHatching);
 
         yield return new WaitForSeconds(randomHatching);
-        if (isDying)
+        if (_isDying)
         {
             yield break;
         }
 
-        GameObject ant = Instantiate(antChildren[spawnIndex].AntGO, spawnPosition, spawnRotation, null);
+        GameObject ant = Instantiate(_antChildren[spawnIndex].AntGO, spawnPosition, spawnRotation, null);
         ant.transform.Rotate(Vector3.up * Random.Range(-180.0f, 180.0f));
         ant.GetComponentInChildren<Enemy>().EMMCode.SetNode(this.eMMCode.CurrentDestination);
         ant.GetComponentInChildren<EnemyMovementMechanics>().MoveToNode();

@@ -807,7 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d697b093a99166d47bb43bf7488525b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 100
+  _hitPoints: 100
   _itemType: 0
   itemName: Laser Tower Level 2
   itemDescription: 'This will burn things more '
@@ -828,16 +828,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c15a4ebcc89ae45883f13a42e29a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerTarget: {fileID: 0}
-  pivot: {fileID: 3626335371792302166}
-  rotationSpeed: 10
-  LookAtTarget: 1
-  projectileSpawnPoint: {fileID: 383831926135187985}
-  tower_SO: {fileID: 11400000, guid: 4ec4145b08166b84b91c229d8874bf6d, type: 2}
-  _lightEffect: {fileID: 0}
-  _vfxLaser: {fileID: 0}
-  _lineRendererComponent: {fileID: 0}
-  firingVFX: {fileID: 2976579326289753569}
+  _pivot: {fileID: 3626335371792302166}
+  _rotationSpeed: 10
+  _lookAtTarget: 0
+  _projectileSpawnPoint: {fileID: 383831926135187985}
+  _tower_SO: {fileID: 11400000, guid: 4ec4145b08166b84b91c229d8874bf6d, type: 2}
+  _lightEffect: {fileID: 6961705884543233473}
+  _vfxLaser: {fileID: 8121536573711471189}
+  _lineRendererComponent: {fileID: 3680547140922618133}
+  _firingVFX: {fileID: 2976579326289753569}
   levelUpgradeIndex: 1
 --- !u!120 &3680547140922618133
 LineRenderer:
@@ -1433,6 +1432,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5961824344110199108}
     m_Modifications:
+    - target: {fileID: 6197746006981787540, guid: ee4a61e0efdb3134798ee8beb37c5f7d,
+        type: 3}
+      propertyPath: m_Name
+      value: SIZZLE_particleFX
+      objectReference: {fileID: 0}
     - target: {fileID: 988599051349895844, guid: ee4a61e0efdb3134798ee8beb37c5f7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1488,11 +1492,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6197746006981787540, guid: ee4a61e0efdb3134798ee8beb37c5f7d,
-        type: 3}
-      propertyPath: m_Name
-      value: SIZZLE_particleFX
-      objectReference: {fileID: 0}
     - target: {fileID: 7245857901477012814, guid: ee4a61e0efdb3134798ee8beb37c5f7d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1524,6 +1523,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5961824344110199108}
     m_Modifications:
+    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+        type: 3}
+      propertyPath: m_Name
+      value: VFX_Laser
+      objectReference: {fileID: 0}
     - target: {fileID: 5886706566434731798, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1578,11 +1582,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
-        type: 3}
-      propertyPath: m_Name
-      value: VFX_Laser
       objectReference: {fileID: 0}
     - target: {fileID: 5886706566434731880, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
@@ -1652,6 +1651,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2379226705394361661}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &8121536573711471189 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5886706566434731880, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+    type: 3}
+  m_PrefabInstance: {fileID: 2379226705394361661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &6961705884543233473 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 4726603173552539900, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+    type: 3}
+  m_PrefabInstance: {fileID: 2379226705394361661}
+  m_PrefabAsset: {fileID: 0}
 --- !u!198 &8121536572349097801 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5886706565642273396, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
@@ -1665,6 +1676,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5961824344110199108}
     m_Modifications:
+    - target: {fileID: 370954403022743912, guid: b8310b3fa9c4cfa43b434f63f102a52e,
+        type: 3}
+      propertyPath: m_Name
+      value: Range
+      objectReference: {fileID: 0}
     - target: {fileID: 370954403022743892, guid: b8310b3fa9c4cfa43b434f63f102a52e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1720,22 +1736,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 370954403022743912, guid: b8310b3fa9c4cfa43b434f63f102a52e,
-        type: 3}
-      propertyPath: m_Name
-      value: Range
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8310b3fa9c4cfa43b434f63f102a52e, type: 3}
---- !u!1 &4600092811340407383 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 370954403022743912, guid: b8310b3fa9c4cfa43b434f63f102a52e,
-    type: 3}
-  m_PrefabInstance: {fileID: 4247797260631165759}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4600092811340407403 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 370954403022743892, guid: b8310b3fa9c4cfa43b434f63f102a52e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4247797260631165759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4600092811340407383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 370954403022743912, guid: b8310b3fa9c4cfa43b434f63f102a52e,
     type: 3}
   m_PrefabInstance: {fileID: 4247797260631165759}
   m_PrefabAsset: {fileID: 0}

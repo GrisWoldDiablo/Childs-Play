@@ -97,14 +97,17 @@ MonoBehaviour:
   endHealthColor: {r: 0.745283, g: 0.05273228, b: 0.05273228, a: 1}
   secBetweenEggLaying: 2
   eggHatchTime: 10
-  antChildren:
-  - antGO: {fileID: 5740055950189144267, guid: d4bb47c0ccbd79e4f851668533353446, type: 3}
-    spawnWeight: 40
-  - antGO: {fileID: 8072516212597103562, guid: 0983274d557859b469b347d04b2824e4, type: 3}
-    spawnWeight: 30
-  - antGO: {fileID: 2557512320319996496, guid: 46673439733e2cd4096625dc7921700b, type: 3}
-    spawnWeight: 10
-  eggGO: {fileID: 5175496972561747393, guid: 017c9bb87f030ad4aa909c39c20e4ead, type: 3}
+  _antChildren:
+  - _antGO: {fileID: 5740055950189144267, guid: d4bb47c0ccbd79e4f851668533353446,
+      type: 3}
+    _spawnWeight: 40
+  - _antGO: {fileID: 8072516212597103562, guid: 0983274d557859b469b347d04b2824e4,
+      type: 3}
+    _spawnWeight: 30
+  - _antGO: {fileID: 2557512320319996496, guid: 46673439733e2cd4096625dc7921700b,
+      type: 3}
+    _spawnWeight: 10
+  _eggGO: {fileID: 5175496972561747393, guid: 017c9bb87f030ad4aa909c39c20e4ead, type: 3}
 --- !u!195 &6423117536833535197
 NavMeshAgent:
   m_ObjectHideFlags: 0

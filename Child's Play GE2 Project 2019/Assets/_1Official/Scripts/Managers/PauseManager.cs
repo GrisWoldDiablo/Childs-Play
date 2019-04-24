@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pause : MonoBehaviour
+public class PauseManager : MonoBehaviour
 {
     #region Singleton
-    private static Pause instance = null;
+    private static PauseManager _instance = null;
 
-    public static Pause GetInstance()
+    public static PauseManager GetInstance()
     {
-        if (instance == null)
+        if (_instance == null)
         {
-            instance = GameObject.FindObjectOfType<Pause>();
+            _instance = GameObject.FindObjectOfType<PauseManager>();
         }
-        return instance;
+        return _instance;
     }
     #endregion
 

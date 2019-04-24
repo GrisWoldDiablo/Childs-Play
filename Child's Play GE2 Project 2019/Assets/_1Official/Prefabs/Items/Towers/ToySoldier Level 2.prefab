@@ -1868,16 +1868,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c15a4ebcc89ae45883f13a42e29a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerTarget: {fileID: 0}
-  pivot: {fileID: 3121155680364799859}
-  rotationSpeed: 10
-  LookAtTarget: 0
-  projectileSpawnPoint: {fileID: 5644198522617743171}
-  tower_SO: {fileID: 11400000, guid: 3853b6424cf9cfe44919b116bc56dd17, type: 2}
+  _pivot: {fileID: 3121155680364799859}
+  _rotationSpeed: 10
+  _lookAtTarget: 0
+  _projectileSpawnPoint: {fileID: 5644198522617743171}
+  _tower_SO: {fileID: 11400000, guid: 3853b6424cf9cfe44919b116bc56dd17, type: 2}
   _lightEffect: {fileID: 0}
   _vfxLaser: {fileID: 0}
   _lineRendererComponent: {fileID: 0}
-  firingVFX: {fileID: 2987918645921795594}
+  _firingVFX: {fileID: 2987918645921795594}
   levelUpgradeIndex: 1
 --- !u!114 &3900594165254421110
 MonoBehaviour:
@@ -1891,7 +1890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d697b093a99166d47bb43bf7488525b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 100
+  _hitPoints: 100
   _itemType: 0
   itemName: Toy Soldier Level 2
   itemDescription: 'This is a toy soldier. '

@@ -5,16 +5,22 @@ using UnityEngine;
 public class PlayerBaseClass : MonoBehaviour
 {
     [Header("Player Option")]
-    [SerializeField] private int hitPoints = 100;
-    public int HitPoints { get => hitPoints; set => hitPoints = value; }
+    [SerializeField] private int _hitPoints = 100;
+    public int HitPoints { get => _hitPoints; set => _hitPoints = value; }
 
     protected AudioSource myAudioSource;
 
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     protected void Start()
     {
         myAudioSource = GetComponent<AudioSource>();
     }
 
+    /// <summary>
+    /// Called when the hitPoints drop to zero
+    /// </summary>
     protected virtual void Die()
     {
         if (this == GameManager.GetInstance().SelectedItem)
@@ -24,9 +30,13 @@ public class PlayerBaseClass : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    /// <summary>
+    /// Called to reduce hitPoints
+    /// </summary>
+    /// <param name="damageValue">Incoming Damage</param>
     public virtual void TakeDamage(int damageValue)
     {
-        this.hitPoints -= damageValue;
+        this._hitPoints -= damageValue;
 
         if (this.HitPoints <= 0)
         {
@@ -36,6 +46,9 @@ public class PlayerBaseClass : MonoBehaviour
         PlaySound();
     }
 
+    /// <summary>
+    /// Play sound on the object AudioSource
+    /// </summary>
     protected void PlaySound()
     {
         if (myAudioSource.clip != null && !myAudioSource.isPlaying)
