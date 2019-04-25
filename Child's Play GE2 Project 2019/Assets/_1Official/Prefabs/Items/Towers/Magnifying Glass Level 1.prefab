@@ -279,7 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pivot: {fileID: 444854824}
   _rotationSpeed: 10
-  _lookAtTarget: 0
+  _lookAtTarget: 1
   _projectileSpawnPoint: {fileID: 4346594931464436070}
   _tower_SO: {fileID: 11400000, guid: 4ec4145b08166b84b91c229d8874bf6d, type: 2}
   _lightEffect: {fileID: 2375837584257052599}
@@ -777,11 +777,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1468471133}
     m_Modifications:
-    - target: {fileID: 955810444901623946, guid: e83f6eafa3ec64140a35b0a4a487143b,
-        type: 3}
-      propertyPath: m_Name
-      value: FIZZ_particleFX
-      objectReference: {fileID: 0}
     - target: {fileID: 6267141753832816058, guid: e83f6eafa3ec64140a35b0a4a487143b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -836,6 +831,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 955810444901623946, guid: e83f6eafa3ec64140a35b0a4a487143b,
+        type: 3}
+      propertyPath: m_Name
+      value: FIZZ_particleFX
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e83f6eafa3ec64140a35b0a4a487143b, type: 3}
@@ -954,21 +954,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1468471133}
     m_Modifications:
-    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
-        type: 3}
-      propertyPath: m_Name
-      value: TraTraTra1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
-        type: 3}
-      propertyPath: m_Name
-      value: TraTraTra1
-      objectReference: {fileID: 0}
     - target: {fileID: 9169182781000900407, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1023,6 +1008,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_Name
+      value: TraTraTra1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169182781000900406, guid: ed7d70aa7e8db6d429e1cf527aee8be6,
+        type: 3}
+      propertyPath: m_Name
+      value: TraTraTra1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed7d70aa7e8db6d429e1cf527aee8be6, type: 3}
@@ -1120,11 +1120,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1468471133}
     m_Modifications:
-    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+    - target: {fileID: 5886706566434731880, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
-      propertyPath: m_Name
-      value: VFX_Laser
-      objectReference: {fileID: 0}
+      propertyPath: SubModule.subEmitters.Array.data[0].emitter
+      value: 
+      objectReference: {fileID: 3517636027469391167}
     - target: {fileID: 5886706566434731798, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1180,11 +1180,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5886706566434731880, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
-      propertyPath: SubModule.subEmitters.Array.data[0].emitter
-      value: 
-      objectReference: {fileID: 3517636027469391167}
+      propertyPath: m_Name
+      value: VFX_Laser
+      objectReference: {fileID: 0}
     - target: {fileID: 5886706566973664803, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
       propertyPath: m_IsActive
