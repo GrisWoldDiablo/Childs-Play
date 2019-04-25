@@ -6,14 +6,17 @@ using UnityEngine.UI;
 
 public class UpgradeItemInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    private GameObject _rangeGOUpgrade;
+    private Button _thisButton;
 
-    private GameObject rangeGOUpgrade;
-    private Button thisButton;
-
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     private void Start()
     {
-        thisButton = GetComponent<Button>();
+        _thisButton = GetComponent<Button>();
     }
+
     /// <summary>
     /// When the pointer (mouse cursor) enters the button field, 
     /// it shows the range for the upgrade version of the currently select item.
@@ -21,16 +24,14 @@ public class UpgradeItemInfo : MonoBehaviour, IPointerEnterHandler, IPointerExit
     /// <param name="eventData">Pointer Data</param>
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (thisButton.interactable)
+        if (_thisButton.interactable)
         {
             if (GameManager.GetInstance().SelectedTile != null &&
                GameManager.GetInstance().SelectedTile.CurrentItem != null &&
                GameManager.GetInstance().SelectedTile.CurrentItem.GetComponent<Item>().UpgradeVersion != null)
             {
-                // Insert Code here when mouse is over button and there is upgrade available.
-
-                rangeGOUpgrade = GameManager.GetInstance().SelectedTile.CurrentItem.GetComponent<Item>().RangeGOUpgrade;
-                rangeGOUpgrade.SetActive(true);
+                _rangeGOUpgrade = GameManager.GetInstance().SelectedTile.CurrentItem.GetComponent<Item>().RangeGOUpgrade;
+                _rangeGOUpgrade.SetActive(true);
             } 
         }
     }
@@ -42,12 +43,10 @@ public class UpgradeItemInfo : MonoBehaviour, IPointerEnterHandler, IPointerExit
     /// <param name="eventData">Pointer Data</param>
     public void OnPointerExit(PointerEventData eventData)
     {
-        // Insert Code here when mouse exit button to reset any changes made on enter.
-
         //Hide range upgrade.
-        if (rangeGOUpgrade != null)
+        if (_rangeGOUpgrade != null)
         {
-            rangeGOUpgrade.SetActive(false);
+            _rangeGOUpgrade.SetActive(false);
         }
     }
 }

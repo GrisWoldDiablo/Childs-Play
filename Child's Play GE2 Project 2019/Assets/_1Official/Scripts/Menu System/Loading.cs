@@ -12,77 +12,83 @@ using UnityEngine.SceneManagement;
 
 public class Loading : MonoBehaviour {
     [Header("Graphics")]
-    [SerializeField] private Image fillImage;
-    [SerializeField] private Text percentText;
+    [SerializeField] private Image _fillImage;
+    [SerializeField] private Text _percentText;
     [Header("Options")]
-    [SerializeField] private bool waitForUserInput = false;
-    [SerializeField] private float waitForTimeDelay = 0.0f;
+    [SerializeField] private bool _waitForUserInput = false;
+    [SerializeField] private float _waitForTimeDelay = 0.0f;
     [Header("Scene to load (-1 = next in build index)")]
-    [SerializeField] private int sceneIndex = -1;
+    [SerializeField] private int _sceneIndex = -1;
 
-    private AsyncOperation asyncLoader;
+    private AsyncOperation _asyncLoader;
 
 
-
-    // Use this for initialization
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     void Start () {
         Time.timeScale = 1.0f;
         Input.ResetInputAxes();
         System.GC.Collect();
 
         int currentScene = SceneManager.GetActiveScene().buildIndex;
-        if (sceneIndex != -1 && sceneIndex < SceneManager.sceneCountInBuildSettings)
+        if (_sceneIndex != -1 && _sceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            asyncLoader = SceneManager.LoadSceneAsync(sceneIndex);
+            _asyncLoader = SceneManager.LoadSceneAsync(_sceneIndex);
         }
         else
         {
             if (currentScene == SceneManager.sceneCountInBuildSettings - 1)
             {
-                asyncLoader = SceneManager.LoadSceneAsync(0); 
+                _asyncLoader = SceneManager.LoadSceneAsync(0); 
             }
             else
             {
-                asyncLoader = SceneManager.LoadSceneAsync(currentScene + 1);
+                _asyncLoader = SceneManager.LoadSceneAsync(currentScene + 1);
             }
         }
-        if (waitForUserInput)
+        if (_waitForUserInput)
         {
-            asyncLoader.allowSceneActivation = false;
+            _asyncLoader.allowSceneActivation = false;
         }
-        else if (waitForTimeDelay > 0)
+        else if (_waitForTimeDelay > 0)
         {
-            asyncLoader.allowSceneActivation = false;
-            Invoke("TimeDelay", waitForTimeDelay);
+            _asyncLoader.allowSceneActivation = false;
+            Invoke("TimeDelay", _waitForTimeDelay);
         }
-	}
+    }
 	
-	// Update is called once per frame
+    /// <summary>
+	/// Update is called once per frame 
+    /// </summary>
 	void Update () {
 
-        if (Input.anyKey && waitForUserInput)
+        if (Input.anyKey && _waitForUserInput)
         {
-            asyncLoader.allowSceneActivation = true;
+            _asyncLoader.allowSceneActivation = true;
         }
         
-        fillImage.fillAmount = asyncLoader.progress + 0.1f;
+        _fillImage.fillAmount = _asyncLoader.progress + 0.1f;
 
-        if (fillImage.fillAmount <= 0.99f)
+        if (_fillImage.fillAmount <= 0.99f)
         {
-            percentText.text = "Loading " + fillImage.fillAmount.ToString("P2");
+            _percentText.text = "Loading " + _fillImage.fillAmount.ToString("P2");
         }
-        else if (waitForUserInput)
+        else if (_waitForUserInput)
         {
-            percentText.text = "Press any key to continue.";
+            _percentText.text = "Press any key to continue.";
         }
         else
         {
-            percentText.text = fillImage.fillAmount.ToString("P2");
+            _percentText.text = _fillImage.fillAmount.ToString("P2");
         }
     }
 
+    /// <summary>
+    /// To set the scene loading on a time delay loading is completed.
+    /// </summary>
     private void TimeDelay()
     {
-        asyncLoader.allowSceneActivation = true;
+        _asyncLoader.allowSceneActivation = true;
     }
 }

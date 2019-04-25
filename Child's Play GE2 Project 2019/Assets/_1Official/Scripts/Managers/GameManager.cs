@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         HidePlaceHolders();
         ShowRange(false);
         _selectedTile = null;
-        Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
+        Shop.GetInstance().SetPanelActive(Shop.GetInstance().PLACEHOLDER);
     }
 
     /// <summary>
@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour
         }
 
         HidePlaceHolders();
-        //Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
+
         _tileSelectionCursor.SetActive(false);
         _tileSelectedCursor.SetActive(false);
     }
@@ -195,8 +195,7 @@ public class GameManager : MonoBehaviour
         _selectedTile = tile;
         if (tile.CurrentItem != null)
         {
-            Shop.GetInstance().SetPanelActive(Shop.GetInstance().UpgradeSellPanel);
-            //SoundManager.GetInstance().PlaySoundOneShot(Sound.selectTile, 0.5f);
+            Shop.GetInstance().SetPanelActive(Shop.GetInstance().UPGRADESELLPANEL);
             ShowRange(true);
             return;
         }
@@ -204,13 +203,11 @@ public class GameManager : MonoBehaviour
         switch (tile.TileType)
         {
             case TileType.Tower:
-                Shop.GetInstance().SetPanelActive(Shop.GetInstance().ShopPanel);
-                //SoundManager.GetInstance().PlaySoundOneShot(Sound.selectTile, 0.5f);
+                Shop.GetInstance().SetPanelActive(Shop.GetInstance().SHOPPANEL);
                 ShowItemOnTile(_listOfTowerPlaceHolder[_selectedTowerIndex], tile);
                 break;
             case TileType.Barrier:
-                Shop.GetInstance().SetPanelActive(Shop.GetInstance().BarrierPanel);
-                //SoundManager.GetInstance().PlaySoundOneShot(Sound.selectTile, 0.5f);
+                Shop.GetInstance().SetPanelActive(Shop.GetInstance().BARRIERPANEL);
                 ShowItemOnTile(_listOfBarrierPlaceHolder[_selectedBarrierIndex], tile);
                 break;
             default:
@@ -244,7 +241,6 @@ public class GameManager : MonoBehaviour
         _tileSelectionCursor.SetActive(false);
         if (tile == null)
         {
-            //Debug.LogError("TILE IS NULL");
             return;
         }
         cursor.SetActive(true);
@@ -262,7 +258,6 @@ public class GameManager : MonoBehaviour
     {
         if (tile == null)
         {
-            //Debug.LogError("TILE IS NULL");
             return;
         }
         item.SetActive(true);
@@ -294,7 +289,7 @@ public class GameManager : MonoBehaviour
                 {
                     return;
                 }
-                SoundManager.GetInstance().PlaySoundOneShot(Sound.placeTower, 0.5f);
+                SoundManager.GetInstance().PlaySoundOneShot(Sound.PlaceTower, 0.5f);
                 InstantiateItemOnTile(_listOfTower[_selectedTowerIndex]);
                 break;
             case TileType.Barrier:
@@ -302,7 +297,7 @@ public class GameManager : MonoBehaviour
                 {
                     return;
                 }
-                SoundManager.GetInstance().PlaySoundOneShot(Sound.placeBarrier, 0.5f);
+                SoundManager.GetInstance().PlaySoundOneShot(Sound.PlaceBarrier, 0.5f);
                 InstantiateItemOnTile(_listOfBarrier[_selectedBarrierIndex]);
                 break;
             default:
@@ -328,7 +323,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Upgrading!");
                 Destroy(_selectedTile.CurrentItem);
-                SoundManager.GetInstance().PlaySoundOneShot(Sound.upgrade, 0.5f);
+                SoundManager.GetInstance().PlaySoundOneShot(Sound.Upgrade, 0.5f);
                 InstantiateItemOnTile(upgradeVersion.gameObject);
             }
         }
@@ -357,10 +352,10 @@ public class GameManager : MonoBehaviour
             return;
         }
         MoneyManager.GetInstance().MoneyChange(_selectedTile.CurrentItem.GetComponent<Item>().Value); //Sell item
-        SoundManager.GetInstance().PlaySoundOneShot(Sound.removeTower, 1f);
+        SoundManager.GetInstance().PlaySoundOneShot(Sound.RemoveTower, 1f);
         Destroy(_selectedTile.CurrentItem.gameObject);
         _selectedTile.CurrentItem = null;
-        Shop.GetInstance().SetPanelActive(Shop.GetInstance().Placeholder);
+        Shop.GetInstance().SetPanelActive(Shop.GetInstance().PLACEHOLDER);
 
         DeselectTile();
     }
@@ -378,9 +373,6 @@ public class GameManager : MonoBehaviour
                         _selectedTile.transform.rotation,
                         LevelManager.GetInstance().CurrentLevelGO.transform // Childd of the Level
                         );
-        //Item newItem = selectedTile.CurrentItem.GetComponent<Item>();
-        //newItem.Value /= 2;
-        //PlayerManager.GetInstance().AddPlayer(newItem);
         HidePlaceHolders();
     }
 
@@ -417,7 +409,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GameOver()
     {
-        SoundManager.GetInstance().PlaySoundOneShot(Sound.gameOver);
+        Input.ResetInputAxes();
+        Cursor.lockState = CursorLockMode.None;
+        SoundManager.GetInstance().PlaySoundOneShot(Sound.GameOver);
         PauseManager.GetInstance().PauseGame();
         PanelSelection(_gameOverPanelIndex);
     }

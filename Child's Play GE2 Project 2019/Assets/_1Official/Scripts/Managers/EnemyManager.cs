@@ -28,11 +28,17 @@ public class EnemyManager : MonoBehaviour
     public List<Enemy> ListOfEnemies { get => _listOfEnemies;}
     public Enemy EnemyWithFocus { get => _enemyWithFocus; set => _enemyWithFocus = value; }
 
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     private void Update()
     {
         ChangeEnemyFocusWithButton();
     }
 
+    /// <summary>
+    /// Change the enemy the camera is focus on.
+    /// </summary>
     public void ChangeEnemyFocusWithButton()
     {
         if (Input.GetButtonDown("SwitchEnemy"))
@@ -42,6 +48,12 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Find the next enemy in the list
+    /// </summary>
+    /// <param name="enemy">enemy to find</param>
+    /// <returns>return the next enemy in the list or the first one 
+    ///          if you hit the last one or null if the list is empty</returns>
     public Enemy NextEnemyInList(Enemy enemy)
     {
         if (enemy == null)
@@ -70,12 +82,20 @@ public class EnemyManager : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Add an emeny to the list
+    /// </summary>
+    /// <param name="enemy">enemy to add</param>
     public void AddEnemyToList(Enemy enemy)
     {
         _listOfEnemies.Add(enemy);
         ScoreManager.GetInstance().EnemyCounts++;
     }
 
+    /// <summary>
+    /// Remove an ememy from the list
+    /// </summary>
+    /// <param name="enemy">enemy to remove</param>
     public void RemoveEnemyFromList(Enemy enemy)
     {
         _listOfEnemies.Remove(enemy);
@@ -85,6 +105,9 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Destroy all the enemy on the list.
+    /// </summary>
     public void DestroyAllEnemies()
     {
         foreach (var item in GameObject.FindObjectsOfType<Enemy>())

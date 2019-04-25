@@ -6,50 +6,52 @@ using UnityEngine.UI;
 public class SetSensitivity : MonoBehaviour
 {
     private enum SensitivityDirection { Horizontal, Vertical }
-    private string nameParam;
-    public string NameParam { get { return nameParam; } }
+    private string _nameParam;
+    public string NameParam { get { return _nameParam; } }
 
-    private Button applyButton;
-    private float prefValue;
-    private Slider slider;
-    public Slider Slider { get { return slider; } }
-    [SerializeField] private Text valueText;
-    [SerializeField] private SensitivityDirection sensDirection;
-    //private Settings settingsCode;
+    private Button _applyButton;
+    private float _prefValue;
+    private Slider _slider;
+    public Slider Slider { get { return _slider; } }
+    [SerializeField] private Text _valueText;
+    [SerializeField] private SensitivityDirection _sensDirection;
 
+    /// <summary>
+    /// Set the sensitivity base on the slider value
+    /// </summary>
+    /// <param name="sliderValue">Slider value</param>
     public void SetSens(float sliderValue)
     {
-        //Debug.Log("SetSens(): " + sliderValue);
-        if (prefValue != slider.value)
+        if (_prefValue != _slider.value)
         {
-            //Debug.Log("Turn On Apply Button");
-            applyButton.interactable = true;
+            _applyButton.interactable = true;
         }
-        slider.value = sliderValue;
-        valueText.text = slider.value.ToString("F2");
+        _slider.value = sliderValue;
+        _valueText.text = _slider.value.ToString("F2");
     }
 
-    // Use this for initialization
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     void Start()
     {
-        //settingsCode = GameObject.FindObjectOfType<Settings>();
-        switch (sensDirection)
+        switch (_sensDirection)
         {
             case SensitivityDirection.Horizontal:
-                nameParam = Settings.GetInstance().SensitivityHParam;
-                prefValue = Settings.GetInstance().SensitivityH;
+                _nameParam = Settings.GetInstance().SensitivityHParam;
+                _prefValue = Settings.GetInstance().SensitivityH;
                 break;
             case SensitivityDirection.Vertical:
-                nameParam = Settings.GetInstance().SensitivityVParam;
-                prefValue = Settings.GetInstance().SensitivityV;
+                _nameParam = Settings.GetInstance().SensitivityVParam;
+                _prefValue = Settings.GetInstance().SensitivityV;
                 break;
             default:
                 break;
         }
         
-        applyButton = GameObject.Find("ApplyButton").GetComponent<Button>();
-        slider = GetComponent<Slider>();
-        slider.value = prefValue;
+        _applyButton = GameObject.Find("ApplyButton").GetComponent<Button>();
+        _slider = GetComponent<Slider>();
+        _slider.value = _prefValue;
     }
 
 }

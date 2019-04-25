@@ -5,20 +5,10 @@ using UnityEngine.UI;
 
 public class InfoPanel : MonoBehaviour
 {
+    /// <summary>
+    /// this script is not used.
+    /// </summary>
     [SerializeField] public Text _name;
     [SerializeField] public Text _description;
     [SerializeField] public Text _cost;
-    //[SerializeField] private Image _image;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

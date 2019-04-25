@@ -7,46 +7,51 @@ using UnityEngine.UI;
 public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
-    [SerializeField] private Item itemScript;
-    [SerializeField] private ButtonType typeOfButton;
-    [SerializeField] private GameObject myToolTip;
-    private Button thisButton;
-    //private Item itemScript;
+    [SerializeField] private Item _itemScript;
+    [SerializeField] private ButtonType _typeOfButton;
+    [SerializeField] private GameObject _myToolTip;
+    private Button _thisButton;
 
     private int _myIndex;
     public int MyIndex { get => _myIndex; set => _myIndex = value; }
-    public ButtonType TypeOfButton { get => typeOfButton; set => typeOfButton = value; }
+    public ButtonType TypeOfButton { get => _typeOfButton; set => _typeOfButton = value; }
 
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     void Start()
     {
-        if (thisButton == null)
+        if (_thisButton == null)
         {
-            thisButton = GetComponent<Button>();
+            _thisButton = GetComponent<Button>();
         }
-        myToolTip.SetActive(false);
+        _myToolTip.SetActive(false);
         Shop.GetInstance().TogglePrice(false);
-        //itemScript = itemType.gameObject.GetComponent<Item>();
-        if (itemScript != null)
+        if (_itemScript != null)
         {
-            _myIndex = itemScript.IndexInGM; 
+            _myIndex = _itemScript.IndexInGM; 
         }
     }
 
+    /// <summary>
+    /// Called when the object is initialized, but only if the object is active.
+    /// Then called every time the object becomes active
+    /// </summary>
     private void OnEnable()
     {
-        if (thisButton == null)
+        if (_thisButton == null)
         {
-            thisButton = GetComponent<Button>();
+            _thisButton = GetComponent<Button>();
         }
         Shop.GetInstance().TogglePrice(false);
-        myToolTip.SetActive(false);
-        thisButton.interactable = true;
-        if (typeOfButton == ButtonType.Buy)
+        _myToolTip.SetActive(false);
+        _thisButton.interactable = true;
+        if (_typeOfButton == ButtonType.Buy)
         {
             bool found = false;
             foreach (Item item in LevelManager.GetInstance().CurrentLevelInfo.ItemsAvailable)
             {
-                if (item == itemScript)
+                if (item == _itemScript)
                 {
                     found = true;
                     break;
@@ -54,11 +59,11 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             }
             if (!found)
             {
-                thisButton.interactable = false;
+                _thisButton.interactable = false;
             }
         }
 
-        if (typeOfButton == ButtonType.Upgrade)
+        if (_typeOfButton == ButtonType.Upgrade)
         {
             bool found = false;
             foreach (Item item in LevelManager.GetInstance().CurrentLevelInfo.ItemsAvailable)
@@ -76,32 +81,40 @@ public class StoreButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             }
             if (!found)
             {
-                thisButton.interactable = false;
+                _thisButton.interactable = false;
             }
         }
     }
 
+    /// <summary>
+    /// When cursor enters above the object
+    /// </summary>
+    /// <param name="eventData">Unity data</param>
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (thisButton.interactable)
+        if (_thisButton.interactable)
         {
-            myToolTip.SetActive(true);
+            _myToolTip.SetActive(true);
             Shop.GetInstance().TogglePrice();
-            if (typeOfButton == ButtonType.Buy)
+            if (_typeOfButton == ButtonType.Buy)
             {
                 Shop.GetInstance().TowerSelect(_myIndex); 
             }
-            if (!Shop.GetInstance().ChangePrice(itemScript, typeOfButton))
+            if (!Shop.GetInstance().ChangePrice(_itemScript, _typeOfButton))
             {
                 GameManager.GetInstance().DeselectTile();
             }
-            SoundManager.GetInstance().PlaySoundOneShot(Sound.onButtonOver, 0.05f);
+            SoundManager.GetInstance().PlaySoundOneShot(Sound.OnButtonOver, 0.05f);
         }
     }
 
+    /// <summary>
+    /// When cursor exit the object
+    /// </summary>
+    /// <param name="eventData">Unity data</param>
     public void OnPointerExit(PointerEventData eventData)
     {
-        myToolTip.SetActive(false);
+        _myToolTip.SetActive(false);
         Shop.GetInstance().TogglePrice(false);
         EventSystem.current.SetSelectedGameObject(null);
     }

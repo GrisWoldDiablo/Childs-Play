@@ -3,25 +3,31 @@ using UnityEngine.UI;
 
 public class ReturnSettings : MonoBehaviour {
 
-    [SerializeField] private int confirmationPanelIndex;
-    //private MenuInteraction menuCode;
-    private Button applyButton;
+    [SerializeField] private int _confirmationPanelIndex;
 
+    private Button _applyButton;
+
+    /// <summary>
+    /// Check if the setting has be changed and call the confirmation panel if it was now saved.
+    /// </summary>
+    /// <param name="panelIndex"></param>
     public void ExitSettings(int panelIndex)
     {
-        if (!applyButton.interactable)
+        if (!_applyButton.interactable)
         {
             MenuInteraction.GetInstance().PanelToggle(panelIndex);
         }
         else
         {
-            MenuInteraction.GetInstance().PanelToggle(confirmationPanelIndex);
+            MenuInteraction.GetInstance().PanelToggle(_confirmationPanelIndex);
         }
     }
 
-	// Use this for initialization
-	void Start () {
-        applyButton = GameObject.Find("ApplyButton").GetComponent<Button>();
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
+    void Start () {
+        _applyButton = GameObject.Find("ApplyButton").GetComponent<Button>();
     }
 
 }

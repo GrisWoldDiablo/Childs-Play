@@ -5,73 +5,73 @@ using UnityEngine;
 
 public enum Sound
 {
-    moneyIncome,
-    onButtonClick,
-    onButtonOver,
-    placeTower,
-    placeBarrier,
-    removeTower,
-    upgrade,
-    selectTile,
-    gameOver,
-    winCompleted,
-    levelCompleted,
-    warmupPhase,
-    _level01,
-    _level02,
-    _level03,
-    _level04,
-    _level05,
-    missileSfx,
-    spawn,
-    food,
+    MoneyIncome,
+    OnButtonClick,
+    OnButtonOver,
+    PlaceTower,
+    PlaceBarrier,
+    RemoveTower,
+    Upgrade,
+    SelectTile,
+    GameOver,
+    WinCompleted,
+    LevelCompleted,
+    WarmupPhase,
+    Music_Level01,
+    Music_Level02,
+    Music_Level03,
+    Music_Level04,
+    Music_Level05,
+    MissileSfx,
+    Spawn,
+    Food,
 }
 
 [Serializable]
 public class SoundAudioclip
 {
-    [SerializeField] private Sound sound;
-    [SerializeField] private AudioClip audioClip;
+    [SerializeField] private Sound _sound;
+    [SerializeField] private AudioClip _audioClip;
 
-    public Sound Sound { get => sound; set => sound = value; }
-    public AudioClip AudioClip { get => audioClip; set => audioClip = value; }
+    public Sound Sound { get => _sound; set => _sound = value; }
+    public AudioClip AudioClip { get => _audioClip; set => _audioClip = value; }
 }
 
 
 public class SoundManager : MonoBehaviour
 {
     #region Singleton
-    private static SoundManager instance = null;
+    private static SoundManager _instance = null;
 
     public static SoundManager GetInstance()
     {
-        if (instance == null)
+        if (_instance == null)
         {
-            instance = GameObject.FindObjectOfType<SoundManager>();
+            _instance = GameObject.FindObjectOfType<SoundManager>();
         }
-        return instance;
+        return _instance;
     }
     #endregion
 
-    [SerializeField] private SoundAudioclip[] mySounds;
-    [SerializeField] private AudioSource ambientMusic;
-    [SerializeField] private AudioSource uiSfx;
+    [SerializeField] private SoundAudioclip[] _mySounds;
+    [SerializeField] private AudioSource _ambientMusic;
+    [SerializeField] private AudioSource _uiSfx;
 
     public void PlaySoundOneShot(Sound s , float vol = 1f)
     {
-        uiSfx.PlayOneShot(GetAudioClip(s), vol);
+        _uiSfx.PlayOneShot(GetAudioClip(s), vol);
     }
 
     public void PlaySoundButton()
     {
-        uiSfx.PlayOneShot(GetAudioClip(Sound.onButtonClick));
+        _uiSfx.PlayOneShot(GetAudioClip(Sound.OnButtonClick));
     }
 
      public void PlaySoundOneShotShopOnly(Sound s, float vol = 1f)
      {
-            if (!uiSfx.isPlaying)
+            if (!_uiSfx.isPlaying)
             {
-                uiSfx.PlayOneShot(GetAudioClip(s), vol);
+                _uiSfx.PlayOneShot(GetAudioClip(s), vol);
             }
      }
 
@@ -80,24 +80,24 @@ public class SoundManager : MonoBehaviour
         switch (level)
         {
             case 0:
-                ambientMusic.clip = GetAudioClip(Sound._level01);
-                ambientMusic.Play();
+                _ambientMusic.clip = GetAudioClip(Sound.Music_Level01);
+                _ambientMusic.Play();
                 break;
             case 1:
-                ambientMusic.clip = GetAudioClip(Sound._level02);
-                ambientMusic.Play();
+                _ambientMusic.clip = GetAudioClip(Sound.Music_Level02);
+                _ambientMusic.Play();
                 break;
             case 2:
-                ambientMusic.clip = GetAudioClip(Sound._level03);
-                ambientMusic.Play();
+                _ambientMusic.clip = GetAudioClip(Sound.Music_Level03);
+                _ambientMusic.Play();
                 break;
             case 3:
-                ambientMusic.clip = GetAudioClip(Sound._level04);
-                ambientMusic.Play();
+                _ambientMusic.clip = GetAudioClip(Sound.Music_Level04);
+                _ambientMusic.Play();
                 break;
             case 4:
-                ambientMusic.clip = GetAudioClip(Sound._level05);
-                ambientMusic.Play();
+                _ambientMusic.clip = GetAudioClip(Sound.Music_Level05);
+                _ambientMusic.Play();
                 break;
             default:
                 break;
@@ -106,13 +106,13 @@ public class SoundManager : MonoBehaviour
 
     public void StopMusic()
     {
-        ambientMusic.Stop();
+        _ambientMusic.Stop();
     }
 
 
     public AudioClip GetAudioClip(Sound s)
     {
-        foreach (SoundAudioclip audioClip in mySounds)
+        foreach (SoundAudioclip audioClip in _mySounds)
         {
             if (audioClip.Sound == s)
             {

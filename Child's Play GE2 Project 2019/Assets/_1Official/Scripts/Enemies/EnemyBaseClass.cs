@@ -27,7 +27,6 @@ public class EnemyBaseClass : MonoBehaviour
     private GameObject _targetGO;
     protected bool _isAttacking = false;
 
-    private float _attackCountDown = 0;
     protected bool _isDying = false;
     private bool _asEaten = false;
 
@@ -134,7 +133,7 @@ public class EnemyBaseClass : MonoBehaviour
 
         EnemyManager.GetInstance().RemoveEnemyFromList(this as Enemy);
         MoneyManager.GetInstance().MoneyChange(_value);
-        SoundManager.GetInstance().PlaySoundOneShot(Sound.moneyIncome, 0.05f);
+        SoundManager.GetInstance().PlaySoundOneShot(Sound.MoneyIncome, 0.05f);
         ScoreManager.GetInstance().EnemyKilled++;
         ScoreManager.GetInstance().MoneyEarned += _value;
     }
@@ -166,7 +165,6 @@ public class EnemyBaseClass : MonoBehaviour
                 _target = null;
                 _isAttacking = false;
                 ResumeWalking();
-                _attackCountDown = 0f;
                 break;
             }
             _target.TakeDamage(_damage);

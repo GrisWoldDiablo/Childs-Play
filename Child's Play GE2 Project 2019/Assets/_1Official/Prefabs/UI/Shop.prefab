@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 5005509893919952805}
   - component: {fileID: 156428494445141896}
   m_Layer: 5
-  m_Name: ToolTipText (6)
+  m_Name: ToolTipText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1251,10 +1251,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e248124f85097408248445bb065d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemScript: {fileID: 1800239817095121850, guid: 81f152383e2a7c74e8457718080ce084,
+  _itemScript: {fileID: 1800239817095121850, guid: 81f152383e2a7c74e8457718080ce084,
     type: 3}
-  typeOfButton: 0
-  myToolTip: {fileID: 5622464082808264907}
+  _typeOfButton: 0
+  _myToolTip: {fileID: 5622464082808264907}
 --- !u!114 &8446779908954701793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1301,7 +1301,7 @@ RectTransform:
   - {fileID: 8446779909980054662}
   - {fileID: 494771962}
   m_Father: {fileID: 8446779910768244585}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1490,10 +1490,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e248124f85097408248445bb065d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemScript: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
+  _itemScript: {fileID: 7546464820478688018, guid: 7b27dbe332062c54c836a499d36e8116,
     type: 3}
-  typeOfButton: 0
-  myToolTip: {fileID: 2484908543889891031}
+  _typeOfButton: 0
+  _myToolTip: {fileID: 2484908543889891031}
 --- !u!114 &8446779908978705070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1683,7 +1683,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8446779910768244585}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1885,7 +1885,7 @@ RectTransform:
   - {fileID: 8446779910594252543}
   - {fileID: 8446779909303369339}
   m_Father: {fileID: 8446779910768244585}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2046,9 +2046,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e248124f85097408248445bb065d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemScript: {fileID: 1468471134, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
-  typeOfButton: 2
-  myToolTip: {fileID: 1453641557498971872}
+  _itemScript: {fileID: 0}
+  _typeOfButton: 2
+  _myToolTip: {fileID: 1453641557498971872}
 --- !u!114 &8446779909752189985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2292,9 +2292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e248124f85097408248445bb065d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemScript: {fileID: 0}
-  typeOfButton: 1
-  myToolTip: {fileID: 2654100993363994614}
+  _itemScript: {fileID: 0}
+  _typeOfButton: 1
+  _myToolTip: {fileID: 2654100993363994614}
 --- !u!114 &8446779909980054663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2600,10 +2600,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e248124f85097408248445bb065d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemScript: {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb,
+  _itemScript: {fileID: 6589336874733247523, guid: b9ad39a5173a14943baec10f299399bb,
     type: 3}
-  typeOfButton: 0
-  myToolTip: {fileID: 1178148175800095015}
+  _typeOfButton: 0
+  _myToolTip: {fileID: 1178148175800095015}
 --- !u!114 &8446779910416274048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2835,9 +2835,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e248124f85097408248445bb065d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemScript: {fileID: 1468471134, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
-  typeOfButton: 0
-  myToolTip: {fileID: 7187183702805972065}
+  _itemScript: {fileID: 1468471134, guid: 0efb2eb5f3c048f46af239297cf56969, type: 3}
+  _typeOfButton: 0
+  _myToolTip: {fileID: 7187183702805972065}
 --- !u!114 &8446779910594252540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3108,9 +3108,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 8446779909185144548}
   - {fileID: 8446779909420858128}
   - {fileID: 8446779908958142521}
-  - {fileID: 8446779909185144548}
   - {fileID: 8446779910912846577}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -3192,15 +3192,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860f99b5159565b40bbdfce07e755325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panels:
+  _panels:
   - {fileID: 8446779909185144537}
   - {fileID: 8446779909420858131}
   - {fileID: 8446779908958142522}
   - {fileID: 8446779910912846576}
-  priceT: {fileID: 8446779909303369336}
-  priceB: {fileID: 8446779910686789713}
-  priceU: {fileID: 494771960}
-  boundary: {fileID: 5398826422921214652}
+  _priceT: {fileID: 8446779909303369336}
+  _priceB: {fileID: 8446779910686789713}
+  _priceU: {fileID: 494771960}
+  _boundary: {fileID: 5398826422921214652}
 --- !u!1 &8446779910905819553
 GameObject:
   m_ObjectHideFlags: 0

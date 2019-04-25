@@ -17,7 +17,9 @@ public class EnemyAnimation : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     void Start()
     {
         _animator.SetFloat("Speed", Random.Range(_animSpeedRandom - RANDSPEEDBOUND, _animSpeedRandom + RANDSPEEDBOUND));
