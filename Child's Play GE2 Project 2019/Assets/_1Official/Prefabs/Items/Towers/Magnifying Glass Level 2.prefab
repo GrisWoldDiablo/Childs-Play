@@ -830,7 +830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pivot: {fileID: 3626335371792302166}
   _rotationSpeed: 10
-  _lookAtTarget: 0
+  _lookAtTarget: 1
   _projectileSpawnPoint: {fileID: 383831926135187985}
   _tower_SO: {fileID: 11400000, guid: 4ec4145b08166b84b91c229d8874bf6d, type: 2}
   _lightEffect: {fileID: 6961705884543233473}
@@ -1432,11 +1432,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5961824344110199108}
     m_Modifications:
-    - target: {fileID: 6197746006981787540, guid: ee4a61e0efdb3134798ee8beb37c5f7d,
-        type: 3}
-      propertyPath: m_Name
-      value: SIZZLE_particleFX
-      objectReference: {fileID: 0}
     - target: {fileID: 988599051349895844, guid: ee4a61e0efdb3134798ee8beb37c5f7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1492,6 +1487,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6197746006981787540, guid: ee4a61e0efdb3134798ee8beb37c5f7d,
+        type: 3}
+      propertyPath: m_Name
+      value: SIZZLE_particleFX
+      objectReference: {fileID: 0}
     - target: {fileID: 7245857901477012814, guid: ee4a61e0efdb3134798ee8beb37c5f7d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1523,11 +1523,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5961824344110199108}
     m_Modifications:
-    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+    - target: {fileID: 5886706566434731880, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
-      propertyPath: m_Name
-      value: VFX_Laser
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5886706566434731880, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.8113208
+      objectReference: {fileID: 0}
+    - target: {fileID: 5886706566434731880, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.80312383
+      objectReference: {fileID: 0}
+    - target: {fileID: 5886706566434731880, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+        type: 3}
+      propertyPath: SubModule.subEmitters.Array.data[0].emitter
+      value: 
+      objectReference: {fileID: 8121536572349097801}
     - target: {fileID: 5886706566434731798, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1583,26 +1598,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5886706566434731880, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
+    - target: {fileID: 5886706566434731799, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0
+      propertyPath: m_Name
+      value: VFX_Laser
       objectReference: {fileID: 0}
-    - target: {fileID: 5886706566434731880, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.8113208
-      objectReference: {fileID: 0}
-    - target: {fileID: 5886706566434731880, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.80312383
-      objectReference: {fileID: 0}
-    - target: {fileID: 5886706566434731880, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
-        type: 3}
-      propertyPath: SubModule.subEmitters.Array.data[0].emitter
-      value: 
-      objectReference: {fileID: 8121536572349097801}
     - target: {fileID: 5886706566973664803, guid: 60fb163c09b94e54580dd1a6f2d6dffe,
         type: 3}
       propertyPath: m_IsActive
