@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class FastForwardButton : MonoBehaviour
 {
-    [SerializeField] Image[] arrows;
-    [SerializeField] Image skipArrow;
+    [SerializeField] Image[] _arrows;
+    [SerializeField] Image _skipArrow;
 
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     private void Start()
     {
-        foreach (Image arrow in arrows)
+        foreach (Image arrow in _arrows)
         {
             arrow.enabled = false;
         }
@@ -29,7 +32,7 @@ public class FastForwardButton : MonoBehaviour
                 Time.timeScale = GameManager.GetInstance().CurrentGameSpeed = GameManager.GetInstance().SpeedMulOne;
                 for (int i = 0; i < 2; i++)
                 {
-                    arrows[i].enabled = true;
+                    _arrows[i].enabled = true;
                 }
                 //sound
             }
@@ -38,7 +41,7 @@ public class FastForwardButton : MonoBehaviour
                 Time.timeScale = GameManager.GetInstance().CurrentGameSpeed = GameManager.GetInstance().SpeedMulTwo;
                 for (int i = 2; i < 3; i++)
                 {
-                    arrows[i].enabled = true;
+                    _arrows[i].enabled = true;
                 }
                 //sound
             }
@@ -47,7 +50,7 @@ public class FastForwardButton : MonoBehaviour
                 Time.timeScale = GameManager.GetInstance().CurrentGameSpeed = 1.0f;
                 for (int i = 1; i < 3; i++)
                 {
-                    arrows[i].enabled = false;
+                    _arrows[i].enabled = false;
                 }
                 //sound
             } 
@@ -73,23 +76,22 @@ public class FastForwardButton : MonoBehaviour
     /// Display the big arrow while the warmup is happening. 
     /// Exit and set the TimeScale to '1' onces the warmup counter reach 0
     /// </summary>
-    /// <returns></returns>
     private IEnumerator SkipWarmup()
     {
-        foreach (Image arrow in arrows)
+        foreach (Image arrow in _arrows)
         {
             arrow.enabled = false;
         }
-        skipArrow.enabled = true;
+        _skipArrow.enabled = true;
         while (SpawnManager.GetInstance().WarmupCounter > 0)
         {
             yield return null;
         }
-        skipArrow.enabled = false;
+        _skipArrow.enabled = false;
         for (int i = 0; i < 1; i++)
         {
             Time.timeScale = GameManager.GetInstance().CurrentGameSpeed = 1.0f;
-            arrows[i].enabled = true;
+            _arrows[i].enabled = true;
         }
     }
 }

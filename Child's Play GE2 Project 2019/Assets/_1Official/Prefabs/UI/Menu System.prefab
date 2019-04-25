@@ -1384,8 +1384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8cba19fa33d764c86cc8dad08de3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: Cancel
-  onButtonCancel:
+  _buttonName: Cancel
+  _onButtonCancel:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 272286928829123866}
@@ -1401,7 +1401,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  playSound: 1
+  _playSound: 1
 --- !u!1 &1139347444
 GameObject:
   m_ObjectHideFlags: 0
@@ -3205,8 +3205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8cba19fa33d764c86cc8dad08de3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: Cancel
-  onButtonCancel:
+  _buttonName: Cancel
+  _onButtonCancel:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 272286928829123866}
@@ -3233,7 +3233,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  playSound: 1
+  _playSound: 1
 --- !u!1 &272286927268177516
 GameObject:
   m_ObjectHideFlags: 0
@@ -3988,8 +3988,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b16a7067279f841b9d551cd0867f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeType: 2
-  audioMixer: {fileID: 24100000, guid: 6c4dda455ac1a4d489d7327586f16ba6, type: 2}
+  _volumeType: 2
+  _audioMixer: {fileID: 24100000, guid: 6c4dda455ac1a4d489d7327586f16ba6, type: 2}
 --- !u!1 &272286927345221926
 GameObject:
   m_ObjectHideFlags: 0
@@ -4157,7 +4157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286927351784999
 GameObject:
   m_ObjectHideFlags: 0
@@ -4478,7 +4478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286927400832322
 GameObject:
   m_ObjectHideFlags: 0
@@ -4720,7 +4720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286927406795627
 GameObject:
   m_ObjectHideFlags: 0
@@ -4847,8 +4847,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b16a7067279f841b9d551cd0867f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeType: 0
-  audioMixer: {fileID: 24100000, guid: 6c4dda455ac1a4d489d7327586f16ba6, type: 2}
+  _volumeType: 0
+  _audioMixer: {fileID: 24100000, guid: 6c4dda455ac1a4d489d7327586f16ba6, type: 2}
 --- !u!1 &272286927407873362
 GameObject:
   m_ObjectHideFlags: 0
@@ -5524,8 +5524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e71bc6a3bcccfa4ca27f2b307dc455e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueText: {fileID: 272286928845848472}
-  sensDirection: 0
+  _valueText: {fileID: 272286928845848472}
+  _sensDirection: 0
 --- !u!1 &272286927465146828
 GameObject:
   m_ObjectHideFlags: 0
@@ -5851,7 +5851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286927480194797
 GameObject:
   m_ObjectHideFlags: 0
@@ -6954,7 +6954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286927594754632
 GameObject:
   m_ObjectHideFlags: 0
@@ -7158,7 +7158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286927625837877
 GameObject:
   m_ObjectHideFlags: 0
@@ -7484,7 +7484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286927683972558
 GameObject:
   m_ObjectHideFlags: 0
@@ -7805,7 +7805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286927695885578
 GameObject:
   m_ObjectHideFlags: 0
@@ -8870,7 +8870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286927807800970
 GameObject:
   m_ObjectHideFlags: 0
@@ -9275,7 +9275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286927853072501
 GameObject:
   m_ObjectHideFlags: 0
@@ -9842,7 +9842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286927893553830
 GameObject:
   m_ObjectHideFlags: 0
@@ -10250,7 +10250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286927956904141
 GameObject:
   m_ObjectHideFlags: 0
@@ -11003,7 +11003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928025946966
 GameObject:
   m_ObjectHideFlags: 0
@@ -11565,8 +11565,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8cba19fa33d764c86cc8dad08de3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: Cancel
-  onButtonCancel:
+  _buttonName: Cancel
+  _onButtonCancel:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 272286928829123866}
@@ -11593,7 +11593,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  playSound: 1
+  _playSound: 1
 --- !u!1 &272286928101275458
 GameObject:
   m_ObjectHideFlags: 0
@@ -12260,7 +12260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928163329823
 GameObject:
   m_ObjectHideFlags: 0
@@ -12502,7 +12502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928166779228
 GameObject:
   m_ObjectHideFlags: 0
@@ -12596,8 +12596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8cba19fa33d764c86cc8dad08de3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: Cancel
-  onButtonCancel:
+  _buttonName: Cancel
+  _onButtonCancel:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 272286928829123866}
@@ -12613,7 +12613,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  playSound: 1
+  _playSound: 1
 --- !u!1 &272286928167659798
 GameObject:
   m_ObjectHideFlags: 0
@@ -12939,7 +12939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928199813785
 GameObject:
   m_ObjectHideFlags: 0
@@ -13217,7 +13217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928229291235
 GameObject:
   m_ObjectHideFlags: 0
@@ -13543,7 +13543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928251336274
 GameObject:
   m_ObjectHideFlags: 0
@@ -13711,7 +13711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928273633856
 GameObject:
   m_ObjectHideFlags: 0
@@ -13838,7 +13838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da1742fad4e89e4d990f6fe3d05025e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qualityText: {fileID: 272286927716663177}
+  _qualityText: {fileID: 272286927716663177}
 --- !u!1 &272286928282387111
 GameObject:
   m_ObjectHideFlags: 0
@@ -14012,7 +14012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &272286928314341016
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14073,7 +14073,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'You ranked over #100'
+  m_Text: 
 --- !u!1 &272286928325594580
 GameObject:
   m_ObjectHideFlags: 0
@@ -14320,7 +14320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f85fd5ac2b734b48a7c9e8d8f860e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  confirmationPanelIndex: 2
+  _confirmationPanelIndex: 2
 --- !u!1 &272286928383928135
 GameObject:
   m_ObjectHideFlags: 0
@@ -14958,7 +14958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928439847465
 GameObject:
   m_ObjectHideFlags: 0
@@ -15126,7 +15126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa584324b175c749909ee44262a2e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928452782303
 GameObject:
   m_ObjectHideFlags: 0
@@ -16018,7 +16018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928511349950
 GameObject:
   m_ObjectHideFlags: 0
@@ -16186,7 +16186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928511588972
 GameObject:
   m_ObjectHideFlags: 0
@@ -16586,7 +16586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928553600061
 GameObject:
   m_ObjectHideFlags: 0
@@ -16754,7 +16754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928560367739
 GameObject:
   m_ObjectHideFlags: 0
@@ -16882,8 +16882,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e71bc6a3bcccfa4ca27f2b307dc455e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueText: {fileID: 272286927511469537}
-  sensDirection: 1
+  _valueText: {fileID: 272286927511469537}
+  _sensDirection: 1
 --- !u!1 &272286928560766807
 GameObject:
   m_ObjectHideFlags: 0
@@ -17403,7 +17403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928589745787
 GameObject:
   m_ObjectHideFlags: 0
@@ -17731,7 +17731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928632184073
 GameObject:
   m_ObjectHideFlags: 0
@@ -18284,7 +18284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928715285282
 GameObject:
   m_ObjectHideFlags: 0
@@ -18917,7 +18917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928788505526
 GameObject:
   m_ObjectHideFlags: 0
@@ -19385,8 +19385,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875c388c7a82d514cac9ae72da6f93bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneDefaultIndex: 0
-  panels:
+  _sceneDefaultIndex: 0
+  _panels:
   - {fileID: 272286927491628182}
   - {fileID: 272286928089430219}
   - {fileID: 272286927238724584}
@@ -19394,7 +19394,7 @@ MonoBehaviour:
   - {fileID: 272286928401639040}
   - {fileID: 1090833269}
   - {fileID: 2409684989881954895}
-  defaultSelections:
+  _defaultSelections:
   - {fileID: 272286928472384195}
   - {fileID: 272286928378168897}
   - {fileID: 272286927777983700}
@@ -19420,31 +19420,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2517d40ec4979845a970665e0617d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 6c4dda455ac1a4d489d7327586f16ba6, type: 2}
-  inMenuSS: {fileID: 245782245198474080, guid: 6c4dda455ac1a4d489d7327586f16ba6, type: 2}
-  inNormalSS: {fileID: 24500006, guid: 6c4dda455ac1a4d489d7327586f16ba6, type: 2}
-  inWaterSS: {fileID: 245339678224095598, guid: 6c4dda455ac1a4d489d7327586f16ba6,
+  _audioMixer: {fileID: 24100000, guid: 6c4dda455ac1a4d489d7327586f16ba6, type: 2}
+  _inMenuSS: {fileID: 245782245198474080, guid: 6c4dda455ac1a4d489d7327586f16ba6,
     type: 2}
-  masterVolParam: MasterVol
-  musicVolParam: MusicVol
-  sFXVolParam: SFXVol
-  sensitivityHParam: SensitivityHLevel
-  sensitivityVParam: SensitivityVLevel
-  masterVol: {fileID: 272286927406795607}
-  musicVol: {fileID: 272286929264000637}
-  sfxVol: {fileID: 272286927313133264}
-  qualitySetting: {fileID: 272286928273633868}
-  sensitivityHLevel: {fileID: 272286927461133424}
-  sensitivityVLevel: {fileID: 272286928560367719}
-  applyButton: {fileID: 272286929001453036}
-  rankedText: {fileID: 272286928314341017}
-  lbScoreText: {fileID: 272286927893553824}
-  lbNameText: {fileID: 272286927853072503}
-  startingLevel: 0
-  startingLevelParam: StartingLevel
-  levelsUnlocked: 0
-  levelsUnlockedParam: UnlockedLevel
-  MAXLEVEL: 5
+  _inNormalSS: {fileID: 24500006, guid: 6c4dda455ac1a4d489d7327586f16ba6, type: 2}
+  _inWaterSS: {fileID: 245339678224095598, guid: 6c4dda455ac1a4d489d7327586f16ba6,
+    type: 2}
+  _masterVolParam: MasterVol
+  _musicVolParam: MusicVol
+  _sFXVolParam: SFXVol
+  _sensitivityHParam: SensitivityHLevel
+  _sensitivityVParam: SensitivityVLevel
+  _masterVol: {fileID: 272286927406795607}
+  _musicVol: {fileID: 272286929264000637}
+  _sfxVol: {fileID: 272286927313133264}
+  _qualitySetting: {fileID: 272286928273633868}
+  _sensitivityHLevel: {fileID: 272286927461133424}
+  _sensitivityVLevel: {fileID: 272286928560367719}
+  _applyButton: {fileID: 272286929001453036}
+  _rankedText: {fileID: 272286928314341017}
+  _lbScoreText: {fileID: 272286927893553824}
+  _lbNameText: {fileID: 272286927853072503}
+  _startingLevel: 0
+  _startingLevelParam: StartingLevel
+  _levelsUnlocked: 0
+  _levelsUnlockedParam: UnlockedLevel
+  _MaxLevel: 5
 --- !u!1 &272286928832951057
 GameObject:
   m_ObjectHideFlags: 0
@@ -20544,8 +20545,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad05ac39b37c14b4f83028452d2de59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newRankText: {fileID: 272286928612270205}
-  inputField: {fileID: 272286927853156156}
+  _newRankText: {fileID: 272286928612270205}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928961031817
 GameObject:
   m_ObjectHideFlags: 0
@@ -20792,7 +20793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928982479522
 GameObject:
   m_ObjectHideFlags: 0
@@ -21066,7 +21067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286928995939324
 GameObject:
   m_ObjectHideFlags: 0
@@ -21234,7 +21235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286929001036432
 GameObject:
   m_ObjectHideFlags: 0
@@ -22075,7 +22076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286929097315761
 GameObject:
   m_ObjectHideFlags: 0
@@ -22322,7 +22323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286929160130518
 GameObject:
   m_ObjectHideFlags: 0
@@ -22490,7 +22491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286929162099050
 GameObject:
   m_ObjectHideFlags: 0
@@ -22895,7 +22896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286929192396151
 GameObject:
   m_ObjectHideFlags: 0
@@ -23458,7 +23459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba7d6dfb5e0ec3458a722bcf9239679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 272286927853156156}
+  _inputField: {fileID: 272286927853156156}
 --- !u!1 &272286929264000625
 GameObject:
   m_ObjectHideFlags: 0
@@ -23585,8 +23586,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b16a7067279f841b9d551cd0867f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeType: 1
-  audioMixer: {fileID: 24100000, guid: 6c4dda455ac1a4d489d7327586f16ba6, type: 2}
+  _volumeType: 1
+  _audioMixer: {fileID: 24100000, guid: 6c4dda455ac1a4d489d7327586f16ba6, type: 2}
 --- !u!1 &397223389977235042
 GameObject:
   m_ObjectHideFlags: 0
@@ -24390,8 +24391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8cba19fa33d764c86cc8dad08de3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: Cancel
-  onButtonCancel:
+  _buttonName: Cancel
+  _onButtonCancel:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 272286928829123866}
@@ -24407,7 +24408,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  playSound: 1
+  _playSound: 1
 --- !u!1 &2742216966549324535
 GameObject:
   m_ObjectHideFlags: 0

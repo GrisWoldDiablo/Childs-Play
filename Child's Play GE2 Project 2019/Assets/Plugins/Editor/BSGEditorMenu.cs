@@ -14,30 +14,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-//public class BSGEditorMenu : MonoBehaviour {
-//    
-//    [MenuItem("BSGMenu/Scenes in Build Generator")]
-//    static void GetGenerator()
-//    {
-//        Object asset = AssetDatabase.LoadAssetAtPath("Assets/plugins/BSG/BSG.prefab", typeof(Object));
-//        if (asset != null)
-//        {
-//            Selection.activeObject = asset;
-//        }
-//        else
-//        {
-//            Debug.Log("Assets/plugins/BSG/BSG.prefab | Not Found!");
-//        }
-//    }
-//}
-
 public class BSGWindow : EditorWindow
 {
     private Vector2 scrollBarPos;
     private static GameObject bsgObject;
     private static BSGButtonScript inspectorGUICode;
     private static Editor customEditor;
-    //public GameObject trampolinePrefab;
 
     [MenuItem("BSGMenu/Scenes in Build Generator")]
     static void Init()

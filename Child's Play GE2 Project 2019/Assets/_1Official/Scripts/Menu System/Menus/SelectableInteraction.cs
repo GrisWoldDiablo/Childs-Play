@@ -12,23 +12,35 @@ using UnityEngine.EventSystems;
 
 public class SelectableInteraction : MonoBehaviour,IPointerEnterHandler,IDeselectHandler,ISelectHandler {
 
-	private bool selected = false;
-	public bool Selected { get { return selected; } }
+	private bool _selected = false;
+	public bool Selected { get { return _selected; } }
 
+    /// <summary>
+    /// When cursor enters above the object
+    /// </summary>
+    /// <param name="eventData">Unity data</param>
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		GetComponent<Selectable>().Select();
-        SoundManager.GetInstance().PlaySoundOneShot(Sound.onButtonOver,0.5f);
+        SoundManager.GetInstance().PlaySoundOneShot(Sound.OnButtonOver,0.5f);
     }
 
+    /// <summary>
+    /// When the object is deselected
+    /// </summary>
+    /// <param name="eventData"></param>
     public void OnDeselect(BaseEventData eventData)
     {
         GetComponent<Selectable>().OnPointerExit(null);
-        selected = false;
+        _selected = false;
     }
 
+    /// <summary>
+    /// When the object is selected
+    /// </summary>
+    /// <param name="eventData"></param>
 	public void OnSelect(BaseEventData eventData)
 	{
-		selected = true;
+		_selected = true;
 	}
 }   

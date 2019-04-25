@@ -1,5 +1,4 @@
 ﻿#if UNITY_EDITOR
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -26,26 +25,26 @@ public enum TileMesh
 [InitializeOnLoad]
 public class TileAutomatic : EditorWindow
 {
-    private static TileMeshes tiles = null;
+    private static TileMeshes _tiles = null;
 
     static TileAutomatic()
     {
         string find = AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("Tile Meshes_SO")[0]);
-        tiles = (TileMeshes)AssetDatabase.LoadAssetAtPath(find, typeof(TileMeshes));
+        _tiles = (TileMeshes)AssetDatabase.LoadAssetAtPath(find, typeof(TileMeshes));
     }
 
-    private static List<ItemTile> tileList;
-    private static ItemTile myScript;
+    private static List<ItemTile> _tileList;
+    private static ItemTile _myScript;
     private static MeshFilter _meshFilter;
-    private static Editor setupGUI;
-    private static Vector2 scrollBarPos;
+    private static Editor _setupGUI;
+    private static Vector2 _scrollBarPos;
 
     private static void PopulateTileList()
     {
-        tileList = new List<ItemTile>();
+        _tileList = new List<ItemTile>();
         foreach (var tile in GameObject.FindObjectsOfType<ItemTile>())
         {
-            tileList.Add(tile);
+            _tileList.Add(tile);
         }
     }
 
@@ -53,7 +52,7 @@ public class TileAutomatic : EditorWindow
     private static void RefreshTiles()
     {
         PopulateTileList();
-        foreach (ItemTile tileObject in tileList)
+        foreach (ItemTile tileObject in _tileList)
         {
             if (!tileObject.CompareTag("TilePath"))
             {
@@ -66,12 +65,12 @@ public class TileAutomatic : EditorWindow
     public static void ResetTowerTiles()
     {
         PopulateTileList();
-        foreach (ItemTile tileObject in tileList)
+        foreach (ItemTile tileObject in _tileList)
         {
             if (!tileObject.CompareTag("TilePath") && !tileObject.CompareTag("TileBush"))
             {
-                myScript = tileObject;
-                myScript.GetComponent<MeshFilter>().mesh = tiles.Meshes[0];
+                _myScript = tileObject;
+                _myScript.GetComponent<MeshFilter>().mesh = _tiles.Meshes[0];
                 ResetTile();
             }
         }
@@ -81,12 +80,12 @@ public class TileAutomatic : EditorWindow
     public static void ResetBushTiles()
     {
         PopulateTileList();
-        foreach (ItemTile tileObject in tileList)
+        foreach (ItemTile tileObject in _tileList)
         {
             if (!tileObject.CompareTag("TilePath") && !tileObject.CompareTag("TileTower"))
             {
-                myScript = tileObject;
-                myScript.GetComponent<MeshFilter>().mesh = tiles.Meshes[0];
+                _myScript = tileObject;
+                _myScript.GetComponent<MeshFilter>().mesh = _tiles.Meshes[0];
                 ResetTile();
             }
         }
@@ -96,12 +95,12 @@ public class TileAutomatic : EditorWindow
     public static void ResetAllTiles()
     {
         PopulateTileList();
-        foreach (ItemTile tileObject in tileList)
+        foreach (ItemTile tileObject in _tileList)
         {
             if (!tileObject.CompareTag("TilePath"))
             {
-                myScript = tileObject;
-                myScript.GetComponent<MeshFilter>().mesh = tiles.Meshes[0];
+                _myScript = tileObject;
+                _myScript.GetComponent<MeshFilter>().mesh = _tiles.Meshes[0];
                 ResetTile();
             }
         }
@@ -129,24 +128,13 @@ public class TileAutomatic : EditorWindow
     [MenuItem("TileAutomatic/Setup/Tiles Meshes")]
     public static void TilesMeshes()
     {
-        //Selection.activeObject = EditorUtility.InstanceIDToObject(tiles.GetInstanceID());
         GetWindow(typeof(TileAutomatic));
-        setupGUI = Editor.CreateEditor(EditorUtility.InstanceIDToObject(tiles.GetInstanceID()));
+        _setupGUI = Editor.CreateEditor(EditorUtility.InstanceIDToObject(_tiles.GetInstanceID()));
     }
 
     private void OnGUI()
     {
         GUILayout.BeginHorizontal();
-        //if (GUILayout.Button("Set Snap", GUILayout.MaxWidth(100), GUILayout.Height(25)))
-        //{
-        //    if (EditorUtility.DisplayDialog("Change snap",
-        //        $"Do you want to set snap setting to the tile size {tiles.TileSize}?", "Yes", "Cancel"))
-        //    {
-        //        EditorPrefs.SetFloat("MoveSnapX", tiles.TileSize);
-        //        EditorPrefs.SetFloat("MoveSnapZ", tiles.TileSize);
-        //    }
-        //    return;
-        //}
         GUILayout.FlexibleSpace();
         if (GUILayout.Button("CLOSE", GUILayout.MaxWidth(100), GUILayout.Height(25)))
         {
@@ -154,16 +142,16 @@ public class TileAutomatic : EditorWindow
             return;
         }
         GUILayout.EndHorizontal();
-        scrollBarPos = GUILayout.BeginScrollView(scrollBarPos, false, true, GUILayout.ExpandHeight(true));
-        setupGUI.OnInspectorGUI();
+        _scrollBarPos = GUILayout.BeginScrollView(_scrollBarPos, false, true, GUILayout.ExpandHeight(true));
+        _setupGUI.OnInspectorGUI();
 
         GUILayout.EndScrollView();
     }
 
     private static void UpdateObject(ItemTile myScriptInc)
     {
-        myScript = myScriptInc;
-        _meshFilter = myScript.GetComponent<MeshFilter>();
+        _myScript = myScriptInc;
+        _meshFilter = _myScript.GetComponent<MeshFilter>();
 
         //0 Sides, i[0]
         /* XXX
@@ -174,7 +162,7 @@ public class TileAutomatic : EditorWindow
 
         if (IsNorth() && IsNorthEast() && IsEast() && IsSouthEast() && IsSouth() && IsSouthWest() && IsWest() && IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[0];
+            _meshFilter.mesh = _tiles.Meshes[0];
         }
 
         //1 Side, i[1]
@@ -184,7 +172,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsWest() && IsEast() && IsSouth() && IsSouthEast() && IsSouthWest() && !IsNorth())
         {
-            _meshFilter.mesh = tiles.Meshes[1];
+            _meshFilter.mesh = _tiles.Meshes[1];
             MeshRot90();
             MeshFlipZ();
         }
@@ -196,7 +184,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsSouth() && IsEast() && IsSouthEast() && !IsWest() && IsNorthEast())
         {
-            _meshFilter.mesh = tiles.Meshes[1];
+            _meshFilter.mesh = _tiles.Meshes[1];
         }
 
         //1 Side, i[1]
@@ -206,7 +194,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsEast() && IsWest() && IsNorthWest() && IsNorthEast() && !IsSouth())
         {
-            _meshFilter.mesh = tiles.Meshes[1];
+            _meshFilter.mesh = _tiles.Meshes[1];
             MeshRot90();
             MeshFlipX();
         }
@@ -218,7 +206,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsSouth() && IsWest() && IsNorthWest() && IsSouthWest() && !IsEast())
         {
-            _meshFilter.mesh = tiles.Meshes[1];
+            _meshFilter.mesh = _tiles.Meshes[1];
             MeshFlipX();
         }
 
@@ -229,7 +217,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsEast() && IsSouth() && IsSouthEast() && !IsNorth() && !IsWest())
         {
-            _meshFilter.mesh = tiles.Meshes[2];
+            _meshFilter.mesh = _tiles.Meshes[2];
             MeshFlipZ();
         }
 
@@ -241,7 +229,7 @@ public class TileAutomatic : EditorWindow
         else if (IsEast() && IsNorth() && IsNorthEast() && !IsSouth() && !IsWest())
         {
 
-            _meshFilter.mesh = tiles.Meshes[2];
+            _meshFilter.mesh = _tiles.Meshes[2];
         }
 
         //2 Side Corner, i[2]
@@ -251,7 +239,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsWest() && IsNorth() && IsNorthWest() && !IsSouth() && !IsEast())
         {
-            _meshFilter.mesh = tiles.Meshes[2];
+            _meshFilter.mesh = _tiles.Meshes[2];
             MeshFlipX();
         }
 
@@ -262,7 +250,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsWest() && IsSouth() && IsSouthWest() && !IsNorth() && !IsEast())
         {
-            _meshFilter.mesh = tiles.Meshes[2];
+            _meshFilter.mesh = _tiles.Meshes[2];
             MeshFlipX();
             MeshFlipZ();
         }
@@ -274,7 +262,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsWest() && IsEast() && !IsNorth() && !IsSouth())
         {
-            _meshFilter.mesh = tiles.Meshes[3];
+            _meshFilter.mesh = _tiles.Meshes[3];
         }
 
         //2 Sides opposite, i[3]
@@ -284,7 +272,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsSouth() && !IsEast() && !IsWest())
         {
-            _meshFilter.mesh = tiles.Meshes[3];
+            _meshFilter.mesh = _tiles.Meshes[3];
             MeshRot90();
         }
 
@@ -295,7 +283,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && !IsSouth() && !IsEast() && !IsWest())
         {
-            _meshFilter.mesh = tiles.Meshes[4];
+            _meshFilter.mesh = _tiles.Meshes[4];
             MeshRot90();
             MeshFlipX();
         }
@@ -307,7 +295,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsSouth() && !IsNorth() && !IsEast() && !IsWest())
         {
-            _meshFilter.mesh = tiles.Meshes[4];
+            _meshFilter.mesh = _tiles.Meshes[4];
             MeshRot90();
         }
 
@@ -318,7 +306,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsEast() && !IsNorth() && !IsSouth() && !IsWest())
         {
-            _meshFilter.mesh = tiles.Meshes[4];
+            _meshFilter.mesh = _tiles.Meshes[4];
         }
 
         //3 Sides, i[4]
@@ -329,7 +317,7 @@ public class TileAutomatic : EditorWindow
         else if (IsWest() && !IsNorth() && !IsSouth() && !IsEast())
         {
 
-            _meshFilter.mesh = tiles.Meshes[4];
+            _meshFilter.mesh = _tiles.Meshes[4];
             MeshFlipX();
         }
 
@@ -340,7 +328,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (!IsNorth() && !IsEast() && !IsSouth() && !IsWest())
         {
-            _meshFilter.mesh = tiles.Meshes[5];
+            _meshFilter.mesh = _tiles.Meshes[5];
         }
 
         //1 Corner, i[6]
@@ -350,7 +338,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsNorthEast() && IsEast() && !IsSouthEast() && IsSouth() && IsSouthWest() && IsWest() && IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[6];
+            _meshFilter.mesh = _tiles.Meshes[6];
             MeshFlipZ();
         }
 
@@ -361,7 +349,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && !IsNorthEast() && IsEast() && IsSouthEast() && IsSouth() && IsSouthWest() && IsWest() && IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[6];
+            _meshFilter.mesh = _tiles.Meshes[6];
         }
 
         //1 Corner, i[6]
@@ -371,7 +359,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsNorthEast() && IsEast() && IsSouthEast() && IsSouth() && IsSouthWest() && IsWest() && !IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[6];
+            _meshFilter.mesh = _tiles.Meshes[6];
             MeshFlipX();
         }
 
@@ -382,7 +370,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsNorthEast() && IsEast() && IsSouthEast() && IsSouth() && !IsSouthWest() && IsWest() && IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[6];
+            _meshFilter.mesh = _tiles.Meshes[6];
             MeshFlipX();
             MeshFlipZ();
         }
@@ -394,7 +382,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsNorthEast() && IsEast() && !IsSouthEast() && IsSouth() && !IsSouthWest() && IsWest() && IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[7];
+            _meshFilter.mesh = _tiles.Meshes[7];
             MeshFlipZ();
         }
 
@@ -405,7 +393,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && !IsNorthEast() && IsEast() && !IsSouthEast() && IsSouth() && IsSouthWest() && IsWest() && IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[7];
+            _meshFilter.mesh = _tiles.Meshes[7];
             MeshRot90();
         }
 
@@ -416,7 +404,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && !IsNorthEast() && IsEast() && IsSouthEast() && IsSouth() && IsSouthWest() && IsWest() && !IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[7];
+            _meshFilter.mesh = _tiles.Meshes[7];
         }
 
         //2 Corners SameSide, i[7]
@@ -426,7 +414,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsNorthEast() && IsEast() && IsSouthEast() && IsSouth() && !IsSouthWest() && IsWest() && !IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[7];
+            _meshFilter.mesh = _tiles.Meshes[7];
             MeshRot90();
             MeshFlipZ();
         }
@@ -438,7 +426,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && !IsNorthEast() && IsEast() && IsSouthEast() && IsSouth() && !IsSouthWest() && IsWest() && IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[8];
+            _meshFilter.mesh = _tiles.Meshes[8];
         }
 
         //2 Corners OppositeSide, i[8]
@@ -448,7 +436,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsNorthEast() && IsEast() && !IsSouthEast() && IsSouth() && IsSouthWest() && IsWest() && !IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[8];
+            _meshFilter.mesh = _tiles.Meshes[8];
             MeshRot90();
         }
 
@@ -459,7 +447,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && !IsNorthEast() && IsEast() && !IsSouthEast() && IsSouth() && IsSouthWest() && IsWest() && !IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[9];
+            _meshFilter.mesh = _tiles.Meshes[9];
             MeshRot90();
         }
 
@@ -470,7 +458,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && !IsNorthEast() && IsEast() && !IsSouthEast() && IsSouth() && !IsSouthWest() && IsWest() && IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[9];
+            _meshFilter.mesh = _tiles.Meshes[9];
             MeshFlipZ();
             MeshFlipX();
         }
@@ -482,7 +470,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsNorthEast() && IsEast() && !IsSouthEast() && IsSouth() && !IsSouthWest() && IsWest() && !IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[9];
+            _meshFilter.mesh = _tiles.Meshes[9];
             MeshFlipZ();
         }
 
@@ -493,7 +481,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && !IsNorthEast() && IsEast() && !IsSouthEast() && IsSouth() && !IsSouthWest() && IsWest() && !IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[10];
+            _meshFilter.mesh = _tiles.Meshes[10];
         }
 
         //1 Side 1 corner
@@ -503,7 +491,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsWest() && IsEast() && IsSouth() && IsSouthWest() && !IsNorth() && !IsSouthEast())
         {
-            _meshFilter.mesh = tiles.Meshes[11];
+            _meshFilter.mesh = _tiles.Meshes[11];
             MeshFlipZ();
         }
 
@@ -514,7 +502,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsSouth() && IsEast() && IsSouthEast() && !IsWest() && !IsNorthEast())
         {
-            _meshFilter.mesh = tiles.Meshes[11];
+            _meshFilter.mesh = _tiles.Meshes[11];
             MeshRot90();
             MeshFlipX();
         }
@@ -526,7 +514,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsWest() && IsEast() && IsNorth() && IsNorthEast() && !IsSouth() && !IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[11];
+            _meshFilter.mesh = _tiles.Meshes[11];
             MeshFlipX();
         }
 
@@ -537,7 +525,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsSouth() && IsWest() && IsNorthWest() && !IsEast() && !IsSouthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[11];
+            _meshFilter.mesh = _tiles.Meshes[11];
             MeshRot90();
             MeshFlipZ();
         }
@@ -549,7 +537,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsWest() && IsEast() && IsSouth() && IsSouthEast() && !IsNorth() && !IsSouthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[11];
+            _meshFilter.mesh = _tiles.Meshes[11];
             MeshFlipZ();
             MeshFlipX();
         }
@@ -561,7 +549,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsSouth() && IsWest() && IsSouthWest() && !IsEast() && !IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[11];
+            _meshFilter.mesh = _tiles.Meshes[11];
             MeshRot90();
             MeshFlipZ();
             MeshFlipX();
@@ -574,7 +562,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsWest() && IsEast() && IsNorth() && IsNorthWest() && !IsSouth() && !IsNorthEast())
         {
-            _meshFilter.mesh = tiles.Meshes[11];
+            _meshFilter.mesh = _tiles.Meshes[11];
         }
 
         //1 Side 1 corner
@@ -584,7 +572,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsSouth() && IsEast() && IsNorthEast() && !IsWest() && !IsSouthEast())
         {
-            _meshFilter.mesh = tiles.Meshes[11];
+            _meshFilter.mesh = _tiles.Meshes[11];
             MeshRot90();
         }
         //2 Side 1 Corner, i[12]
@@ -594,7 +582,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsEast() && IsSouth() && !IsNorth() && !IsWest() && !IsSouthEast())
         {
-            _meshFilter.mesh = tiles.Meshes[12];
+            _meshFilter.mesh = _tiles.Meshes[12];
             MeshFlipZ();
         }
 
@@ -605,7 +593,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsEast() && IsNorth() && !IsSouth() && !IsWest() && !IsNorthEast())
         {
-            _meshFilter.mesh = tiles.Meshes[12];
+            _meshFilter.mesh = _tiles.Meshes[12];
         }
 
         //2 Side 1 Corner, i[12]
@@ -615,7 +603,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsWest() && IsNorth() && !IsSouth() && !IsEast() && !IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[12];
+            _meshFilter.mesh = _tiles.Meshes[12];
             MeshFlipX();
         }
 
@@ -626,7 +614,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsWest() && IsSouth() && !IsNorth() && !IsEast() && !IsSouthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[12];
+            _meshFilter.mesh = _tiles.Meshes[12];
             MeshFlipX();
             MeshFlipZ();
         }
@@ -639,7 +627,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsWest() && IsEast() && IsSouth() && !IsNorth() && !IsSouthEast() && !IsSouthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[13];
+            _meshFilter.mesh = _tiles.Meshes[13];
             MeshFlipZ();
         }
 
@@ -650,7 +638,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsWest() && IsEast() && IsNorth() && !IsSouth() && !IsNorthEast() && !IsNorthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[13];
+            _meshFilter.mesh = _tiles.Meshes[13];
         }
 
         //1 Side 2 corner, i[13]
@@ -660,7 +648,7 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsSouth() && IsEast() && !IsWest() && !IsNorthEast() && !IsSouthEast())
         {
-            _meshFilter.mesh = tiles.Meshes[13];
+            _meshFilter.mesh = _tiles.Meshes[13];
             MeshRot90();
         }
 
@@ -671,69 +659,69 @@ public class TileAutomatic : EditorWindow
          */
         else if (IsNorth() && IsSouth() && IsWest() && !IsEast() && !IsNorthWest() && !IsSouthWest())
         {
-            _meshFilter.mesh = tiles.Meshes[13];
+            _meshFilter.mesh = _tiles.Meshes[13];
             MeshRot90();
             MeshFlipZ();
         }
 
-        myScript = null;
+        _myScript = null;
         _meshFilter = null;
     }
 
     private static ItemTile IsWest()
     {
-        return tileList.Find(x => x.transform.position.x == myScript.transform.position.x - tiles.TileSize &&
-                                                          x.transform.position.z == myScript.transform.position.z &&
-                                                          x.CompareTag(myScript.tag));
+        return _tileList.Find(x => x.transform.position.x == _myScript.transform.position.x - _tiles.TileSize &&
+                                                          x.transform.position.z == _myScript.transform.position.z &&
+                                                          x.CompareTag(_myScript.tag));
     }
 
     private static ItemTile IsEast()
     {
-        return tileList.Find(x => x.transform.position.x == myScript.transform.position.x + tiles.TileSize &&
-                                                          x.transform.position.z == myScript.transform.position.z &&
-                                                          x.CompareTag(myScript.tag));
+        return _tileList.Find(x => x.transform.position.x == _myScript.transform.position.x + _tiles.TileSize &&
+                                                          x.transform.position.z == _myScript.transform.position.z &&
+                                                          x.CompareTag(_myScript.tag));
     }
 
     private static ItemTile IsNorth()
     {
-        return tileList.Find(x => x.transform.position.z == myScript.transform.position.z + tiles.TileSize &&
-                                                          x.transform.position.x == myScript.transform.position.x &&
-                                                          x.CompareTag(myScript.tag));
+        return _tileList.Find(x => x.transform.position.z == _myScript.transform.position.z + _tiles.TileSize &&
+                                                          x.transform.position.x == _myScript.transform.position.x &&
+                                                          x.CompareTag(_myScript.tag));
     }
 
     private static ItemTile IsSouth()
     {
-        return tileList.Find(x => x.transform.position.z == myScript.transform.position.z - tiles.TileSize &&
-                                                          x.transform.position.x == myScript.transform.position.x &&
-                                                          x.CompareTag(myScript.tag));
+        return _tileList.Find(x => x.transform.position.z == _myScript.transform.position.z - _tiles.TileSize &&
+                                                          x.transform.position.x == _myScript.transform.position.x &&
+                                                          x.CompareTag(_myScript.tag));
     }
 
     private static ItemTile IsNorthEast()
     {
-        return tileList.Find(x => x.transform.position.z == myScript.transform.position.z + tiles.TileSize &&
-                                                          x.transform.position.x == myScript.transform.position.x + tiles.TileSize &&
-                                                          x.CompareTag(myScript.tag));
+        return _tileList.Find(x => x.transform.position.z == _myScript.transform.position.z + _tiles.TileSize &&
+                                                          x.transform.position.x == _myScript.transform.position.x + _tiles.TileSize &&
+                                                          x.CompareTag(_myScript.tag));
     }
 
     private static ItemTile IsNorthWest()
     {
-        return tileList.Find(x => x.transform.position.z == myScript.transform.position.z + tiles.TileSize &&
-                                                          x.transform.position.x == myScript.transform.position.x - tiles.TileSize &&
-                                                          x.CompareTag(myScript.tag));
+        return _tileList.Find(x => x.transform.position.z == _myScript.transform.position.z + _tiles.TileSize &&
+                                                          x.transform.position.x == _myScript.transform.position.x - _tiles.TileSize &&
+                                                          x.CompareTag(_myScript.tag));
     }
 
     private static ItemTile IsSouthEast()
     {
-        return tileList.Find(x => x.transform.position.z == myScript.transform.position.z - tiles.TileSize &&
-                                                          x.transform.position.x == myScript.transform.position.x + tiles.TileSize &&
-                                                          x.CompareTag(myScript.tag));
+        return _tileList.Find(x => x.transform.position.z == _myScript.transform.position.z - _tiles.TileSize &&
+                                                          x.transform.position.x == _myScript.transform.position.x + _tiles.TileSize &&
+                                                          x.CompareTag(_myScript.tag));
     }
 
     private static ItemTile IsSouthWest()
     {
-        return tileList.Find(x => x.transform.position.z == myScript.transform.position.z - tiles.TileSize &&
-                                                          x.transform.position.x == myScript.transform.position.x - tiles.TileSize &&
-                                                          x.CompareTag(myScript.tag));
+        return _tileList.Find(x => x.transform.position.z == _myScript.transform.position.z - _tiles.TileSize &&
+                                                          x.transform.position.x == _myScript.transform.position.x - _tiles.TileSize &&
+                                                          x.CompareTag(_myScript.tag));
     }
 
 
@@ -746,33 +734,33 @@ public class TileAutomatic : EditorWindow
 
     private static void MeshRot90()
     {
-        myScript.transform.rotation = Quaternion.Euler(0, 90, 0);
-        myScript.Rot90Degree = true;
+        _myScript.transform.rotation = Quaternion.Euler(0, 90, 0);
+        _myScript.Rot90Degree = true;
     }
 
     private static void MeshResetRot90()
     {
-        myScript.transform.rotation = Quaternion.Euler(0, 0, 0);
-        myScript.Rot90Degree = false;
+        _myScript.transform.rotation = Quaternion.Euler(0, 0, 0);
+        _myScript.Rot90Degree = false;
     }
 
     private static void MeshFlipZ()
     {
-        myScript.transform.localScale = new Vector3(myScript.transform.localScale.x, 1, -1);
+        _myScript.transform.localScale = new Vector3(_myScript.transform.localScale.x, 1, -1);
     }
     private static void MeshResetZ()
     {
-        myScript.transform.localScale = new Vector3(myScript.transform.localScale.x, 1, 1);
+        _myScript.transform.localScale = new Vector3(_myScript.transform.localScale.x, 1, 1);
     }
 
     private static void MeshFlipX()
     {
-        myScript.transform.localScale = new Vector3(-1, 1, myScript.transform.localScale.z);
+        _myScript.transform.localScale = new Vector3(-1, 1, _myScript.transform.localScale.z);
     }
 
     private static void MeshResetX()
     {
-        myScript.transform.localScale = new Vector3(1, 1, myScript.transform.localScale.z);
+        _myScript.transform.localScale = new Vector3(1, 1, _myScript.transform.localScale.z);
     }
 
     private static void UpdatePathTiles(ItemTile myScriptInc)

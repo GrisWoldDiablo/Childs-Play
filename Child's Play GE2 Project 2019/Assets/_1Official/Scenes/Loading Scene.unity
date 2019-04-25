@@ -991,11 +991,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c794852c318e92742bb28b0aeeae8f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillImage: {fileID: 1170869784}
-  percentText: {fileID: 1072358572}
-  waitForUserInput: 1
-  waitForTimeDelay: 0
-  sceneIndex: -1
+  _fillImage: {fileID: 1170869784}
+  _percentText: {fileID: 1072358572}
+  _waitForUserInput: 0
+  _waitForTimeDelay: 0
+  _sceneIndex: -1
 --- !u!1 &244863072
 GameObject:
   m_ObjectHideFlags: 0
@@ -3268,7 +3268,7 @@ GameObject:
   - component: {fileID: 1170869784}
   - component: {fileID: 1170869786}
   m_Layer: 5
-  m_Name: LoadingBarImage
+  m_Name: LoadingBarFillImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

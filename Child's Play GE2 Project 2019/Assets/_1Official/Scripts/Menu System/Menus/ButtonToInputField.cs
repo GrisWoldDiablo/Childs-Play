@@ -3,17 +3,22 @@ using UnityEngine.UI;
 
 public class ButtonToInputField : MonoBehaviour {
 
-    [SerializeField] private InputField inputField;
-    private string letter;
+    [SerializeField] private InputField _inputField;
+    private string _letter;
    
+    /// <summary>
+    /// Send the detected letter to the Input field.
+    /// </summary>
     public void SendLetter()
     {
-        inputField.text += letter;
+        _inputField.text += _letter;
     }
 
-	// Use this for initialization
-	void Start () {
-        letter = this.name[0].ToString();
+    /// <summary>
+    /// Called immediately after the object is created
+    /// </summary>
+    void Start () {
+        _letter = this.name[0].ToString();
 	}
 
 }

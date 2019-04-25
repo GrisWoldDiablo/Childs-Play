@@ -11,46 +11,50 @@ using UnityEngine.UI;
 public class MenuInteraction : MonoBehaviour {
 
     #region Singleton
-    private static MenuInteraction instance = null;
+    private static MenuInteraction _instance = null;
 
     public static MenuInteraction GetInstance()
     {
-        if (instance == null)
+        if (_instance == null)
         {
-            instance = GameObject.FindObjectOfType<MenuInteraction>();
+            _instance = GameObject.FindObjectOfType<MenuInteraction>();
         }
-        return instance;
+        return _instance;
     }
     #endregion
 
     [Header("Menus")]
-    [SerializeField] private int sceneDefaultIndex = 0;
-    [SerializeField] private GameObject[] panels;
-    public GameObject[] Panels { get { return panels; } }
-    [SerializeField] private Selectable[] defaultSelections;
-    public Selectable[] DefaultSelections { get { return defaultSelections; } }
+    [SerializeField] private int _sceneDefaultIndex = 0;
+    [SerializeField] private GameObject[] _panels;
+    public GameObject[] Panels { get { return _panels; } }
+    [SerializeField] private Selectable[] _defaultSelections;
+    public Selectable[] DefaultSelections { get { return _defaultSelections; } }
 
-    private int currentPanel;
-    public bool AtDefaultOrRootPanel { get => currentPanel == sceneDefaultIndex || currentPanel == 0; }
+    private int _currentPanel;
+    public bool AtDefaultOrRootPanel { get => _currentPanel == _sceneDefaultIndex || _currentPanel == 0; }
 
-    List<Selectable> selectables;
+    private List<Selectable> _selectables;
 
 
     // Level Selection
     [Header("Level Selection Specific")]
     [SerializeField] private Button[] levelButton;
 
-    // Use this for initialization
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     void Start () {
-        selectables = Selectable.allSelectables;
-        PanelToggle(sceneDefaultIndex);
+        _selectables = Selectable.allSelectables;
+        PanelToggle(_sceneDefaultIndex);
     }
-	
-	// Update is called once per frame
-	void Update () {
-        selectables = Selectable.allSelectables;
+
+    /// <summary>
+    /// Update is called once per frame 
+    /// </summary>
+    void Update () {
+        _selectables = Selectable.allSelectables;
         bool oneSelected = false;
-        foreach (var item in selectables)
+        foreach (var item in _selectables)
         {
             if (item.GetComponent<SelectableInteraction>().Selected)
             {
@@ -58,17 +62,18 @@ public class MenuInteraction : MonoBehaviour {
                 break;
             }
         }
-        if (!oneSelected || selectables.Count == 0)
+        if (!oneSelected || _selectables.Count == 0)
         {
-            defaultSelections[currentPanel].Select();
+            _defaultSelections[_currentPanel].Select();
         }
 	}
+
     /// <summary>
     /// Toggle to the scene's default panel.
     /// </summary>
     public void PanelToggle()
     {
-        PanelToggle(sceneDefaultIndex);
+        PanelToggle(_sceneDefaultIndex);
     }
 
     /// <summary>
@@ -77,15 +82,15 @@ public class MenuInteraction : MonoBehaviour {
     /// <param name="panelIndex">Panel index</param>
     public void PanelToggle(int panelIndex)
     {
-        currentPanel = panelIndex;
+        _currentPanel = panelIndex;
         Input.ResetInputAxes();
         
-        for (int i = 0; i < panels.Length; i++)
+        for (int i = 0; i < _panels.Length; i++)
         {
-            panels[i].SetActive(panelIndex == i);
+            _panels[i].SetActive(panelIndex == i);
             if (panelIndex == i)
             {
-                defaultSelections[i].Select();
+                _defaultSelections[i].Select();
             }
         }
         UnlockedLevelsCheck();
@@ -104,7 +109,9 @@ public class MenuInteraction : MonoBehaviour {
 #endif
     }
 
-    // Level Selection
+    /// <summary>
+    /// Check which level the player has unclocked as per his or her progression.
+    /// </summary>
     public void UnlockedLevelsCheck()
     {
         int count = 0;
@@ -113,5 +120,4 @@ public class MenuInteraction : MonoBehaviour {
             button.interactable = count++ <= Settings.GetInstance().LevelsUnlocked;
         }
     }
-
 }

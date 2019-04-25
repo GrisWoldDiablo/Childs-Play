@@ -14,95 +14,95 @@ public enum ButtonType
 public class Shop : MonoBehaviour
 {
     #region Singleton
-    private static Shop instance = null;
+    private static Shop _instance = null;
 
     public static Shop GetInstance()
     {
-        if (instance == null)
+        if (_instance == null)
         {
-            instance = GameObject.FindObjectOfType<Shop>();
+            _instance = GameObject.FindObjectOfType<Shop>();
         }
-        return instance;
+        return _instance;
     }
     #endregion
-
-    //[SerializeField] private Text toolTipText;
-    [SerializeField] private GameObject[] panels;
-    [SerializeField] private Text priceT;
-    [SerializeField] private Text priceB;
-    [SerializeField] private Text priceU;
-    [SerializeField] private GameObject boundary;
+    
+    [SerializeField] private GameObject[] _panels;
+    [SerializeField] private Text _priceT;
+    [SerializeField] private Text _priceB;
+    [SerializeField] private Text _priceU;
+    [SerializeField] private GameObject _boundary;
    
-    private const int placeholder = 0;
-    private const int shopPanel = 1;
-    private const int upgradeSellPanel = 2;
-    private const int barrierPanel = 3;
-    private int currentPanel = 1;
-    private bool onButton;
-    private Vector3 compareV;
-    private Vector3 rootPos;
+    private const int _PLACEHOLDER = 0;
+    private const int _SHOPPANEL = 1;
+    private const int _UPGRADESELLPANEL = 2;
+    private const int _BARRIERPANEL = 3;
+    private int _currentPanel = 1;
+    private bool _onButton;
+    private Vector3 _rootPos;
 
-    public GameObject[] Panels { get => panels; set => panels = value; }
-    public int Placeholder { get => placeholder; }
-    public int ShopPanel { get => shopPanel;}
-    public int UpgradeSellPanel { get => upgradeSellPanel; }
-    public int BarrierPanel { get => barrierPanel; }
-    //public int CurrentPanel { get => currentPanel; set => currentPanel = value; }
-    public bool OnButton { get => onButton; set => onButton = value; }
-    public Vector3 CompareV { get => compareV; set => compareV = value; }
+    public GameObject[] Panels { get => _panels; set => _panels = value; }
+    public int PLACEHOLDER { get => _PLACEHOLDER; }
+    public int SHOPPANEL { get => _SHOPPANEL;}
+    public int UPGRADESELLPANEL { get => _UPGRADESELLPANEL; }
+    public int BARRIERPANEL { get => _BARRIERPANEL; }
+    public bool OnButton { get => _onButton; set => _onButton = value; }
 
-    //public bool Move { get => move; set => move = value; }
-
+    /// <summary>
+    /// Show the active shop panel and hide the others
+    /// </summary>
+    /// <param name="panelIndex">Panel to set active</param>
     public void SetPanelActive(int panelIndex)
     {
-        if (panelIndex != placeholder)
+        if (panelIndex != _PLACEHOLDER)
         {
-            SoundManager.GetInstance().PlaySoundOneShotShopOnly(Sound.selectTile, 0.5f);
+            SoundManager.GetInstance().PlaySoundOneShotShopOnly(Sound.SelectTile, 0.5f);
         }
-        currentPanel = panelIndex;
-        for (int i = 0; i < panels.Length; i++)
+        _currentPanel = panelIndex;
+        for (int i = 0; i < _panels.Length; i++)
         {
-            panels[i].SetActive(panelIndex == i);
-        }
-        switch (currentPanel)
-        {
-            case shopPanel:
-                break;
-            case upgradeSellPanel:
-                break;
-            case barrierPanel:
-                break;
-            default:
-                break;
+            _panels[i].SetActive(panelIndex == i);
         }
     }
 
+    /// <summary>
+    /// Move the panel to the position where the player clicked
+    /// </summary>
     public void MoveToClick()
     {
-        rootPos = Input.mousePosition;
-        Panels[currentPanel].transform.position = rootPos;
+        _rootPos = Input.mousePosition;
+        Panels[_currentPanel].transform.position = _rootPos;
     }
 
+    /// <summary>
+    /// Set what item the player is looking to buy
+    /// </summary>
+    /// <param name="index">the item index</param>
     public void TowerSelect(int index)
     {
         GameManager.GetInstance().SetTowerSelectionIndex(index);
         GameManager.GetInstance().SwapPlaceHoldersOnTile();
     }
 
+    /// <summary>
+    /// Change the price on the tooltip
+    /// </summary>
+    /// <param name="item">the item to retreive the price from</param>
+    /// <param name="buttonType">the type of the button that is asking to change the price</param>
+    /// <returns></returns>
     public bool ChangePrice(Item item, ButtonType buttonType)
     {
         if (buttonType == ButtonType.Buy)
         {
-            if (priceT.IsActive())
+            if (_priceT.IsActive())
             {
-                priceT.text = $"Price\n{item.Value.ToString()}";
+                _priceT.text = $"Price\n{item.Value.ToString()}";
             }
-            else priceB.text = $"Price\n{item.Value.ToString()}";
+            else _priceB.text = $"Price\n{item.Value.ToString()}";
         }
         else if (buttonType == ButtonType.Upgrade)
         {
             Item itemOnTile = GameManager.GetInstance().SelectedItem;
-            priceU.text = $"Cost\n{itemOnTile.UpgradeVersion.Value.ToString()}";
+            _priceU.text = $"Cost\n{itemOnTile.UpgradeVersion.Value.ToString()}";
         }
         else
         {
@@ -111,15 +111,19 @@ public class Shop : MonoBehaviour
             {
                 return false;
             }
-            priceU.text = $"Value\n{itemOnTile.Value.ToString()}";
+            _priceU.text = $"Value\n{itemOnTile.Value.ToString()}";
         }
         return true;
     }
 
+    /// <summary>
+    /// Show or hide the prices tooltip
+    /// </summary>
+    /// <param name="show">show or hide</param>
     public void TogglePrice(bool show = true)
     {
-        priceT.enabled = show;
-        priceB.enabled = show;
-        priceU.enabled = show;
+        _priceT.enabled = show;
+        _priceB.enabled = show;
+        _priceU.enabled = show;
     }
 }

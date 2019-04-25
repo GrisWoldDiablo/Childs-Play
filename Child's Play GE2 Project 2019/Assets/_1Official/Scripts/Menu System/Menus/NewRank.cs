@@ -3,26 +3,31 @@ using UnityEngine.UI;
 
 public class NewRank : MonoBehaviour
 {
-    [SerializeField] private Text newRankText;
-    [SerializeField] private InputField inputField;
-    //private Settings settingsCode;
+    [SerializeField] private Text _newRankText;
+    [SerializeField] private InputField _inputField;
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Called when the object is initialized, but only if the object is active.
+    /// Then called every time the object becomes active
+    /// </summary>
+    void OnEnable()
     {
-        newRankText.text = "You got the highscore!\nEnter your initials";
+        _newRankText.text = "You got the highscore!\nEnter your initials";
     }
 
+    /// <summary>
+    /// Set the new rank base on what is on the input field.
+    /// </summary>
     public void SetNewRank()
     {
-        if (inputField.text == string.Empty)
+        if (_inputField.text == string.Empty)
         {
             Settings.GetInstance().SetLoaderboard();
         }
         else
         {
-            Settings.GetInstance().SetLoaderboard(inputField.text.ToUpper());
+            Settings.GetInstance().SetLoaderboard(_inputField.text.ToUpper());
         }
-        inputField.text = string.Empty;
+        _inputField.text = string.Empty;
     }
 }

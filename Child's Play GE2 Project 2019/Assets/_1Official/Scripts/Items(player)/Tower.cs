@@ -43,7 +43,7 @@ public class Tower : MonoBehaviour
     private void Start()
     {
         _myAudioSource = GetComponent<AudioSource>();
-        if (_tower_SO.towerType == ProjectTileType.LASER)
+        if (_tower_SO.towerType == ProjectTileType.Laser)
         {
             _lightEffect = GetComponentInChildren<Light>();
             _vfxLaser = GetComponentInChildren<ParticleSystem>();
@@ -99,12 +99,18 @@ public class Tower : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     private void Update()
     {
         UpdateTarget();
         ShootAndLookAtTarget();
     }
 
+    /// <summary>
+    /// Pivot the tower and shoot at its target
+    /// </summary>
     private void ShootAndLookAtTarget()
     {
         _countdownToNextFire -= Time.deltaTime;
@@ -134,13 +140,15 @@ public class Tower : MonoBehaviour
             Shoot();
             _countdownToNextFire = 1f / _rateOfFire;
         }
-        if (_tower_SO.towerType == ProjectTileType.LASER)
+        if (_tower_SO.towerType == ProjectTileType.Laser)
         {
-            //ShootLaser();
             FireLaserBeam();
         }
     }
 
+    /// <summary>
+    /// Shoot at the target, spawn the projectile
+    /// </summary>
     private void Shoot()
     {
 
@@ -152,6 +160,9 @@ public class Tower : MonoBehaviour
         PlayVFX();
     }
 
+    /// <summary>
+    /// Play the sound on the audiosource
+    /// </summary>
     private void PlaySound()
     {
         if (_myAudioSource.clip != null)
@@ -163,6 +174,9 @@ public class Tower : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Play the particle VFX
+    /// </summary>
     private void PlayVFX()
     {
         //Do vfx 
@@ -170,12 +184,12 @@ public class Tower : MonoBehaviour
         {
             return;
         }
-        //firingVFX.transform.parent = null;
-        //firingVFX.transform.position = projectileSpawnPoint.transform.position;
         _firingVFX.Play();
-        //Destroy(firingVFX.gameObject, firingVFX.main.duration);
     }
 
+    /// <summary>
+    /// Draw a gizmo of the range on the scene editor
+    /// </summary>
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -183,6 +197,9 @@ public class Tower : MonoBehaviour
         Gizmos.DrawWireSphere(this.transform.position, _innerRadius);        
     }
 
+    /// <summary>
+    /// used for the laser tower, it activate its laser beem VFX
+    /// </summary>
     public void FireLaserBeam()
     {
         //GRAPHICS PART
@@ -199,20 +216,16 @@ public class Tower : MonoBehaviour
         Vector3 direction = this.ProjectileSpawnPoint.position - this.TowerTarget.position;
         this._vfxLaser.transform.position = this.TowerTarget.position + direction.normalized;
         this._vfxLaser.transform.rotation = Quaternion.LookRotation(direction);
-
-
-        //this._vfxCloud.transform.position = _tower.GetTowerTarget.position + direction.normalized;
-
-        //_vfxLaser.Play();
-
-        //_vfxLaser.transform.position = this.GetProjectileSpawnPoint.position;
+        
     }
 
+    /// <summary>
+    /// Stop the rendering of the laser VFX
+    /// </summary>
     public void StopLaser()
     {
-        //_vfxLaser.Stop();
 
-        if (_tower_SO.towerType == ProjectTileType.LASER)
+        if (_tower_SO.towerType == ProjectTileType.Laser)
         {
             _lineRendererComponent.enabled = false;
             this._vfxLaser.Stop();

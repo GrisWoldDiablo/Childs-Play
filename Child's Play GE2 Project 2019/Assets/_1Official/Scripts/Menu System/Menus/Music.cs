@@ -3,13 +3,15 @@
 [RequireComponent(typeof(AudioSource))]
 public class Music : MonoBehaviour {
 
-    private AudioSource audioSource;
+    private AudioSource _audioSource;
 
-    public AudioSource AudioSource { get { return audioSource; } set { audioSource = value; } }
+    public AudioSource AudioSource { get { return _audioSource; } set { _audioSource = value; } }
 
-    // Use this for initialization
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     void Start () {
-        audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
 	}
 	
 }

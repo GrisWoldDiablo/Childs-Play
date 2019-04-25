@@ -8,53 +8,55 @@ public enum VolumeTypes { Master, Music, SFX }
 
 [RequireComponent(typeof(Slider))]
 public class SetVolume : MonoBehaviour {
-    [SerializeField] private VolumeTypes volumeType;
-    [SerializeField] private AudioMixer audioMixer;
-    private string nameParam;
-    //public string NameParam { get { return nameParam; } }
+    [SerializeField] private VolumeTypes _volumeType;
+    [SerializeField] private AudioMixer _audioMixer;
+    private string _nameParam;
 
-    private float prefValue;
-    private Slider slider;
-    public Slider Slider { get { return slider; } }
-    private Button applyButton;
-    //private Settings settingsCode;
+    private float _prefValue;
+    private Slider _slider;
+    public Slider Slider { get { return _slider; } }
+    private Button _applyButton;
 
+    /// <summary>
+    /// Set the volume based on the slider value
+    /// </summary>
+    /// <param name="sliderValue">Slider value</param>
     public void SetVol(float sliderValue)
     {
-        audioMixer.SetFloat(nameParam, sliderValue);
-        if (prefValue != slider.value)
+        _audioMixer.SetFloat(_nameParam, sliderValue);
+        if (_prefValue != _slider.value)
         {
-            //Debug.Log("Turn On Apply Button");
-            applyButton.interactable = true;
+            _applyButton.interactable = true;
         }
-        slider.value = sliderValue;
+        _slider.value = sliderValue;
     }
 
-    // Use this for initialization
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     void Start () {
-        //Settings.GetInstance() = GameObject.FindObjectOfType<Settings>();
-        switch (volumeType)
+
+        switch (_volumeType)
         {
             case VolumeTypes.Master:
-                nameParam = Settings.GetInstance().MasterVolParam;
-                prefValue = Settings.GetInstance().MasterVolValue;
+                _nameParam = Settings.GetInstance().MasterVolParam;
+                _prefValue = Settings.GetInstance().MasterVolValue;
                 break;
             case VolumeTypes.Music:
-                nameParam = Settings.GetInstance().MusicVolParam;
-                prefValue = Settings.GetInstance().MusicVolValue;
+                _nameParam = Settings.GetInstance().MusicVolParam;
+                _prefValue = Settings.GetInstance().MusicVolValue;
                 break;
             case VolumeTypes.SFX:
-                nameParam = Settings.GetInstance().SFXVolParam;
-                prefValue = Settings.GetInstance().SFXVolValue;
+                _nameParam = Settings.GetInstance().SFXVolParam;
+                _prefValue = Settings.GetInstance().SFXVolValue;
                 break;
             default:
                 break;
         }
-        applyButton = GameObject.Find("ApplyButton").GetComponent<Button>();
-        slider = GetComponent<Slider>();
-        //prefValue = PlayerPrefs.GetFloat(nameParam, 0);
-        
-        slider.value = prefValue;
+
+        _applyButton = GameObject.Find("ApplyButton").GetComponent<Button>();
+        _slider = GetComponent<Slider>();
+        _slider.value = _prefValue;
     }
 
 }

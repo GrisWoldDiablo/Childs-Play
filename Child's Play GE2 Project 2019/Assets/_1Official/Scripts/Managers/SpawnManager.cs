@@ -6,22 +6,22 @@ using UnityEngine.UI;
 public class SpawnManager : MonoBehaviour
 {
     #region Singleton
-    private static SpawnManager instance = null;
+    private static SpawnManager _instance = null;
 
     public static SpawnManager GetInstance()
     {
-        if (instance == null)
+        if (_instance == null)
         {
-            instance = GameObject.FindObjectOfType<SpawnManager>();
+            _instance = GameObject.FindObjectOfType<SpawnManager>();
         }
-        return instance;
+        return _instance;
     }
     #endregion
 
     [Header("Waves setup for the level.")]
     [SerializeField] private Node _spawnPoint;
-    [SerializeField] private float warmUpSeconds = 10.0f;
-    [SerializeField] private float timeBetweenWaves = 5.0f;
+    [SerializeField] private float _warmUpSeconds = 10.0f;
+    [SerializeField] private float _timeBetweenWaves = 5.0f;
     [SerializeField] private WaveSetup_SO[] _wavesSetup;
     private float _warmuUpCounter;
     private int _enemyLeftToSpawn = 0;
@@ -47,7 +47,7 @@ public class SpawnManager : MonoBehaviour
     /// </summary>
     void Awake()
     {   
-        _warmuUpCounter = Time.time + warmUpSeconds;
+        _warmuUpCounter = Time.time + _warmUpSeconds;
         HudManager.GetInstance().ShowWarmUpText(true);
         _wavesLeft = _wavesSetup.Length;
         GetEnemiesLeftToSpawn();
@@ -55,7 +55,9 @@ public class SpawnManager : MonoBehaviour
         HudManager.GetInstance().UpdateIncomingWaveText(0.0f);
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     void Update()
     {
         WarmingUp();
@@ -63,6 +65,9 @@ public class SpawnManager : MonoBehaviour
         WaveCounter();
     }
 
+    /// <summary>
+    /// Check if its time to start a new wave.
+    /// </summary>
     private void WaveCounter()
     {
         if (_startCounter)
@@ -78,6 +83,9 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Initialize the Wave coroutine
+    /// </summary>
     private void StartWave()
     {
         if (_startNewWave)
@@ -87,6 +95,9 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check if the level is in warmup mode and update the hud
+    /// </summary>
     private void WarmingUp()
     {
         if (!_warmedUp)
@@ -102,6 +113,9 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The actual wave coroutine that will spawn the enemies as per scriptable object.
+    /// </summary>
     IEnumerator WaveSpawner()
     {
         for (int j = 0; j < _wavesSetup[_waveIndex].SubWaves[_subWaveIndex].Count; j++)
@@ -146,21 +160,30 @@ public class SpawnManager : MonoBehaviour
                 GetEnemiesLeftToSpawn();
                 _currentWave = _waveIndex + 1;
             }
-            _counterToNextWave = timeBetweenWaves;
+            _counterToNextWave = _timeBetweenWaves;
             _startCounter = true;
         }     
     }
 
+    /// <summary>
+    /// Spawn an enemy.
+    /// </summary>
     void SpawnEnemy(GameObject enemyToSpawn)
     {
         Instantiate(enemyToSpawn, _spawnPoint.transform.position, _spawnPoint.transform.rotation);
     }
 
+    /// <summary>
+    /// Method use to skip the warmup scequence.
+    /// </summary>
     public void SkipWarmUp()
     {
         _warmuUpCounter = 0.0f;
     }
 
+    /// <summary>
+    /// Get how many enemies there is to spawn in the current wave.
+    /// </summary>
     public void GetEnemiesLeftToSpawn()
     {
         _enemyLeftToSpawn = 0;
@@ -172,9 +195,12 @@ public class SpawnManager : MonoBehaviour
         _waveCounter = _wavesSetup[_waveIndex].SubWaves.Length;
     }
 
+    /// <summary>
+    /// Called when the object is destroyed.
+    /// </summary>
     private void OnDestroy()
     {
-        //Destroy the Singleton, so it can be recreated from new prefab Spawnpoint.
-        instance = null;
+        // Destroy the Singleton, so it can be recreated from new prefab Spawnpoint.
+        _instance = null;
     }
 }

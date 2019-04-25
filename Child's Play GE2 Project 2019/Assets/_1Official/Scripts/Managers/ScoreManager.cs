@@ -45,6 +45,9 @@ public class ScoreManager : MonoBehaviour
     private int _score;
     public int Score { get => _score; }
 
+    /// <summary>
+    /// Reset to score and all its variable to 0.
+    /// </summary>
     public void Reset()
     {
         _moneySpent = 0;
@@ -64,6 +67,8 @@ public class ScoreManager : MonoBehaviour
     {
         // Reset timescale
         GameManager.GetInstance().FastForwardButton.Init();
+        Input.ResetInputAxes();
+        Cursor.lockState = CursorLockMode.None;
 
         _score += _moneySpent;
         _score += _moneyEarned;
@@ -97,7 +102,7 @@ public class ScoreManager : MonoBehaviour
                          $"{_enemyCount}\n" +
                          $"{_score}\n";
         SoundManager.GetInstance().StopMusic();
-        SoundManager.GetInstance().PlaySoundOneShot(Sound.levelCompleted);
+        SoundManager.GetInstance().PlaySoundOneShot(Sound.LevelCompleted);
 
         if (Settings.GetInstance().CheckLeaderboard(_score,LevelManager.GetInstance().CurrentLevel))
         {

@@ -146,8 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 7802223832832840170}
-  warmUpSeconds: 30
-  timeBetweenWaves: 3
+  _warmUpSeconds: 30
+  _timeBetweenWaves: 3
   _wavesSetup:
   - {fileID: 11400000, guid: b1e768cf15cb0a6438a27cf5cdd27b9e, type: 2}
   - {fileID: 11400000, guid: 0927e57f75f3b0448b9dac92c347287a, type: 2}
@@ -656,11 +656,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485706218550075}
     m_Modifications:
-    - target: {fileID: 7555477435329626651, guid: 391339f6c43e8ef4494beedb84b23646,
-        type: 3}
-      propertyPath: m_Name
-      value: NodeDeterministic
-      objectReference: {fileID: 0}
     - target: {fileID: 7555477435329626644, guid: 391339f6c43e8ef4494beedb84b23646,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -715,6 +710,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555477435329626651, guid: 391339f6c43e8ef4494beedb84b23646,
+        type: 3}
+      propertyPath: m_Name
+      value: NodeDeterministic
       objectReference: {fileID: 0}
     - target: {fileID: 7555477435329626645, guid: 391339f6c43e8ef4494beedb84b23646,
         type: 3}
@@ -823,11 +823,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704328673517}
     m_Modifications:
-    - target: {fileID: 2803234236318880211, guid: bf8645103e6973840b04a3ef251ac313,
-        type: 3}
-      propertyPath: m_Name
-      value: ToySoldier Backpack (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 4450297154277011150, guid: bf8645103e6973840b04a3ef251ac313,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -882,6 +877,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803234236318880211, guid: bf8645103e6973840b04a3ef251ac313,
+        type: 3}
+      propertyPath: m_Name
+      value: ToySoldier Backpack (1)
       objectReference: {fileID: 0}
     - target: {fileID: 673894699029227969, guid: bf8645103e6973840b04a3ef251ac313,
         type: 3}
@@ -1368,11 +1368,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (30)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1412,6 +1407,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (30)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -1598,11 +1598,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485706218550075}
     m_Modifications:
-    - target: {fileID: 7555477435329626651, guid: 391339f6c43e8ef4494beedb84b23646,
-        type: 3}
-      propertyPath: m_Name
-      value: NodeDeterministic (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 7555477435329626644, guid: 391339f6c43e8ef4494beedb84b23646,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1672,6 +1667,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.1533012
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555477435329626651, guid: 391339f6c43e8ef4494beedb84b23646,
+        type: 3}
+      propertyPath: m_Name
+      value: NodeDeterministic (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 391339f6c43e8ef4494beedb84b23646, type: 3}
@@ -2147,11 +2147,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (19)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2182,6 +2177,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (19)
+      objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_Mesh
@@ -2202,11 +2202,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485706218550075}
     m_Modifications:
-    - target: {fileID: 7555477435329626651, guid: 391339f6c43e8ef4494beedb84b23646,
-        type: 3}
-      propertyPath: m_Name
-      value: NodeDeterministic (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 7555477435329626644, guid: 391339f6c43e8ef4494beedb84b23646,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2276,6 +2271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.1532998
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555477435329626651, guid: 391339f6c43e8ef4494beedb84b23646,
+        type: 3}
+      propertyPath: m_Name
+      value: NodeDeterministic (4)
       objectReference: {fileID: 0}
     - target: {fileID: 7555477435329626645, guid: 391339f6c43e8ef4494beedb84b23646,
         type: 3}
@@ -2674,11 +2674,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485706218550075}
     m_Modifications:
-    - target: {fileID: 7555477435329626651, guid: 391339f6c43e8ef4494beedb84b23646,
-        type: 3}
-      propertyPath: m_Name
-      value: NodeDeterministic (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 7555477435329626644, guid: 391339f6c43e8ef4494beedb84b23646,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2749,6 +2744,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3.1533008
       objectReference: {fileID: 0}
+    - target: {fileID: 7555477435329626651, guid: 391339f6c43e8ef4494beedb84b23646,
+        type: 3}
+      propertyPath: m_Name
+      value: NodeDeterministic (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 7555477435329626645, guid: 391339f6c43e8ef4494beedb84b23646,
         type: 3}
       propertyPath: listOfNodes.Array.data[0]
@@ -2781,11 +2781,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (29)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -2816,6 +2811,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 0.7071068
       objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (29)
+      objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_Mesh
@@ -2841,11 +2841,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (28)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2880,6 +2875,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (28)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -2981,11 +2981,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (15)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3045,6 +3040,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (15)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -3156,11 +3156,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (24)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3215,6 +3210,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (24)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -3321,11 +3321,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (10)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3380,6 +3375,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (10)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -3761,11 +3761,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3825,6 +3820,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (3)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -4031,11 +4031,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4091,6 +4086,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_Mesh
@@ -4116,11 +4116,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (17)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4175,6 +4170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (17)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -4381,11 +4381,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (8)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4450,6 +4445,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (8)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -4561,11 +4561,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4620,6 +4615,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (4)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -4731,11 +4731,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (21)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4796,6 +4791,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (21)
+      objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_Mesh
@@ -4821,11 +4821,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (13)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4885,6 +4880,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (13)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -5166,11 +5166,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (16)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5226,6 +5221,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (16)
+      objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_Mesh
@@ -5246,11 +5246,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (26)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5315,6 +5310,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (26)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -5876,11 +5876,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (18)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5946,6 +5941,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (18)
+      objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_Mesh
@@ -5966,11 +5966,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6026,6 +6021,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (7)
+      objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_Mesh
@@ -6046,11 +6046,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (27)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6111,6 +6106,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (27)
+      objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_Mesh
@@ -6136,11 +6136,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (11)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6201,6 +6196,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (11)
+      objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_Mesh
@@ -6226,11 +6226,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (12)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6285,6 +6280,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (12)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -7011,11 +7011,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7070,6 +7065,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (6)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -7171,11 +7171,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (22)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7236,6 +7231,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (22)
+      objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_Mesh
@@ -7256,11 +7256,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7315,6 +7310,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (5)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -7426,11 +7426,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (20)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7486,6 +7481,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (20)
+      objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_Mesh
@@ -7506,11 +7506,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (23)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7570,6 +7565,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (23)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -7766,11 +7766,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (14)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7825,6 +7820,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (14)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -7941,11 +7941,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8000,6 +7995,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -8211,11 +8211,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (25)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8270,6 +8265,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (25)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -8381,11 +8381,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (9)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8445,6 +8440,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (9)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -8995,11 +8995,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (32)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9034,6 +9029,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (32)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -9150,11 +9150,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485706218550075}
     m_Modifications:
-    - target: {fileID: 7555477435329626651, guid: 391339f6c43e8ef4494beedb84b23646,
-        type: 3}
-      propertyPath: m_Name
-      value: NodeDeterministic (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 7555477435329626644, guid: 391339f6c43e8ef4494beedb84b23646,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9225,6 +9220,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3.1532993
       objectReference: {fileID: 0}
+    - target: {fileID: 7555477435329626651, guid: 391339f6c43e8ef4494beedb84b23646,
+        type: 3}
+      propertyPath: m_Name
+      value: NodeDeterministic (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 7555477435329626645, guid: 391339f6c43e8ef4494beedb84b23646,
         type: 3}
       propertyPath: listOfNodes.Array.data[0]
@@ -9257,11 +9257,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9321,6 +9316,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -9422,11 +9422,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (33)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9461,6 +9456,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (33)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -9557,31 +9557,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.90265
       objectReference: {fileID: 0}
-    - target: {fileID: 7044074685747903160, guid: b6c0b732c26e80148b88be8f49c90d9a,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7694267
-      objectReference: {fileID: 0}
-    - target: {fileID: 7044074685747903160, guid: b6c0b732c26e80148b88be8f49c90d9a,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.20817226
-      objectReference: {fileID: 0}
-    - target: {fileID: 7044074685747903160, guid: b6c0b732c26e80148b88be8f49c90d9a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.847
-      objectReference: {fileID: 0}
-    - target: {fileID: 7044074685747903160, guid: b6c0b732c26e80148b88be8f49c90d9a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 7044074685747903160, guid: b6c0b732c26e80148b88be8f49c90d9a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.13
-      objectReference: {fileID: 0}
     - target: {fileID: 5527728003327267115, guid: b6c0b732c26e80148b88be8f49c90d9a,
         type: 3}
       propertyPath: m_IsActive
@@ -9617,6 +9592,31 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 3.13
       objectReference: {fileID: 0}
+    - target: {fileID: 7044074685747903160, guid: b6c0b732c26e80148b88be8f49c90d9a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7694267
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044074685747903160, guid: b6c0b732c26e80148b88be8f49c90d9a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.20817226
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044074685747903160, guid: b6c0b732c26e80148b88be8f49c90d9a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.847
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044074685747903160, guid: b6c0b732c26e80148b88be8f49c90d9a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044074685747903160, guid: b6c0b732c26e80148b88be8f49c90d9a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.13
+      objectReference: {fileID: 0}
     - target: {fileID: 8317375073804748199, guid: b6c0b732c26e80148b88be8f49c90d9a,
         type: 3}
       propertyPath: m_IsActive
@@ -9642,11 +9642,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704328673517}
     m_Modifications:
-    - target: {fileID: 8239357183094926500, guid: f3a2b69ac406e5b468d188ceb79a5301,
-        type: 3}
-      propertyPath: m_Name
-      value: ToySoldier Backpack
-      objectReference: {fileID: 0}
     - target: {fileID: 7601412844784145337, guid: f3a2b69ac406e5b468d188ceb79a5301,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9701,6 +9696,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8239357183094926500, guid: f3a2b69ac406e5b468d188ceb79a5301,
+        type: 3}
+      propertyPath: m_Name
+      value: ToySoldier Backpack
       objectReference: {fileID: 0}
     - target: {fileID: 6765852168232129718, guid: f3a2b69ac406e5b468d188ceb79a5301,
         type: 3}
@@ -10017,11 +10017,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485704706696922}
     m_Modifications:
-    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile Bush Variant (31)
-      objectReference: {fileID: 0}
     - target: {fileID: 3822199887767868572, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10056,6 +10051,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 285232971798429648, guid: dab9c50a8cf434745abec452027b4c1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Bush Variant (31)
       objectReference: {fileID: 0}
     - target: {fileID: 7324677433945363692, guid: dab9c50a8cf434745abec452027b4c1d,
         type: 3}
@@ -10162,11 +10162,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485706218550075}
     m_Modifications:
-    - target: {fileID: 7555477435329626651, guid: 391339f6c43e8ef4494beedb84b23646,
-        type: 3}
-      propertyPath: m_Name
-      value: NodeDeterministic (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 7555477435329626644, guid: 391339f6c43e8ef4494beedb84b23646,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10236,6 +10231,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.1533008
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555477435329626651, guid: 391339f6c43e8ef4494beedb84b23646,
+        type: 3}
+      propertyPath: m_Name
+      value: NodeDeterministic (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7555477435329626645, guid: 391339f6c43e8ef4494beedb84b23646,
         type: 3}
@@ -10624,10 +10624,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6235485706218550075}
     m_Modifications:
-    - target: {fileID: 52083791, guid: ea02d184623424c40a72e6e04e55cfea, type: 3}
-      propertyPath: m_Name
-      value: Ant Entrance (SPAWN)
-      objectReference: {fileID: 0}
     - target: {fileID: 52083794, guid: ea02d184623424c40a72e6e04e55cfea, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.94
@@ -10671,6 +10667,10 @@ PrefabInstance:
     - target: {fileID: 52083794, guid: ea02d184623424c40a72e6e04e55cfea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 52083791, guid: ea02d184623424c40a72e6e04e55cfea, type: 3}
+      propertyPath: m_Name
+      value: Ant Entrance (SPAWN)
       objectReference: {fileID: 0}
     - target: {fileID: 4489509179048153639, guid: ea02d184623424c40a72e6e04e55cfea,
         type: 3}

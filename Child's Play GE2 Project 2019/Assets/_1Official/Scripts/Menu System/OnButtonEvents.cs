@@ -9,18 +9,21 @@ using UnityEngine.Events;
 public class OnButtonEvents : MonoBehaviour
 {
     [Header("Set the name of you button.")]
-    [SerializeField] private string buttonName;
+    [SerializeField] private string _buttonName;
     [Header("Populate the Events")]
-    [SerializeField] private UnityEvent onButtonCancel;
+    [SerializeField] private UnityEvent _onButtonCancel;
     [Header("With button sound?")]
-    [SerializeField] private bool playSound = true;
+    [SerializeField] private bool _playSound = true;
 
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     private void Update()
     {
-        if (Input.GetButton(buttonName))
+        if (Input.GetButton(_buttonName))
         {
-            onButtonCancel.Invoke();
-            if (playSound)
+            _onButtonCancel.Invoke();
+            if (_playSound)
             {
                 SoundManager.GetInstance().PlaySoundButton();
             }

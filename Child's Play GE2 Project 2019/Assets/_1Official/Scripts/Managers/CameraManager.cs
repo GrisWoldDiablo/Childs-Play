@@ -94,6 +94,9 @@ public class CameraManager : MonoBehaviour
     public bool IsLocked { get => _isLocked; set => _isLocked = value; }
 
     #region UNITY methods
+    /// <summary>
+    /// LateUpdate is called once per frame after every update function were called.
+    /// </summary>
     private void LateUpdate()
     {
         if (Time.timeScale <= 0)
@@ -105,6 +108,9 @@ public class CameraManager : MonoBehaviour
         CameraZoomAndRotationLockMode();
     }
 
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     private void Update()
     {
         if (Time.timeScale <= 0)
@@ -132,6 +138,9 @@ public class CameraManager : MonoBehaviour
 
     #region Class methods
 
+    /// <summary>
+    /// Lock the camera on the selected player object
+    /// </summary>
     private void CameraFollowPlayer()
     {
         if (PlayerManager.GetInstance().PlayerWithFocus == null)
@@ -163,6 +172,9 @@ public class CameraManager : MonoBehaviour
         this.transform.RotateAround(actorWithFocus.position, Vector3.up, _currentYaw);
     }
 
+    /// <summary>
+    /// Rotate the camera around the focused player object
+    /// </summary>
     private void CameraZoomAndRotationWhenLocked()
     {
         if (this._isLocked)
@@ -174,6 +186,9 @@ public class CameraManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// move the camera using the keyboard
+    /// </summary>
     private void CameraMovementFreeModeWithKeyboard()
     {
         if (Input.GetButton("ForwardBackCameraMovement") || Input.GetButton("LateralCameraMovement"))
@@ -187,6 +202,9 @@ public class CameraManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Move the camera using the mouse with moving it to the edge of the screen
+    /// </summary>
     private void CameraMovementFreeModeWithMouse()
     {
         if (Input.mousePosition.y >= Screen.height - _screenBorder || Input.mousePosition.y <= _screenBorder || Input.mousePosition.x >= Screen.width - _screenBorder || Input.mousePosition.x <= _screenBorder)
@@ -210,6 +228,9 @@ public class CameraManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Deals with rotating and zoom when the camera is in lock mode
+    /// </summary>
     private void CameraZoomAndRotationLockMode()
     {
 
@@ -242,6 +263,9 @@ public class CameraManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// deals with zooming and rotating when the camera is in free mode
+    /// </summary>
     private void CameraZoomAndRotationFreeMode()
     {
         if (!this._isLocked )
@@ -267,6 +291,9 @@ public class CameraManager : MonoBehaviour
         }
     }    
 
+    /// <summary>
+    /// makes _currentYaw do full cycle from 0 to 360
+    /// </summary>
     private void YawCorrection()
     {
         if(_currentYaw > 360)
@@ -279,6 +306,10 @@ public class CameraManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Caculate the distance to the ground from the this object
+    /// </summary>
+    /// <returns> returns the distance</returns>
     public float DistanceToTheGround()
     {
         Ray ray = new Ray(this.transform.position, Vector3.down);
@@ -291,6 +322,11 @@ public class CameraManager : MonoBehaviour
         return 0f;
     }
 
+    /// <summary>
+    /// Set the camera to focus or not
+    /// </summary>
+    /// <param name="toggle">use toggle mode or not</param>
+    /// <param name="setOn">set on(default) or off </param>
     public void CameraLockerButton(bool toggle = true, bool setOn = true)
     {
         if (toggle)

@@ -23,6 +23,8 @@ public class PauseManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
+        Input.ResetInputAxes();
+        Cursor.lockState = CursorLockMode.None;
     }
 
     /// <summary>
