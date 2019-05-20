@@ -13,18 +13,15 @@ public class LoadScene : MonoBehaviour {
         if (_async == null)
         {
             Scene curScene = SceneManager.GetActiveScene();
-            try
+            int nextScene = curScene.buildIndex + 1;
+            if (nextScene >= SceneManager.sceneCountInBuildSettings)
             {
-                if ((_async = SceneManager.LoadSceneAsync(curScene.buildIndex + 1)) != null)
-                {
-                    _async.allowSceneActivation = true;
-                }
-                
+                nextScene = 0;
+                Debug.Log("Last scene werapping arround to first scene.");
             }
-            catch (System.Exception e)
+            if ((_async = SceneManager.LoadSceneAsync(nextScene)) != null)
             {
-                Debug.Log("No Scene found");
-                Debug.LogException(e, this);
+                _async.allowSceneActivation = true;
             }
         }
     }

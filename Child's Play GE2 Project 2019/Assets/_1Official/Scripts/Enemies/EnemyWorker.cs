@@ -24,6 +24,7 @@ public class EnemyWorker : Enemy
 
         Destroy(this.gameObject, 5);
         transform.Rotate(Vector3.up * Random.Range(-180, 180));
+        GamejoltManager.GetInstance().CheckAndAddTrophy(TrophiesID.KillWorker);
     }
 
     /// <summary>

@@ -291,6 +291,7 @@ public class GameManager : MonoBehaviour
                 }
                 SoundManager.GetInstance().PlaySoundOneShot(Sound.PlaceTower, 0.5f);
                 InstantiateItemOnTile(_listOfTower[_selectedTowerIndex]);
+                GamejoltManager.GetInstance().CheckAndAddTrophy(TrophiesID.BuyTower);
                 break;
             case TileType.Barrier:
                 if (!MoneyManager.GetInstance().TryToBuy(_listOfBarrier[_selectedBarrierIndex].GetComponent<Item>().Value))
@@ -299,6 +300,7 @@ public class GameManager : MonoBehaviour
                 }
                 SoundManager.GetInstance().PlaySoundOneShot(Sound.PlaceBarrier, 0.5f);
                 InstantiateItemOnTile(_listOfBarrier[_selectedBarrierIndex]);
+                GamejoltManager.GetInstance().CheckAndAddTrophy(TrophiesID.BuyBarrier);
                 break;
             default:
                 break;
@@ -325,6 +327,7 @@ public class GameManager : MonoBehaviour
                 Destroy(_selectedTile.CurrentItem);
                 SoundManager.GetInstance().PlaySoundOneShot(Sound.Upgrade, 0.5f);
                 InstantiateItemOnTile(upgradeVersion.gameObject);
+                GamejoltManager.GetInstance().CheckAndAddTrophy(TrophiesID.UpgradeTower);
             }
         }
         else
@@ -356,8 +359,8 @@ public class GameManager : MonoBehaviour
         Destroy(_selectedTile.CurrentItem.gameObject);
         _selectedTile.CurrentItem = null;
         Shop.GetInstance().SetPanelActive(Shop.GetInstance().PLACEHOLDER);
-
         DeselectTile();
+        GamejoltManager.GetInstance().CheckAndAddTrophy(TrophiesID.SellItem);
     }
     
     /// <summary>

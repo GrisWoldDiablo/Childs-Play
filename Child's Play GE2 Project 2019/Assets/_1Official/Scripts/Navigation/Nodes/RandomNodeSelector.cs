@@ -12,12 +12,13 @@ public class RandomNodeSelector : AbstractNodeSelector
         {
             return null;
         }
-        //float chance = Random.value;
-        if (Random.value > 0.5)
-        {
-            return listOfNodes[0];
-        }
-        return listOfNodes[1];
+        return listOfNodes[Random.Range(0, listOfNodes.Count)];
+        ////float chance = Random.value;
+        //if (Random.value > 0.5)
+        //{
+        //    return listOfNodes[0];
+        //}
+        //return listOfNodes[1];
     }
 }
 

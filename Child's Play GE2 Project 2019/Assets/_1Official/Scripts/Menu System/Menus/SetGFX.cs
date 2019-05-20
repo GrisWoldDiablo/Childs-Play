@@ -34,6 +34,7 @@ public class SetGFX : MonoBehaviour {
         _applyButton = GameObject.Find("ApplyButton").GetComponent<Button>();
         _slider = GetComponent<Slider>();
         _gfxNames = QualitySettings.names;
+        _slider.maxValue = _gfxNames.Length - 1;
         _slider.value = _prefValue;
     }
 

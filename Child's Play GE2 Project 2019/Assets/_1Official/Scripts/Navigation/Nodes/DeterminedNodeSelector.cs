@@ -19,11 +19,18 @@ public class DeterminedNodeSelector : AbstractNodeSelector
     /// <returns>The next selected node, or null if there are no valid nodes</returns>
     public override Node GetNextNode()
     {
-        if (listOfNodes.Next(ref nextNode, true))
+        if (listOfNodes == null || listOfNodes.Count == 0)
         {
-            return listOfNodes[nextNode];
+            return null;
         }
-        return null;
+
+        return listOfNodes[nextNode];
+        
+        //if (listOfNodes.Next(ref nextNode, true))
+        //{
+        //    return listOfNodes[nextNode];
+        //}
+        
     }
 }
 

@@ -52,7 +52,11 @@ public class CameraManager : MonoBehaviour
     private Transform enemyWithFocus;
 
     private Transform _playerWithFocus;
-    
+
+    private void Awake()
+    {
+        Camera.main.depthTextureMode = DepthTextureMode.Depth;
+    }
 
     //Getters
     public Vector2 GetKeyboardInput

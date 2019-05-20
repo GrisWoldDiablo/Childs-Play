@@ -117,5 +117,6 @@ public class EnemyQueen : Enemy
 
         Destroy(this.gameObject, 15);
         CancelInvoke("SpawningChildren");
+        GamejoltManager.GetInstance().CheckAndAddTrophy(TrophiesID.KillQueen);
     }
 }

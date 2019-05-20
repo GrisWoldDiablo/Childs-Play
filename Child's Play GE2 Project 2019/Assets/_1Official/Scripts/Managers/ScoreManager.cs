@@ -115,5 +115,6 @@ public class ScoreManager : MonoBehaviour
             _scoreDescriptionText.text += $"\nHighScore: {Settings.GetInstance().LeaderboardScores[LevelManager.GetInstance().CurrentLevel]} by {Settings.GetInstance().LeaderboardNames[LevelManager.GetInstance().CurrentLevel]} ";
         }
 
+        GamejoltManager.GetInstance().AddScore(_score, LevelManager.GetInstance().CurrentLevel);
     }
 }
