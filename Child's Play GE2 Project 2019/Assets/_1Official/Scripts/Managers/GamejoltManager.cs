@@ -75,6 +75,10 @@ public class GamejoltManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+#if UNITY_WEBGL
+        logInButton.gameObject.SetActive(false);
+        logOutButton.gameObject.SetActive(false); 
+#endif
         SetLogStatus();
     }
 
@@ -154,9 +158,13 @@ public class GamejoltManager : MonoBehaviour
 
     private void SetLogStatus()
     {
+#if !UNITY_WEBGL
         loggedOn = GameJoltAPI.Instance.CurrentUser != null;
         logInButton.gameObject.SetActive(!loggedOn);
         logOutButton.gameObject.SetActive(loggedOn);
+#else
+        loggedOn = GameJoltAPI.Instance.HasSignedInUser;
+#endif
         if (loggedOn)
         {
             PopulateUserTrophies();

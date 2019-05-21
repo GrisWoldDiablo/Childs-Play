@@ -98,7 +98,10 @@ public class Settings : MonoBehaviour {
         _qualitySetting.PrefValue = QualitySettings.GetQualityLevel();
         _sensitivityH = PlayerPrefs.GetFloat(_sensitivityHParam, 25);
         _sensitivityV = PlayerPrefs.GetFloat(_sensitivityVParam, 25);
-        GetLeaderboard();
+
+#if !UNITY_WEBGL
+        GetLeaderboard(); 
+#endif
 
         LoadLevelParams();
     }
@@ -163,7 +166,8 @@ public class Settings : MonoBehaviour {
             _sensitivityVLevel.SetSens(25);
         }
     }
-
+    
+#if !UNITY_WEBGL
     /// <summary>
     /// Get the leaderboard saved on disk.
     /// </summary>
@@ -197,6 +201,7 @@ public class Settings : MonoBehaviour {
 
     }
 
+#endif
     /// <summary>
     /// Check if the score is higher than what the leaderboard says based on the level
     /// <para>Condition : current score > current high score </para>
@@ -211,6 +216,7 @@ public class Settings : MonoBehaviour {
         return score > _leaderboardScores[currentLevel];
     }
 
+#if !UNITY_WEBGL
     /// <summary>
     /// Set the leaderboard and save it to disk
     /// </summary>
@@ -232,9 +238,11 @@ public class Settings : MonoBehaviour {
             PlayerPrefs.SetString("Name" + i, _leaderboardNames[i].ToUpper());
         }
         PlayerPrefs.Save();
-        GetLeaderboard();
-    }
 
+        GetLeaderboard(); 
+
+    }
+#endif
     /// <summary>
     /// Load the level information.
     /// The starting level and how many level are unlocked.

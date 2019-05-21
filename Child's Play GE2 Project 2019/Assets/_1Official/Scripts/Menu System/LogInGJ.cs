@@ -7,6 +7,8 @@ public class LogInGJ : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GamejoltManager.GetInstance().ShowLogin();
+#if !UNITY_WEBGL
+        GamejoltManager.GetInstance().ShowLogin(); 
+#endif
     }
 }

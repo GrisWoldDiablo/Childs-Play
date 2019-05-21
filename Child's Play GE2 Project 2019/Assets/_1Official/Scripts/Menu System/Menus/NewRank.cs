@@ -20,6 +20,7 @@ public class NewRank : MonoBehaviour
     /// </summary>
     public void SetNewRank()
     {
+#if !UNITY_WEBGL
         if (_inputField.text == string.Empty)
         {
             Settings.GetInstance().SetLoaderboard();
@@ -28,6 +29,7 @@ public class NewRank : MonoBehaviour
         {
             Settings.GetInstance().SetLoaderboard(_inputField.text.ToUpper());
         }
-        _inputField.text = string.Empty;
+        _inputField.text = string.Empty; 
+#endif
     }
 }

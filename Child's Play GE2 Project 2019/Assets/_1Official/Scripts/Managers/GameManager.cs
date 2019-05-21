@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Update is called once per frame
     /// </summary>
-    void Update()
+    void LateUpdate()
     {
         if (Input.GetButtonDown("Cancel") && _selectedTile != null)
         {

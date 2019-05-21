@@ -100,21 +100,30 @@ public class ScoreManager : MonoBehaviour
                          $"(+) {levelValue}\n" +
                          $"(x) {_foodPercentage}%\n" +
                          $"{_enemyCount}\n" +
-                         $"{_score}\n";
+                         $"{_score}" 
+#if !UNITY_WEBGL 
+                         + $"\n" 
+#endif 
+                         ;
         SoundManager.GetInstance().StopMusic();
         SoundManager.GetInstance().PlaySoundOneShot(Sound.LevelCompleted);
 
-        if (Settings.GetInstance().CheckLeaderboard(_score,LevelManager.GetInstance().CurrentLevel))
+#if !UNITY_WEBGL
+        if (Settings.GetInstance().CheckLeaderboard(_score, LevelManager.GetInstance().CurrentLevel))
         {
             GameManager.GetInstance().PanelSelection(GameManager.GetInstance().NewRankPanelIndex);
             _scoreDescriptionText.text += $"\nNEW HIGHSCORE!";
         }
         else
         {
+#endif
             GameManager.GetInstance().PanelSelection(GameManager.GetInstance().ScorePanelIndex);
-            _scoreDescriptionText.text += $"\nHighScore: {Settings.GetInstance().LeaderboardScores[LevelManager.GetInstance().CurrentLevel]} by {Settings.GetInstance().LeaderboardNames[LevelManager.GetInstance().CurrentLevel]} ";
+#if !UNITY_WEBGL
+            _scoreDescriptionText.text += $"\n" +
+            $"HighScore: {Settings.GetInstance().LeaderboardScores[LevelManager.GetInstance().CurrentLevel]}" +
+            $" by {Settings.GetInstance().LeaderboardNames[LevelManager.GetInstance().CurrentLevel]} ";
         }
-
+#endif
         GamejoltManager.GetInstance().AddScore(_score, LevelManager.GetInstance().CurrentLevel);
     }
 }
